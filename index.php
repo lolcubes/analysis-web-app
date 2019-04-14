@@ -316,7 +316,7 @@ $( "#dropzone" ).on("drop", function() {
 
         var readarray = document.getElementById("demo").innerHTML;
         var arrayparsed = JSON.parse(readarray);
-        var arraynames = arrayparsed.filetype
+        var arraynames = arrayparsed.names
         console.log(arraynames);
 
         var select = document.getElementById("editordropdown");

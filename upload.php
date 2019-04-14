@@ -37,7 +37,18 @@
 
             $myJSON3 = json_encode($filedirlocations, JSON_UNESCAPED_SLASHES);
             $myJSON4 = json_encode($type, JSON_UNESCAPED_SLASHES);
-            $myJSONcombined = "{\"names\":" . "$myJSON" . "," . "\"phyisicalnames\":" . "$myJSON2" . "," . "\"filelocations\":" . "$myJSON3" . "," . "\"filetype\":" . "$myJSON4" . "}";
+
+
+            $output = str_replace("text/plain", "file-icons/txt.png", $type);
+            $output2 = str_replace("text/x-sh", "file-icons/sh.png", $output);
+            $output3 = str_replace("application/octet-stream", "file-icons/krn.png", $output2);
+            $output4 = str_replace("audio/midi", "file-icons/midi.png", $output3);
+            $output5 = str_replace("audio/mp3", "file-icons/mp3.png", $output4);
+            $output6 = str_replace("audio/wav", "file-icons/wav.png", $output5);
+
+            $finaloutput = json_encode($output6, JSON_UNESCAPED_SLASHES);    
+
+            $myJSONcombined = "{\"names\":" . "$myJSON" . "," . "\"phyisicalnames\":" . "$myJSON2" . "," . "\"filelocations\":" . "$myJSON3" . "," . "\"filetype\":" . "$myJSON4" . "," . "\"fileicon\":" . "$finaloutput" . "}";
             
             echo $myJSONcombined;
 
@@ -51,19 +62,5 @@
             //  return $arraynumeral;
 			//  $myJSON2 = json_encode($filedirs);
             //  echo $myJSON2;
-
-
-            $output = str_replace("text/plain", "file-icons/txt.png", $type);
-            $output2 = str_replace("text/x-sh", "file-icons/sh.png", $output);
-            $output3 = str_replace("application/octet-stream", "file-icons/kern.png", $output2);
-            $output4 = str_replace("audio/midi", "file-icons/midi.png", $output3);
-            $output5 = str_replace("audio/mp3", "file-icons/mp3.png", $output4);
-            $output6 = str_replace("audio/wav", "file-icons/wav.png", $output5);
-            $output7 = str_replace("audio/mp3", "file-icons/mp3.png", $output6);
-
-
-            echo "<pre>";
-            // $finaloutput = json_encode($output2, JSON_UNESCAPED_SLASHES);
-            echo "</pre>"
 
 ?>
