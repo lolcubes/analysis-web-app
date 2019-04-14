@@ -1,0 +1,14 @@
+# macOS files
+.DS_Store
+
+# ignore timidity
+
+Timidity/
+
+# ignore Arraylists
+
+Array_Lists/
+
+# ignore file.wav
+
+file.wav
