@@ -53,10 +53,17 @@
             //  echo $myJSON2;
 
 
-            $output = str_replace("text/plain", "boii", $type);
-            $output2 = str_replace("text/x-sh", "boii34", $output);
+            $output = str_replace("text/plain", "file-icons/txt.png", $type);
+            $output2 = str_replace("text/x-sh", "file-icons/sh.png", $output);
+            $output3 = str_replace("application/octet-stream", "file-icons/kern.png", $output2);
+            $output4 = str_replace("audio/midi", "file-icons/midi.png", $output3);
+            $output5 = str_replace("audio/mp3", "file-icons/mp3.png", $output4);
+            $output6 = str_replace("audio/wav", "file-icons/wav.png", $output5);
+            $output7 = str_replace("audio/mp3", "file-icons/mp3.png", $output6);
+
+
             echo "<pre>";
-            echo json_encode($output2, JSON_UNESCAPED_SLASHES);
+            // $finaloutput = json_encode($output2, JSON_UNESCAPED_SLASHES);
             echo "</pre>"
 
 ?>

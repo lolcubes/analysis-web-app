@@ -1,0 +1,33 @@
+#!/bin/bash
+
+directory=$1
+
+rpath=/Users/svernooy/Desktop/EquationTester/rValues.txt
+
+len=$(ls "$directory" | tr '\t' '\n' | wc -l)
+lenless=$(echo $len-2 | bc -l)
+
+argone=
+argtwo=
+for i in $(seq 0 $lenless); do 
+    currentnumber=$(echo $len-$i | bc -l)
+    currentdirec=$(ls $directory | tail -n $currentnumber)
+
+    for b in $(seq 2 $currentnumber); do
+        argone=$(echo "$currentdirec" | sed '1q;d')
+        argtwo=$(echo "$currentdirec" | sed "${b}q;d")
+        echo $argone
+        echo $argtwo
+        if [ "$argone" = "$argtwo" ]; then
+            echo ""
+        else
+            bash /Users/svernooy/Desktop/equation_geo.sh $directory/$argone $directory/$argtwo $rpath 
+        fi
+
+        printf "\n"
+        printf "\n"
+    done
+
+done
+
+
