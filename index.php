@@ -79,8 +79,8 @@ function myFunction() {
                 or
             </p>
             <div id="plusfile">
-                    <form target="votar" method="post" enctype="multipart/form-data" target="uploaddirect" id="filechooserform" name="filechooserform" onchange="filechooserform.submit();">
-                        <input class="inputfile" name="userfile[]" type="file" multiple value="Choose Files" id="uploadchooser"  data-form="filechooserform" /><br />
+                    <form target="votar" method="post" enctype="multipart/form-data" id="filechooserform" name="filechooserform" onchange="filechooserform.submit();">
+                        <input class="inputfile" name="userfile[]" type="file" multiple value="Choose Files" id="uploadchooser" /><br />
                         <label for="uploadchooser" class="buttonform"><span>Add Files</span></label>
                         <input type='hidden' name='varNew[]' value='<?php echo "$arrayfilenumber";?>'/> 
                     </form>
@@ -96,21 +96,21 @@ function myFunction() {
     </div>
 
 <script id="uploader">
-   $('#inserting_btn').click(function(){
-        var file = $('#inserting_file').val();
-        $.ajax({
-            method: 'POST',
-            url: 'input_text/import.php',
-            data: 'file='+file,
-            success: function(data){
-                alert(data);
-            }
-        });
-    });
+
+$("#uploadchooser").on("change", function(){
+
+    console.log("submitted!");
+    var files = $(this)[0].files; 
+    console.log(files);
+    // $.ajax({
+
+    // });
+});
+
 </script>
 
 
-    <script id="cleardropzone">
+<script id="cleardropzone">
 
 $( "#dropzone" ).on("drop", function() {
     $('#dropzone').children().delay(800).fadeOut(500).promise().then(function() {
@@ -445,7 +445,6 @@ $( "#dropzone" ).on("drop", function() {
         ?>
 
     </div>
-
 
 
     <div id="footer">
