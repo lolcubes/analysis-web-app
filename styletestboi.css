@@ -690,7 +690,7 @@ span.button {
   border-radius: 20px;
   transition: .25s;
   line-height: 15px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .dropzone.dragover {

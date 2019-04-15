@@ -119,24 +119,46 @@ $("#filechooserform").on("change", function(){
 
 <script id="cleardropzone">
 
-$("body").on('DOMSubtreeModified', "#demo", function() {
-    var maskos = document.getElementById("demo").innerHTML;
-        var masksparsed = JSON.parse(maskos);
-        var masks = masksparsed.fileicon;
-        masks.forEach(src => {
-            const img = document.createElement("img");
-            img.src = src;
-            img.title = src; // To tell them apart.
-            window["dropzone"].appendChild(img);
-        });
 
-        // THIS IS A COMMENT THAT YOU NEED TO REMEMBER:
-        // This function above, maskos, runs too late. It happens to the previous array, because demo is empty on run
-});
 
 $( "#dropzone" ).on("drop", function() {
     $('#dropzone').children().delay(800).fadeOut(500).promise().then(function() {
         $('#dropzone').empty();
+        var $div = $("#dropzone");
+            var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === "class") {
+                var attributeValue = $(mutation.target).prop(mutation.attributeName);
+                console.log("Class attribute changed to:", attributeValue);
+                }
+            });
+            });
+            observer.observe($div[0], {
+            attributes: true
+        });
+
+                // $("body").on('DOMSubtreeModified', "#demo", function() {
+                //     var array = document.getElementById("demo").innerHTML;
+                //     var arrayparsed = JSON.parse(array);
+                //     var names = arrayparsed.names;
+                //     var icons = arrayparsed.fileicon;
+                //     for (var i = 0; i < icons.length; i += 1) {
+                //         var icon = icons[i];
+                //         var name = names[i];
+                //         $("#dropzone").append('<p>' + name + '</p>' + '<img src="'+icon+'"' + "height=50px" + '>');
+                //     }
+                //     // masks.forEach(src => {
+                //     //     const img = document.createElement("img");
+                //     //     img.src = src;
+                //     //     img.title = src; // To tell them apart.
+                //     //     window["dropzone"].appendChild(img);
+                //     // });
+
+                //     // THIS IS A COMMENT THAT YOU NEED TO REMEMBER:
+                //     // This function above, maskos, runs too late. It happens to the previous array, because demo is empty on run
+            
+                // });
+
    });
 });
 
