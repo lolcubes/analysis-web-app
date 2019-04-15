@@ -178,6 +178,7 @@ $( "#filechooserform" ).on("change", function() {
                     xhr.onload = function() {
                         var data = this.responseText;
                         document.getElementById("demo").innerHTML = data;
+                        var readarray = document.getElementById("demo").innerHTML;
 
   
                     }
@@ -253,7 +254,7 @@ $( "#filechooserform" ).on("change", function() {
         });
         $("#dropzone").on("drop", function() {
             $('#file-info-accordions').delay(800).show("slow");
-
+        
         });
 
         $("#filechooserform").on("change", function()
@@ -263,6 +264,27 @@ $( "#filechooserform" ).on("change", function() {
         });
     </script>
 
+    <script>
+
+            var populatedropdown = function(){
+                var readarray = document.getElementById("demo").innerHTML
+                var arrayparsed = JSON.parse(readarray);
+                var arraynames = arrayparsed.names
+                console.log(arraynames);
+
+                var select = document.getElementById("editordropdown");
+
+                    for (var i = 0; i < arraynames.length; i++)
+                    {
+                        var option = document.createElement("OPTION"),
+                            txt = document.createTextNode(arraynames[i]);
+                        option.appendChild(txt);
+                        option.setAttribute("value",arraynames[i]);
+                        select.insertBefore(option,select.lastChild);
+                    }
+            }        
+            setInterval(populatedropdown, 400);
+    </script>
 
 
 
@@ -338,7 +360,7 @@ $( "#filechooserform" ).on("change", function() {
     <!----------------------- -->
     <script>
 
-    $('#editorbutton').click(function() {
+    $('#dropzone').on("drop", function() {
         // document.getElementById("getmyelementbyid").innerHTML = "<?php// echo $arrayfiledirectory;?>";
 
         var readarray = document.getElementById("demo").innerHTML;
