@@ -89,7 +89,7 @@ function myFunction() {
                     <br>
                     <div id="myProgress">
                         <div id="myBar">
-                        &nbsp;0%
+                        &nbsp;&nbsp;&nbsp;&nbsp;0%
                         </div>
                     </div>
             </div>
