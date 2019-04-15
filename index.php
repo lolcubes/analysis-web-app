@@ -110,15 +110,10 @@ $("#filechooserform").on("change", function(){
             document.getElementById("demo").innerHTML = data;
         }           
     });
-    //console.log("submitted!");
-    //var files = $(this)[0].files; 
-    //console.log(files);
-    // $.ajax({
-
-    // });
 });
 
 </script>
+
 
 
 <script id="cleardropzone">
@@ -129,6 +124,26 @@ $( "#dropzone" ).on("drop", function() {
     });
 });
 
+$( "#filechooserform" ).on("change", function() {
+    // $('#dropzone').attr('class', 'dropzone dropped')
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 2);
+    function frame() {
+        if (width >= 100) {
+        clearInterval(id);
+        } else {
+        width++;
+        elem.style.width = width + '%';
+        elem.innerHTML = width * 1 + '%';
+        }
+
+    }
+
+    $('#dropzone').children().delay(800).fadeOut(500).promise().then(function() {
+        $('#dropzone').empty();
+    });
+});
 
 
 </script>

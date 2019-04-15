@@ -52,10 +52,6 @@
             
             echo $myJSONcombined;
 
-            $varNew = $_POST['varNew'];
-
-            $arraydirectory = "/Applications/MAMP/htdocs/NewTestings/Array_Lists/" . "$varNew[0]" . ".txt";
-
             file_put_contents("$arraydirectory", "$myJSONcombined");
 
 
