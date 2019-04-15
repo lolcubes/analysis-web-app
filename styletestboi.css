@@ -681,7 +681,7 @@ span.button {
 
 .dropzone {
   width: 800px;
-  height: 278px;
+  height: 285px;
   border: 2px dashed #ccc;
   color: #ccc;
   margin-left: auto;
@@ -690,6 +690,7 @@ span.button {
   border-radius: 20px;
   transition: .25s;
   line-height: 15px;
+  overflow: scroll;
 }
 
 .dropzone.dragover {

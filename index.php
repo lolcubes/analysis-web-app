@@ -119,11 +119,27 @@ $("#filechooserform").on("change", function(){
 
 <script id="cleardropzone">
 
+$("body").on('DOMSubtreeModified', "#demo", function() {
+    var maskos = document.getElementById("demo").innerHTML;
+        var masksparsed = JSON.parse(maskos);
+        var masks = masksparsed.fileicon;
+        masks.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.title = src; // To tell them apart.
+            window["dropzone"].appendChild(img);
+        });
+
+        // THIS IS A COMMENT THAT YOU NEED TO REMEMBER:
+        // This function above, maskos, runs too late. It happens to the previous array, because demo is empty on run
+});
+
 $( "#dropzone" ).on("drop", function() {
     $('#dropzone').children().delay(800).fadeOut(500).promise().then(function() {
         $('#dropzone').empty();
-    });
+   });
 });
+
 
 $( "#filechooserform" ).on("change", function() {
     $('#dropzone').attr('class', 'dropzone dropped')
