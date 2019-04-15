@@ -97,11 +97,22 @@ function myFunction() {
 
 <script id="uploader">
 
-$("#uploadchooser").on("change", function(){
-
-    console.log("submitted!");
-    var files = $(this)[0].files; 
-    console.log(files);
+$("#filechooserform").on("change", function(){
+    $.ajax({
+        url: "upload.php",
+        type: "POST",
+        data:  new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(data){
+            console.log(data);
+            document.getElementById("demo").innerHTML = data;
+        }           
+    });
+    //console.log("submitted!");
+    //var files = $(this)[0].files; 
+    //console.log(files);
     // $.ajax({
 
     // });
@@ -413,7 +424,7 @@ $( "#dropzone" ).on("drop", function() {
             </label>
 
             <label class="container">Most Used Note Value
-            <input type="radio" name="mostusednotevalue" value="checked" >
+            <input type="checkbox" name="mostusednotevalue" value="checked" >
             <span class="checkmark"></span>
             </label>
             </form>
