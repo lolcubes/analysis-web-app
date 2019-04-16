@@ -142,8 +142,13 @@ $("#filechooserform").on("change", function(){
 
 $( "#dropzone" ).on("drop", function() {
     $('#dropzone').children().delay(800).fadeOut(500).promise().then(function() {
-        // $('#dropzone').empty();
+        $('#dropzone').empty();
+        if ( $('#demo').html().length == 0 ) {
+            }
+            else {
+                populateDropzone();
 
+            }
                 // $("#editorbutton").click(function() {
                     // var array = document.getElementById("demo").innerHTML;
                     // var arrayparsed = JSON.parse(array);
@@ -184,10 +189,16 @@ $( "#filechooserform" ).on("change", function() {
         elem.innerHTML = width * 1 + '%';
         }
 
+
     }
 
     $('#dropzone').children().delay(800).fadeOut(500).promise().then(function() {
         $('#dropzone').empty();
+        if ( $('#demo').html().length == 0 ) {
+        }
+        else {
+            populateDropzone();
+        }
     });
 });
 
@@ -237,8 +248,13 @@ $( "#filechooserform" ).on("change", function() {
                         var data = this.responseText;
                         document.getElementById("demo").innerHTML = data;
                         var readarray = document.getElementById("demo").innerHTML;
+                        
+                        if ( $('#dropzone').html().length == 0 ) {
+                            populateDropzone();
+                        }
+                        else {
 
-                        populateDropzone();
+                        }
                     }
 
                     xhr.responseType = "text";
@@ -420,6 +436,19 @@ $( "#filechooserform" ).on("change", function() {
 
     $('#dropzone').on("drop", function() {
         // document.getElementById("getmyelementbyid").innerHTML = "<?php// echo $arrayfiledirectory;?>";
+        function populateDropzone(){
+            var array = document.getElementById("demo").innerHTML;
+            var arrayparsed = JSON.parse(array);
+            var names = arrayparsed.names;
+            var icons = arrayparsed.fileicon;
+            for (var i = 0; i < icons.length; i += 1) {
+                var icon = icons[i];
+                var name = names[i];
+                $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=50px;" + '>' + '<p>' + name + '</p>' + '</div>');
+            }
+
+
+
 
         var readarray = document.getElementById("demo").innerHTML;
         var arrayparsed = JSON.parse(readarray);
