@@ -109,9 +109,23 @@ $("#filechooserform").on("change", function(){
         success: function(data){
             console.log(data);
             document.getElementById("demo").innerHTML = data;
+            populateDropzone();
         }           
     });
 });
+
+    function populateDropzone(){
+            var array = document.getElementById("demo").innerHTML;
+            var arrayparsed = JSON.parse(array);
+            var names = arrayparsed.names;
+            var icons = arrayparsed.fileicon;
+            for (var i = 0; i < icons.length; i += 1) {
+                var icon = icons[i];
+                var name = names[i];
+                $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<p>' + name + '</p>' + '</div>');
+            }
+
+        }
 
 </script>
 
@@ -123,40 +137,28 @@ $("#filechooserform").on("change", function(){
 
 $( "#dropzone" ).on("drop", function() {
     $('#dropzone').children().delay(800).fadeOut(500).promise().then(function() {
-        $('#dropzone').empty();
-        var $div = $("#dropzone");
-            var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === "class") {
-                var attributeValue = $(mutation.target).prop(mutation.attributeName);
-                console.log("Class attribute changed to:", attributeValue);
-                }
-            });
-            });
-            observer.observe($div[0], {
-            attributes: true
-        });
+        // $('#dropzone').empty();
 
-                // $("body").on('DOMSubtreeModified', "#demo", function() {
-                //     var array = document.getElementById("demo").innerHTML;
-                //     var arrayparsed = JSON.parse(array);
-                //     var names = arrayparsed.names;
-                //     var icons = arrayparsed.fileicon;
-                //     for (var i = 0; i < icons.length; i += 1) {
-                //         var icon = icons[i];
-                //         var name = names[i];
-                //         $("#dropzone").append('<p>' + name + '</p>' + '<img src="'+icon+'"' + "height=50px" + '>');
-                //     }
-                //     // masks.forEach(src => {
-                //     //     const img = document.createElement("img");
-                //     //     img.src = src;
-                //     //     img.title = src; // To tell them apart.
-                //     //     window["dropzone"].appendChild(img);
-                //     // });
+                // $("#editorbutton").click(function() {
+                    // var array = document.getElementById("demo").innerHTML;
+                    // var arrayparsed = JSON.parse(array);
+                    // var names = arrayparsed.names;
+                    // var icons = arrayparsed.fileicon;
+                    // for (var i = 0; i < icons.length; i += 1) {
+                    //     var icon = icons[i];
+                    //     var name = names[i];
+                    //     $("#dropzone").append( '<img src=' + icon + " height=50px;" + '>' + '<p>' + name + '</p>' );
+                    // }
+                // masks.forEach(src => {
+                //     const img = document.createElement("img");
+                //     img.src = src;
+                //     img.title = src; // To tell them apart.
+                //     window["dropzone"].appendChild(img);
+                // });
 
-                //     // THIS IS A COMMENT THAT YOU NEED TO REMEMBER:
-                //     // This function above, maskos, runs too late. It happens to the previous array, because demo is empty on run
-            
+                // THIS IS A COMMENT THAT YOU NEED TO REMEMBER:
+                // This function above, maskos, runs too late. It happens to the previous array, because demo is empty on run
+        
                 // });
 
    });
@@ -197,6 +199,19 @@ $( "#filechooserform" ).on("change", function() {
             // obj[Object.keys(obj)[0]];
             console.log(result);
             console.log(Object.values(result));
+
+            function populateDropzone(){
+            var array = document.getElementById("demo").innerHTML;
+            var arrayparsed = JSON.parse(array);
+            var names = arrayparsed.names;
+            var icons = arrayparsed.fileicon;
+            for (var i = 0; i < icons.length; i += 1) {
+                var icon = icons[i];
+                var name = names[i];
+                $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=50px;" + '>' + '<p>' + name + '</p>' + '</div>');
+            }
+
+        }
         }
 
         (function() {
@@ -218,7 +233,7 @@ $( "#filechooserform" ).on("change", function() {
                         document.getElementById("demo").innerHTML = data;
                         var readarray = document.getElementById("demo").innerHTML;
 
-  
+                        populateDropzone();
                     }
 
                     xhr.responseType = "text";
@@ -304,24 +319,24 @@ $( "#filechooserform" ).on("change", function() {
 
     <script>
 
-            var populatedropdown = function(){
-                var readarray = document.getElementById("demo").innerHTML
-                var arrayparsed = JSON.parse(readarray);
-                var arraynames = arrayparsed.names
-                console.log(arraynames);
+            // var populatedropdown = function(){
+            //     var readarray = document.getElementById("demo").innerHTML
+            //     var arrayparsed = JSON.parse(readarray);
+            //     var arraynames = arrayparsed.names
+            //     console.log(arraynames);
 
-                var select = document.getElementById("editordropdown");
+            //     var select = document.getElementById("editordropdown");
 
-                    for (var i = 0; i < arraynames.length; i++)
-                    {
-                        var option = document.createElement("OPTION"),
-                            txt = document.createTextNode(arraynames[i]);
-                        option.appendChild(txt);
-                        option.setAttribute("value",arraynames[i]);
-                        select.insertBefore(option,select.lastChild);
-                    }
-            }        
-            setInterval(populatedropdown, 400);
+            //         for (var i = 0; i < arraynames.length; i++)
+            //         {
+            //             var option = document.createElement("OPTION"),
+            //                 txt = document.createTextNode(arraynames[i]);
+            //             option.appendChild(txt);
+            //             option.setAttribute("value",arraynames[i]);
+            //             select.insertBefore(option,select.lastChild);
+            //         }
+            // }        
+            // setInterval(populatedropdown, 400);
     </script>
 
 
@@ -404,7 +419,6 @@ $( "#filechooserform" ).on("change", function() {
         var readarray = document.getElementById("demo").innerHTML;
         var arrayparsed = JSON.parse(readarray);
         var arraynames = arrayparsed.names
-        console.log(arraynames);
 
         var select = document.getElementById("editordropdown");
                 

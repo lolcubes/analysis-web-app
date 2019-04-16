@@ -44,9 +44,8 @@
             $output3 = str_replace("application/octet-stream", "file-icons/krn.png", $output2);
             $output4 = str_replace("audio/midi", "file-icons/midi.png", $output3);
             $output5 = str_replace("audio/mp3", "file-icons/mp3.png", $output4);
-            $output6 = str_replace("audio/wav", "file-icons/wav.png", $output5);
 
-            $finaloutput = json_encode($output6, JSON_UNESCAPED_SLASHES);    
+            $finaloutput = json_encode($output5, JSON_UNESCAPED_SLASHES);    
 
             $myJSONcombined = "{\"names\":" . "$myJSON" . "," . "\"phyisicalnames\":" . "$myJSON2" . "," . "\"filelocations\":" . "$myJSON3" . "," . "\"filetype\":" . "$myJSON4" . "," . "\"fileicon\":" . "$finaloutput" . "}";
             

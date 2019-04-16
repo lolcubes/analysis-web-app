@@ -678,6 +678,23 @@ span.button {
 }
 
 
+#dropzonefileicons {
+  display: inline-block;
+
+font-size: 8px;
+border-radius: 30px;
+transition: .25s;
+
+
+}
+
+#dropzonefileicons:hover {
+  background-color: rgba(255, 255, 255, 0.404);
+  transition: .25s;
+  
+}
+
+
 
 .dropzone {
   width: 800px;
@@ -691,6 +708,7 @@ span.button {
   transition: .25s;
   line-height: 15px;
   overflow: auto;
+  display: inline-block;
 }
 
 .dropzone.dragover {
@@ -703,6 +721,7 @@ transition: .25s;
 background-color: rgb(209, 255, 211);
 color: #000;
 transition: .7s;
+display: inline-block;
 
 }
 .dropzone:hover {
