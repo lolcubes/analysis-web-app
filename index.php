@@ -119,12 +119,15 @@ $("#filechooserform").on("change", function(){
             var arrayparsed = JSON.parse(array);
             var names = arrayparsed.names;
             var icons = arrayparsed.fileicon;
+            $("#dropzone").append("<br>");
+
+            $("#dropzone").append("<br>");
             for (var i = 0; i < icons.length; i += 1) {
                 var icon = icons[i];
                 var name = names[i];
                 $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<p>' + name + '</p>' + '</div>');
             }
-
+            
         }
 
 </script>
