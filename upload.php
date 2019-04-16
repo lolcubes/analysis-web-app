@@ -8,7 +8,11 @@
             
             
             $filenames = $_FILES['userfile']['name'];
-
+            $filesizes = $_FILES['userfile']['size'];
+            $filesize = array_map( function($val) { return $val * 0.01; }, $filesizes);
+            foreach(array_keys($filesize) AS $ek){ //Get key of each value so it can be set back to itself 
+                $filesize[$ek] = round($filesize[$ek]); //Do rounding 
+            } 
             $filetmpnames = $_FILES['userfile']['tmp_name'];
             $filenumber = sizeof($_FILES['userfile']['name']);
             $type = $_FILES['userfile']['type'];
@@ -37,6 +41,7 @@
 
             $myJSON3 = json_encode($filedirlocations, JSON_UNESCAPED_SLASHES);
             $myJSON4 = json_encode($type, JSON_UNESCAPED_SLASHES);
+            $myJSON5 = json_encode($filesize, JSON_UNESCAPED_SLASHES);
 
 
             $output = str_replace("text/plain", "file-icons/txt.png", $type);
@@ -47,7 +52,7 @@
 
             $finaloutput = json_encode($output5, JSON_UNESCAPED_SLASHES);    
 
-            $myJSONcombined = "{\"names\":" . "$myJSON" . "," . "\"phyisicalnames\":" . "$myJSON2" . "," . "\"filelocations\":" . "$myJSON3" . "," . "\"filetype\":" . "$myJSON4" . "," . "\"fileicon\":" . "$finaloutput" . "}";
+            $myJSONcombined = "{\"names\":" . "$myJSON" . "," . "\"phyisicalnames\":" . "$myJSON2" . "," . "\"filelocations\":" . "$myJSON3" . "," . "\"filetype\":" . "$myJSON4" . "," . "\"fileicon\":" . "$finaloutput" . "," . "\"filesize\":" . "$myJSON5" . "}";
             
             echo $myJSONcombined;
 
