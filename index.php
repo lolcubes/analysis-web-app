@@ -7,15 +7,21 @@
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="favicon.png"/>
 
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script src="https://verovio-script.humdrum.org/scripts/verovio-toolkit.js"></script>
         <script src="https://plugin.humdrum.org/scripts/humdrum-notation-plugin.js"></script>
         <script> var vrvToolkit = new verovio.toolkit(); </script>
-</head>
+        <script type='text/javascript' src='https://kitchwww.github.io/midi/midi.js'></script>
+
+
+    </head>
 
     <body id=home>
             <div id="navbarr">
                 <ul id=navbar>
+                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+
                     <a  href="index.php"><img id="headerbanner" src="headerbanner.png" alt="Header logo" height="50px" width="260" align="middle"></a>
                     <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
                     <!-- <li id="Menu" class="logoimage"><img src="headerbanner.png" alt="Header logo" height="60px" width="313px"></img></li> -->
@@ -29,6 +35,8 @@
             </div>
             <div id="bumper">
 </div>
+
+
 
 <!-- 
 <script>
@@ -59,6 +67,8 @@ function myFunction() {
 
 <br>
 <div id="center">
+<br>
+<br>
 <br>
 <button class="buttonform" id="uploadfilesbutton">Upload File</button>
 &nbsp;&nbsp;&nbsp;
@@ -574,8 +584,6 @@ $( "#filechooserform" ).on("change", function() {
 
         <?php
         if (isset($_GET['wavme'])) {
-            echo "test";
-            exec("/Applications/MAMP/htdocs/NewTestings/Timidity/bin/timidity /Applications/MAMP/htdocs/NewTestings/file.mid -Ow");
         }
         ?>
 
