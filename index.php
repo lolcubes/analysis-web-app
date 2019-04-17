@@ -422,8 +422,8 @@ $( "#filechooserform" ).on("change", function() {
 
                 <button class="accordion">Add File Details (Optional)</button>
                     <div class="panel">
-                        <p>In order to add to our large collection of songs, please specify the following information about your files</p>
-                            <form>
+                        <p>In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
+                            <form action="details-upload.php">
                                 <div id="boi">Song Name:&nbsp;&nbsp;&nbsp;<input id="composer_input" type="text"/>
                                 </div>
                                 <br>
@@ -439,6 +439,7 @@ $( "#filechooserform" ).on("change", function() {
                                         <br>
                                     </select>
                                 </div>
+                                <button type="submit" class="buttonform">Confirm</button>
                             </form>
                     </div>
     <!----------------------- -->
