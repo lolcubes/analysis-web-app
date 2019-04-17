@@ -424,7 +424,7 @@ $( "#filechooserform" ).on("change", function() {
                     <div class="panel">
                         <p>In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
                             <form action="details-upload.php">
-                                <div id="boi">Song Name:&nbsp;&nbsp;&nbsp;<input id="composer_input" type="text"/>
+                                <div id="boi">Song Name:&nbsp;&nbsp;<input id="composer_input" type="text"/>
                                 </div>
                                 <br>
                                 <br>

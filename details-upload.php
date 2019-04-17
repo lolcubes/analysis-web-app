@@ -1,3 +1,4 @@
 <?php
-echo $_POST['periodDropdown'];
+echo "this is a test";
+echo var_dump($_POST)
 ?>
