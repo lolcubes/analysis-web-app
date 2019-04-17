@@ -5,7 +5,7 @@
 
         <link rel="stylesheet" type="text/css" href="styletestboi.css" />
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-        <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+        <link rel="shortcut icon" type="image/png" href="image-assets/favicon.png"/>
 
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
@@ -22,7 +22,7 @@
                 <ul id=navbar>
                 <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
 
-                    <a  href="index.php"><img id="headerbanner" src="headerbanner.png" alt="Header logo" height="50px" width="260" align="middle"></a>
+                    <a  href="index.php"><img id="headerbanner" src="image-assets/headerbanner.png" alt="Header logo" height="50px" width="260" align="middle"></a>
                     <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
                     <!-- <li id="Menu" class="logoimage"><img src="headerbanner.png" alt="Header logo" height="60px" width="313px"></img></li> -->
                     <li id="Menu"><a href="index.php">Home</a></li>
