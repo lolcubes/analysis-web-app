@@ -459,7 +459,7 @@ $( "#filechooserform" ).on("change", function() {
                         <br>
                         <span id=musicalnotation>Musical Notation:</span>
                         <span class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</span>
-
+<!-- 
                         <script id="displaysong">
                         displayHumdrum({
                             autoResize: true,
@@ -470,7 +470,7 @@ $( "#filechooserform" ).on("change", function() {
                         })
 
                         </script>
-                        <script type="text/x-humdrum" id="song_svg"></script>
+                        <script type="text/x-humdrum" id="song_svg"></script> -->
     <br>
     <br>
                     <iframe name="votar" style="display:none;"></iframe>
