@@ -58,9 +58,20 @@
 
             file_put_contents("$arraydirectory", "$myJSONcombined");
 
+/*
 
-            //  return $arraynumeral;
-			//  $myJSON2 = json_encode($filedirs);
-            //  echo $myJSON2;
+Comment for later implementation
+
+on upload, automatically convert each file into all necessary files
+
+save to relevant names (mid.mid, xml.xml, etc)
+
+later, access these files by the predetermined names.
+
+Save these into an array for each item
+
+*/
+            
+            
 
 ?>
