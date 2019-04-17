@@ -1,5 +1,3 @@
 <?php
-echo "<pre>";
-var_dump($_POST);
-echo "</pre>";
+echo $_POST['periodDropdown'];
 ?>
