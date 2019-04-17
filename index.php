@@ -420,8 +420,17 @@ $( "#filechooserform" ).on("change", function() {
 
                 </div>
 
-                <button class="accordion">Add File Details (Optional)</button>
+<script>
+function addHiddenValue() {
+     var filearray = document.getElementById("demo").innerHTML;
+     var parsed = JSON.parse(filearray);
+     var filearraylocations = parsed.relativedirs;
+    document.getElementsByName("filesarrayinput")[0].value = filearraylocations;
+}
+</script>
+                <button class="accordion" id="filedetails" onclick="addHiddenValue()">Add File Details (Optional)</button>
                     <div class="panel">
+                        
                         <p>In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
                             <form method="post" action="details-upload.php">
                                 <div id="boi">Song Name:&nbsp;&nbsp;
@@ -440,7 +449,8 @@ $( "#filechooserform" ).on("change", function() {
                                         <br>
                                     </select>
                                 </div>
-                                <input type="submit" class="buttonform" value="confirm">
+                                <input type="hidden" name='filesarrayinput' id="composer_input" value="test"/> 
+                                <input type="submit" class="buttonform" value="confirm" >
                             </form>
                     </div>
     <!----------------------- -->

@@ -17,7 +17,8 @@
             $filenumber = sizeof($_FILES['userfile']['name']);
             $type = $_FILES['userfile']['type'];
             $filedirs = array();
-			$filedirlocations = array();
+            $filedirlocations = array();
+            $relativefiledirlocations = array();
 
             foreach ($filenames as $value) {
                 $value = substr($value, 0, strpos($value, "."));
@@ -27,7 +28,8 @@
                 $filedir = $numberfolders . "_" . $value;
                 mkdir("/Applications/MAMP/htdocs/NewTestings/Song_Database/$filedir");
 				$filedirs[] = $filedir;
-				$filedirlocations[] = "/Applications/MAMP/htdocs/NewTestings/Song_Database/" . "$filedir";
+                $filedirlocations[] = "/Applications/MAMP/htdocs/NewTestings/Song_Database/" . "$filedir";
+                $relativefiledirlocations[] = "Song_Database" . "/" . "$filedir";
             }
 
             for( $i = 0; $i<$filenumber; $i++ ) {
@@ -42,6 +44,7 @@
             $myJSON3 = json_encode($filedirlocations, JSON_UNESCAPED_SLASHES);
             $myJSON4 = json_encode($type, JSON_UNESCAPED_SLASHES);
             $myJSON5 = json_encode($filesize, JSON_UNESCAPED_SLASHES);
+            $myJSON6 = json_encode($relativefiledirlocations, JSON_UNESCAPED_SLASHES);
 
 
             $output = str_replace("text/plain", "file-icons/txt.png", $type);
@@ -52,7 +55,7 @@
 
             $finaloutput = json_encode($output5, JSON_UNESCAPED_SLASHES);    
 
-            $myJSONcombined = "{\"names\":" . "$myJSON" . "," . "\"phyisicalnames\":" . "$myJSON2" . "," . "\"filelocations\":" . "$myJSON3" . "," . "\"filetype\":" . "$myJSON4" . "," . "\"fileicon\":" . "$finaloutput" . "," . "\"filesize\":" . "$myJSON5" . "}";
+            $myJSONcombined = "{\"names\":" . "$myJSON" . "," . "\"phyisicalnames\":" . "$myJSON2" . "," . "\"filelocations\":" . "$myJSON3" . "," . "\"filetype\":" . "$myJSON4" . "," . "\"fileicon\":" . "$finaloutput" . "," . "\"filesize\":" . "$myJSON5" . "," . "\"relativedirs\":" . "$myJSON6" . "}";
             
             echo $myJSONcombined;
 
