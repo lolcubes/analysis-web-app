@@ -445,35 +445,8 @@ $( "#filechooserform" ).on("change", function() {
     <script>
 
     $('#dropzone').on("drop", function() {
-        // document.getElementById("getmyelementbyid").innerHTML = "<?php// echo $arrayfiledirectory;?>";
-        function populateDropzone(){
-            var array = document.getElementById("demo").innerHTML;
-            var arrayparsed = JSON.parse(array);
-            var names = arrayparsed.names;
-            var icons = arrayparsed.fileicon;
-            for (var i = 0; i < icons.length; i += 1) {
-                var icon = icons[i];
-                var name = names[i];
-                $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=50px;" + '>' + '<p>' + name + '</p>' + '</div>');
-            }
+        populateDropzone();
 
-
-
-
-        var readarray = document.getElementById("demo").innerHTML;
-        var arrayparsed = JSON.parse(readarray);
-        var arraynames = arrayparsed.names
-
-        var select = document.getElementById("editordropdown");
-                
-        for (var i = 0; i < arraynames.length; i++)
-        {
-            var option = document.createElement("OPTION"),
-                txt = document.createTextNode(arraynames[i]);
-            option.appendChild(txt);
-            option.setAttribute("value",arraynames[i]);
-            select.insertBefore(option,select.lastChild);
-        }
     });
 
     </script>
@@ -483,20 +456,20 @@ $( "#filechooserform" ).on("change", function() {
                 <button class="accordion">Play Song and View as Music</button>
                     <div class="panel">
                         <br>
-                        <!-- <span id=musicalnotation>Musical Notation:</span>
-                        <span class="button right" onclick="saveHumdrumSvg('SongNameHere')">Save as .svg</span>
+                        <span id=musicalnotation>Musical Notation:</span>
+                        <span class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</span>
 
                         <script id="displaysong">
                         displayHumdrum({
                             autoResize: true,
-                            source: "SongNameHere",
+                            source: "song_svg",
                             url: "file.txt",
                             scale: 35,
                             spacingStaff: 12,
                         })
 
                         </script>
-                        <script type="text/x-humdrum" id="SongNameHere"></script> -->
+                        <script type="text/x-humdrum" id="song_svg"></script>
     <br>
     <br>
                     <iframe name="votar" style="display:none;"></iframe>
