@@ -423,14 +423,14 @@ $( "#filechooserform" ).on("change", function() {
                 <button class="accordion">Add File Details (Optional)</button>
                     <div class="panel">
                         <p>In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
-                            <form action="details-upload.php">
+                            <form method="post" action="details-upload.php">
                                 <div id="boi">Song Name:&nbsp;&nbsp;<input id="composer_input" type="text"/>
                                 </div>
                                 <br>
                                 <br>
                                 <div id="TimePeriod_Dropdown" >
                                     Time Period:&nbsp;&nbsp;&nbsp;
-                                    <select name="periodDropdown">
+                                    <select name="periodDropdown" id="periodDropdown">
                                         <option value="volvo">Renaissance</option>
                                         <option value="saab">Baroque</option>
                                         <option value="fiat">Classical</option>
@@ -439,7 +439,7 @@ $( "#filechooserform" ).on("change", function() {
                                         <br>
                                     </select>
                                 </div>
-                                <button type="submit" class="buttonform">Confirm</button>
+                                <input type="submit" class="buttonform" value="confirm">
                             </form>
                     </div>
     <!----------------------- -->
