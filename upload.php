@@ -65,8 +65,11 @@
             foreach ($relativefiledirlocations as $filedirectory){ 
                 $fileconvert = "$filedirectory" . "/song.txt";
                 $target = "$filedirectory" . "/midi.mid";
+                $putto = "$filedirectory" . "/test.txt";
                 exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
                 exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav $target");
+                file_put_contents($putto, "hi");
+
             }
 
 

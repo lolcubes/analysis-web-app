@@ -87,6 +87,7 @@ function myFunction() {
 
 
     <div id="dropzone-content">
+    <div id="loading-bar"></div>
 
         <div id="dropzone" class="dropzone" >
             <p>Drop Files
@@ -150,6 +151,27 @@ $("#filechooserform").on("change", function(){
 
 </script>
 
+
+<style id="styleloaderbar">
+#loading-bar{
+    display:none;
+    position:fixed;
+    z-index:1000000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-image: url('https://www.loading.io/spinners/azure/lg.azure-round-loader.gif');
+    background-size: 100px 100px;
+    background-position: 50% 50%;
+    background-color: rgba(255,255,255,0.8);
+    background-repeat: no-repeat;
+}
+
+#loading-bar.loading{
+    display:block;
+}
+</style>
 
 
 <script id="cleardropzone">
@@ -269,14 +291,17 @@ $( "#filechooserform" ).on("change", function() {
                             populateDropzone();
                         }
                         else {
-
+                            
                         }
+                        document.getElementById("loading-bar").className = "loaded";
+
                     }
 
                     xhr.responseType = "text";
                     xhr.open('post', 'upload.php');
                     xhr.send(formData);
-                    
+                    document.getElementById("loading-bar").className = "loading";
+
             }
 
 
