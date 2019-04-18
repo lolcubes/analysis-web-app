@@ -5,11 +5,10 @@
   border: 0px;
 }
 
-/* 
 #demo {
       display: none;
 
-} */
+}
 
 #file-info-accordions {
   display: none;
@@ -491,7 +490,7 @@ h4 {
 #TimePeriod:hover,
 #TimePeriod_Dropdown:hover {
     background-color: rgb(224, 224, 224);
-
+  transition:.2s;
 }
 
 select {

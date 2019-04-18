@@ -453,6 +453,9 @@ function addHiddenValue() {
                                 <input type="hidden" name='filesarrayinput' id="composer_input" value="test"/> 
                                 <input type="submit" class="buttonform" value="Confirm" >
                                 <p id="success-message-details"></p>
+                                <br>
+                                <br>
+
                             </form>
                     </div>
     <!----------------------- -->
