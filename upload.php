@@ -61,6 +61,15 @@
 
             file_put_contents("$arraydirectory", "$myJSONcombined");
 
+
+            foreach ($relativefiledirlocations as $filedirectory){ 
+                $fileconvert = "$filedirectory" . "/song.txt";
+                $target = "$filedirectory" . "/midi.mid";
+                exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
+                exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav $target");
+            }
+
+
 /*
 
 Comment for later implementation

@@ -25,7 +25,7 @@
                     <a  href="index.php"><img id="headerbanner" src="image-assets/headerbanner.png" alt="Header logo" height="50px" width="260" align="middle"></a>
                     <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
                     <!-- <li id="Menu" class="logoimage"><img src="headerbanner.png" alt="Header logo" height="60px" width="313px"></img></li> -->
-                    <li id="Menu"><a href="index.php">Home</a></li>
+                    <li id="Menu" class="home"><a href="index.php">Home</a></li>
                     <li id="Menu"><a href="pages/about.html">About</a></li>
                     <li id="Menu"><a href="pages/code.html">Code</a></li>
                     <li id="Menu"><a href="pages/research.html">Our Research</a></li>
@@ -37,7 +37,13 @@
 </div>
 
 
-
+<style>
+    .home{
+        background-color: rgb(15, 49, 160);
+        box-shadow: 1px 4px 28px  rgb(0, 0, 0);
+        outline: 0;
+    }
+</style>
 <!-- 
 <script>
     window.onscroll = function() {myFunction()};
@@ -498,14 +504,16 @@ document.getElementById("success-message-details").innerHTML = "The information 
     <br>
                     <iframe name="votar" style="display:none;"></iframe>
 
-                    <form target="votar" method="post">
+                    <form method="get">
                     <input type="submit" name="playsongbutton" value="Play Song" class="buttonform" />
                     </form>
 
 
                     <?php
                         if (isset($_GET['playsongbutton'])) {
-                            $output = exec("/Applications/MAMP/htdocs/NewTestings/hum2mid file.txt -o file.mid");
+                            exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/hum2mid Song_Database/1_testoboi/song.txt -o Song_Database/1_testoboi/midi.mid");
+                            exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav Song_Database/1_testoboi/midi.mid");
+                            echo "hi";
                         }
                     ?>
 
