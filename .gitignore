@@ -12,3 +12,7 @@ Array_Lists/
 # ignore file.wav
 
 file.wav
+
+# ignore midi converter
+
+mid2wav-master/

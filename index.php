@@ -462,7 +462,7 @@ function addHiddenValue() {
 
     <script>
 function successDetailsMessage(){
-document.getElementById("success-message-details").innerHTML = "The additional information has been recorded."
+document.getElementById("success-message-details").innerHTML = "The information has been recorded."
 }
     </script>
 
@@ -581,6 +581,7 @@ document.getElementById("success-message-details").innerHTML = "The additional i
 
         <?php
         if (isset($_GET['wavme'])) {
+            exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav file.mid");
         }
         ?>
 
