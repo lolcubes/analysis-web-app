@@ -3,23 +3,18 @@ foreach ($_POST['periodDropdown'] as $select)
 {
 echo $select;
 }
-print_r($_POST['periodDropdown']);
-
-echo "<br>";
+$period = ($_POST['periodDropdown']);
 $composer = $_POST['composer_input'];
-
-echo "<br>";
 $filedirs = $_POST['filesarrayinput'];
 
-$exploded = explode(",", $filedirs);
+$explodedfiledirs = explode(",", $filedirs);
 
 
-foreach ($exploded as $value) {
-    echo "<br>";
-    echo $value;
-    $directory = "$value" . "/" . "composer.txt";
-    file_put_contents($directory, $composer);
-    echo "<br>";
+foreach ($explodedfiledirs as $value) {
+    $composerdirectory = "$value" . "/" . "composer.txt";
+    $perioddirectory = "$value" . "/" . "period.txt";
+    file_put_contents($composerdirectory, $composer);
+    file_put_contents($perioddirectory, $period);
 }
 
 ?>
