@@ -432,7 +432,7 @@ function addHiddenValue() {
                     <div class="panel">
                         
                         <p>In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
-                            <form method="post" action="details-upload.php">
+                            <form onsubmit="successDetailsMessage()" method="post" action="details-upload.php" target="votar" name="infoform" id="infoform">
                                 <div id="boi">Song Name:&nbsp;&nbsp;
                                 <input id="composer_input" name="composer_input" type="text"/>
                                 </div>
@@ -449,11 +449,20 @@ function addHiddenValue() {
                                         <br>
                                     </select>
                                 </div>
+                                <br>
                                 <input type="hidden" name='filesarrayinput' id="composer_input" value="test"/> 
-                                <input type="submit" class="buttonform" value="confirm" >
+                                <input type="submit" class="buttonform" value="Confirm" >
+                                <p id="success-message-details"></p>
                             </form>
                     </div>
     <!----------------------- -->
+
+    <script>
+function successDetailsMessage(){
+document.getElementById("success-message-details").innerHTML = "The additional information has been recorded."
+}
+    </script>
+
     <script>
 
     $('#dropzone').on("drop", function() {
