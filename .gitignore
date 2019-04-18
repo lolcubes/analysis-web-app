@@ -16,3 +16,7 @@ file.wav
 # ignore midi converter
 
 mid2wav-master/
+
+# ignore Songs Database
+
+Song_Database/
