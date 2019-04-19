@@ -119,12 +119,15 @@ $("#filechooserform").on("change", function(){
     });
 });
 
+
 $( document ).ajaxStart(function() {
     document.getElementById("loading-bar").className = "loading";
 });
 
 $( document ).ajaxComplete(function() {
     document.getElementById("loading-bar").className = "loaded";
+    $('#file-info-accordions').delay(800).show("slow");
+
 });
 
     function populateDropzone(){
@@ -358,16 +361,7 @@ $( "#filechooserform" ).on("change", function() {
             $('#orspan').hide();
 
         });
-        $("#dropzone").on("drop", function() {
-            $('#file-info-accordions').delay(800).show("slow");
-        
-        });
 
-        $("#filechooserform").on("change", function()
-        {
-            $('#file-info-accordions').delay(800).show("slow");
-
-        });
     </script>
 
     <script>
