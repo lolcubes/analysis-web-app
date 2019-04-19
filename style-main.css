@@ -679,10 +679,14 @@ line-height: 5px;
   display: inline-block;
   border-radius: 20px;
   transition: .25s;
-  line-height: 15px;
-  overflow: auto;
   display: inline-block;
+  background-repeat: no-repeat;
   background-image: url('https://image.flaticon.com/icons/svg/12/12313.svg');
+  background-size: 150px 150px;
+  background-color: rgba(255, 255, 255, 0.404);
+  background-position: 50% 10%;
+  line-height: 18px;
+  overflow: none;
 }
 
 .dropzone.dragover {
@@ -696,6 +700,8 @@ background-color: rgb(209, 255, 211);
 color: #000;
 transition: .7s;
 display: inline-block;
+background-image: none;
+
 
 }
 .dropzone:hover {

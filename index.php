@@ -90,20 +90,14 @@ function myFunction() {
     <div id="loading-bar"></div>
 
         <div id="dropzone" class="dropzone" >
-            <p>Drop Files
-                <br>
-                <br>
-                <br>
-                or
-            </p>
+        <br><br><br><br><br><br><br><br><br>
+            <span>Drop files to upload or</span>
             <div id="plusfile">
                     <form target="votar" method="post" enctype="multipart/form-data" id="filechooserform" name="filechooserform" onchange="filechooserform.submit();">
                         <input class="inputfile" name="userfile[]" type="file" multiple value="Choose Files" id="uploadchooser" /><br />
                         <label for="uploadchooser" class="buttonform"><span>Add Files</span></label>
                         <input type='hidden' name='varNew[]' value='<?php echo "$arrayfilenumber";?>'/> 
                     </form>
-                    <br>
-                    <br>
             </div>
         </div>
     </div>
@@ -421,7 +415,7 @@ $( "#filechooserform" ).on("change", function() {
 
                             var selObj = document.getElementById("editordropdown");
                             var selValue = selObj.options[selObj.selectedIndex].text;
-
+                            console.log(selValue);
                             document.getElementById("textFieldTextJS").innerHTML = selValue;
                         }
 
