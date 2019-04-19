@@ -104,11 +104,6 @@ function myFunction() {
                     </form>
                     <br>
                     <br>
-                    <div id="myProgress">
-                        <div id="myBar">
-                        &nbsp;&nbsp;&nbsp;&nbsp;0%
-                        </div>
-                    </div>
             </div>
         </div>
     </div>
@@ -153,6 +148,8 @@ $("#filechooserform").on("change", function(){
 
 <script>
 $("body").on('DOMSubtreeModified', "#demo", function() {
+    $('#dropzone').empty();
+
 populateDropzone();
 });
 </script>
@@ -313,19 +310,6 @@ $( "#filechooserform" ).on("change", function() {
             dropzone.ondrop = function(e) {
                 e.preventDefault();
                 upload(e.dataTransfer.files);
-                var elem = document.getElementById("myBar");
-                var width = 1;
-                var id = setInterval(frame, 2);
-                function frame() {
-                    if (width >= 100) {
-                    clearInterval(id);
-                    } else {
-                    width++;
-                    elem.style.width = width + '%';
-                    elem.innerHTML = width * 1 + '%';
-                    }
-
-                }
 
                     this.className = 'dropzone dropped';
 
