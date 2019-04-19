@@ -680,21 +680,30 @@ line-height: 5px;
   border-radius: 20px;
   transition: .25s;
   display: inline-block;
+  line-height: 18px;
+  overflow: none;
   background-repeat: no-repeat;
-  background-image: url('https://image.flaticon.com/icons/svg/12/12313.svg');
+  background-image: url('icons-misc/upload-0.png');
   background-size: 150px 150px;
   background-color: rgba(255, 255, 255, 0.404);
   background-position: 50% 10%;
-  line-height: 18px;
-  overflow: none;
+  
+
 }
+
 
 .dropzone.dragover {
 border-color: #000;
 color: #000;
 transition: .25s;
+background-repeat: no-repeat;
+background-image: url('icons-misc/upload-2.png');
+background-size: 150px 150px;
+background-color: rgba(255, 255, 255, 0.404);
+background-position: 50% 10%;
 
 }
+
 .dropzone.dropped {
 background-color: rgb(209, 255, 211);
 color: #000;
@@ -708,5 +717,7 @@ background-image: none;
 border-color: #777777;
 color: #777777;
 transition: .25s;
+line-height: 18px;
+overflow: none;
 
 }
