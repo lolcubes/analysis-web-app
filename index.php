@@ -3,7 +3,7 @@
     <head>
         <title>Beats in Bytes | Analysis Tools</title>
 
-        <link rel="stylesheet" type="text/css" href="styletestboi.css" />
+        <link rel="stylesheet" type="text/css" href="style-main.css" />
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="image-assets/favicon.png"/>
 
