@@ -151,6 +151,11 @@ $("#filechooserform").on("change", function(){
 
 </script>
 
+<script>
+$("body").on('DOMSubtreeModified', "#demo", function() {
+populateDropzone();
+});
+</script>
 
 <style id="styleloaderbar">
 #loading-bar{
@@ -161,7 +166,7 @@ $("#filechooserform").on("change", function(){
     top:0;
     width:100%;
     height:100%;
-    background-image: url('https://www.loading.io/spinners/azure/lg.azure-round-loader.gif');
+    background-image: url('https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-23.gif');
     background-size: 100px 100px;
     background-position: 50% 50%;
     background-color: rgba(255,255,255,0.8);
