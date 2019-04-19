@@ -682,6 +682,7 @@ line-height: 5px;
   line-height: 15px;
   overflow: auto;
   display: inline-block;
+  background-image: url('https://image.flaticon.com/icons/svg/12/12313.svg');
 }
 
 .dropzone.dragover {

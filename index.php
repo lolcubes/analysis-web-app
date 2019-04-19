@@ -121,9 +121,16 @@ $("#filechooserform").on("change", function(){
         success: function(data){
             console.log(data);
             document.getElementById("demo").innerHTML = data;
-            populateDropzone();
         }           
     });
+});
+
+$( document ).ajaxStart(function() {
+    document.getElementById("loading-bar").className = "loading";
+});
+
+$( document ).ajaxComplete(function() {
+    document.getElementById("loading-bar").className = "loaded";
 });
 
     function populateDropzone(){
@@ -150,7 +157,7 @@ $("#filechooserform").on("change", function(){
 $("body").on('DOMSubtreeModified', "#demo", function() {
     $('#dropzone').empty();
 
-populateDropzone();
+    populateDropzone();
 });
 </script>
 
@@ -165,7 +172,7 @@ populateDropzone();
     height:100%;
     background-image: url('https://www.loading.io/spinners/azure/lg.azure-round-loader.gif');
     background-size: 100px 100px;
-    background-position: 50% 50%;
+    background-position: 50% 30%;
     background-color: rgba(255,255,255,0.8);
     background-repeat: no-repeat;
 }
@@ -295,6 +302,7 @@ $( "#filechooserform" ).on("change", function() {
                         else {
                             
                         }
+
                         document.getElementById("loading-bar").className = "loaded";
 
                     }
