@@ -497,15 +497,19 @@ document.getElementById("success-message-details").innerHTML = "The information 
 
                 <a id="midianchor"></a>
 
+
+                <button class="accordion">Play Song and View as Music</button>
+                    <div class="panel">
+
+
+                    <span>To begin, please choose one of your uploaded songs.</span>
+
                 <select name="editor" id="playSongDropdown" onchange=singleSelectChangeText()>
                     <option value="" selected disabled hidden>
                         Select a song
                     </option>
                 </select>
 
-
-                <button class="accordion">Play Song and View as Music</button>
-                    <div class="panel">
                         <br>
                         <span id=musicalnotation>Musical Notation:</span>
                         <span class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</span>
