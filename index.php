@@ -260,7 +260,24 @@ $( "#filechooserform" ).on("change", function() {
             console.log(result);
             console.log(Object.values(result));
         }
-            function populateDropzone(){
+           
+        function populateDropdown(dropdownId){
+            var select = document.getElementById(dropdownId);
+            
+            var array = document.getElementById("demo").innerHTML;
+            var arrayparsed = JSON.parse(array);
+            var options = arrayparsed.names;
+
+            for(var i = 0; i < options.length; i++) {
+                var opt = options[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            }
+        }
+
+        function populateDropzone(){
             var array = document.getElementById("demo").innerHTML;
             var arrayparsed = JSON.parse(array);
             var names = arrayparsed.names;
@@ -268,25 +285,11 @@ $( "#filechooserform" ).on("change", function() {
             for (var i = 0; i < icons.length; i += 1) {
                 var icon = icons[i];
                 var name = names[i];
-                $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=50px;" + '>' + '<p>' + name + '</p>' + '</div>');
+                $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=70px;" + '>' + '<p>' + name + '</p>' + '</div>');
             }
 
         }
 
-        function populateDropdown(dropdownId, arraytype){
-        var select = document.getElementById(dropdownId);
-        var demotext = document.getElementById("demo");
-        var arrayparsed = JSON.parse(demotext);
-        var options = arrayparsed.arraytype;
-
-        for(var i = 0; i < options.length; i++) {
-            var opt = options[i];
-            var el = document.createElement("option");
-            el.textContent = opt;
-            el.value = opt;
-            select.appendChild(el);
-        }
-        }
 
         (function() {
             var dropzone = document.getElementById('dropzone');
@@ -307,14 +310,10 @@ $( "#filechooserform" ).on("change", function() {
                         document.getElementById("demo").innerHTML = data;
                         var readarray = document.getElementById("demo").innerHTML;
                 
-//ADD THE CODE HERE YOU IDIOT
-                        // populateDropdown("playSongDropdown", "names");
+                        populateDropdown("playSongDropdown");
 
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
-                        }
-                        else {
-                            
                         }
 
                         document.getElementById("loading-bar").className = "loaded";
