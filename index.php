@@ -119,14 +119,14 @@ $("#filechooserform").on("change", function(){
     });
 });
 
-
 $( document ).ajaxStart(function() {
     document.getElementById("loading-bar").className = "loading";
 });
 
 $( document ).ajaxComplete(function() {
-    document.getElementById("loading-bar").className = "loaded";
     $('#file-info-accordions').delay(800).show("slow");
+    document.getElementById("loading-bar").className = "loaded";
+
 
 });
 
@@ -259,7 +259,7 @@ $( "#filechooserform" ).on("change", function() {
             // obj[Object.keys(obj)[0]];
             console.log(result);
             console.log(Object.values(result));
-
+        }
             function populateDropzone(){
             var array = document.getElementById("demo").innerHTML;
             var arrayparsed = JSON.parse(array);
@@ -271,6 +271,20 @@ $( "#filechooserform" ).on("change", function() {
                 $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=50px;" + '>' + '<p>' + name + '</p>' + '</div>');
             }
 
+        }
+
+        function populateDropdown(dropdownId, arraytype){
+        var select = document.getElementById(dropdownId);
+        var demotext = document.getElementById("demo");
+        var arrayparsed = JSON.parse(demotext);
+        var options = arrayparsed.arraytype;
+
+        for(var i = 0; i < options.length; i++) {
+            var opt = options[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            select.appendChild(el);
         }
         }
 
@@ -292,7 +306,10 @@ $( "#filechooserform" ).on("change", function() {
                         var data = this.responseText;
                         document.getElementById("demo").innerHTML = data;
                         var readarray = document.getElementById("demo").innerHTML;
-                        
+                
+//ADD THE CODE HERE YOU IDIOT
+                        // populateDropdown("playSongDropdown", "names");
+
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
                         }
@@ -361,30 +378,18 @@ $( "#filechooserform" ).on("change", function() {
             $('#orspan').hide();
 
         });
+        $("#dropzone").on("drop", function() {
+            $('#file-info-accordions').delay(800).show("slow");
+        
+        });
 
+        $("#filechooserform").on("change", function()
+        {
+            $('#file-info-accordions').delay(800).show("slow");
+
+        });
     </script>
 
-    <script>
-
-            // var populatedropdown = function(){
-            //     var readarray = document.getElementById("demo").innerHTML
-            //     var arrayparsed = JSON.parse(readarray);
-            //     var arraynames = arrayparsed.names
-            //     console.log(arraynames);
-
-            //     var select = document.getElementById("editordropdown");
-
-            //         for (var i = 0; i < arraynames.length; i++)
-            //         {
-            //             var option = document.createElement("OPTION"),
-            //                 txt = document.createTextNode(arraynames[i]);
-            //             option.appendChild(txt);
-            //             option.setAttribute("value",arraynames[i]);
-            //             select.insertBefore(option,select.lastChild);
-            //         }
-            // }        
-            // setInterval(populatedropdown, 400);
-    </script>
 
 
 
@@ -492,6 +497,13 @@ document.getElementById("success-message-details").innerHTML = "The information 
     </script>
 
                 <a id="midianchor"></a>
+
+                <select name="editor" id="playSongDropdown" onchange=singleSelectChangeText()>
+                    <option value="" selected disabled hidden>
+                        Select a song
+                    </option>
+                </select>
+
 
                 <button class="accordion">Play Song and View as Music</button>
                     <div class="panel">
