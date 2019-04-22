@@ -39,7 +39,7 @@
 
 <style>
     .home{
-        background-color: rgb(15, 49, 160);
+        background-color: rgb(153, 153, 153);
         box-shadow: 1px 4px 28px  rgb(0, 0, 0);
         outline: 0;
     }
