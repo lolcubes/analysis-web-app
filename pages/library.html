@@ -6,6 +6,10 @@
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     </head>
     <body>
             <div id="navbarr">
@@ -56,6 +60,7 @@
                 <select name="composer" >
                     <option selected disabled hidden>All</option>
                 </select> -->
+                <input type="checkbox" name="keysig" value="checked">
 
             </form>
         </div>
@@ -70,6 +75,78 @@
             }
         </style>
 
+<table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+            </tr>
+            <tr>
+                <td>Row 2 Data 1</td>
+                <td>Row 2 Data 2</td>
+            </tr>
+        </tbody>
+    </table>
+<!-- 
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );
+    </script> -->
+
+<button class="buttonform" onclick="exportTableToCSV('data.csv')"><span>Download as CSV</span></button>
+
+
+<script>
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+
+function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("table tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+        
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+        
+        csv.push(row.join(","));        
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+</script>
     </body>
 
 </html>

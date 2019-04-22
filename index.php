@@ -259,6 +259,8 @@ $( "#filechooserform" ).on("change", function() {
         function populateDropdown(dropdownId){
             var select = document.getElementById(dropdownId);
             
+            select.innerHTML = ""
+
             var array = document.getElementById("demo").innerHTML;
             var arrayparsed = JSON.parse(array);
             var names = arrayparsed.names;
