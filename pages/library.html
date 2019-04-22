@@ -33,17 +33,42 @@
                 outline: 0;
             }
         </style>
-
+    <center>
+        <br>    <br>
         <div class=subheader>
-                <h2>About</h2>
+                <h4>To display and download data, specify information and submit.</h4>
         </div>
+        <br> 
 
-        <div id=welcome>
+        <div id="datadisplayform">
+            <form action=database-process.php >
+                <span>Time Period:&nbsp;&nbsp;&nbsp;</span>
+                <select name="time-period">
+                    <option selected>All</option>
+                    <option >Renaissance</option>
+                    <option >Baroque</option>
+                    <option >Classical</option>
+                    <option >Romantic</option>
+                    <option >20th Century</option>
+                </select>
+                <br>
+                <!-- <span>Composer:   </span>
+                <select name="composer" >
+                    <option selected disabled hidden>All</option>
+                </select> -->
 
-                <p> <br />The goal of Beats in Bytes is to numerically interpret classical music by analyzing it for statistical trends. To achieve this, music files for data collection were collected from online libraries. Code from the Bash programming language was written for data collection. The data we gathered consisted of many attributes per song that measure several aspects of classical melodies, organized into time periods, composers, and songs. Our data revealed strong correlations with previously established distribution laws, such as Zipf&#39;s and Benford&#39;s laws. New patterns and equations were also uncovered, unlike any other seen before. Additionally, we found that across many different categories, the Renaissance time period is an outlier. We also created a new formula intended to measure the correlation between two different sets of data. The results from applying this formula to the data found that classical music is following the trend of becoming more similar to the Renaissance. Overall, Beats in Bytes found that both common and unusual statistical distributions can be found in music, and that the Renaissance time period is statistically unique, though its style may be showing itself again in future classical pieces. This project was one of a few to utilize code in the topic of classical music analysis, and the methods and tools we developed in this project will be useful to researchers for years to come. Beats in Bytes is the first large-scale case study of the statistical applications of classical music - an art that has influenced humanity for centuries.
-                    <br /><hr /> 
+            </form>
         </div>
-                <br />
+    </center>
+
+        <style>
+            #datadisplayform{
+                background-color: grey;
+                width: 60%;
+                padding: 15px;
+                border-radius: 20px; 
+            }
+        </style>
 
     </body>
 
