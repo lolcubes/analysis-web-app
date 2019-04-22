@@ -45,15 +45,15 @@
         <br> 
 
         <div id="datadisplayform">
-            <form action=database-process.php >
+            <form action=database-process.php method="POST">
                 <span>Time Period:&nbsp;&nbsp;&nbsp;</span>
                 <select name="time-period">
                     <option selected>All</option>
-                    <option >Renaissance</option>
-                    <option >Baroque</option>
-                    <option >Classical</option>
-                    <option >Romantic</option>
-                    <option >20th Century</option>
+                    <option value='Renaissance'>Renaissance</option>
+                    <option value='Baroque'>Baroque</option>
+                    <option value='Classical'>Classical</option>
+                    <option value='Romantic'>Romantic</option>
+                    <option value='20th Century'>20th Century</option>
                 </select>
                 <br>
                 <!-- <span>Composer:   </span>
@@ -61,7 +61,7 @@
                     <option selected disabled hidden>All</option>
                 </select> -->
                 <input type="checkbox" name="keysig" value="checked">
-
+                <input type="submit" value="Get Data" class="buttonform">
             </form>
         </div>
     </center>
@@ -76,12 +76,12 @@
         </style>
 
 <table id="table_id" class="display">
-        <thead>
+
             <tr>
                 <th>Column 1</th>
                 <th>Column 2</th>
             </tr>
-        </thead>
+
         <tbody>
             <tr>
                 <td>Row 1 Data 1</td>
