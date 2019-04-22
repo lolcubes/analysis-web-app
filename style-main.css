@@ -4,10 +4,17 @@
   outline: none;
   border: 0px;
 }
-
+/* 
 #demo {
       display: none;
 
+} */
+
+code {
+  background-color: rgb(228, 228, 228);
+  padding: 4px 4px 4px 4px;
+  vertical-align: center;
+  border-radius: 4px;
 }
 
 #file-info-accordions {
@@ -699,13 +706,12 @@ transition: .25s;
 background-repeat: no-repeat;
 background-image: url('icons-misc/upload-2.png');
 background-size: 150px 150px;
-background-color: rgba(255, 255, 255, 0.404);
 background-position: 50% 10%;
-
+background-color: rgb(235, 255, 240);
 }
 
 .dropzone.dropped {
-background-color: rgb(209, 255, 211);
+background-color: rgb(246, 255, 246);
 color: #000;
 transition: .7s;
 display: inline-block;

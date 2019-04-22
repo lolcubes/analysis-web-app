@@ -253,12 +253,7 @@ $( "#filechooserform" ).on("change", function() {
     
     <script>
         function toObject(names, values) {
-            var result = {};
-            for (var i = 0; i < names.length; i++)
-                result[names[i]] = values[i];
-            // obj[Object.keys(obj)[0]];
-            console.log(result);
-            console.log(Object.values(result));
+
         }
            
         function populateDropdown(dropdownId){
@@ -266,7 +261,17 @@ $( "#filechooserform" ).on("change", function() {
             
             var array = document.getElementById("demo").innerHTML;
             var arrayparsed = JSON.parse(array);
+            var names = arrayparsed.names;
+            var locations = arrayparsed.relativedirs;
+
+            var result = {};
+            for (var i = 0; i < names.length; i++)
+                result[names[i]] = locations[i];
+            // obj[Object.keys(obj)[0]];
+            console.log(result);
+
             var options = arrayparsed.names;
+
 
             for(var i = 0; i < options.length; i++) {
                 var opt = options[i];
@@ -311,6 +316,7 @@ $( "#filechooserform" ).on("change", function() {
                         var readarray = document.getElementById("demo").innerHTML;
                 
                         populateDropdown("playSongDropdown");
+                        populateDropdown("editordropdown");
 
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
@@ -409,12 +415,15 @@ $( "#filechooserform" ).on("change", function() {
 
                     <script>
 
-                    function singleSelectChangeText() {
+                    function singleSelectChangeText(elementId) {
 
-                            var selObj = document.getElementById("editordropdown");
+                            var selObj = document.getElementById(elementId);
                             var selValue = selObj.options[selObj.selectedIndex].text;
                             console.log(selValue);
-                            document.getElementById("textFieldTextJS").innerHTML = selValue;
+
+                            document.getElementById('audioplayer').innerHTML = '<audio id="audio-player-element" controls="controls" src="media/Blue Browne.mp3" type="audio/mpeg">';
+
+                            // document.getElementById("textFieldTextJS").innerHTML = selValue;
                         }
 
                     </script>
@@ -425,19 +434,16 @@ $( "#filechooserform" ).on("change", function() {
                 <div class="panel">
                     <span>Select A File To Edit: &nbsp; &nbsp; &nbsp; &nbsp;</span>
 
-                            <select name="editor" id="editordropdown" onchange=singleSelectChangeText()>
+                            <select name="editor" id="editordropdown" onchange="singleSelectChangeText('editordropdown')">
                                 <option value="" selected disabled hidden>
                                     Select a song
                                 </option>
+
+                                <div id="audioplayer">
+
+                                </div>
+
                             </select>
-
-                        <form target="votar">
-                            </textarea>
-                            <br>
-                            <input type="submit" id="buttonone" class="buttonform" value="Download Selected Files" name="buttonone"/>
-                        </form>
-                        <p id="textFieldTextJS">replaceo</p>
-
                 </div>
 
 <script>
@@ -512,7 +518,7 @@ document.getElementById("success-message-details").innerHTML = "The information 
 
                         <br>
                         <span id=musicalnotation>Musical Notation:</span>
-                        <span class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</span>
+                        <button class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
 <!-- 
                         <script id="displaysong">
                         displayHumdrum({
@@ -528,19 +534,6 @@ document.getElementById("success-message-details").innerHTML = "The information 
     <br>
     <br>
                     <iframe name="votar" style="display:none;"></iframe>
-
-                    <form method="get">
-                    <input type="submit" name="playsongbutton" value="Play Song" class="buttonform" />
-                    </form>
-
-
-                    <?php
-                        if (isset($_GET['playsongbutton'])) {
-                            exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/hum2mid Song_Database/1_testoboi/song.txt -o Song_Database/1_testoboi/midi.mid");
-                            exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav Song_Database/1_testoboi/midi.mid");
-                            echo "hi";
-                        }
-                    ?>
 
                 </div>
                 <script>
