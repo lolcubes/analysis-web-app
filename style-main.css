@@ -9,7 +9,6 @@
 
 #demo {
       display: none;
-
 }
 
 code {
@@ -382,7 +381,7 @@ h4 {
     color: rgb(0, 0, 0);
     cursor: pointer;
     padding: 20px;
-    width: 80%;
+    width: 500px;
     border: none;
     text-align: left;
     margin: 4px;
@@ -390,8 +389,8 @@ h4 {
     font-size: 15px;
     transition: 0.4s;
     box-shadow: 5px 5px 16px  rgb(58, 58, 58);
-border-radius: 0px;
-
+    border-radius: 0px;
+    display: inline-block;
   }
 
   .active, .accordion:hover {
@@ -423,7 +422,7 @@ border-radius: 0px;
   }
 
   .panel {
-    /* padding: 0 18px; */
+    padding: 0 18px;
     background-color: white;
     max-height: 0;
     overflow: hidden;
@@ -478,24 +477,13 @@ border-radius: 0px;
 #TimePeriod_Dropdown {
     font-family: 'Nanum Gothic', sans-serif;
     font-size:18px;
-    background-color:rgb(240, 239, 239);
+    background-color:rgb(77, 77, 77);
     padding: 8px;
     margin-left: 25%;
     margin-right: 25%;
-    -webkit-border-top-left-radius:7px;
-    -moz-border-radius-topleft:7px;
-    border-top-left-radius:7px;
-    -webkit-border-top-right-radius:7px;
-    -moz-border-radius-topright:7px;
-    border-top-right-radius:7px;
-    -webkit-border-bottom-right-radius:7px;
-    -moz-border-radius-bottomright:7px;
-    border-bottom-right-radius:7px;
-    -webkit-border-bottom-left-radius:7px;
-    -moz-border-radius-bottomleft:7px;
-    border-bottom-left-radius:7px;
-    box-shadow: 3px 3px 5px  rgb(212, 212, 212);
-
+    border-radius: 7px;
+    box-shadow: 3px 3px 8px  rgb(161, 161, 161);
+    color: white;
 
 }
 #boi:hover,
@@ -503,6 +491,8 @@ border-radius: 0px;
 #TimePeriod_Dropdown:hover {
     background-color: rgb(224, 224, 224);
   transition:.2s;
+  color: black;
+
 }
 
 select {
@@ -722,4 +712,33 @@ transition: .25s;
 line-height: 18px;
 overflow: none;
 
+}
+
+.panels {
+  background-color: rgb(255, 255, 255);
+  display: inline-block;
+  width: 600px;
+  height: 400px;
+  margin: 20px;
+  padding: 25px;
+  border-radius: 20px;
+  overflow: auto;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 3px 3px 12px rgb(88, 88, 88);
+  transition: .3s;
+}
+
+.panels:hover {
+  background-color: rgb(248, 248, 248);
+  transition: .4s;
+  box-shadow: 2px 9px 25px rgb(88, 88, 88);
+  border: 1px solid rgb(236, 236, 236);
+}
+
+#audioplayer {
+  width: 250px;
+  height:400px;
+  background-color: rgb(238, 238, 238);
+  z-index: 100000000;
+  border-radius: 20px;
 }

@@ -12,8 +12,6 @@
         <script src="https://verovio-script.humdrum.org/scripts/verovio-toolkit.js"></script>
         <script src="https://plugin.humdrum.org/scripts/humdrum-notation-plugin.js"></script>
         <script> var vrvToolkit = new verovio.toolkit(); </script>
-        <script type='text/javascript' src='https://kitchwww.github.io/midi/midi.js'></script>
-
 
     </head>
 
@@ -44,26 +42,7 @@
         outline: 0;
     }
 </style>
-<!-- 
-<script>
-    window.onscroll = function() {myFunction()};
 
-// Get the header
-var header = document.getElementById("navbarbar");
-
-// Get the offset position of the navbar
-var sticky = header.offsetTop;
-
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-    </script> -->
-<!---- -------------------------------->
 
 <?php
     $arrayfilenumber = shell_exec( "/Applications/MAMP/htdocs/NewTestings/array-number-finder.sh");
@@ -101,7 +80,8 @@ function myFunction() {
             </div>
         </div>
     </div>
-
+<br>
+<br>
 <script id="uploader">
 
 $("#filechooserform").on("change", function(){
@@ -282,6 +262,7 @@ $( "#filechooserform" ).on("change", function() {
                 el.value = opt;
                 select.appendChild(el);
             }
+
         }
 
         function populateDropzone(){
@@ -407,45 +388,30 @@ $( "#filechooserform" ).on("change", function() {
 
                     <script>
 
-                    jQuery(document).ready(function ($) { 
-                        $("#editortextarea").load("file.txt");
-                    })
-
-                        // document.getElementById("editortextarea").value = textvalue;
-
-                    </script>
-
-                    <script>
-
                     function singleSelectChangeText(elementId) {
 
                             var selObj = document.getElementById(elementId);
                             var selValue = selObj.options[selObj.selectedIndex].text;
                             console.log(selValue);
-
-                            document.getElementById('audioplayer').innerHTML = '<audio id="audio-player-element" controls="controls" src="media/Blue Browne.mp3" type="audio/mpeg">';
-
                             // document.getElementById("textFieldTextJS").innerHTML = selValue;
                         }
 
                     </script>
 
 
-                <button class="accordion" id="editorbutton">Download Files and Conversions</button>
 
-                <div class="panel">
-                    <span>Select A File To Edit: &nbsp; &nbsp; &nbsp; &nbsp;</span>
+                <div class="panels">
+
+                    <span>Select A File To Play: &nbsp; &nbsp; &nbsp; &nbsp;</span>
 
                             <select name="editor" id="editordropdown" onchange="singleSelectChangeText('editordropdown')">
                                 <option value="" selected disabled hidden>
                                     Select a song
                                 </option>
-
-                                <div id="audioplayer">
-
-                                </div>
-
                             </select>
+
+                            <div id="audioplayer">
+                            </div>
                 </div>
 
 <script>
@@ -453,14 +419,15 @@ function addHiddenValue() {
      var filearray = document.getElementById("demo").innerHTML;
      var parsed = JSON.parse(filearray);
      var filearraylocations = parsed.relativedirs;
-    document.getElementsByName("filesarrayinput")[0].value = filearraylocations;
+     document.getElementsByName("filesarrayinput")[0].value = filearraylocations;
 }
 </script>
-                <button class="accordion" id="filedetails" onclick="addHiddenValue()">Add File Details (Optional)</button>
-                    <div class="panel">
-                        
-                        <p>In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
-                            <form onsubmit="successDetailsMessage()" method="post" action="details-upload.php" target="votar" name="infoform" id="infoform">
+
+<!-- ADD THE addHiddenValue() function on ajax load? -->
+                    <div class="panels">
+
+                        <p id="infoexplain">In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
+                            <form onsubmit="successDetailsMessage();addHiddenValue()" method="post" action="details-upload.php" name="infoform" id="infoform" target="votar">
                                 <div id="boi">Song Name:&nbsp;&nbsp;
                                 <input id="composer_input" name="composer_input" type="text"/>
                                 </div>
@@ -488,40 +455,37 @@ function addHiddenValue() {
                     </div>
     <!----------------------- -->
 
-    <script>
-function successDetailsMessage(){
-document.getElementById("success-message-details").innerHTML = "The information has been recorded."
-}
-    </script>
-
-    <script>
-
-    $('#dropzone').on("drop", function() {
-        populateDropzone();
-
-    });
-
-    </script>
-
-                <a id="midianchor"></a>
+                <script>
+                    function successDetailsMessage(){
+                        document.getElementById("infoexplain").innerHTML = "The information has been recorded."
+                    }
+                </script>
 
 
-                <button class="accordion">Play Song and View as Music</button>
-                    <div class="panel">
+                <script>
+                    $('#dropzone').on("drop", function() {
+                        populateDropzone();
+
+                    });
+                </script>
+
+                    <a id="midianchor"></a>
 
 
-                    <span>To begin, please choose one of your uploaded songs.</span>
+                    <div class="panels">
+                        <p>To begin, please choose one of your uploaded songs.</p>
 
-                <select name="editor" id="playSongDropdown" onchange=singleSelectChangeText()>
-                    <option value="" selected disabled hidden>
-                        Select a song
-                    </option>
-                </select>
+
+                        <select name="editor" id="playSongDropdown" onchange="singleSelectChangeText('playSongDropdown')">
+                            <option value="" selected disabled hidden>
+                                Select a song
+                            </option>
+                        </select>
 
                         <br>
                         <span id=musicalnotation>Musical Notation:</span>
                         <button class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
-<!-- 
+                        <!-- 
                         <script id="displaysong">
                         displayHumdrum({
                             autoResize: true,
@@ -533,32 +497,17 @@ document.getElementById("success-message-details").innerHTML = "The information 
 
                         </script>
                         <script type="text/x-humdrum" id="song_svg"></script> -->
-    <br>
-    <br>
-                    <iframe name="votar" style="display:none;"></iframe>
+                        <br>
+                        <br>
+                        <iframe name="votar" style="display:none;"></iframe>
 
-                </div>
-                <script>
-                var acc = document.getElementsByClassName("accordion");
-                var i;
+                    </div>
 
-                for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight){
-                    panel.style.maxHeight = null;
-                    } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                    } 
-                });
-                }
-                </script>
 
         
 
 
-        <form method="post">
+        <form method="post" action="analysis.php" target="votar">
             <br/>
 
             <br>
