@@ -43,13 +43,6 @@
     }
 </style>
 
-
-<?php
-    $arrayfilenumber = shell_exec( "/Applications/MAMP/htdocs/NewTestings/array-number-finder.sh");
-    $arrayfiledirectory = "/Applications/MAMP/htdocs/NewTestings/Array_Lists/" . "$arrayfilenumber" . ".txt";
-    shell_exec( "touch $arrayfiledirectory");
-?>
-
 <br>
 <div id="center">
 <br>
@@ -140,7 +133,7 @@ $("body").on('DOMSubtreeModified', "#demo", function() {
 
 <style id="styleloaderbar">
 #loading-bar{
-    display:none;
+    /* display:none;
     position:fixed;
     z-index:1000000;
     left:0;
@@ -151,11 +144,11 @@ $("body").on('DOMSubtreeModified', "#demo", function() {
     background-size: 100px 100px;
     background-position: 50% 30%;
     background-color: rgba(255,255,255,0.8);
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 #loading-bar.loading{
-    display:block;
+    /* display:block; */
 }
 </style>
 
@@ -173,28 +166,6 @@ $( "#dropzone" ).on("drop", function() {
                 populateDropzone();
 
             }
-                // $("#editorbutton").click(function() {
-                    // var array = document.getElementById("demo").innerHTML;
-                    // var arrayparsed = JSON.parse(array);
-                    // var names = arrayparsed.names;
-                    // var icons = arrayparsed.fileicon;
-                    // for (var i = 0; i < icons.length; i += 1) {
-                    //     var icon = icons[i];
-                    //     var name = names[i];
-                    //     $("#dropzone").append( '<img src=' + icon + " height=50px;" + '>' + '<p>' + name + '</p>' );
-                    // }
-                // masks.forEach(src => {
-                //     const img = document.createElement("img");
-                //     img.src = src;
-                //     img.title = src; // To tell them apart.
-                //     window["dropzone"].appendChild(img);
-                // });
-
-                // THIS IS A COMMENT THAT YOU NEED TO REMEMBER:
-                // This function above, maskos, runs too late. It happens to the previous array, because demo is empty on run
-        
-                // });
-
    });
 });
 
@@ -228,7 +199,29 @@ $( "#filechooserform" ).on("change", function() {
 
 
 </script>
+<script>
 
+function addAudioPlayers(){
+
+    var array = document.getElementById("demo").innerHTML;
+    var arrayparsed = JSON.parse(array);
+    var dirs = arrayparsed.relativedirs;
+    var names = arrayparsed.names;
+
+
+    for (i=0; i<array1.length; i++){ 
+        var name = names[i];
+        var dir = dirs[i];
+
+        var appendtext = '<audio id="audio-player-element" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
+
+        $("#audioplayer").append( '<p id="audiotext">' + name + '</p>');
+        $("#audioplayer").append(appendtext);
+    }               
+
+}
+
+</script>
     
     
     <script>
@@ -278,7 +271,6 @@ $( "#filechooserform" ).on("change", function() {
 
         }
 
-
         (function() {
             var dropzone = document.getElementById('dropzone');
             
@@ -300,7 +292,9 @@ $( "#filechooserform" ).on("change", function() {
                 
                         populateDropdown("playSongDropdown");
                         populateDropdown("editordropdown");
-
+                        // addAudioPlayers();
+                        document.getElementById("audioplayer").innerHTML = "<p> hi </p>";
+                        
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
                         }
@@ -394,7 +388,7 @@ $( "#filechooserform" ).on("change", function() {
                             var selValue = selObj.options[selObj.selectedIndex].text;
                             console.log(selValue);
                             // document.getElementById("textFieldTextJS").innerHTML = selValue;
-                        }
+                    }
 
                     </script>
 
@@ -410,7 +404,7 @@ $( "#filechooserform" ).on("change", function() {
                                 </option>
                             </select>
 
-                            <div id="audioplayer">
+                            <div name="audioplayer" id="audioplayer">
                             </div>
                 </div>
 
@@ -551,16 +545,16 @@ function addHiddenValue() {
             echo $output;
         }
         ?>
-
+<!-- 
         <form>
             <button type="submit" name="wavme" id="wavme">convert to music</button>
         </form>
 
         <?php
-        if (isset($_GET['wavme'])) {
-            exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav file.mid");
-        }
-        ?>
+        // if (isset($_GET['wavme'])) {
+        //     exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav file.mid");
+        // }
+        ?> -->
 
     </div>
 

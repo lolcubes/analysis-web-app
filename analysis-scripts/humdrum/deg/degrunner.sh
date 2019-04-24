@@ -1,3 +1,4 @@
 #!/bin/bash
 file=$1
-cat $file | bash /Applications/MAMP/htdocs/NewTestings/deg > /Applications/MAMP/htdocs/NewTestings/degfile.txt
+outputfile=$2
+cat $file | bash /Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/deg > $outputfile

@@ -93,7 +93,7 @@ then
 fi 
 if [ "X$P_OPTION" = X ]
 then
-	$AWK_VER -f /Applications/MAMP/htdocs/NewTestings/x_option.awk "DUMMY" $FILENAME | $AWK_VER -f /Applications/MAMP/htdocs/NewTestings/deg.awk "DUMMY" "${OPTIONS:-null}" -
+	$AWK_VER -f /Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/x_option.awk "DUMMY" $FILENAME | $AWK_VER -f /Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/deg.awk "DUMMY" "${OPTIONS:-null}" -
 else
-	$AWK_VER -f /Applications/MAMP/htdocs/NewTestings/deg.awk "DUMMY" "${OPTIONS:-null}" $FILENAME
+	$AWK_VER -f /Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/deg.awk "DUMMY" "${OPTIONS:-null}" $FILENAME
 fi

@@ -8,7 +8,7 @@
 }
 
 #demo {
-      display: none;
+      /* display: none; */
 }
 
 code {
@@ -19,7 +19,7 @@ code {
 }
 
 #file-info-accordions {
-  display: none;
+  /* display: none; */
 }
 
 #bumper {
@@ -47,6 +47,7 @@ margin-right: 0;
   box-shadow: 1px 0px 18px  rgb(0, 0, 0);
   width: 100%;
   position: fixed;
+  z-index: 100000000000
 }
 
 
@@ -68,7 +69,6 @@ ul li a {
     padding: 0px 25px;
     text-align: center;
     transition: .3s;
-    border: 3px solid rgb(0, 0, 0);
 }
 
 
@@ -314,6 +314,7 @@ span {
   }
 
 .buttonform {
+  background-color: white;
     font-family: 'Nanum Gothic', sans-serif;
     border: 2px solid  rgb(0, 84, 211);
     padding: 15px 20px;
@@ -330,10 +331,11 @@ span {
 }
 
 .buttonform:hover {
-    transition: .2s;
+    transition: .3s;
     cursor: pointer;
-    background-color: rgb(231, 239, 241);
+    background-color: rgb(255, 255, 255);
     box-shadow: 3px 4px 6px  rgb(105, 105, 105);
+    border: 0.185pc solid  rgb(0, 64, 184);
 
 }
 
@@ -477,20 +479,21 @@ h4 {
 #TimePeriod_Dropdown {
     font-family: 'Nanum Gothic', sans-serif;
     font-size:18px;
-    background-color:rgb(77, 77, 77);
+    background-color:rgb(44, 44, 44);
     padding: 8px;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 15%;
+    margin-right: 15%;
     border-radius: 7px;
     box-shadow: 3px 3px 8px  rgb(161, 161, 161);
     color: white;
-
+    transition:.3s;
+2
 }
 #boi:hover,
 #TimePeriod:hover,
 #TimePeriod_Dropdown:hover {
     background-color: rgb(224, 224, 224);
-  transition:.2s;
+  transition:.3s;
   color: black;
 
 }
@@ -645,16 +648,19 @@ span.button {
 #dropzonefileicons {
   display: inline-block;
   padding-top: 14px;
-padding: 4px;
+padding: 2px;
 font-size: 8px;
 border-radius: 30px;
 transition: .25s;
 line-height: 5px;
+box-shadow: 1px 2px 3px rgb(95, 95, 95);
+margin-left: 15px;
+margin-right: 15px;
 
 }
 
 #dropzonefileicons:hover {
-  background-color: rgba(255, 255, 255, 0.404);
+  background-color: rgba(198, 241, 255, 0.644);
   transition: .25s;
   
 }
@@ -716,6 +722,7 @@ overflow: none;
 
 .panels {
   background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   display: inline-block;
   width: 600px;
   height: 400px;
@@ -726,19 +733,21 @@ overflow: none;
   font-family: 'Courier New', Courier, monospace;
   box-shadow: 3px 3px 12px rgb(88, 88, 88);
   transition: .3s;
+  border: 4px solid rgb(236, 236, 236);
+
 }
 
 .panels:hover {
-  background-color: rgb(248, 248, 248);
   transition: .4s;
-  box-shadow: 2px 9px 25px rgb(88, 88, 88);
-  border: 1px solid rgb(236, 236, 236);
+  box-shadow: 2px 6px 20px rgb(43, 43, 43);
+  border: 4px solid  rgb(0, 84, 211);
+	position:relative;
+  top: 1px;
 }
 
 #audioplayer {
   width: 250px;
   height:400px;
   background-color: rgb(238, 238, 238);
-  z-index: 100000000;
   border-radius: 20px;
 }
