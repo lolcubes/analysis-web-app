@@ -207,6 +207,8 @@ function addAudioPlayers(){
     var arrayparsed = JSON.parse(array);
     var dirs = arrayparsed.relativedirs;
     var names = arrayparsed.names;
+    console.log(dirs);
+    console.log(names);
 
 
     for (i=0; i<array1.length; i++){ 
@@ -238,12 +240,6 @@ function addAudioPlayers(){
             var arrayparsed = JSON.parse(array);
             var names = arrayparsed.names;
             var locations = arrayparsed.relativedirs;
-
-            var result = {};
-            for (var i = 0; i < names.length; i++)
-                result[names[i]] = locations[i];
-            // obj[Object.keys(obj)[0]];
-            console.log(result);
 
             var options = arrayparsed.names;
 
@@ -292,8 +288,7 @@ function addAudioPlayers(){
                 
                         populateDropdown("playSongDropdown");
                         populateDropdown("editordropdown");
-                        // addAudioPlayers();
-                        document.getElementById("audioplayer").innerHTML = "<p> hi </p>";
+                        addAudioPlayers();
                         
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
