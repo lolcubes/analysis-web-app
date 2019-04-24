@@ -128,6 +128,7 @@ $("body").on('DOMSubtreeModified', "#demo", function() {
     $('#dropzone').empty();
 
     populateDropzone();
+    addAudioPlayers();
 });
 </script>
 
@@ -172,20 +173,6 @@ $( "#dropzone" ).on("drop", function() {
 
 $( "#filechooserform" ).on("change", function() {
     $('#dropzone').attr('class', 'dropzone dropped')
-    var elem = document.getElementById("myBar");
-    var width = 1;
-    var id = setInterval(frame, 2);
-    function frame() {
-        if (width >= 100) {
-        clearInterval(id);
-        } else {
-        width++;
-        elem.style.width = width + '%';
-        elem.innerHTML = width * 1 + '%';
-        }
-
-
-    }
 
     $('#dropzone').children().delay(800).fadeOut(500).promise().then(function() {
         $('#dropzone').empty();
@@ -216,7 +203,7 @@ function addAudioPlayers(){
 
         var appendtext = '<audio id="audio-player-element" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
         console.log(appendtext);
-        $("#audioplayer").append( '<p id="audiotext">' + name + '</p>');
+        $("#audioplayer").append( '<span id="audiotext">' + name + '</span>');
         $("#audioplayer").append(appendtext);
     }               
 
@@ -287,7 +274,6 @@ function addAudioPlayers(){
                 
                         populateDropdown("playSongDropdown");
                         populateDropdown("editordropdown");
-                        addAudioPlayers();
                         
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
