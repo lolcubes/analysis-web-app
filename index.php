@@ -133,7 +133,7 @@ $("body").on('DOMSubtreeModified', "#demo", function() {
 
 <style id="styleloaderbar">
 #loading-bar{
-    /* display:none;
+    display:none;
     position:fixed;
     z-index:1000000;
     left:0;
@@ -144,11 +144,11 @@ $("body").on('DOMSubtreeModified', "#demo", function() {
     background-size: 100px 100px;
     background-position: 50% 30%;
     background-color: rgba(255,255,255,0.8);
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
 }
 
 #loading-bar.loading{
-    /* display:block; */
+    display:block;
 }
 </style>
 
@@ -207,16 +207,15 @@ function addAudioPlayers(){
     var arrayparsed = JSON.parse(array);
     var dirs = arrayparsed.relativedirs;
     var names = arrayparsed.names;
-    console.log(dirs);
-    console.log(names);
 
 
-    for (i=0; i<array1.length; i++){ 
+
+    for (i=0; i<names.length; i++){ 
         var name = names[i];
         var dir = dirs[i];
 
         var appendtext = '<audio id="audio-player-element" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
-
+        console.log(appendtext);
         $("#audioplayer").append( '<p id="audiotext">' + name + '</p>');
         $("#audioplayer").append(appendtext);
     }               
