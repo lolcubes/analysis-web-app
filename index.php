@@ -98,7 +98,7 @@ $( document ).ajaxStart(function() {
 $( document ).ajaxComplete(function() {
     $('#file-info-accordions').delay(800).show("slow");
     document.getElementById("loading-bar").className = "loaded";
-    document.getElementById("selected-files-div").innerHTML = "<p>Selected Files:</p>";
+    document.getElementById("selected-files-div").innerHTML = "<p id=selected-files-text>Selected Files:</p>";
 
 
 });
@@ -278,7 +278,10 @@ function addAudioPlayers(){
                         var data = this.responseText;
                         document.getElementById("demo").innerHTML = data;
                         var readarray = document.getElementById("demo").innerHTML;
-                
+
+                        $('#file-info-accordions').delay(800).show("slow");
+                        document.getElementById("selected-files-div").innerHTML = "<p>Selected Files:</p>";
+
                         populateDropdown("editordropdown");
                         
                         if ( $('#dropzone').html().length == 0 ) {
@@ -569,12 +572,13 @@ function changeDetailsMessage(){
     </div>
     </div id=file-info-accordions>
 
+    <script>
 
+        $(window).bind('beforeunload', function(){
+             return 'Your changes will not be saved! Continue?';
+        });
+    </script>
     
 </body>
-
-
-
-
 
 </html>
