@@ -333,12 +333,9 @@ span {
 .buttonform:hover {
     transition: .3s;
     cursor: pointer;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(250, 250, 255);
     box-shadow: 3px 4px 6px  rgb(105, 105, 105);
-    border: 0.175pc solid  rgb(0, 64, 184);
-
 }
-
 
 .buttonform:focus {
   transition: .4s;
@@ -723,7 +720,6 @@ span.button {
   color: rgb(0, 0, 0);
   display: inline-block;
   width: 640px;
-  height: 450px;
   margin: 20px;
   padding: 25px;
   border-radius: 20px;
@@ -745,13 +741,19 @@ span.button {
 
 #audioplayer {
   width: 550px;
-  height:250px;
+  height:330px;
   background-color: rgb(238, 238, 238);
   border-radius: 20px;
   line-height: 7px;
   display: inline-block;
   overflow: auto;
+  margin-bottom: 25px;
 
+}
+
+#audioelement {
+  line-height: 2px;
+  background-color: black;
 }
 
 audio {
@@ -760,13 +762,13 @@ audio {
 
 #musicalnotation {
   width: 550px;
-  height:250px;
+  height:330px;
   background-color: rgb(238, 238, 238);
   border-radius: 20px;
   line-height: 7px;
   display: inline-block;
   overflow: auto;
-
+  display: none;
 }
 
 
