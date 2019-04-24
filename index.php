@@ -34,7 +34,6 @@
             <div id="bumper">
 </div>
 
-
 <style>
     .home{
         background-color: rgb(153, 153, 153);
@@ -184,15 +183,36 @@ $( "#filechooserform" ).on("change", function() {
     });
 });
 
-
 </script>
 
 <script>
 
-function addMusicalNotation(directory, name) {
+function addMusicalNotation( directory, name ) {
     console.log(directory);
     console.log(name);
-    console.log("test");
+
+    var file = directory + "/song.txt"
+    console.log(file);
+    var div = document.getElementById("musicalnotation");
+
+    
+    var appendtext = 'displayHumdrum({autoResize: true,source: "song_svg",' + 'url:"' + file + '",scale: 35,spacingStaff: 12,})'
+
+    var scriptNEW = document.createElement('script');
+    scriptNEW.id = "displaysong";
+    scriptNEW.type = 'text/javascript';
+    scriptNEW.text = appendtext
+    div.appendChild(scriptNEW);
+
+    var appendtext2 = "";
+
+    var scriptNEW2 = document.createElement('script');
+    scriptNEW2.id = "song_svg";
+    scriptNEW2.type = 'text/x-humdrum';
+    scriptNEW2.text = appendtext2
+    div.appendChild(scriptNEW2);
+    $(div).append('<button class="buttonform" onclick="saveHumdrumSvg(' + 'song_svg' + ')">Save as .svg</button>');
+
 }
 
 </script>
@@ -212,7 +232,7 @@ function addAudioPlayers(){
         var name = names[i];
         var dir = dirs[i];
 
-        var appendtext = '<audio id="audio-player-element" onplay="addMusicalNotation(' + '"' + dir + '"' +  ", " + '"' + name + '"' + ')" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
+        var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ')" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
         console.log(appendtext);
         $("#audioplayer").append("<br>");
         $("#audioplayer").append( '<p id="audiotext">' + name + ':</p>');
@@ -287,7 +307,6 @@ function addAudioPlayers(){
                         document.getElementById("demo").innerHTML = data;
                         var readarray = document.getElementById("demo").innerHTML;
                 
-                        populateDropdown("playSongDropdown");
                         populateDropdown("editordropdown");
                         
                         if ( $('#dropzone').html().length == 0 ) {
@@ -393,6 +412,8 @@ function addAudioPlayers(){
                             <div name="audioplayer" id="audioplayer">
 
                             </div>
+                            <div id="musicalnotation">
+                            </div>
                 </div>
 
 
@@ -469,20 +490,9 @@ function changeDetailsMessage(){
                         </select>
 
                         <br>
-                        <span id=musicalnotation>Musical Notation:</span>
                         <button class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
-                        <!-- 
-                        <script id="displaysong">
-                        displayHumdrum({
-                            autoResize: true,
-                            source: "song_svg",
-                            url: "file.txt",
-                            scale: 35,
-                            spacingStaff: 12,
-                        })
-
-                        </script>
-                        <script type="text/x-humdrum" id="song_svg"></script> -->
+                        <script id="displaysong">displayHumdrum({autoResize: true,source: "song_svg",url:"Song_Database/3_1/song.txt",scale: 35,spacingStaff: 12,})</script>
+                        <script type="text/x-humdrum" id="song_svg"></script>
                         <br>
                         <br>
                         <iframe name="votar" style="display:none;"></iframe>
