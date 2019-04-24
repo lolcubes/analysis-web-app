@@ -380,11 +380,12 @@ function addAudioPlayers(){
 
 
                 <div class="panels">
-
+                            <p>Play chosen songs:</p>
                             <div name="audioplayer" id="audioplayer">
 
                             </div>
                             <div id="musicalnotation">
+                                <p>View musical notation:</p>
                                 <div id="notation-content">
                                         <div id="svg-button">
                                             <button class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
