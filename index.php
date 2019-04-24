@@ -45,8 +45,7 @@
 <br>
 <div id="center">
 <br>
-<br>
-<br>
+
 <button class="buttonform" id="uploadfilesbutton">Upload File</button>
 &nbsp;&nbsp;&nbsp;
 <span id="orspan">or</span>
@@ -56,7 +55,8 @@
 
 <a id=testanchor></a>
 
-
+<div id="selected-files-div">
+</div>
     <div id="dropzone-content">
     <div id="loading-bar"></div>
 
@@ -98,6 +98,7 @@ $( document ).ajaxStart(function() {
 $( document ).ajaxComplete(function() {
     $('#file-info-accordions').delay(800).show("slow");
     document.getElementById("loading-bar").className = "loaded";
+    document.getElementById("selected-files-div").innerHTML = "<p>Selected Files:</p>";
 
 
 });
@@ -201,11 +202,13 @@ function addAudioPlayers(){
         var name = names[i];
         var dir = dirs[i];
 
-        var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ')" controls="controls" src="' + dir + '/midi.wav" type="audio/wav"></div>'
+        var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ')" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
         console.log(appendtext);
-        $("#audioplayer").append("<div id="audioelement"><br>");
+        $("#audioplayer").append('<div id="audioelement">');
+        $("#audioplayer").append("<br>");
         $("#audioplayer").append( '<p id="audiotext">' + name + ':</p>');
         $("#audioplayer").append(appendtext);
+        $("#audioplayer").append("</div>");
     }               
 
 }
@@ -382,9 +385,12 @@ function addAudioPlayers(){
 
                             </div>
                             <div id="musicalnotation">
-                                <div id="svg-button">
-                                </div>
-                                <script type="text/x-humdrum" id="song_svg"></script>
+                                <div id="notation-content">
+                                        <div id="svg-button">
+                                            <button class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
+                                        </div>
+                                        <script type="text/x-humdrum" id="song_svg"></script>
+                                    </div>
                             </div>
                 </div>
 <script>
@@ -397,9 +403,6 @@ function addMusicalNotation( directory, name ) {
     var file = directory + "/song.txt"
     console.log(file);
     var div = document.getElementById("musicalnotation");
-    var buttondiv = document.getElementById("svg-button");
-    buttondiv.innerHTML = "";
-    $(buttondiv).prepend('<button class="buttonform" onclick="saveHumdrumSvg(' + 'song_svg' + ')">Save as .svg</button>');
 
     var appendtext = 'displayHumdrum({autoResize: true,source: "song_svg",' + 'url:"' + file + '",scale: 35,spacingStaff: 12,})'
 
