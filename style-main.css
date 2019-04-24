@@ -768,7 +768,9 @@ span.button {
 
 #audioelement {
   line-height: 10px;
-  /* background-color: black; */
+  width: 500px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
 audio {
