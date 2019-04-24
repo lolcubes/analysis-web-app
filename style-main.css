@@ -648,21 +648,23 @@ span.button {
 #dropzonefileicons {
   display: inline-block;
   padding-top: 14px;
-padding: 2px;
-font-size: 8px;
-border-radius: 30px;
-transition: .25s;
-line-height: 5px;
-box-shadow: 1px 2px 3px rgb(95, 95, 95);
-margin-left: 15px;
-margin-right: 15px;
+  font-size: 8px;
+  border-radius: 30px;
+  transition: .25s;
+  line-height: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.329);
 
 }
 
 #dropzonefileicons:hover {
   background-color: rgba(198, 241, 255, 0.644);
   transition: .25s;
-  
+  color: black;
+  box-shadow: 2px 3px 14px rgba(0, 0, 0, 0.486);
+  border: 2px solid black 
 }
 
 
@@ -686,38 +688,33 @@ margin-right: 15px;
   background-size: 150px 150px;
   background-color: rgba(255, 255, 255, 0.404);
   background-position: 50% 10%;
-  
-
 }
 
 
 .dropzone.dragover {
-border-color: #000;
-color: #000;
-transition: .25s;
-background-repeat: no-repeat;
-background-image: url('icons-misc/upload-2.png');
-background-size: 150px 150px;
-background-position: 50% 10%;
-background-color: rgb(235, 255, 240);
+  border-color: #000;
+  color: #000;
+  transition: .25s;
+  background-repeat: no-repeat;
+  background-image: url('icons-misc/upload-2.png');
+  background-size: 150px 150px;
+  background-position: 50% 10%;
+  background-color: rgb(235, 255, 240);
 }
 
 .dropzone.dropped {
-background-color: rgb(246, 255, 246);
-color: #000;
-transition: .7s;
-display: inline-block;
-background-image: none;
-
-
+  background-color: rgb(198, 250, 198);
+  color: #000;
+  transition: .7s;
+  display: inline-block;
+  background-image: none;
 }
 .dropzone:hover {
-border-color: #777777;
-color: #777777;
-transition: .25s;
-line-height: 18px;
-overflow: none;
-
+  border-color: #777777;
+  color: #777777;
+  transition: .25s;
+  line-height: 18px;
+  overflow: none;
 }
 
 .panels {
@@ -746,8 +743,13 @@ overflow: none;
 }
 
 #audioplayer {
-  width: 250px;
+  width: 300px;
   height:400px;
   background-color: rgb(238, 238, 238);
   border-radius: 20px;
+  line-height: 7px;
+}
+
+audio {
+  width: 300px;
 }

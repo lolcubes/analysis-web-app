@@ -186,24 +186,36 @@ $( "#filechooserform" ).on("change", function() {
 
 
 </script>
+
 <script>
 
+function addMusicalNotation(directory, name) {
+    console.log(directory);
+    console.log(name);
+    console.log("test");
+}
+
+</script>
+
+
+<script>
 function addAudioPlayers(){
 
     var array = document.getElementById("demo").innerHTML;
     var arrayparsed = JSON.parse(array);
     var dirs = arrayparsed.relativedirs;
     var names = arrayparsed.names;
-
+    document.getElementById("audioplayer").innerHTML = "";
 
 
     for (i=0; i<names.length; i++){ 
         var name = names[i];
         var dir = dirs[i];
 
-        var appendtext = '<audio id="audio-player-element" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
+        var appendtext = '<audio id="audio-player-element" onplay="addMusicalNotation(' + '"' + dir + '"' +  ", " + '"' + name + '"' + ')" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
         console.log(appendtext);
-        $("#audioplayer").append( '<span id="audiotext">' + name + '</span>');
+        $("#audioplayer").append("<br>");
+        $("#audioplayer").append( '<p id="audiotext">' + name + ':</p>');
         $("#audioplayer").append(appendtext);
     }               
 
@@ -268,6 +280,9 @@ function addAudioPlayers(){
                     formData.append('varNew[]', '<?php echo "$arrayfilenumber"; ?>' ),
 
                     xhr.onload = function() {
+                        document.getElementById("loading-bar").className = "loaded";
+
+
                         var data = this.responseText;
                         document.getElementById("demo").innerHTML = data;
                         var readarray = document.getElementById("demo").innerHTML;
@@ -279,7 +294,6 @@ function addAudioPlayers(){
                             populateDropzone();
                         }
 
-                        document.getElementById("loading-bar").className = "loaded";
 
                     }
 
@@ -341,13 +355,13 @@ function addAudioPlayers(){
 
         });
         $("#dropzone").on("drop", function() {
-            $('#file-info-accordions').delay(800).show("slow");
+            // $('#file-info-accordions').delay(800).show("slow");
         
         });
 
         $("#filechooserform").on("change", function()
         {
-            $('#file-info-accordions').delay(800).show("slow");
+            // $('#file-info-accordions').delay(800).show("slow");
 
         });
     </script>
@@ -376,17 +390,11 @@ function addAudioPlayers(){
 
                 <div class="panels">
 
-                    <span>Select A File To Play: &nbsp; &nbsp; &nbsp; &nbsp;</span>
-
-                            <select name="editor" id="editordropdown" onchange="singleSelectChangeText('editordropdown')">
-                                <option value="" selected disabled hidden>
-                                    Select a song
-                                </option>
-                            </select>
-
                             <div name="audioplayer" id="audioplayer">
+
                             </div>
                 </div>
+
 
 <script>
 function addHiddenValue() {
@@ -395,13 +403,17 @@ function addHiddenValue() {
      var filearraylocations = parsed.relativedirs;
      document.getElementsByName("filesarrayinput")[0].value = filearraylocations;
 }
+
+function changeDetailsMessage(){
+    document.getElementById("infoexplain").innerHTML = "In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs."
+}
 </script>
 
 <!-- ADD THE addHiddenValue() function on ajax load? -->
                     <div class="panels">
 
                         <p id="infoexplain">In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
-                            <form onsubmit="successDetailsMessage();addHiddenValue()" method="post" action="details-upload.php" name="infoform" id="infoform" target="votar">
+                            <form onsubmit="successDetailsMessage();addHiddenValue()" method="post" action="details-upload.php" name="infoform" id="infoform" target="votar" onchange="changeDetailsMessage()">
                                 <div id="boi">Song Name:&nbsp;&nbsp;
                                 <input id="composer_input" name="composer_input" type="text"/>
                                 </div>
