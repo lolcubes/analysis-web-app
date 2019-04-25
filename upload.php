@@ -66,10 +66,13 @@
                 $fileconvert = "$filedirectory" . "/song.txt";
                 $target = "$filedirectory" . "/midi.mid";
                 $degoutput = "$filedirectory" . "/deg.txt";
+                $prolloutput = "$filedirectory" . "/proll.png";
+                $keyscapeoutput = "$filedirectory" . "/keyscape.png";
                 exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
                 exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav $target");
                 shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/degrunner.sh $fileconvert $degoutput");
+                shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/proll $fileconvert > $prolloutput");
+                shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/mkeyscape $target > $keyscapeoutput");
             }       
-            
 
 ?>

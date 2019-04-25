@@ -426,6 +426,7 @@ function addHiddenValue() {
      var parsed = JSON.parse(filearray);
      var filearraylocations = parsed.relativedirs;
      document.getElementsByName("filesarrayinput")[0].value = filearraylocations;
+     document.getElementsByName("userfilelocations")[0].value = filearraylocations;
 }
 
 function changeDetailsMessage(){
@@ -534,12 +535,12 @@ function changeDetailsMessage(){
             <input type="checkbox" name="mostusednotevalue" value="checked" >
             <span class="checkmark"></span>
             </label>
+
+            <br>
+            <br>
+                <button type="submit" id="submit" name="submit" class="buttonform">Begin Analysis</button>
+                <input type="hidden" value="test" name="userfilelocations" />
             </form>
-
-            <br>
-            <br>
-            <button type="submit" id="submit" name="submit" class="buttonform">Begin Analysis</button>
-
 
             <form>
         <button type="submit" name="degtest" id="degtest">deg me!</button>

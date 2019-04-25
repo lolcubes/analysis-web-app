@@ -61,9 +61,35 @@
                 <div id="input-section-database-types" class="data-types">
                     <span>Data Types:&nbsp;&nbsp;&nbsp;</span>
                     <br>
+                    <br>
+                    <br>
                     <div id="buttons">
-                        <input onclick="addDataTypes();" type="button" class="buttonform" value="All Types" name="postme"/>
-                        <input type="button"  class="buttonform" value="Select Types" />
+                            <script>
+                                $( '#select-all' ).click( function () {
+                                    $( 'input[type="checkbox"]' ).prop('checked', this.checked)
+                                })
+                            </script>
+                                    
+                        <label class=container>Toggle All&nbsp;&nbsp;
+                            <input type="checkbox" id="select-all" /> 
+                            <span class=checkmark></span>
+                        </label>
+                                    
+                        <label class=container>One&nbsp;&nbsp;
+                                <input type=checkbox name="data-type[]" id="datatypecheck">
+                                <span class=checkmark></span>
+                        </label>
+                            
+                        <label class=container>Two&nbsp;&nbsp;
+                            <input type=checkbox name="data-type[]" id="datatypecheck">
+                            <span class=checkmark></span>
+                        </label>    
+                        
+                        <label class=container>Three&nbsp;&nbsp;
+                            <input type=checkbox name="data-type[]" id="datatypecheck">
+                            <span class=checkmark></span>
+                        </label>
+                    
                     </div>
                 </div>
                 <br>
@@ -76,13 +102,7 @@
             </form>
         </div>
     </center>
-    <script>
-        function addDataTypes() {
-            document.getElementById('buttons').innerHTML = "";
-            var appendText = '<input type="checkbox" name="type" value="4" /> <input type="checkbox" name="type" value="5" />';
-            $(appendText).appendTo('.data-types').fadeIn(500);
-        }
-    </script>
+
         <style>
             #datadisplayform{
                 background-color: rgb(230, 230, 230);
