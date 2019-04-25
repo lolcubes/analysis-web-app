@@ -58,6 +58,15 @@
                 </select>
                 </div>
                 <br>
+                <div id="input-section-database-types" class="data-types">
+                    <span>Data Types:&nbsp;&nbsp;&nbsp;</span>
+                    <br>
+                    <div id="buttons">
+                        <input onclick="addDataTypes();" type="button" class="buttonform" value="All Types" name="postme"/>
+                        <input type="button"  class="buttonform" value="Select Types" />
+                    </div>
+                </div>
+                <br>
                 <!-- <span>Composer:   </span>
                 <select name="composer" >
                     <option selected disabled hidden>All</option>
@@ -67,7 +76,13 @@
             </form>
         </div>
     </center>
-
+    <script>
+        function addDataTypes() {
+            document.getElementById('buttons').innerHTML = "";
+            var appendText = '<input type="checkbox" name="type" value="4" /> <input type="checkbox" name="type" value="5" />';
+            $(appendText).appendTo('.data-types').fadeIn(500);
+        }
+    </script>
         <style>
             #datadisplayform{
                 background-color: rgb(230, 230, 230);

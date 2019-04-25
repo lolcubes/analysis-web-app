@@ -473,8 +473,8 @@ h4 {
 
 #boi,
 #TimePeriod,
-#TimePeriod_Dropdown,
-#input-section-database {
+#TimePeriod_Dropdown {
+
     font-family: 'Nanum Gothic', sans-serif;
     font-size:18px;
     background-color:rgb(44, 44, 44);
@@ -489,13 +489,36 @@ h4 {
 
 #boi:hover,
 #TimePeriod:hover,
-#TimePeriod_Dropdown:hover
-#input-section-database:hover  {
+#TimePeriod_Dropdown:hover  {
     background-color: rgb(224, 224, 224);
   transition:.3s;
   color: black;
 
 }
+
+#input-section-database,
+#input-section-database-types {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size:18px;
+  background-color: rgb(224, 224, 224);
+  padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 7px;
+  box-shadow: 3px 3px 8px  rgb(161, 161, 161);
+  color: black;
+  transition:.3s;
+  line-height: 60px;
+}
+
+#input-section-database:hover,
+#input-section-database-types:hover {
+  background-color: rgb(216, 216, 216);
+  box-shadow: 6px 6px 15px  rgb(112, 112, 112);
+}
+
 
 select {
 
