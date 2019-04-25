@@ -99,7 +99,7 @@ $( document ).ajaxComplete(function() {
     $('#file-info-accordions').delay(800).show("slow");
     document.getElementById("loading-bar").className = "loaded";
     document.getElementById("selected-files-div").innerHTML = "<p id=selected-files-text>Selected Files:</p>";
-
+    addHiddenValue();
 
 });
 
@@ -279,7 +279,8 @@ function addAudioPlayers(){
                         document.getElementById("selected-files-div").innerHTML = "<p>Selected Files:</p>";
 
                         populateDropdown("editordropdown");
-                        
+                        addHiddenValue();
+
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
                         }
@@ -507,7 +508,7 @@ function changeDetailsMessage(){
         
 
 
-        <form method="post" action="analysis.php" target="votar">
+        <form method="post" action="analysis.php" onsubmit="addHiddenValue()">
             <br/>
 
             <br>
@@ -538,8 +539,8 @@ function changeDetailsMessage(){
 
             <br>
             <br>
-                <button type="submit" id="submit" name="submit" class="buttonform">Begin Analysis</button>
-                <input type="hidden" value="test" name="userfilelocations" />
+                <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis">
+                <input type="hidden" name='filesarrayinput' value="<script>document.getElementById('demo').innerHTML</script>"/> 
             </form>
 
             <form>
