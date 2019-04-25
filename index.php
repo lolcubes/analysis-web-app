@@ -100,6 +100,8 @@ $( document ).ajaxComplete(function() {
     document.getElementById("loading-bar").className = "loaded";
     document.getElementById("selected-files-div").innerHTML = "<p id=selected-files-text>Selected Files:</p>";
     addHiddenValue();
+    populateDropdown("playSongDropdown");
+
 
 });
 
@@ -278,7 +280,7 @@ function addAudioPlayers(){
                         $('#file-info-accordions').delay(800).show("slow");
                         document.getElementById("selected-files-div").innerHTML = "<p>Selected Files:</p>";
 
-                        populateDropdown("editordropdown");
+                        populateDropdown("playSongDropdown");
                         addHiddenValue();
 
                         if ( $('#dropzone').html().length == 0 ) {
@@ -508,37 +510,124 @@ function changeDetailsMessage(){
                     </div>
 
 
-        
+                    <script >
+                            function unCheckAll(formname) {
+                            var checkboxes = new Array(); 
+                            checkboxes = document[formname].getElementsByTagName('input');
+                            
+                            for (var i=0; i<checkboxes.length; i++)  {
+                                if (checkboxes[i].type == 'checkbox')   {
+                                    checkboxes[i].checked = false;
+                                }
+                            }
+
+                            document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input type=checkbox class="buttonform" onclick="checkAll(\'analysis-form\')"  /><span class="checkmark"></span>';
+                                console.log("test");
+                            }
 
 
-        <form method="post" action="analysis.php" onsubmit="addHiddenValue()">
+                        function checkAll(formname){
+                        var checkboxes = new Array(); 
+                        checkboxes = document[formname].getElementsByTagName('input');
+                        
+                        for (var i=0; i<checkboxes.length; i++)  {
+                            if (checkboxes[i].type == 'checkbox')   {
+                                checkboxes[i].checked = true;
+                            }
+                        }
+
+                        document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input checked=checked type=checkbox class="buttonform" onclick="unCheckAll(\'analysis-form\')"  /><span class="checkmark"></span>';
+                        }
+
+                    </script>
+
+        <form method="post" action="analysis.php" onsubmit="addHiddenValue()" name="analysis-form">
             <br/>
 
             <br>
             <br>
 
             <hr>
-            <h2>Select Analysis Types:</h2>
 
-            <label class="container">Key Signature
-            <input type="checkbox" name="keysig" value="checked">
-            <span class="checkmark"></span>
-            </label>
+            <h2 id="data-heading">Select Analysis Types:</h2>
 
-            <label class="container">Repeated Note Value
-            <input type="checkbox" name="repeatednotevalue" value="checked" >
-            <span class="checkmark"></span>
-            </label>
+            <br>
+            <div id="check-all">
+                <label class="container">Check All&nbsp;&nbsp;
+                    <input type=checkbox class="buttonform" onclick="checkAll('analysis-form')"  />
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <br>
+            <div id="data-types" class="panels">
+                
+            <div id="heading">
+                <p id="data-heading">Pitch:</p>
+            </div>
+            <br>
+            <br>
+                <label class="container">Scales&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Scales">
+                    <span class="checkmark"></span>
+                </label>
 
-            <label class="container">Average Note Value
-            <input type="checkbox" name="averagenotevalue" value="checked" >
-            <span class="checkmark"></span>
-            </label>
+                <label class="container">Average Pitch&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Average Pitch" >
+                    <span class="checkmark"></span>
+                </label>
 
-            <label class="container">Most Used Note Value
-            <input type="checkbox" name="mostusednotevalue" value="checked" >
-            <span class="checkmark"></span>
-            </label>
+                <label class="container">Average Steps&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Average Steps" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Most Used Pitches&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Most Used Pitches" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Most Used Pitches&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Most Used Pitches" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Key Signature&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Key Signature" >
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div id="data-types" class="panels">
+                <div id="heading">
+                    <p id="data-heading">Note Value:</p>
+                </div>
+                <br>
+                <br>
+                <label class="container">Average Note Value&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Average Note Value">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Repeated Note Value&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Repeated Note Value" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Total Time&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Total Time" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Time Signature&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Time Signature" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Most Used Note Value&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="Most Used Note Value" >
+                    <span class="checkmark"></span>
+                </label>
+            </div>
 
             <br>
             <br>
@@ -546,35 +635,14 @@ function changeDetailsMessage(){
                 <input type="hidden" name='userfilelocations'/> 
             </form>
 
-            <form>
-        <button type="submit" name="degtest" id="degtest">deg me!</button>
-        </form>
-        <?php
-        if (isset($_GET['degtest'])) {
-            $output = shell_exec( "/Applications/MAMP/htdocs/NewTestings/degrunner.sh file.txt");
-            echo $output;
-        }
-        ?>
-<!-- 
-        <form>
-            <button type="submit" name="wavme" id="wavme">convert to music</button>
-        </form>
-
-        <?php
-        // if (isset($_GET['wavme'])) {
-        //     exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav file.mid");
-        // }
-        ?> -->
-
     </div>
-
 
     <div id="footer">
     </div>
     </div id=file-info-accordions>
 
     <script>
-
+        
         // $(window).bind('beforeunload', function(){
         //      return 'Your changes will not be saved! Continue?';
         // });
