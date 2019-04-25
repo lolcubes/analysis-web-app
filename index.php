@@ -202,7 +202,7 @@ function addAudioPlayers(){
         var name = names[i];
         var dir = dirs[i];
 
-        var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ')" controls="controls" src="' + dir + '/midi.wav" type="audio/wav">'
+        var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ')" controls="controls" src="' + dir + '/song.wav" type="audio/wav">'
         console.log(appendtext);
         $("#audioplayer").append('<div id="audioelement"><br><span id="audiotext">' + name + ':</span><br><br>' + appendtext + '</div><br>');
     }               

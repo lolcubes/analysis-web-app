@@ -64,7 +64,7 @@
 
             foreach ($relativefiledirlocations as $filedirectory){ 
                 $fileconvert = "$filedirectory" . "/song.txt";
-                $target = "$filedirectory" . "/midi.mid";
+                $target = "$filedirectory" . "/song.mid";
                 $degoutput = "$filedirectory" . "/deg.txt";
                 $assetsdir = "$filedirectory" . "/image-assets";
                 mkdir($assetsdir);
