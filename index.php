@@ -426,8 +426,11 @@ function addHiddenValue() {
      var filearray = document.getElementById("demo").innerHTML;
      var parsed = JSON.parse(filearray);
      var filearraylocations = parsed.relativedirs;
+     console.log("test");
+     console.log(filearraylocations);
      document.getElementsByName("filesarrayinput")[0].value = filearraylocations;
      document.getElementsByName("userfilelocations")[0].value = filearraylocations;
+     console.log(document.getElementsByName("userfilelocations")[0].value)
 }
 
 function changeDetailsMessage(){
@@ -540,7 +543,7 @@ function changeDetailsMessage(){
             <br>
             <br>
                 <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis">
-                <input type="hidden" name='filesarrayinput' value="<script>document.getElementById('demo').innerHTML</script>"/> 
+                <input type="hidden" name='userfilelocations'/> 
             </form>
 
             <form>

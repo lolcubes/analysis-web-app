@@ -1,6 +1,13 @@
 <?php
-    $filesrecieved = $_POST['filesarrayinput'];
-    print_r($filesrecieved);
+    $filesrecieved = $_POST['userfilelocations'];
+
+
+    $explodedfiledirs = explode(",", $filesrecieved);
+
+    foreach ($explodedfiledirs as $value) {
+            echo $value;
+    }
+
     echo "hi";
 
 ?>
