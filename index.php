@@ -20,7 +20,7 @@
                 <ul id=navbar>
                 <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
 
-                    <a  href="index.php"><img id="headerbanner" src="image-assets/headerbanner.png" alt="Header logo" height="50px" width="260" align="middle"></a>
+                    <a href="index.php"><img id="headerbanner" src="image-assets/headerbanner.png" alt="Header logo" height="50px" width="260" align="middle"></a>
                     <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
                     <!-- <li id="Menu" class="logoimage"><img src="headerbanner.png" alt="Header logo" height="60px" width="313px"></img></li> -->
                     <li id="Menu" class="home"><a href="index.php">Home</a></li>
@@ -570,9 +570,9 @@ function changeDetailsMessage(){
 
     <script>
 
-        $(window).bind('beforeunload', function(){
-             return 'Your changes will not be saved! Continue?';
-        });
+        // $(window).bind('beforeunload', function(){
+        //      return 'Your changes will not be saved! Continue?';
+        // });
     </script>
     
 </body>

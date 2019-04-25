@@ -32,7 +32,7 @@
 
         <style>
             .library{
-                background-color: rgb(15, 49, 160);
+                background-color: rgb(153, 153, 153);
                 box-shadow: 1px 4px 28px  rgb(0, 0, 0);
                 outline: 0;
             }
@@ -51,11 +51,28 @@
         //         echo $file;
         //         echo "<br>";
         //     }
-        foreach (new DirectoryIterator('../Song_Database') as $fileInfo) {
-            if($fileInfo->isDot()) continue;
-            echo $fileInfo->getFilename() . "<br>\n";
-        }
-        
+        $filedirs = array();
+
+            foreach (new DirectoryIterator('../Song_Database') as $fileInfo) {
+                if($fileInfo->isDot()) continue;
+                $currentfilerel = $fileInfo->getFilename();
+                $currentfile = "/Applications/MAMP/htdocs/NewTestings/Song_Database/" . $currentfilerel;
+
+                $period = $currentfile . "/period.txt";
+
+                $periodcontents = file_get_contents($period);
+                
+                if ($periodcontents == $timeperiod){
+                    $filedirs[] = $currentfile;
+                }
+
+                echo "<br>";
+
+            }
+            echo "<pre>";
+            print_r($filedirs);
+            echo "</pre>";
+
         ?>
 
         <a href="library.html"> <button class="buttonform"><span>Back</span></button></a>

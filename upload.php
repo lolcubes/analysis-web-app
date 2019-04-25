@@ -69,22 +69,7 @@
                 exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
                 exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav $target");
                 shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/degrunner.sh $fileconvert $degoutput");
-            }
-
-/*
-
-Comment for later implementation
-
-on upload, automatically convert each file into all necessary files
-
-save to relevant names (mid.mid, xml.xml, etc)
-
-later, access these files by the predetermined names.
-
-Save these into an array for each item
-
-*/
-            
+            }       
             
 
 ?>
