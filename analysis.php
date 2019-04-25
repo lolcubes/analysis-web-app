@@ -6,8 +6,9 @@
 
     foreach ($explodedfiledirs as $value) {
             echo $value;
+            echo "<br>";
+            // mkdir()
     }
 
-    echo "hi";
 
 ?>
