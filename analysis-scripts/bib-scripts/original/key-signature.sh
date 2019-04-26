@@ -38,4 +38,6 @@ elif [ "$a" == "*k[b-e-a-d-g-c-]" ]; then
     echo Gb Major > $output
 elif [ "$a" == "*k[b-e-a-d-g-c-f-]" ]; then
     echo Cb Major > $output
+else
+    echo "No key signature found." > $output
 fi

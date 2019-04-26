@@ -19,7 +19,7 @@ code {
 }
 
 #file-info-accordions {
-  display: none;
+  /* display: none; */
 }
 
 #bumper {
@@ -490,16 +490,17 @@ h4 {
 #input-section-database-types {
   font-family: 'Nanum Gothic', sans-serif;
   font-size:18px;
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(255, 255, 255);
   padding: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
   margin-left: 15%;
   margin-right: 15%;
   border-radius: 7px;
-  box-shadow: 3px 3px 8px  rgb(161, 161, 161);
+  box-shadow: 4px 5px 12px  rgb(161, 161, 161);
   color: black;
   transition:.3s;
+  border: 1px solid white;
 }
 
 #buttons {
@@ -510,8 +511,10 @@ h4 {
 
 #input-section-database:hover,
 #input-section-database-types:hover {
-  background-color: rgb(216, 216, 216);
-  box-shadow: 6px 6px 15px  rgb(112, 112, 112);
+  transition:.3s;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 6px 8px 18px  rgb(77, 77, 77);
+  border: 1px solid black;
 }
 
 
@@ -747,14 +750,14 @@ span.button {
   font-family: 'Courier New', Courier, monospace;
   box-shadow: 3px 3px 12px rgb(88, 88, 88);
   transition: .3s;
-  border: 4px solid rgb(236, 236, 236);
+  border: 5px solid rgb(236, 236, 236);
   vertical-align: top;
 }
 
 .panels:hover {
   transition: .4s;
   box-shadow: 2px 6px 20px rgb(43, 43, 43);
-  border: 3px solid  rgb(0, 84, 211);
+  border: 2px solid  rgb(0, 84, 211);
 	position: relative;
   top: 1px;
 }
@@ -878,8 +881,9 @@ audio {
 
 #heading {
   padding-top: 30px;
+  padding-bottom: 15px;
   line-height: 0px;
-  height: 30px;
+  /* height: 30px; */
   border-radius: 20px;
   box-shadow: 3px 3px 8px rgb(143, 143, 143);
   display: block;

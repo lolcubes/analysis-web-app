@@ -1,7 +1,29 @@
 #!/bin/bash
 
 file=$1
-fileprep=$(deg $file | grep -v '=' | grep -v '*' | grep -v '!' | tr  "\t" "~" |  cut -d '~' -f1 )
+
+suffix="song.txt"
+
+removed=$(echo $file | sed -e "s/$suffix$//")
+occurencesOutput="${removed}data/most-used-pitches"
+
+firstOutput="${occurencesOutput}/1.txt"
+firstPercent="${occurencesOutput}/Percent_1.txt"
+
+secondOutput="${occurencesOutput}/2.txt"
+secondPercent="${occurencesOutput}/Percent_2.txt"
+
+thirdOutput="${occurencesOutput}/3.txt"
+thirdPercent="${occurencesOutput}/Percent_3.txt"
+
+fourthOutput="${occurencesOutput}/4.txt"
+fourthPercent="${occurencesOutput}/Percent_4.txt"
+
+fifthOutput="${occurencesOutput}/5.txt"
+fifthPercent="${occurencesOutput}/Percent_5.txt"
+
+
+fileprep=$(/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/deg $file | grep -v '=' | grep -v '*' | grep -v '!' | tr  "\t" "\n" |  grep . )
 totallines=$( echo "$fileprep" | grep -v '\.' | grep -v 'r' | sed '/^$/d' | wc -l)
 
 seven="$(echo "$fileprep" | grep '7' | grep -v '7-' | grep -v '7+' | wc -l)"
@@ -51,8 +73,6 @@ done
 
 a="$(echo "${counted[maxindex]}")"
 
-echo $a
-
 if [ "$a" -eq 1 ]
 then 
     b=$one
@@ -100,7 +120,15 @@ then
     b=$sevenraised
 fi
 
-bc -l <<< $b/$totallines
+greatestPercent=$(bc -l <<< $b/$totallines)
+
+if [ "$greatestPercent" -eq "0" ]; then
+    echo "test"
+else 
+    echo $a > $firstOutput
+    bc -l <<< $b/$totallines > $firstPercent
+fi
+
 
 
 secondLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '2q;d')
@@ -153,8 +181,15 @@ then
 fi
 
 
-echo $secondGreatest
-bc -l <<< $secondLargest/$totallines
+secondgreatestPercent=$(bc -l <<< $secondLargest/$totallines)
+
+if [ "$secondgreatestPercent" -eq "0" ]; then
+    echo "test"
+else 
+    echo $secondGreatest > $secondOutput
+    echo $secondgreatestPercent > $secondPercent 
+fi
+
 
 thirdLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '3q;d')
 
@@ -205,8 +240,15 @@ then
     thirdGreatest=7+
 fi
 
-echo $thirdGreatest
-bc -l <<< $thirdLargest/$totallines
+thirdgreatestPercent=$(bc -l <<< $thirdLargest/$totallines)
+
+if [ "$thirdgreatestPercent" -eq "0" ]; then
+    echo "test"
+else 
+    echo $thirdGreatest > $thirdOutput
+    echo $thirdgreatestPercent > $thirdPercent 
+fi
+
 
 fourthLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '4q;d')
 
@@ -257,8 +299,17 @@ then
     fourthGreatest=7+
 fi
 
-echo $fourthGreatest
-bc -l <<< $fourthLargest/$totallines
+fourthgreatestPercent=$(bc -l <<< $fourthLargest/$totallines)
+
+if [ "$fourthgreatestPercent" -eq "0" ]; then
+    echo "test"
+else 
+    echo $fourthGreatest > $fourthOutput
+    echo $fourthgreatestPercent > $fourthPercent 
+fi
+
+
+
 
 fifthLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '5q;d')
 
@@ -309,8 +360,14 @@ then
     fifthGreatest=7+
 fi
 
-echo $fifthGreatest
-bc -l <<< $fifthLargest/$totallines
+fifthgreatestPercent=$(bc -l <<< $fifthLargest/$totallines)
+
+if [ "$fifthgreatestPercent" -eq "0" ]; then
+    echo "test"
+else 
+    echo $fifthGreatest > $fifthOutput
+    echo $fifthgreatestPercent > $fifthPercent 
+fi
 
 sixthLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '6q;d')
 
@@ -361,8 +418,15 @@ then
     sixthGreatest=7+
 fi
 
-echo $sixthGreatest
-bc -l <<< $sixthLargest/$totallines
+sixthgreatestPercent=$(bc -l <<< $sixthLargest/$totallines)
+
+if [ "$sixthgreatestPercent" -eq "0" ]; then
+    echo "test"
+else 
+    echo $sixthGreatest > $sixthOutput
+    echo $sixthgreatestPercent > $sixthPercent 
+fi
+
 
 seventhLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '7q;d')
 
@@ -413,5 +477,12 @@ then
     seventhGreatest=7+
 fi
 
-echo $seventhGreatest
-bc -l <<< $seventhLargest/$totallines
+
+seventhgreatestPercent=$(bc -l <<< $seventhLargest/$totallines)
+
+if [ "$seventhgreatestPercent" -eq "0" ]; then
+    echo "test"
+else 
+    echo $seventhGreatest > $seventhOutput
+    echo $seventhgreatestPercent > $seventhPercent 
+fi

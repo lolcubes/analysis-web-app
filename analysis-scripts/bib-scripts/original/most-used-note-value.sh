@@ -45,7 +45,7 @@ fifthTimePercent="${timeOutput}/Percent_5.txt"
 
 
 
-fileprep="$(grep -v '=' $file | grep -v '*' | grep -v '!' |  grep -o '[[:digit:]]*' | grep '.')"
+fileprep="$(grep -v '=' $file | grep -v '*' | grep -v '!' | tr  "\t" "\n" |  grep . |  grep -o '[[:digit:]]*' | grep .)"
 
 totallines=$(echo "$fileprep" | wc -l)
 totaltime=$(echo "$fileprep" | sed 's|^|1/|' | tr '\n' '+' | awk '{print $0"0"}' | bc -l)
