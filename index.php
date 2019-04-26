@@ -566,33 +566,34 @@ function changeDetailsMessage(){
             </div>
             <br>
             <br>
+            
                 <label class="container">Scales&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Scales">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Average Pitch&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Average Pitch" >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Average Steps&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Average Steps" >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Most Used Pitches&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Most Used Pitches" >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Most Used Pitches&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Most Used Pitches" >
+                    <input type="checkbox" name="data-choose[]" value="scales.sh">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Key Signature&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Key Signature" >
+                    <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Average Pitch&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Average Steps&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Most Used Pitches&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Repeated Pitches&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
                     <span class="checkmark"></span>
                 </label>
             </div>
@@ -603,28 +604,29 @@ function changeDetailsMessage(){
                 </div>
                 <br>
                 <br>
+
+                <label class="container">Total Time&nbsp;&nbsp;
+                    <input type="checkbox" name="data-choose[]" value="total-time.sh" >
+                    <span class="checkmark"></span>
+                </label>
+
                 <label class="container">Average Note Value&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Average Note Value">
+                    <input type="checkbox" name="data-choose[]" value="average-note-value.sh">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Repeated Note Value&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Repeated Note Value" >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Total Time&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Total Time" >
+                    <input type="checkbox" name="data-choose[]" value="repeated-note-value.sh" >
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Time Signature&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Time Signature" >
+                    <input type="checkbox" name="data-choose[]" value="time-signature.sh" >
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Most Used Note Value&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="Most Used Note Value" >
+                    <input type="checkbox" name="data-choose[]" value="most-used-note-value.sh" >
                     <span class="checkmark"></span>
                 </label>
             </div>
