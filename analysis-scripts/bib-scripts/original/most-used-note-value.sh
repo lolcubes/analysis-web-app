@@ -1,6 +1,50 @@
 #!/bin/bash
 
 file=$1
+
+suffix="song.txt"
+
+removed=$(echo $file | sed -e "s/$suffix$//")
+occurencesOutput="${removed}data/most-used-note-value/occurrences"
+mkdir $occurencesOutput
+
+firstOutput="${occurencesOutput}/1.txt"
+firstPercent="${occurencesOutput}/Percent_1.txt"
+
+secondOutput="${occurencesOutput}/2.txt"
+secondPercent="${occurencesOutput}/Percent_2.txt"
+
+thirdOutput="${occurencesOutput}/3.txt"
+thirdPercent="${occurencesOutput}/Percent_3.txt"
+
+fourthOutput="${occurencesOutput}/4.txt"
+fourthPercent="${occurencesOutput}/Percent_4.txt"
+
+fifthOutput="${occurencesOutput}/5.txt"
+fifthPercent="${occurencesOutput}/Percent_5.txt"
+
+
+
+timeOutput="${removed}data/most-used-note-value/time"
+mkdir $timeOutput
+
+firstTimeOutput="${timeOutput}/1.txt"
+firstTimePercent="${timeOutput}/Percent_1.txt"
+
+secondTimeOutput="${timeOutput}/2.txt"
+secondTimePercent="${timeOutput}/Percent_2.txt"
+
+thirdTimeOutput="${timeOutput}/3.txt"
+thirdTimePercent="${timeOutput}/Percent_3.txt"
+
+fourthTimeOutput="${timeOutput}/4.txt"
+fourthTimePercent="${timeOutput}/Percent_4.txt"
+
+fifthTimeOutput="${timeOutput}/5.txt"
+fifthTimePercent="${timeOutput}/Percent_5.txt"
+
+
+
 fileprep="$(grep -v '=' $file | grep -v '*' | grep -v '!' |  grep -o '[[:digit:]]*' | grep '.')"
 
 totallines=$(echo "$fileprep" | wc -l)
@@ -49,8 +93,16 @@ then
     greatest=64
 fi
 
-echo $greatest
-bc -l <<< $largest/$totallines
+
+greatestPercent=$(bc -l <<< $largest/$totallines)
+
+if [ "$greatestPercent" -eq "0" ]; then
+    echo "test"
+
+else 
+    echo $greatest > $firstOutput
+    bc -l <<< $largest/$totallines > $firstPercent
+fi
 
 secondLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '2q;d')
 
@@ -77,8 +129,15 @@ then
     secondGreatest=64
 fi
 
-echo $secondGreatest
-bc -l <<< $secondLargest/$totallines
+secondgreatestPercent=$(bc -l <<< $secondLargest/$totallines)
+
+if [ "$secondgreatestPercent" -eq "0" ]; then
+    echo "test"
+
+else 
+    echo $secondGreatest > $secondOutput
+    bc -l <<< $secondLargest/$totallines > $secondPercent
+fi
 
 
 thirdLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '3q;d')
@@ -106,8 +165,16 @@ then
     thirdGreatest=64
 fi
 
-echo $thirdGreatest
-bc -l <<< $thirdLargest/$totallines
+thirdgreatestPercent=$(bc -l <<< $thirdLargest/$totallines)
+
+if [ "$thirdgreatestPercent" -eq "0" ]; then
+    echo "test"
+
+else 
+    echo $thirdGreatest > $thirdOutput
+    bc -l <<< $thirdLargest/$totallines > $thirdPercent
+fi
+
 
 fourthLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '4q;d')
 
@@ -134,8 +201,18 @@ then
     fourthGreatest=64
 fi
 
-echo $fourthGreatest
-bc -l <<< $fourthLargest/$totallines
+
+fourthgreatestPercent=$(bc -l <<< $fourthLargest/$totallines)
+
+if [ "$fourthgreatestPercent" -eq "0" ]; then
+    echo "test"
+
+else 
+    echo $fourthGreatest > $fourthOutput
+    bc -l <<< $fourthLargest/$totallines > $fourthPercent
+fi
+
+
 
 fifthLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '5q;d')
 
@@ -162,67 +239,22 @@ then
     fifthGreatest=64
 fi
 
-echo $fifthGreatest
-bc -l <<< $fifthLargest/$totallines
+fifthgreatestPercent=$(bc -l <<< $fifthLargest/$totallines)
 
-sixthLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '6q;d')
+if [ "$fifthgreatestPercent" -eq "0" ]; then
+    echo "test"
 
-if [ "$sixthLargest" = $one ]
-then 
-    sixthGreatest=1
-elif [ "$sixthLargest" = $two ]
-then
-    sixthGreatest=2
-elif [ "$sixthLargest" = $four ]
-then
-    sixthGreatest=4
-elif [ "$sixthLargest" = $eight ]
-then
-    sixthGreatest=8
-elif [ "$sixthLargest" = $sixteen ]
-then
-    sixthGreatest=16
-elif [ "$sixthLargest" = $thirtytwo ]
-then
-    sixthGreatest=32
-elif [ "$sixthLargest" = $sixtyfour ]
-then
-    sixthGreatest=64
+else 
+    echo $fifthGreatest > $fifthOutput
+    bc -l <<< $fifthLargest/$totallines > $fifthPercent
 fi
-
-echo $sixthGreatest
-bc -l <<< $sixthLargest/$totallines
-
-seventhLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '7q;d')
-
-if [ "$seventhLargest" = $one ]
-then 
-    seventhGreatest=1
-elif [ "$seventhLargest" = $two ]
-then
-    seventhGreatest=2
-elif [ "$seventhLargest" = $four ]
-then
-    seventhGreatest=4
-elif [ "$seventhLargest" = $eight ]
-then
-    seventhGreatest=8
-elif [ "$seventhLargest" = $sixteen ]
-then
-    seventhGreatest=16
-elif [ "$seventhLargest" = $thirtytwo ]
-then
-    seventhGreatest=32
-elif [ "$seventhLargest" = $sixtyfour ]
-then
-    seventhGreatest=64
-fi
-
-echo $seventhGreatest
-bc -l <<< $seventhLargest/$totallines
 
 
 # -------------------------------------
+# ======================================
+# -------------------------------------
+
+
 
 largestTime=$(printf '%s\n' "${timearray[@]}" | sort -rn | sed '1q;d')
 
@@ -249,8 +281,15 @@ then
     GreatestTime=64
 fi
 
-echo $GreatestTime
-bc -l <<< $largestTime/$totaltime
+firstPercentTime=$(bc -l <<< $largestTime/$totaltime)
+
+if [ "$firstPercentTime" == "0" ]; then
+    echo "test"
+else 
+    echo $GreatestTime > $firstTimeOutput
+    echo $firstPercentTime > $firstTimePercent
+fi
+
 
 secondlargestTime=$(printf '%s\n' "${timearray[@]}" | sort -rn | sed '2q;d')
 
@@ -277,8 +316,15 @@ then
     secondGreatestTime=64
 fi
 
-echo $secondGreatestTime
-bc -l <<< $secondlargestTime/$totaltime
+secondPercentTime=$(bc -l <<< $secondlargestTime/$totaltime)
+
+if [ "$secondPercentTime" -eq "0" ]; then
+    echo "test"
+else 
+    echo $secondGreatestTime > $secondTimeOutput
+    echo $secondPercentTime > $secondTimePercent
+fi
+
 
 
 thirdlargestTime=$(printf '%s\n' "${timearray[@]}" | sort -rn | sed '3q;d')
@@ -306,8 +352,15 @@ then
     thirdGreatestTime=64
 fi
 
-echo $thirdGreatestTime
-bc -l <<< $thirdlargestTime/$totaltime
+thirdPercentTime=$(bc -l <<< $thirdlargestTime/$totaltime)
+
+if [ "$thirdPercentTime" -eq "0" ]; then
+    echo "test"
+
+else 
+    echo $thirdGreatestTime > $thirdTimeOutput
+    bc -l <<< $thirdlargestTime/$totaltime > $thirdTimePercent
+fi
 
 fourtimethlargestTime=$(printf '%s\n' "${timearray[@]}" | sort -rn | sed '4q;d')
 
@@ -334,8 +387,16 @@ then
     fourtimethGreatestTime=64
 fi
 
-echo $fourtimethGreatestTime
-bc -l <<< $fourtimethlargestTime/$totaltime
+fourthPercentTime=$(bc -l <<< $fourtimethlargestTime/$totaltime)
+
+if [ "$fourthPercentTime" -eq "0" ]; then
+    echo "test"
+
+else 
+    echo $fourthGreatestTime > $fourthTimeOutput
+    bc -l <<< $fourthlargestTime/$totaltime > $fourthTimePercent
+fi
+
 
 fifthlargestTime=$(printf '%s\n' "${timearray[@]}" | sort -rn | sed '5q;d')
 
@@ -362,61 +423,12 @@ then
     fifthGreatestTime=64
 fi
 
-echo $fifthGreatestTime
-bc -l <<< $fifthlargestTime/$totaltime
+fifthPercentTime=$(bc -l <<< $fifthlargestTime/$totaltime)
 
-sixthlargestTime=$(printf '%s\n' "${timearray[@]}" | sort -rn | sed '6q;d')
+if [ "$fifthPercentTime" -eq "0" ]; then
+    echo "test"
 
-if [ "$sixthlargestTime" = $onetime ]
-then 
-    sixthGreatestTime=1
-elif [ "$sixthlargestTime" = $twotime ]
-then
-    sixthGreatestTime=2
-elif [ "$sixthlargestTime" = $fourtime ]
-then
-    sixthGreatestTime=4
-elif [ "$sixthlargestTime" = $eighttime ]
-then
-    sixthGreatestTime=8
-elif [ "$sixthlargestTime" = $sixteentime ]
-then
-    sixthGreatestTime=16
-elif [ "$sixthlargestTime" = $thirtytwotime ]
-then
-    sixthGreatestTime=32
-elif [ "$sixthlargestTime" = $sixtyfourtime ]
-then
-    sixthGreatestTime=64
+else 
+    echo $fifthGreatestTime > $fifthTimeOutput
+    bc -l <<< $fifthlargestTime/$totaltime > $fifthTimePercent
 fi
-
-echo $sixthGreatestTime
-bc -l <<< $sixthlargestTime/$totaltime
-
-seventhlargestTime=$(printf '%s\n' "${timearray[@]}" | sort -rn | sed '7q;d')
-
-if [ "$seventhlargestTime" = $onetime ]
-then 
-    seventhGreatestTime=1
-elif [ "$seventhlargestTime" = $twotime ]
-then
-    seventhGreatestTime=2
-elif [ "$seventhlargestTime" = $fourtime ]
-then
-    seventhGreatestTime=4
-elif [ "$seventhlargestTime" = $eighttime ]
-then
-    seventhGreatestTime=8
-elif [ "$seventhlargestTime" = $sixteentime ]
-then
-    seventhGreatestTime=16
-elif [ "$seventhlargestTime" = $thirtytwotime ]
-then
-    seventhGreatestTime=32
-elif [ "$seventhlargestTime" = $sixtyfourtime ]
-then
-    seventhGreatestTime=64
-fi
-
-echo $seventhGreatestTime
-bc -l <<< $seventhlargestTime/$totaltime

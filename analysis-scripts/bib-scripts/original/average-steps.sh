@@ -1,10 +1,12 @@
 #!/bin/bash
 file=$1
 
-removed=$(echo $file | sed -e "s/$suffix$//")
-output="${removed}data/average-note-value/"
+suffix="song.txt"
 
-fileprep=$(deg $file | grep '.' | grep -v '!' | grep -v '*' | grep -v '=' | grep -o '[[:digit:]]*' | grep '.' | perl -lne 'if ($.==1){$p=$_} else{print "$p ".($_-$p); $p=$_} END{print $p}' | tr ' ' '~' | cut -d '~' -f2)
+removed=$(echo $file | sed -e "s/$suffix$//")
+output="${removed}data/average-steps/"
+
+fileprep=$(/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/deg $file | grep '.' | grep -v '!' | grep -v '*' | grep -v '=' | grep -o '[[:digit:]]*' | grep '.' | perl -lne 'if ($.==1){$p=$_} else{print "$p ".($_-$p); $p=$_} END{print $p}' | tr ' ' '~' | cut -d '~' -f2)
 divideBy=$( echo "$fileprep" | wc -l)
 includingNegativesSum=$( echo "$fileprep" | tr '\n' '+' | awk '{print $0"0"}' | bc -l)
 absoluteValueSum=$( echo "$fileprep" | tr -d '-'  | tr '\n' '+' | awk '{print $0"0"}' | bc -l)
