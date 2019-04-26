@@ -4,7 +4,6 @@ file=$1  # Captures input of kern file
 
 rhythmList=$(cat $file | tr '\t' '\n' | grep -v '=' | grep -v '*' | grep -v '!' | grep -o '[[:digit:]]*' | grep .  )  # Turns the kern file into a list of numbers that indicate rhythm for each note
 
-
 sumSym=$(echo "$rhythmList" | tr '\n' "+")  # Replaces the newline characters with addition signs
 
 lineCount=$(echo "$rhythmList" | wc -l )    # Gets a count of the number of notoes in the piece
