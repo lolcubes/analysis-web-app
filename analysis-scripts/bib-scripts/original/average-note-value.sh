@@ -15,5 +15,5 @@ lineCount=$(echo "$rhythmList" | wc -l )    # Gets a count of the number of noto
 
 summed=$(echo "${sumSym}0" | bc -l)         # Evaluates the sumSym expression
 
-echo $lineCount / $summed | bc -l           # Evaluates the division of number of notes and the total length of the notes
+echo $lineCount / $summed | bc -l > $output          # Evaluates the division of number of notes and the total length of the notes
 

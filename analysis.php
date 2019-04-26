@@ -19,8 +19,10 @@
             echo $variable;
             echo "$selected  $song" . "</br>";
 
+            //  $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
+            //  shell_exec("$scriptdirec $song");
             // selected is the script, song is the file
-            //within bash, we can derive the output directory based on the current script being run, and the song.txt argument, so no need for an output arg here
+            //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
             
         }
         echo "----------------------------";
