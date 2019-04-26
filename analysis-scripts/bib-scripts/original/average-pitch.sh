@@ -2,6 +2,9 @@
 
 file=$1
 
+removed=$(echo $file | sed -e "s/$suffix$//")
+output="${removed}data/average-pitch/pitch.txt"
+
 # Prepares the file by turning it into a single column list of numbers to be processed
 filePrep=$(deg $file | grep -v '=' | grep -v '*' | grep -v '!' | grep -v 'r' | tr -d '^' | tr -d 'v' | tr -d . | tr '\t' '\n' | tr ' ' '\n' | grep .);
 
@@ -15,5 +18,5 @@ sumDecim=$(echo "$tradeDecim" | tr '\n' '+' | awk '{print $0"0"}' | bc -l);
 totalLines="$(echo "$filePrep" | wc -l)";
 
 # Divides the sum of the pitches by the number of notes for an average
-bc -l <<< $sumDecim/$totalLines;
+bc -l <<< $sumDecim/$totalLines > $output
 
