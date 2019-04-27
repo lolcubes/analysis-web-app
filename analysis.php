@@ -4,6 +4,7 @@
         <title>Beats in Bytes | Analysis Tools</title>
 
         <link rel="stylesheet" type="text/css" href="style-main.css" />
+        <link rel="stylesheet" type="text/css" href="analysis-dashboard.css" />
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="image-assets/favicon.png"/>
 
@@ -45,7 +46,7 @@
                 outline: 0;
             }
         </style>
-        <div id="dashboard-header"></div>
+        <div id="dashboard-header">
         <br>
         <br>
         <br>
@@ -53,6 +54,9 @@
         <h1>Analysis Dashboard</h1> 
         </center>
         <br>
+
+        <br>
+        </div>
         <br>
         <?php
             $filesrecieved = $_POST['userfilelocations'];

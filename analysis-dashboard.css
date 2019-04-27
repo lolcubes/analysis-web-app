@@ -1,0 +1,14 @@
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: 0px;
+}
+
+#dashboard-header {
+  background-color: rgb(39, 39, 39);
+  color: white;
+  box-shadow: 0px 4px 8px grey;
+}
