@@ -45,11 +45,15 @@
                 outline: 0;
             }
         </style>
+        <div id="dashboard-header"></div>
+        <br>
         <br>
         <br>
         <center>
         <h1>Analysis Dashboard</h1> 
         </center>
+        <br>
+        <br>
         <?php
             $filesrecieved = $_POST['userfilelocations'];
             $explodedfiledirs = explode(",", $filesrecieved);
@@ -66,11 +70,23 @@
 
                     shell_exec("$scriptdirec $song");
 
+                    
+
 
                     // selected is the script, song is the file
                     //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
                     
                 }
+
+                $filename = str_replace("Song_Database/", "", $value);
+                $removedFileName = strstr($filename, '_');
+                $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
+
+                // $explodedname = explode("_", $filename);
+                // print_r($explodedname);
+
+                echo "<div class=panels><p>" . $completeFileName . "</p></div>";
+
 
             }
 
@@ -80,12 +96,12 @@
             foreach ($explodedfiledirs as $value) {
 
                 $keyscapelocation = $value . "/image-assets/keyscape.png";
-                $appendtext = "<img src=\"" . $keyscapelocation . "\" height=90px>";
-                echo $appendtext;
+                // $appendtext = "<img src=\"" . $keyscapelocation . "\" height=90px>";
+                // echo $appendtext;
 
-                $prollLocation = $value . "/image-assets/proll.png";
-                $appendtext2 = "<img src=\"" . $prollLocation . "\" height=90px>";
-                echo $appendtext2;
+                // $prollLocation = $value . "/image-assets/proll.png";
+                // $appendtext2 = "<img src=\"" . $prollLocation . "\" height=90px>";
+                // echo $appendtext2;
 
                 $datafolder = $value . "/data";
 
@@ -101,12 +117,12 @@
                         $currentKeySigFile[] = $fileInfo->getFilename();
                     }
 
-                    echo "<div class=panels>";
-                    echo "<p>" . $value . "</p>";
+                    // echo "<div class=panels>";
+                    // echo "<p>" . $value . "</p>";
                     foreach ($currentKeySigFile as $readKeySig){
                         $fullKeySigPath = $keySigDir . "/" . $readKeySig;
-                        echo file_get_contents($fullKeySigPath);
-                        echo "<br>";
+                        // echo file_get_contents($fullKeySigPath);
+                        // echo "<br>";
                     }
 
 
@@ -172,12 +188,16 @@
 <br>
 
 
-<div class=panels>
+<!-- <div class=panels>
     <div id="scales"></div>
 </div>
 
 
-<script>
+<div class=panels>
+    <div id="scales2"></div>
+</div>
+        -->
+<script> 
 
     Highcharts.chart('scales', {
 
