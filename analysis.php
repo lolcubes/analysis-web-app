@@ -24,38 +24,26 @@
         $song = $value . "/song.txt";
         $datadir = $value . "/data";
         mkdir($datadir);
-
-        echo $value;
-        echo "<br>";
-        echo "==============";
-        echo "<br>";
         foreach($_POST['data-choose'] as $selected){
-            echo $selected;
             $analysisname = substr($selected, 0, strpos($selected, "."));
             $directory = $value . "/data/" . "$analysisname";
             mkdir($directory);
-            shell_exec("$scriptdirec $song");
-
             $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
-            echo "<br>";
+            shell_exec("$scriptdirec $song");
+
 
             // selected is the script, song is the file
             //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
             
         }
-        echo "----------------------------";
-        echo "<br>";
-        echo "<br>";
-
-        echo "<br>";
 
     }
     foreach ($explodedfiledirs as $value) {
         $datafolder = $value . "/data";
         $keySigPath = $datafolder . "/key-signature/key-signature.txt";
         $keysig = file_get_contents($keySigPath);
-        echo '<div class="panels"><p>' . $value . '</p><br><span>' . $keysig . '</span></div>';
+        echo '<div class="panels"><p>' . $value . '</p><br><p>' . $keysig . '</p></div>';
     }
 
 
