@@ -46,5 +46,3 @@ for i in $(seq 1 $sigs); do
         echo "No key signature found." > "${output}/signature-${i}.txt"
     fi
 done
-
-

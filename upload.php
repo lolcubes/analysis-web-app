@@ -68,14 +68,19 @@
                 $degoutput = "$filedirectory" . "/deg.txt";
                 $assetsdir = "$filedirectory" . "/image-assets";
                 mkdir($assetsdir);
-                $prolloutput = "$filedirectory" . "/image-assets/proll.png";
-                $keyscapeoutput = "$filedirectory" . "/image-assets/keyscape.png";
+                $prolloutput = "$filedirectory" . "/image-assets/proll.ppm";
+                $prolloutputpng = "$filedirectory" . "/image-assets/proll.png";
+                $keyscapeoutput = "$filedirectory" . "/image-assets/keyscape.ppm";
+                $keyscapeoutputpng = "$filedirectory" . "/image-assets/keyscape.png";
 
                 exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
                 exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav $target");
                 shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/degrunner.sh $fileconvert $degoutput");
                 shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/proll $fileconvert > $prolloutput");
                 shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/mkeyscape $target > $keyscapeoutput");
+                shell_exec( "/usr/local/bin/convert $keyscapeoutput $keyscapeoutputpng");
+                shell_exec( "/usr/local/bin/convert $prolloutput $prolloutputpng");
+
             }       
 
 ?>

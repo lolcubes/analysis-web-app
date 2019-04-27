@@ -10,6 +10,13 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
     </head>
     <body>
 
@@ -67,10 +74,18 @@
 
             }
 
-        $chosentypes = $_POST['data-choose'];
+            $chosentypes = $_POST['data-choose'];
 
             // for each of the files, echo some divs with data
             foreach ($explodedfiledirs as $value) {
+
+                $keyscapelocation = $value . "/image-assets/keyscape.png";
+                $appendtext = "<img src=\"" . $keyscapelocation . "\" height=90px>";
+                echo $appendtext;
+
+                $prollLocation = $value . "/image-assets/proll.png";
+                $appendtext2 = "<img src=\"" . $prollLocation . "\" height=90px>";
+                echo $appendtext2;
 
                 $datafolder = $value . "/data";
 
@@ -93,7 +108,56 @@
                         echo file_get_contents($fullKeySigPath);
                         echo "<br>";
                     }
-                    echo "</div>";
+
+
+
+                }
+                // ======================================
+
+
+
+
+                // SCALES
+                // ======================================
+
+                if (in_array("scales.sh", $chosentypes)) {    // if key signature is in the array, echo key sig data
+                    $scalesDir = $datafolder . "/scales";
+
+                    $ascSingleDir = $scalesDir . "/ascending-single";
+                    $ascDoubleDir = $scalesDir . "/ascending-double";
+                    $descSingleDir = $scalesDir . "/descending-single";
+                    $descDoubleDir = $scalesDir . "/descending-double";
+
+                    $ascSingle1 = file_get_contents("$ascSingleDir" . "/2.txt");
+                    $ascSingle2 = file_get_contents("$ascSingleDir" . "/3.txt");
+                    $ascSingle3 = file_get_contents("$ascSingleDir" . "/4.txt");
+                    $ascSingle4 = file_get_contents("$ascSingleDir" . "/5.txt");
+                    $ascSingle5 = file_get_contents("$ascSingleDir" . "/6.txt");
+                    
+                    $ascDouble1 = file_get_contents("$ascDoubleDir" . "/2.txt");
+                    $ascDouble2 = file_get_contents("$ascDoubleDir" . "/3.txt");
+                    $ascDouble3 = file_get_contents("$ascDoubleDir" . "/4.txt");
+                    $ascDouble4 = file_get_contents("$ascDoubleDir" . "/5.txt");
+                    $ascDouble5 = file_get_contents("$ascDoubleDir" . "/6.txt");
+                    
+                    $descSingle1 = file_get_contents("$descSingleDir" . "/2.txt");
+                    $descSingle2 = file_get_contents("$descSingleDir" . "/3.txt");
+                    $descSingle3 = file_get_contents("$descSingleDir" . "/4.txt");
+                    $descSingle4 = file_get_contents("$descSingleDir" . "/5.txt");
+                    $descSingle5 = file_get_contents("$descSingleDir" . "/6.txt");
+                    
+                    $descDouble1 = file_get_contents("$descDoubleDir" . "/2.txt");
+                    $descDouble2 = file_get_contents("$descDoubleDir" . "/3.txt");
+                    $descDouble3 = file_get_contents("$descDoubleDir" . "/4.txt");
+                    $descDouble4 = file_get_contents("$descDoubleDir" . "/5.txt");
+                    $descDouble5 = file_get_contents("$descDoubleDir" . "/6.txt");
+ 
+                    // $insertmehere = preg_replace(" ", "", $insertmehere);
+
+                    $ascSingleArray = "[" . $ascSingle1 . ", " . $ascSingle2 . ", " . $ascSingle3 . ", " . $ascSingle4 . ", " . $ascSingle5 . "]";
+                    $ascDoubleArray = "[" . $ascDouble1 . ", " . $ascDouble2 . ", " . $ascDouble3 . ", " . $ascDouble4 . ", " . $ascDouble5 . "]";
+                    $descSingleArray = "[" . $descSingle1 . ", " . $descSingle2 . ", " . $descSingle3 . ", " . $descSingle4 . ", " . $descSingle5 . "]";
+                    $descDoubleArray = "[" . $descDouble1 . ", " . $descDouble2 . ", " . $descDouble3 . ", " . $descDouble4 . ", " . $descDouble5 . "]";
 
                 }
                 // ======================================
@@ -104,5 +168,77 @@
 
 
         ?>
+<br>
+<br>
+
+
+<div class=panels>
+    <div id="scales"></div>
+</div>
+
+
+<script>
+
+    Highcharts.chart('scales', {
+
+    title: {
+        text: 'Scales Test'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Number of Employees'
+        }
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2
+        }
+    },
+
+    series: [{
+        name: 'Ascending Single',
+        data:         
+        <?php
+            echo $ascSingleArray;
+        ?>
+
+    },
+    {
+        name: 'Ascending Double',
+        data:         
+        <?php
+            echo $ascDoubleArray
+        ?>
+
+    },
+    {
+        name: 'Descending Single',
+        data:         
+        <?php
+            echo $descSingleArray
+        ?>
+
+    },
+    {
+        name: 'Descending Double',
+        data:         
+        <?php
+            echo $descDoubleArray
+        ?>
+
+    }
+],
+
+    });
+</script>
+
+
+
+
     </body>
 </html>

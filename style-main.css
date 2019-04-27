@@ -900,3 +900,11 @@ audio {
   border: 1px solid rgb(73, 73, 73);
   transition: .2s;
 }
+
+
+#scales {
+	min-width: 310px;
+	max-width: 800px;
+	height: 400px;
+	margin: 0 auto
+}

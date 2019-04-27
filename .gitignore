@@ -20,3 +20,6 @@ mid2wav-master/
 # ignore Songs Database
 
 Song_Database/
+
+#ignore the converter
+test/
