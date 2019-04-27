@@ -46,6 +46,13 @@
 <div id="center">
 <br>
 
+<div id="analysis-header">
+    <h1>Musical Analysis Tools</h1>
+</div>
+
+<br>
+<br>
+
 <button class="buttonform" id="uploadfilesbutton">Upload File</button>
 &nbsp;&nbsp;&nbsp;
 <span id="orspan">or</span>

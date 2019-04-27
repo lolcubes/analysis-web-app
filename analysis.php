@@ -19,7 +19,7 @@
 
             $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
-            shell_exec("$scriptdirec $song");
+            $output = shell_exec("$scriptdirec $song");
             echo $output;
             echo "<br>";
 

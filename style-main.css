@@ -19,7 +19,7 @@ code {
 }
 
 #file-info-accordions {
-  /* display: none; */
+  display: none;
 }
 
 #bumper {
@@ -29,6 +29,8 @@ code {
 
 h1, h2, h3, h4, h5, h6, h7 {
   font-weight: normal;
+  font-family: 'Nanum Gothic', sans-serif;
+
   /* padding-top: 30px;
   line-height: 0px;
   width: 300px;
@@ -370,7 +372,7 @@ h4 {
     color: rgb(0, 0, 0);
     cursor: pointer;
     padding: 20px;
-    width: 500px;
+    width: 800px;
     border: none;
     text-align: left;
     margin: 4px;
@@ -379,12 +381,11 @@ h4 {
     transition: 0.4s;
     box-shadow: 5px 5px 16px  rgb(58, 58, 58);
     border-radius: 0px;
-    display: inline-block;
   }
 
   .active, .accordion:hover {
-    background-color: rgb(20, 20, 20);
     color: rgb(255, 255, 255);
+    background-color: rgb(29, 29, 29);
 
   }
 
@@ -404,10 +405,13 @@ h4 {
   .active:after {
     content: "\2212";
     color: rgb(0, 0, 0);
+    background-color: grey;
   }
 
   .active:after:hover {
     color: rgb(255, 251, 251);
+    background-color: grey;
+
   }
 
   .panel {
