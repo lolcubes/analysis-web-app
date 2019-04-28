@@ -1,3 +1,8 @@
+:root {
+  --main-bg-color: rgb(17,27,39);
+  --main-panel-color: rgb(31, 45, 61);
+  --panel-color-hover: rgb(39, 53, 71);
+}
 
 
 * {
@@ -8,36 +13,45 @@
 }
 
 #dashboard-header {
-  background-color: rgb(39, 39, 39);
+  background-color: var(--main-panel-color);
   color: white;
-  box-shadow: 0px 4px 8px grey;
+  box-shadow: 1px 0px 18px  rgb(0, 0, 0);
 }
 
+#dashboard-header:hover {
+  border-radius: 1px solid rgb(34,45,59);
+}
 
 .analysis-panel {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color:var(--main-panel-color);
+  color: rgb(255, 255, 255);
   display: inline-block;
   height: 400px;
-  width: 500px;
-  margin: 20px;
-  padding: 25px;
+  width: 40%;
+  margin: 30px;
   border-radius: 20px;
   overflow: auto;
   font-family: 'Courier New', Courier, monospace;
-  box-shadow: 3px 3px 12px rgb(88, 88, 88);
   transition: .3s;
-  border: 5px solid rgb(236, 236, 236);
+  border: 5px solid var(--main-panel-color);
   vertical-align: top;
+  padding: 10px;
 }
 
 .analysis-panel:hover {
+  background-color: var(--panel-color-hover);
   transition: .4s;
-  box-shadow: 2px 6px 20px rgb(43, 43, 43);
-  border: 4px solid  rgb(0, 84, 211);
+  box-shadow: 1px 0px 18px  rgb(0, 0, 0);
+  border: 4px solid  rgb(0, 40, 56);
 	position: relative;
-  top: 1px;
+  top: .2px;
 }
+
+#analysis-panel:hover > #panelheader {
+  transition: .2s;
+  background-color: var(--main-panel-color);
+}
+
 #inlineme {
   display: inline-block;
   vertical-align: middle;
@@ -53,4 +67,47 @@
   position: relative;
   left: -80px;
   margin-left: -100px;
+}
+
+.panelheader {
+  background-color: var(--main-bg-color);
+  color: white;
+  padding: 20px;
+  width: 90%;
+  text-align: center;
+  border-radius: 20px;
+  transition: .2s;
+}
+
+
+body {
+  background-color: var(--main-bg-color);
+}
+
+#shelf-item {
+  width: 25%;
+  background-color: var(--main-bg-color);
+  color: white;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 4px;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+#shelf-item:hover {
+
+  background-color: var(--main-panel-color);
+  transition: .18s;
+
+}
+
+#shelf {
+  width: 25%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 4px;
+  background-color: white;
 }

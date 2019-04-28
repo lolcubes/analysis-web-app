@@ -89,10 +89,10 @@
                 // $explodedname = explode("_", $filename);
                 // print_r($explodedname);
 
-                echo "<div class=analysis-panel><h1>" . $completeFileName . "</h1>";
+                echo "<div class=analysis-panel><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
 
-
-
+                echo "<br>";
+                echo "<div id=shelf">;
                 foreach($_POST['data-choose'] as $selected){
                     $analysisname = substr($selected, 0, strpos($selected, "."));
                     $directory = $value . "/data/" . "$analysisname";
@@ -100,16 +100,14 @@
                     $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
                     shell_exec("$scriptdirec $song");
-                    echo "<div id=heading><p>" . $analysisname . "</p></div>";
-                    echo "<br>";
-                    
+                    echo "<div id=shelf-item><span>" . $analysisname . "</span></div>";                    
 
 
                     // selected is the script, song is the file
                     //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
                     
                 }
-
+                echo "</div>";
                 echo "</div>";
 
 
