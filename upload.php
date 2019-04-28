@@ -23,7 +23,6 @@
             foreach ($filenames as $value) {
                 $value = substr($value, 0, strpos($value, "."));
                 $value = str_replace(' ', '_', $value);
-                file_put_contents("/Applications/MAMP/htdocs/NewTestings/test.txt", $value);
                 $numberfolders = shell_exec("/Applications/MAMP/htdocs/NewTestings/foldermaker.sh | tr -d ' '");
                 $numberfolders = str_replace(array("\n", "\r"), '', $numberfolders);
 

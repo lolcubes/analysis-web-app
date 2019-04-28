@@ -644,7 +644,9 @@ function changeDetailsMessage(){
                 <input type="hidden" name='userfilelocations'/> 
             </form>
 
-    </div>
+    </div> 
+    <br>
+    <br>
 
     <div id="footer">
     </div>
