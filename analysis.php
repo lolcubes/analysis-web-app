@@ -51,12 +51,6 @@
         </div>
         <div></div>
 
-
-        <script>
-            function showDiv(class) {
-                
-            }
-        </script>
         <style>
             .home{
                 background-color: rgb(153, 153, 153);
@@ -75,6 +69,20 @@
 
         </center>
         <br>
+        
+        <script>
+            function showDiv(classVar) { 
+                var x = document.getElementsByClassName("test");
+
+                var i;
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+
+                var y = document.getElementById(classVar);
+                y.style.display = "inline-block";
+            }
+        </script>
 
         <br>
         </div>
@@ -98,7 +106,7 @@
                 echo "<div class=analysis-panel><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
 
                 echo "<div id=shelf>";
-                echo "<div id=shelf-item><span>General</span></div>";
+                echo "<div id=shelf-item class=general onclick=\"showDiv(this.className)\"><span>General</span></div>";
 
                 // EXECUTES SCRIPT, CREATES SHELF (SIDENAV) //
                 //=========================================
@@ -110,26 +118,32 @@
                     $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
                     shell_exec("$scriptdirec $song");
-                    echo "<div id=shelf-item class=" . $analysisname . "><span>" . $analysisname . "</span></div>";                    
+                    echo "<div id=shelf-item class=" . $analysisname . " onclick=\"showDiv(this.className);\"><span>" . $analysisname . "</span></div>";                    
 
                     // echo "<button class=" . $analysisname . " onclick='showDiv(this.className)'</button>";
                     // selected is the script, song is the file
                     //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
                     
                 }
+            }
 
                 //=======================================
 
                 echo "</div>";
 
                 // CREATES CONTENT FOR EACH ANALYSIS TYPE//
+                echo "<div id=inlineme>";
                 foreach($_POST['data-choose'] as $selected){
-                    echo "<div id=test></div>";
-                }
+                        $analysisname = substr($selected, 0, strpos($selected, "."));
+                        echo "<div id=" . $analysisname . " class=test><span>" . $analysisname . "</span></div>";
+                        // if the analysis name is such and such, echo a different thing
+                    }
+                echo "<div id=general class=test><span>General</span></div>";
 
                 echo "</div>";
 
-            }
+                echo "</div>";
+
             
 
             $chosentypes = $_POST['data-choose'];
