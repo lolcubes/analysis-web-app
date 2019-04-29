@@ -1,6 +1,8 @@
 :root {
   --main-bg-color: rgb(17,27,39);
+  --main-bg-color-lighter: rgb(23, 36, 53);
   --main-panel-color: rgb(31, 45, 61);
+  --panel-lighter: rgb(41, 64, 90); 
   --panel-color-hover: rgb(39, 53, 71);
 }
 
@@ -15,11 +17,12 @@
 #dashboard-header {
   background-color: var(--main-panel-color);
   color: white;
-  box-shadow: 1px 0px 18px  rgb(0, 0, 0);
+  box-shadow: 1px 0px 18px  rgba(0, 0, 0, .7);
 }
 
 #dashboard-header:hover {
-  border-radius: 1px solid rgb(34,45,59);
+  border: 1px solid rgb(34,45,59);
+  box-shadow: 1px 0px 22px  rgb(0, 0, 0);
 }
 
 .analysis-panel {
@@ -35,7 +38,12 @@
   transition: .3s;
   border: 5px solid var(--main-panel-color);
   vertical-align: top;
-  padding: 10px;
+  padding-left: 0px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  box-shadow: 1px 4px 19px  rgb(0, 0, 0, .9);
+
 }
 
 .analysis-panel:hover {
@@ -73,10 +81,20 @@
   background-color: var(--main-bg-color);
   color: white;
   padding: 20px;
-  width: 90%;
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   border-radius: 20px;
   transition: .2s;
+  box-shadow: 1px 6px 16px  rgba(0, 0, 0, .4);
+  z-index: 1000;
+}
+
+.panelheader:hover {
+  transition: .2s;
+  background-color:  var(--main-bg-color-lighter);
+  box-shadow: 1px 4px 18px  rgba(0, 0, 0, .6);
 }
 
 
@@ -85,29 +103,44 @@ body {
 }
 
 #shelf-item {
-  width: 25%;
+  width: 85%;
   background-color: var(--main-bg-color);
   color: white;
-  margin-bottom: 8px;
+  margin-bottom: 3px;
+  margin-left: auto;
+  margin-right: auto;
   padding-bottom: 10px;
   padding-top: 10px;
   padding-left: 4px;
   text-align: center;
   border-radius: 3px;
   cursor: pointer;
-
+  align-content: center;
+  transition: .18s;
+  border-radius: 5px;
+  border: solid 3px var(--main-bg-color);
 }
+
 #shelf-item:hover {
 
-  background-color: var(--main-panel-color);
+  background-color: rgba(169, 245, 255, 0.103);
   transition: .18s;
-
+  border: solid 2px var(--main-bg-color);
 }
 
 #shelf {
   width: 25%;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  padding-left: 4px;
-  background-color: white;
+  background-color: var(--main-panel-color);
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  box-shadow: 1px 4px 14px  rgba(0, 0, 0, .5);
+  
+
+}
+
+#test {
+  width: 200px;
+  height: 150px;
+  background-color: black;
 }

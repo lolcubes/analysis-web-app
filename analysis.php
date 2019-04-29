@@ -51,6 +51,12 @@
         </div>
         <div></div>
 
+
+        <script>
+            function showDiv(class) {
+                
+            }
+        </script>
         <style>
             .home{
                 background-color: rgb(153, 153, 153);
@@ -91,8 +97,12 @@
 
                 echo "<div class=analysis-panel><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
 
-                echo "<br>";
-                echo "<div id=shelf">;
+                echo "<div id=shelf>";
+                echo "<div id=shelf-item><span>General</span></div>";
+
+                // EXECUTES SCRIPT, CREATES SHELF (SIDENAV) //
+                //=========================================
+
                 foreach($_POST['data-choose'] as $selected){
                     $analysisname = substr($selected, 0, strpos($selected, "."));
                     $directory = $value . "/data/" . "$analysisname";
@@ -100,18 +110,27 @@
                     $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
                     shell_exec("$scriptdirec $song");
-                    echo "<div id=shelf-item><span>" . $analysisname . "</span></div>";                    
+                    echo "<div id=shelf-item class=" . $analysisname . "><span>" . $analysisname . "</span></div>";                    
 
-
+                    // echo "<button class=" . $analysisname . " onclick='showDiv(this.className)'</button>";
                     // selected is the script, song is the file
                     //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
                     
                 }
-                echo "</div>";
+
+                //=======================================
+
                 echo "</div>";
 
+                // CREATES CONTENT FOR EACH ANALYSIS TYPE//
+                foreach($_POST['data-choose'] as $selected){
+                    echo "<div id=test></div>";
+                }
+
+                echo "</div>";
 
             }
+            
 
             $chosentypes = $_POST['data-choose'];
 
