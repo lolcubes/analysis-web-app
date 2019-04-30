@@ -71,16 +71,18 @@
         <br>
         
         <script>
-            function showDiv(classVar) { 
-                var x = document.getElementsByClassName("analysis-content");
-
+            function showDiv(classVar, contentId) { 
+                var x = document.getElementsByClassName(contentId);
                 var i;
                 for (i = 0; i < x.length; i++) {
                     x[i].style.display = "none";
                 }
 
+
                 var y = document.getElementById(classVar);
+                console.log(y);
                 y.style.display = "inline-block";
+                console.log(classVar);
             }
         </script>
 
@@ -100,6 +102,8 @@
                 $removedFileName = strstr($filename, '_');
                 $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
 
+                $containernames = "analysis-container_" . $filename;
+
                 // $explodedname = explode("_", $filename);
                 // print_r($explodedname);
 
@@ -108,7 +112,7 @@
                 echo "<div id='largeitem'>";
 
                 echo "<div id=shelf>";
-                echo "<div id=shelf-item class=general" . $filename .  " onclick=\"showDiv(this.className)\"><span>General</span></div>";
+                echo "<div id=shelf-item class=general" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\"><span>General</span></div>";
 
                 // EXECUTES SCRIPT, CREATES SHELF (SIDENAV) //
                 //=========================================
@@ -119,7 +123,7 @@
                     $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
                     shell_exec("$scriptdirec $song");
-                    echo "<div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className);\"><span>" . $analysisname . "</span></div>";                    
+                    echo "<div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className, '" . $containernames . "');\"><span>" . $analysisname . "</span></div>";                    
 
                     // echo "<button class=" . $analysisname . " onclick='showDiv(this.className)'</button>";
                     // selected is the script, song is the file
@@ -142,18 +146,18 @@
                         // change it based on type!!
                         //=============================
                         if ($analysisname == "total-time") {
-                        echo "<div id=" . $analysisname . "_" . $filename . " class=analysis-content><span>" . $analysisname . "</span><span>oof</span></div>";
+                            echo "<div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\"><div class=analysis-content><span>" . $analysisname . "</span><span>oof</span></div></div>";
                         
                         }
                         if ($analysisname == "key-signature") {
-                            echo "<div id=" . $analysisname . "_" . $filename . " class=analysis-content><span>" . $analysisname . "</span><span>KEYOBOI</span></div>";
+                            echo "<div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\"><div class=analysis-content><span>" . $analysisname . "</span><span>KEYOBOI</span></div></div>";
                             
                         }
                         
                         // if the analysis name is such and such, echo a different thing
                     }
-                    
-                echo "<div id='general" . $filename .  "' class=analysis-content><span>General</span></div>";
+
+                echo "<div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  "><div class=analysis-content><span>General</span></div></div>";
                 echo "</div>";
 
                 echo "</div>";

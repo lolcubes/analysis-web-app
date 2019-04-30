@@ -131,10 +131,11 @@ body {
 #shelf {
   width: 100%;
   background-color: var(--main-panel-color);
-  border-radius: 8px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  box-shadow: 1px 4px 14px  rgba(0, 0, 0, .5);
+  margin-left: 6px;
+  margin-top: 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  box-shadow: 1px 4px 9px  rgba(0, 0, 0, .7);
   
 
 }
@@ -145,11 +146,10 @@ body {
   background-color: var(--main-bg-color);
   padding: 20px;
   color: white;
-  display: none;
   margin: 20px;
   transition: .3s;
-  overflow: hidden;
   border-radius: 20px;
+  box-shadow: 1px 4px 13px  rgba(0, 0, 0, .6);
 }
 
 #largeitem {
