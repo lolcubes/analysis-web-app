@@ -108,7 +108,7 @@
                 echo "<div id='largeitem'>";
 
                 echo "<div id=shelf>";
-                echo "<div id=shelf-item class=general onclick=\"showDiv(this.className)\"><span>General</span></div>";
+                echo "<div id=shelf-item class=general" . $filename .  " onclick=\"showDiv(this.className)\"><span>General</span></div>";
 
                 // EXECUTES SCRIPT, CREATES SHELF (SIDENAV) //
                 //=========================================
@@ -153,7 +153,7 @@
                         // if the analysis name is such and such, echo a different thing
                     }
                     
-                echo "<div id=general class=analysis-content><span>General</span></div>";
+                echo "<div id='general" . $filename .  "' class=analysis-content><span>General</span></div>";
                 echo "</div>";
 
                 echo "</div>";
