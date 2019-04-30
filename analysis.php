@@ -119,18 +119,19 @@
                     $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
                     shell_exec("$scriptdirec $song");
-                    echo "<div id=shelf-item class=" . $analysisname . " onclick=\"showDiv(this.className);\"><span>" . $analysisname . "</span></div>";                    
+                    echo "<div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className);\"><span>" . $analysisname . "</span></div>";                    
 
                     // echo "<button class=" . $analysisname . " onclick='showDiv(this.className)'</button>";
                     // selected is the script, song is the file
                     //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
                     
                 }
-            }
+                echo "</div>";
+                echo "</div>";
+
 
                 //=======================================
-                echo "</div>";
-                echo "</div>";
+
 
                 // CREATES CONTENT FOR EACH ANALYSIS TYPE//
                 echo "<div id=largeitem>";
@@ -141,18 +142,24 @@
                         // change it based on type!!
                         //=============================
                         if ($analysisname == "total-time") {
-                        echo "<div id=" . $analysisname . " class=analysis-content><span>" . $analysisname . "</span></div>";
+                        echo "<div id=" . $analysisname . "_" . $filename . " class=analysis-content><span>" . $analysisname . "</span><span>oof</span></div>";
                         
+                        }
+                        if ($analysisname == "key-signature") {
+                            echo "<div id=" . $analysisname . "_" . $filename . " class=analysis-content><span>" . $analysisname . "</span><span>KEYOBOI</span></div>";
+                            
                         }
                         
                         // if the analysis name is such and such, echo a different thing
                     }
+                    
                 echo "<div id=general class=analysis-content><span>General</span></div>";
-
-                echo "</div>";
-                echo "</div>";
                 echo "</div>";
 
+                echo "</div>";
+                echo "</div>";
+
+            }
             
 
             $chosentypes = $_POST['data-choose'];
