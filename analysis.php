@@ -72,7 +72,7 @@
         
         <script>
             function showDiv(classVar) { 
-                var x = document.getElementsByClassName("test");
+                var x = document.getElementsByClassName("analysis-content");
 
                 var i;
                 for (i = 0; i < x.length; i++) {
@@ -105,12 +105,13 @@
 
                 echo "<div class=analysis-panel><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
 
+                echo "<div id='largeitem'>";
+
                 echo "<div id=shelf>";
                 echo "<div id=shelf-item class=general onclick=\"showDiv(this.className)\"><span>General</span></div>";
 
                 // EXECUTES SCRIPT, CREATES SHELF (SIDENAV) //
                 //=========================================
-
                 foreach($_POST['data-choose'] as $selected){
                     $analysisname = substr($selected, 0, strpos($selected, "."));
                     $directory = $value . "/data/" . "$analysisname";
@@ -128,20 +129,28 @@
             }
 
                 //=======================================
-
+                echo "</div>";
                 echo "</div>";
 
                 // CREATES CONTENT FOR EACH ANALYSIS TYPE//
-                echo "<div id=inlineme>";
+                echo "<div id=largeitem>";
                 foreach($_POST['data-choose'] as $selected){
                         $analysisname = substr($selected, 0, strpos($selected, "."));
-                        echo "<div id=" . $analysisname . " class=test><span>" . $analysisname . "</span></div>";
+                        
+                        // ECHOES CONTENT OF EACH ANALYSIS TYPE!!!!                        
+                        // change it based on type!!
+                        //=============================
+                        if ($analysisname == "total-time") {
+                        echo "<div id=" . $analysisname . " class=analysis-content><span>" . $analysisname . "</span></div>";
+                        
+                        }
+                        
                         // if the analysis name is such and such, echo a different thing
                     }
-                echo "<div id=general class=test><span>General</span></div>";
+                echo "<div id=general class=analysis-content><span>General</span></div>";
 
                 echo "</div>";
-
+                echo "</div>";
                 echo "</div>";
 
             
@@ -242,79 +251,6 @@
         ?>
 <br>
 <br>
-
-
-<!-- <div class=panels>
-    <div id="scales"></div>
-</div>
-
-
-<div class=panels>
-    <div id="scales2"></div>
-</div>
-        -->
-<script> 
-
-    Highcharts.chart('scales', {
-
-    title: {
-        text: 'Scales Test'
-    },
-
-    yAxis: {
-        title: {
-            text: 'Number of Employees'
-        }
-    },
-
-    plotOptions: {
-        series: {
-            label: {
-                connectorAllowed: false
-            },
-            pointStart: 2
-        }
-    },
-
-    series: [{
-        name: 'Ascending Single',
-        data:         
-        <?php
-            echo $ascSingleArray;
-        ?>
-
-    },
-    {
-        name: 'Ascending Double',
-        data:         
-        <?php
-            echo $ascDoubleArray
-        ?>
-
-    },
-    {
-        name: 'Descending Single',
-        data:         
-        <?php
-            echo $descSingleArray
-        ?>
-
-    },
-    {
-        name: 'Descending Double',
-        data:         
-        <?php
-            echo $descDoubleArray
-        ?>
-
-    }
-],
-
-    });
-</script>
-
-
-
 
     </body>
 </html>
