@@ -141,7 +141,7 @@ body {
 }
 
 .analysis-content {
-  width: 400px;
+  width: 90%;
   height: 150px;
   background-color: var(--main-bg-color);
   padding: 20px;
