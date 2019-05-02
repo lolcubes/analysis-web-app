@@ -607,7 +607,7 @@ function changeDetailsMessage(){
 
             <div id="data-types" class="panels">
                 <div id="heading">
-                    <p id="data-heading">Note Value:</p>
+                    <p id="data-heading">Rhythm:</p>
                 </div>
                 <br>
                 <br>
