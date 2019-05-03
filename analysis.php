@@ -7,271 +7,11 @@
         <link rel="stylesheet" type="text/css" href="analysis-dashboard.css" />
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="image-assets/favicon.png"/>
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-
-
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/series-label.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-        <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-       
-       <script>
 
-            Highcharts.theme = {
-                colors: ['#DDDF0D', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee',
-                    '#ff0066', '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
-                chart: {
-                    backgroundColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-                        stops: [
-                            [0, 'rgb(0, 0, 0)'],
-                            [1, 'rgb(0, 0, 0)']
-                        ]
-                    },
-                    borderColor: '#000000',
-                    borderWidth: 2,
-                    className: 'dark-container',
-                    plotBackgroundColor: 'rgba(255, 255, 255, .1)',
-                    plotBorderColor: '#CCCCCC',
-                    plotBorderWidth: 1
-                },
-                title: {
-                    style: {
-                        color: '#C0C0C0',
-                        font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
-                    }
-                },
-                subtitle: {
-                    style: {
-                        color: '#666666',
-                        font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
-                    }
-                },
-                xAxis: {
-                    gridLineColor: '#333333',
-                    gridLineWidth: 1,
-                    labels: {
-                        style: {
-                            color: '#A0A0A0'
-                        }
-                    },
-                    lineColor: '#A0A0A0',
-                    tickColor: '#A0A0A0',
-                    title: {
-                        style: {
-                            color: '#CCC',
-                            fontWeight: 'bold',
-                            fontSize: '12px',
-                            fontFamily: 'Trebuchet MS, Verdana, sans-serif'
-
-                        }
-                    }
-                },
-                yAxis: {
-                    gridLineColor: '#333333',
-                    labels: {
-                        style: {
-                            color: '#A0A0A0'
-                        }
-                    },
-                    lineColor: '#A0A0A0',
-                    minorTickInterval: null,
-                    tickColor: '#A0A0A0',
-                    tickWidth: 1,
-                    title: {
-                        style: {
-                            color: '#CCC',
-                            fontWeight: 'bold',
-                            fontSize: '12px',
-                            fontFamily: 'Trebuchet MS, Verdana, sans-serif'
-                        }
-                    }
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.75)',
-                    style: {
-                        color: '#F0F0F0'
-                    }
-                },
-                toolbar: {
-                    itemStyle: {
-                        color: 'silver'
-                    }
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            color: '#CCC'
-                        },
-                        marker: {
-                            lineColor: '#333'
-                        }
-                    },
-                    spline: {
-                        marker: {
-                            lineColor: '#333'
-                        }
-                    },
-                    scatter: {
-                        marker: {
-                            lineColor: '#333'
-                        }
-                    },
-                    candlestick: {
-                        lineColor: 'white'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        font: '9pt Trebuchet MS, Verdana, sans-serif',
-                        color: '#A0A0A0'
-                    },
-                    itemHoverStyle: {
-                        color: '#FFF'
-                    },
-                    itemHiddenStyle: {
-                        color: '#444'
-                    }
-                },
-                credits: {
-                    style: {
-                        color: '#666'
-                    }
-                },
-                labels: {
-                    style: {
-                        color: '#CCC'
-                    }
-                },
-
-                navigation: {
-                    buttonOptions: {
-                        symbolStroke: '#DDDDDD',
-                        hoverSymbolStroke: '#FFFFFF',
-                        theme: {
-                            fill: {
-                                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                                stops: [
-                                    [0.4, '#606060'],
-                                    [0.6, '#333333']
-                                ]
-                            },
-                            stroke: '#000000'
-                        }
-                    }
-                },
-
-                // scroll charts
-                rangeSelector: {
-                    buttonTheme: {
-                        fill: {
-                            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                            stops: [
-                                [0.4, '#888'],
-                                [0.6, '#555']
-                            ]
-                        },
-                        stroke: '#000000',
-                        style: {
-                            color: '#CCC',
-                            fontWeight: 'bold'
-                        },
-                        states: {
-                            hover: {
-                                fill: {
-                                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                                    stops: [
-                                        [0.4, '#BBB'],
-                                        [0.6, '#888']
-                                    ]
-                                },
-                                stroke: '#000000',
-                                style: {
-                                    color: 'white'
-                                }
-                            },
-                            select: {
-                                fill: {
-                                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                                    stops: [
-                                        [0.1, '#000'],
-                                        [0.3, '#333']
-                                    ]
-                                },
-                                stroke: '#000000',
-                                style: {
-                                    color: 'yellow'
-                                }
-                            }
-                        }
-                    },
-                    inputStyle: {
-                        backgroundColor: '#333',
-                        color: 'silver'
-                    },
-                    labelStyle: {
-                        color: 'silver'
-                    }
-                },
-
-                navigator: {
-                    handles: {
-                        backgroundColor: '#666',
-                        borderColor: '#AAA'
-                    },
-                    outlineColor: '#CCC',
-                    maskFill: 'rgba(16, 16, 16, 0.5)',
-                    series: {
-                        color: '#7798BF',
-                        lineColor: '#A6C7ED'
-                    }
-                },
-
-                scrollbar: {
-                    barBackgroundColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                        stops: [
-                            [0.4, '#888'],
-                            [0.6, '#555']
-                        ]
-                    },
-                    barBorderColor: '#CCC',
-                    buttonArrowColor: '#CCC',
-                    buttonBackgroundColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                        stops: [
-                            [0.4, '#888'],
-                            [0.6, '#555']
-                        ]
-                    },
-                    buttonBorderColor: '#CCC',
-                    rifleColor: '#FFF',
-                    trackBackgroundColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                        stops: [
-                            [0, '#000'],
-                            [1, '#333']
-                        ]
-                    },
-                    trackBorderColor: '#666'
-                },
-
-                // special colors for some of the
-                legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
-                background2: 'rgb(35, 35, 70)',
-                dataLabelsColor: '#444',
-                textColor: '#C0C0C0',
-                maskColor: 'rgba(255,255,255,0.3)'
-            };
-
-            // Apply the theme
-            Highcharts.setOptions(Highcharts.theme);
-
-        </script>
     </head>
     <body>
 
@@ -339,7 +79,6 @@
                 console.log(classVar);
             }
         </script>
-
         <br>
         </div>
         <br>
@@ -436,22 +175,88 @@
                             foreach (new DirectoryIterator($keySigDir) as $fileInfo) {
                                 if($fileInfo->isDot()) continue;
                                 $currentKeySigFile[] = $fileInfo->getFilename();
+                                
                             }
         
                             $keySigsRead = array();
 
                             foreach ($currentKeySigFile as $readKeySig){
                                 $fullKeySigPath = $keySigDir . "/" . $readKeySig;
-                                $keySigsRead[] = file_get_contents($fullKeySigPath);
+                                $keySigsReadNotArray = file_get_contents($fullKeySigPath);
+                                $keySigsRead[] = trim(preg_replace('/\s\s+/', '', $keySigsReadNotArray));
                             }
-
-
+                            $variableso = json_encode($keySigsRead);
                             echo "
+                            <script>
+                            console.log(JSON.parse('" . $variableso . "'));
+                            </script>
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
                                     <span>
                                         Key Signatures:
                                     </span>
+
+                                    <div class='chart-container' style='position: relative; height:40vh; width:30vw'>
+                                        <canvas class=graph id=" . $filename . "_keysig_graph>
+                                        </canvas>
+                                    </div>
+                                    " 
+                                     . 
+                                    "
+                                    <script>                                  
+                                    let myChart_" . $filename . " = document.getElementById('" . $filename . "_keysig_graph').getContext('2d');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 18;
+                                    Chart.defaults.global.defaultFontColor = '#777';
+
+                                    let chart_" . $filename . " = new Chart(myChart_" . $filename . ", {
+                                    type:'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                    data:{
+                                        labels:['Boston', 'Worcester', 'Springfield', 'Lowell'],
+                                        datasets:[{
+                                        label:'Population',
+                                        data:[
+                                            617594,
+                                            181045,
+                                            153060,
+                                            106519
+                                        ],
+                                        //backgroundColor:'green',
+                                        backgroundColor:[
+                                            'rgba(255, 99, 132, 0.6)',
+                                            'rgba(54, 162, 235, 0.6)',
+                                            'rgba(255, 206, 86, 0.6)',
+                                            'rgba(75, 192, 192, 0.6)'
+                                        ],
+                                        borderWidth:1,
+                                        borderColor:'#777',
+                                        hoverBorderWidth:3,
+                                        hoverBorderColor:'#000'
+                                        }]
+                                    },
+                                    options:{
+                                        legend:{
+                                        display:true,
+                                        position:'right',
+                                        labels:{
+                                            fontColor:'#fff'
+                                        }
+                                        },
+                                        layout:{
+                                        padding:{
+                                            left:10,
+                                            right:10,
+                                            bottom:10,
+                                            top:10
+                                        }
+                                        },
+                                        tooltips:{
+                                        enabled:true
+                                        }
+                                    }
+                                    });
+                                    </script>
                                     <br>
                                     <span>";
                                     foreach ($keySigsRead as $currentKeySigRead) {

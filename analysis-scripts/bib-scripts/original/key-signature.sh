@@ -13,36 +13,59 @@ output="${removed}data/key-signature"
 for i in $(seq 1 $sigs); do
     a=$(echo "$b" | sed "${i}q;d")
     if [ "$a" == "*k[]" ]; then
-        echo C Major > "${output}/signature-${i}.txt"
+        echo C-Major > "${output}/signature-${i}.txt"
+        echo C-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[f#]" ]; then
-        echo G Major > "${output}/signature-${i}.txt"
+        echo G-Major > "${output}/signature-${i}.txt"
+        echo G-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[f#c#]" ]; then
-        echo D Major > "${output}/signature-${i}.txt"
+        echo D-Major > "${output}/signature-${i}.txt"
+        echo D-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[f#c#g#]" ]; then
-        echo A Major > "${output}/signature-${i}.txt"
+        echo A-Major > "${output}/signature-${i}.txt"
+        echo A-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[f#c#g#d#]" ]; then
-        echo E Major > "${output}/signature-${i}.txt"
+        echo E-Major > "${output}/signature-${i}.txt"
+        echo E-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[f#c#g#d#a#]" ]; then
-        echo B Major > "${output}/signature-${i}.txt"
+        echo B-Major > "${output}/signature-${i}.txt"
+        echo B-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[f#c#g#d#a#e#]" ]; then
-        echo F\# Major > "${output}/signature-${i}.txt"
+        echo F\#-Major > "${output}/signature-${i}.txt"
+        echo F\#-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[f#c#g#d#a#e#b#]" ]; then
-        echo C\#  Major > "${output}/signature-${i}.txt"
+        echo C\#-Major > "${output}/signature-${i}.txt"
+        echo C\#-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[b-]" ]; then
-        echo F Major > "${output}/signature-${i}.txt"
+        echo F-Major > "${output}/signature-${i}.txt"
+        echo F-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[b-e-]" ]; then
-        echo Bb Major > "${output}/signature-${i}.txt"
+        echo Bb-Major > "${output}/signature-${i}.txt"
+        echo Bb-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[b-e-a-]" ]; then
-        echo Eb Major > "${output}/signature-${i}.txt"
+        echo Eb-Major > "${output}/signature-${i}.txt"
+        echo Eb-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[b-e-a-d-]" ]; then
-        echo Ab Major > "${output}/signature-${i}.txt"
+        echo Ab-Major > "${output}/signature-${i}.txt"
+        echo Ab-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[b-e-a-d-g-]" ]; then
-        echo Db Major > "${output}/signature-${i}.txt"
+        echo Db-Major > "${output}/signature-${i}.txt"
+        echo Db-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[b-e-a-d-g-c-]" ]; then
-        echo Gb Major > "${output}/signature-${i}.txt"
+        echo Gb-Major > "${output}/signature-${i}.txt"
+        echo Gb-Major >> "${output}/occurrences.txt"
     elif [ "$a" == "*k[b-e-a-d-g-c-f-]" ]; then
-        echo Cb Major > "${output}/signature-${i}.txt"
+        echo Cb-Major > "${output}/signature-${i}.txt"
+        echo Cb-Major >> "${output}/occurrences.txt"
     else
-        echo "No key signature found." > "${output}/signature-${i}.txt"
+        echo "None" > "${output}/signature-${i}.txt"
     fi
+
 done
+
+uniq=$(cat "${output}/signature-${i}.txt" | sort | uniq -c )
+echo $uniq >> /Users/svernooy/Desktop/testooo.txt
+lines=$(cat "${output}/signature-${i}.txt" | wc -l )
+numbers=$(echo "$uniq" | cut -d '~' -f4)
+vals=$(echo "$uniq" | cut -d '~' -f5)
+echo "$vals" | tr '\n' | '+' >> /Users/svernooy/Desktop/testooo.txt

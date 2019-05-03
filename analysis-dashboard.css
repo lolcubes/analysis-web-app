@@ -26,6 +26,7 @@
 }
 
 .analysis-panel {
+  resize: both;
   background-color:var(--main-panel-color);
   color: rgb(255, 255, 255);
   display: inline-block;
@@ -156,3 +157,10 @@ body {
   display: inline-block;
   vertical-align: top;
 }
+
+/* .graph {
+  min-width: 400px;
+  min-height: 200px;
+  max-width: 400px;
+  max-height: 200px;
+} */
