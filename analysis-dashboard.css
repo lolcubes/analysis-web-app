@@ -52,7 +52,7 @@
   box-shadow: 1px 0px 18px  rgb(0, 0, 0);
 	position: relative;
   top: .2px;
-  border: 4px solid rgba(0,0,0,0)
+  border: 4px solid rgba(0,0,0,0) 
 }
 
 #analysis-panel:hover > #panelheader {
