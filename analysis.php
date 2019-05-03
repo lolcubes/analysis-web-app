@@ -213,7 +213,7 @@
                                         Key Signatures:
                                     </span>
 
-                                    <div class='chart-container' style='position: relative; height:20vh; width:24vw'>
+                                    <div class='chart-container' style='position: relative; height:20vh; width:30vh'>
                                         <canvas class=graph id=" . $filename . "_keysig_graph>
                                         </canvas>
                                     </div>
@@ -329,17 +329,14 @@
                                     <span>
                                         Scales
                                     </span>
-                                    <br>
-                                    <span>";
-                                    echo $ascSingleArray;
-                                    echo "
-                                    </span>
                                 </div>
                              </div>";
                         
                         }
                     }
-
+                            //CREATE GENERAL SECTION ==================//
+                            //==========================================
+                            
                             echo "
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  ">
                                 <div class=analysis-content>
