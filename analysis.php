@@ -74,21 +74,32 @@
 
 
                 var y = document.getElementById(classVar);
-                console.log(y);
                 y.style.display = "inline-block";
-                console.log(classVar);
             }
         </script>
         <br>
         </div>
         <br>
         <?php
+            function deleteDir($path) {
+                if (empty($path)) { 
+                    return false;
+                }
+                return is_file($path) ?
+                        @unlink($path) :
+                        array_map(__FUNCTION__, glob($path.'/*')) == @rmdir($path);
+            }
             $filesrecieved = $_POST['userfilelocations'];
             $explodedfiledirs = explode(",", $filesrecieved);
 
             foreach ($explodedfiledirs as $value) {
                 $song = $value . "/song.txt";
                 $datadir = $value . "/data";
+
+
+                deleteDir($datadir);
+                    
+
                 mkdir($datadir);
 
                 $filename = str_replace("Song_Database/", "", $value);
@@ -121,7 +132,7 @@
                     mkdir($directory);
                     $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
-                    shell_exec("$scriptdirec $song");
+                    $output = shell_exec("$scriptdirec $song");
                     echo "
                     <div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className, '" . $containernames . "');\">
                         <span>"
@@ -185,18 +196,24 @@
                                 $keySigsReadNotArray = file_get_contents($fullKeySigPath);
                                 $keySigsRead[] = trim(preg_replace('/\s\s+/', '', $keySigsReadNotArray));
                             }
-                            $variableso = json_encode($keySigsRead);
+                            $keySigValuesDir = $keySigDir . "/occurrences-values.txt";
+                            $keySigValues = file_get_contents($keySigValuesDir);
+                            $keySigValuesExploded = explode(",", $keySigValues);
+                            $keySigValuesEncoded = json_encode($keySigValuesExploded);
+
+                            $keySigPercentsDir = $keySigDir . "/occurrences-percents.txt";
+                            $keySigPercents = file_get_contents($keySigPercentsDir);
+                            $keySigPercentsExploded = explode(",", $keySigPercents);
+                            $keySigPercentsEncoded = json_encode($keySigPercentsExploded);
+
                             echo "
-                            <script>
-                            console.log(JSON.parse('" . $variableso . "'));
-                            </script>
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
                                     <span>
                                         Key Signatures:
                                     </span>
 
-                                    <div class='chart-container' style='position: relative; height:40vh; width:30vw'>
+                                    <div class='chart-container' style='position: relative; height:20vh; width:24vw'>
                                         <canvas class=graph id=" . $filename . "_keysig_graph>
                                         </canvas>
                                     </div>
@@ -205,6 +222,8 @@
                                     "
                                     <script>                                  
                                     let myChart_" . $filename . " = document.getElementById('" . $filename . "_keysig_graph').getContext('2d');
+                                    var keySigVals = JSON.parse('" . $keySigValuesEncoded . "');
+                                    var keySigPercents = JSON.parse('" . $keySigPercentsEncoded . "');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
                                     Chart.defaults.global.defaultFontSize = 18;
@@ -213,22 +232,21 @@
                                     let chart_" . $filename . " = new Chart(myChart_" . $filename . ", {
                                     type:'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                                     data:{
-                                        labels:['Boston', 'Worcester', 'Springfield', 'Lowell'],
+                                        labels:JSON.parse('" . $keySigValuesEncoded . "'),
                                         datasets:[{
                                         label:'Population',
-                                        data:[
-                                            617594,
-                                            181045,
-                                            153060,
-                                            106519
-                                        ],
-                                        //backgroundColor:'green',
+                                        data:JSON.parse('" . $keySigPercentsEncoded . "'),
+
                                         backgroundColor:[
                                             'rgba(255, 99, 132, 0.6)',
                                             'rgba(54, 162, 235, 0.6)',
                                             'rgba(255, 206, 86, 0.6)',
-                                            'rgba(75, 192, 192, 0.6)'
+                                            'rgba(75, 192, 192, 0.6)',
+                                            'rgba(153, 102, 255, 0.6)',
+                                            'rgba(255, 159, 64, 0.6)',
+                                            'rgba(255, 99, 132, 0.6)'
                                         ],
+
                                         borderWidth:1,
                                         borderColor:'#777',
                                         hoverBorderWidth:3,
@@ -247,7 +265,7 @@
                                         padding:{
                                             left:10,
                                             right:10,
-                                            bottom:10,
+                                            bottom:28,
                                             top:10
                                         }
                                         },
@@ -258,13 +276,6 @@
                                     });
                                     </script>
                                     <br>
-                                    <span>";
-                                    foreach ($keySigsRead as $currentKeySigRead) {
-                                        echo $currentKeySigRead;
-                                        echo "<br>";
-                                    }
-                                    echo "
-                                    </span>
                                 </div>
                              </div>";
                             
@@ -347,8 +358,14 @@
                     
 
         ?>
-<br>
-<br>
-
+        
+        <br>
+        <br>
+        <script>
+            
+            $(window).bind('beforeunload', function(){
+                return 'Your changes will not be saved! Continue?';
+            });
+        </script>
     </body>
 </html>

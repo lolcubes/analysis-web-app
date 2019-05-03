@@ -63,9 +63,31 @@ for i in $(seq 1 $sigs); do
 
 done
 
-uniq=$(cat "${output}/signature-${i}.txt" | sort | uniq -c )
-echo $uniq >> /Users/svernooy/Desktop/testooo.txt
-lines=$(cat "${output}/signature-${i}.txt" | wc -l )
-numbers=$(echo "$uniq" | cut -d '~' -f4)
-vals=$(echo "$uniq" | cut -d '~' -f5)
-echo "$vals" | tr '\n' | '+' >> /Users/svernooy/Desktop/testooo.txt
+uniq=$(cat "${output}/occurrences.txt" | sort | uniq -c | sed -e 's/^[ \t]*//' | tr ' ' '~')
+lines=$(cat "${output}/occurrences.txt" | wc -l )
+numbers=$(echo "$uniq" | cut -d '~' -f1)
+vals=$(echo "$uniq" | cut -d '~' -f2)
+percents=$(echo "$numbers" | while read line; do echo "$line/$lines" | bc -l; done )
+seqVal=$(echo "$percents" | wc -l)
+
+seqValMinus=$(echo "$seqVal - 1" | bc -l)
+
+if [ $seqValMinus -le "1" ]; then
+
+    echo "$percents" | tr -d '\n' >> "${output}/occurrences-percents.txt"
+    echo "$vals" | tr -d '\n' >> "${output}/occurrences-values.txt"
+
+elif [ $seqValMinus -gt "1" ]; then
+
+    for x in $(seq 1 $seqValMinus); do
+        echo "$percents" | sed "${x}q;d" | tr -d '\n' | sed 's/$/,/' | tr -d '\n' >> "${output}/occurrences-percents.txt"
+    done
+    echo "$percents" | sed "${seqVal}q;d" | tr -d '\n' >> "${output}/occurrences-percents.txt"
+    for x in $(seq 1 $seqValMinus); do
+        echo "$vals" | sed "${x}q;d" | tr -d '\n' | sed 's/$/,/' | tr -d '\n' >> "${output}/occurrences-values.txt"
+    done
+    echo "$vals" | sed "${seqVal}q;d" | tr -d '\n' >> "${output}/occurrences-values.txt"
+
+fi
+
+
