@@ -72,12 +72,12 @@ seqVal=$(echo "$percents" | wc -l)
 
 seqValMinus=$(echo "$seqVal - 1" | bc -l)
 
-if [ $seqValMinus -le "1" ]; then
+if [ $seqValMinus -lt "1" ]; then
 
     echo "$percents" | tr -d '\n' >> "${output}/occurrences-percents.txt"
     echo "$vals" | tr -d '\n' >> "${output}/occurrences-values.txt"
 
-elif [ $seqValMinus -gt "1" ]; then
+elif [ $seqValMinus -ge "1" ]; then
 
     for x in $(seq 1 $seqValMinus); do
         echo "$percents" | sed "${x}q;d" | tr -d '\n' | sed 's/$/,/' | tr -d '\n' >> "${output}/occurrences-percents.txt"

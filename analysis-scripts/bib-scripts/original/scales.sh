@@ -90,37 +90,37 @@ descDoubleSixOutput="${descDoubleDir}6.txt"
 descDoubleAboveOutput="${descDoubleDir}seven-above.txt"
 descDoubleLargestOutput="${descDoubleDir}largest.txt"
 
-echo $ascSingleTwo > $ascSingleTwoOutput
-echo $ascSingleThree > $ascSingleThreeOutput
-echo $ascSingleFour > $ascSingleFourOutput
-echo $ascSingleFive > $ascSingleFiveOutput
-echo $ascSingleSix > $ascSingleSixOutput
-echo $ascSingleAbove > $ascSingleAboveOutput
-echo $ascSingleLargest > $ascSingleLargestOutput
+echo $ascSingleTwo | tr -d '\n' > $ascSingleTwoOutput
+echo $ascSingleThree | tr -d '\n' > $ascSingleThreeOutput
+echo $ascSingleFour | tr -d '\n' > $ascSingleFourOutput
+echo $ascSingleFive | tr -d '\n' > $ascSingleFiveOutput
+echo $ascSingleSix | tr -d '\n' > $ascSingleSixOutput
+echo $ascSingleAbove | tr -d '\n' > $ascSingleAboveOutput
+echo $ascSingleLargest | tr -d '\n' > $ascSingleLargestOutput
 
-echo $ascDoubleTwo > $ascDoubleTwoOutput
-echo $ascDoubleThree > $ascDoubleThreeOutput
-echo $ascDoubleFour > $ascDoubleFourOutput
-echo $ascDoubleFive > $ascDoubleFiveOutput
-echo $ascDoubleSix > $ascDoubleSixOutput
-echo $ascDoubleAbove > $ascDoubleAboveOutput
-echo $ascDoubleLargest > $ascDoubleLargestOutput
+echo $ascDoubleTwo | tr -d '\n' > $ascDoubleTwoOutput
+echo $ascDoubleThree | tr -d '\n' > $ascDoubleThreeOutput
+echo $ascDoubleFour | tr -d '\n' > $ascDoubleFourOutput
+echo $ascDoubleFive | tr -d '\n' > $ascDoubleFiveOutput
+echo $ascDoubleSix | tr -d '\n' > $ascDoubleSixOutput
+echo $ascDoubleAbove | tr -d '\n' > $ascDoubleAboveOutput
+echo $ascDoubleLargest | tr -d '\n' > $ascDoubleLargestOutput
 
-echo $descSingleTwo > $descSingleTwoOutput
-echo $descSingleThree > $descSingleThreeOutput
-echo $descSingleFour > $descSingleFourOutput
-echo $descSingleFive > $descSingleFiveOutput
-echo $descSingleSix > $descSingleSixOutput
-echo $descSingleAbove > $descSingleAboveOutput
-echo $descSingleLargest > $descSingleLargestOutput
+echo $descSingleTwo | tr -d '\n' > $descSingleTwoOutput
+echo $descSingleThree | tr -d '\n' > $descSingleThreeOutput
+echo $descSingleFour | tr -d '\n' > $descSingleFourOutput
+echo $descSingleFive | tr -d '\n' > $descSingleFiveOutput
+echo $descSingleSix | tr -d '\n' > $descSingleSixOutput
+echo $descSingleAbove | tr -d '\n' > $descSingleAboveOutput
+echo $descSingleLargest | tr -d '\n' > $descSingleLargestOutput
 
-echo $descDoubleTwo > $descDoubleTwoOutput
-echo $descDoubleThree > $descDoubleThreeOutput
-echo $descDoubleFour > $descDoubleFourOutput
-echo $descDoubleFive > $descDoubleFiveOutput
-echo $descDoubleSix > $descDoubleSixOutput
-echo $descDoubleAbove > $descDoubleAboveOutput
-echo $descDoubleLargest > $descDoubleLargestOutput
+echo $descDoubleTwo | tr -d '\n' > $descDoubleTwoOutput
+echo $descDoubleThree | tr -d '\n' > $descDoubleThreeOutput
+echo $descDoubleFour | tr -d '\n' > $descDoubleFourOutput
+echo $descDoubleFive | tr -d '\n' > $descDoubleFiveOutput
+echo $descDoubleSix | tr -d '\n' > $descDoubleSixOutput
+echo $descDoubleAbove | tr -d '\n' > $descDoubleAboveOutput
+echo $descDoubleLargest | tr -d '\n' > $descDoubleLargestOutput
 
 # ascending:
 # Whole Step:

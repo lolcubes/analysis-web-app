@@ -16,12 +16,12 @@ includingNegativesEvaluate=$(bc -l <<< $includingNegativesSum/$divideBy)
 absoluteValueOutput="${output}absolute-value.txt"
 includingNegativesOutput="${output}including-negatives.txt"
 
-echo $absoluteValueEvaluate > $absoluteValueOutput
-echo $includingNegativesEvaluate > $includingNegativesOutput
+echo $absoluteValueEvaluate | tr -d '\n' > $absoluteValueOutput
+echo $includingNegativesEvaluate | tr -d '\n' > $includingNegativesOutput
 
 lastLine=$( echo "$fileprep" | tail -n1 |  tr -d '-' )
 firstline=$( echo "$fileprep" | head -n1 |  tr -d '-' )
 
 firstLastOutput="${output}first-last.txt"
 
-bc -l <<< $firstline-$lastLine | tr -d '-' > $firstLastOutput
+bc -l <<< $firstline-$lastLine | tr -d '-' | tr -d '\n' > $firstLastOutput

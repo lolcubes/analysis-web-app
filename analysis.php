@@ -209,10 +209,6 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <span>
-                                        Key Signatures:
-                                    </span>
-
                                     <div class='chart-container' style='position: relative; height:20vh; width:30vh'>
                                         <canvas class=graph id=" . $filename . "_keysig_graph>
                                         </canvas>
@@ -234,7 +230,7 @@
                                     data:{
                                         labels:JSON.parse('" . $keySigValuesEncoded . "'),
                                         datasets:[{
-                                        label:'Population',
+                                        label:'Key Signatures',
                                         data:JSON.parse('" . $keySigPercentsEncoded . "'),
 
                                         backgroundColor:[
@@ -298,40 +294,260 @@
                             $ascSingle4 = file_get_contents("$ascSingleDir" . "/5.txt");
                             $ascSingle5 = file_get_contents("$ascSingleDir" . "/6.txt");
                             
+                            $ascSingleArray = array($ascSingle1,$ascSingle2,$ascSingle3,$ascSingle4,$ascSingle5);
+                            $ascSingleArray = json_encode($ascSingleArray);
+                            $ascSingleArray = str_replace('"', "", $ascSingleArray);
+
                             $ascDouble1 = file_get_contents("$ascDoubleDir" . "/2.txt");
                             $ascDouble2 = file_get_contents("$ascDoubleDir" . "/3.txt");
                             $ascDouble3 = file_get_contents("$ascDoubleDir" . "/4.txt");
                             $ascDouble4 = file_get_contents("$ascDoubleDir" . "/5.txt");
                             $ascDouble5 = file_get_contents("$ascDoubleDir" . "/6.txt");
                             
+                            $ascDoubleArray = array($ascDouble1,$ascDouble2,$ascDouble3,$ascDouble4,$ascDouble5);
+                            $ascDoubleArray = json_encode($ascDoubleArray);
+                            $ascDoubleArray = str_replace('"', "", $ascDoubleArray);
+
                             $descSingle1 = file_get_contents("$descSingleDir" . "/2.txt");
                             $descSingle2 = file_get_contents("$descSingleDir" . "/3.txt");
                             $descSingle3 = file_get_contents("$descSingleDir" . "/4.txt");
                             $descSingle4 = file_get_contents("$descSingleDir" . "/5.txt");
                             $descSingle5 = file_get_contents("$descSingleDir" . "/6.txt");
                             
+                            $descSingleArray = array($descSingle1,$descSingle2,$descSingle3,$descSingle4,$descSingle5);
+                            $descSingleArray = json_encode($descSingleArray);
+                            $descSingleArray = str_replace('"', "", $descSingleArray);
+
                             $descDouble1 = file_get_contents("$descDoubleDir" . "/2.txt");
                             $descDouble2 = file_get_contents("$descDoubleDir" . "/3.txt");
                             $descDouble3 = file_get_contents("$descDoubleDir" . "/4.txt");
                             $descDouble4 = file_get_contents("$descDoubleDir" . "/5.txt");
                             $descDouble5 = file_get_contents("$descDoubleDir" . "/6.txt");
             
-                            // $insertmehere = preg_replace(" ", "", $insertmehere);
-            
-                            $ascSingleArray = "[" . $ascSingle1 . ", " . $ascSingle2 . ", " . $ascSingle3 . ", " . $ascSingle4 . ", " . $ascSingle5 . "]";
-                            $ascDoubleArray = "[" . $ascDouble1 . ", " . $ascDouble2 . ", " . $ascDouble3 . ", " . $ascDouble4 . ", " . $ascDouble5 . "]";
-                            $descSingleArray = "[" . $descSingle1 . ", " . $descSingle2 . ", " . $descSingle3 . ", " . $descSingle4 . ", " . $descSingle5 . "]";
-                            $descDoubleArray = "[" . $descDouble1 . ", " . $descDouble2 . ", " . $descDouble3 . ", " . $descDouble4 . ", " . $descDouble5 . "]";
-                        
+                            $descDoubleArray = array($descDouble1,$descDouble2,$descDouble3,$descDouble4,$descDouble5);
+                            $descDoubleArray = json_encode($descDoubleArray);
+                            $descDoubleArray = str_replace('"', "", $descDoubleArray);
+
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <span>
-                                        Scales
-                                    </span>
+                                    <div class='chart-container' style='position: relative; height:20vh; width:100%'>
+                                        <canvas class=graph id=" . $filename . "_scales_graph>
+                                        </canvas>
+                                    </div>
+
+                                    <script>                                  
+                                    let myChart_scales_" . $filename . " = document.getElementById('" . $filename . "_scales_graph').getContext('2d');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 18;
+                                    Chart.defaults.global.defaultFontColor = '#777';
+
+                                    let chart_scales_" . $filename . " = new Chart(myChart_scales_" . $filename . ", {
+                                        type: 'line',
+                                        data: {
+                                            labels: ['2 Note','3 Note','4 Note','5 Note','6 Note'],
+                                            datasets: [{ 
+                                                    data: " . $ascSingleArray . ",
+                                                    label: 'Ascending Single',
+                                                    borderColor: '#8e5ea2',
+                                                    fill: false,
+                                                    lineTension: '0'
+
+                                                }, { 
+                                                    data: " . $ascDoubleArray . ",
+                                                    label: 'Ascending Double',
+                                                    borderColor: '#3cba9f',
+                                                    fill: false,
+                                                    lineTension: '0'
+
+                                                }, { 
+                                                    data: " . $descSingleArray . ",
+                                                    label: 'Descending Single',
+                                                    borderColor: '#e8c3b9',
+                                                    fill: false,
+                                                    lineTension: '0'
+
+                                                }, { 
+                                                    data: " . $descDoubleArray . ",
+                                                    label: 'Descending Double',
+                                                    borderColor: '#c45850',
+                                                    fill: false,
+                                                    lineTension: '0'
+
+                                                }
+                                            ]
+                                        },
+
+                                    options:{
+                                        legend:{
+                                            display:true,
+                                            position:'right',
+                                            labels:{
+                                                fontSize: 12,
+                                                boxWidth: 28,
+                                                boxWidth: 12,
+                                                fontColor:'#fff'
+                                            }
+                                        },
+                                        layout:{
+                                        padding:{
+                                            left:10,
+                                            right:10,
+                                            bottom:28,
+                                            top:10
+                                        }
+                                        },
+                                        tooltips:{
+                                        enabled:true
+                                        }
+                                    }
+                                    });
+                                    </script>
                                 </div>
                              </div>";
                         
+                        }
+                        if ($analysisname == "average-steps") {
+                            $negPath = $value . "/data/average-steps/including-negatives.txt";
+                            $absPath = $value . "/data/average-steps/absolute-value.txt";
+                            $firstLastPath = $value . "/data/average-steps/first-last.txt";
+
+                            $neg = file_get_contents($negPath);
+                            $abs = file_get_contents($absPath);
+                            $firstLast = file_get_contents($firstLastPath);
+
+                            echo "
+                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                                <div class=analysis-content>
+                                    <div class='chart-container' style='position: relative; height:50vh; width:50vh'>
+                                        <canvas class=graph id=" . $filename . "_steps_graph>
+                                        </canvas>
+                                    </div>
+                                    <script>                                  
+                                    let myChart_steps_" . $filename . " = document.getElementById('" . $filename . "_steps_graph').getContext('2d');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 18;
+                                    Chart.defaults.global.defaultFontColor = '#777';
+
+                                    let chart_steps_" . $filename . " = new Chart(myChart_steps_" . $filename . ", {
+                                        type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                        data: {
+                                            datasets: [
+                                              {
+                                                label: 'With Negatives',
+                                                data: [" . $neg . "],
+                                                backgroundColor: 'rgba(255, 99, 132, 0.6)'
+
+                                              },
+                                              {
+                                                label: 'Absolute Value',
+                                                data: [" . $abs . "],
+                                                backgroundColor: 'rgba(75, 192, 192, 0.6)'
+
+                                              },
+                                              {
+                                                label: 'First-Last',
+                                                data: [" . $firstLast . "],
+                                                backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                                              }
+                                            ]
+                                          },
+
+                                        options:{
+                                            scales: {
+                                                xAxes: [{
+                                                    ticks: {
+                                                        fontSize: 17
+                                                    }
+                                                }],
+                                                yAxes: [{
+                                                    ticks: {
+                                                        fontSize: 17
+                                                    }
+                                                }]
+                                            },
+                                          legend:{
+                                            display:true,
+                                            position:'right',
+                                            labels:{
+                                              fontColor:'#fff'
+                                            }
+                                          },
+                                          layout:{
+                                            padding:{
+                                              left:50,
+                                              right:0,
+                                              bottom:0,
+                                              top:0
+                                            }
+                                          },
+                                          tooltips:{
+                                            enabled:true
+                                          }
+                                        }
+                                      });
+                                    </script>
+                                    <br>
+                                </div>
+                             </div>";
+                            
+                        }
+                        if ($analysisname == "average-pitch") {
+                            $movingAverage = $value . "/data/average-pitch/pitch-moving-average.txt";
+                            $averagePitch = $value . "/data/average-pitch/pitch.txt";
+
+                            $averagePitch = file_get_contents($averagePitch);
+
+                            $movingAverage = file_get_contents($movingAverage);
+                            $movingAverage = "[" . $movingAverage . "]";
+
+                            echo "
+                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                                <div class=analysis-content>
+                                    <div class='chart-container' style='position: relative; height:50vh; width:50vh'>
+                                        <canvas class=graph id=" . $filename . "_pitch_moving_graph>
+                                        </canvas>
+                                    </div>
+                                    <script>                                  
+                                    let myChart_pitch_moving_" . $filename . " = document.getElementById('" . $filename . "_pitch_moving_graph').getContext('2d');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 18;
+                                    Chart.defaults.global.defaultFontColor = '#777';
+
+                                        let chart_steps_" . $filename . " = new Chart(myChart_pitch_moving_" . $filename . ", {
+                                            type: 'bar',
+                                            data:{
+                                                datasets:[{
+                                                  label:'Population',
+                                                  data:" . $movingAverage . " 
+                                                }]
+                                              },
+
+                                            options:{
+                                              legend:{
+                                                display:false,
+                                              },
+                                              layout:{
+                                                padding:{
+                                                  left:50,
+                                                  right:0,
+                                                  bottom:0,
+                                                  top:0
+                                                }
+                                              },
+                                              tooltips:{
+                                                enabled:true
+                                              }
+                                            }
+                                        });
+                                    </script>
+                                    <br>
+                                </div>
+                             </div>";
+                            
                         }
                     }
                             //CREATE GENERAL SECTION ==================//
