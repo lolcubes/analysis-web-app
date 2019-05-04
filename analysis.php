@@ -209,7 +209,7 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container' style='position: relative; height:20vh; width:30vh'>
+                                    <div class='chart-container' style='position: relative; height:260px; width:30vh'>
                                         <canvas class=graph id=" . $filename . "_keysig_graph>
                                         </canvas>
                                     </div>
@@ -222,8 +222,8 @@
                                     var keySigPercents = JSON.parse('" . $keySigPercentsEncoded . "');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
-                                    Chart.defaults.global.defaultFontSize = 18;
-                                    Chart.defaults.global.defaultFontColor = '#777';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
 
                                     let chart_" . $filename . " = new Chart(myChart_" . $filename . ", {
                                     type:'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
@@ -331,7 +331,7 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container' style='position: relative; height:20vh; width:100%'>
+                                    <div class='chart-container' style='position: relative; height:260px; width:50vh'>
                                         <canvas class=graph id=" . $filename . "_scales_graph>
                                         </canvas>
                                     </div>
@@ -340,8 +340,8 @@
                                     let myChart_scales_" . $filename . " = document.getElementById('" . $filename . "_scales_graph').getContext('2d');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
-                                    Chart.defaults.global.defaultFontSize = 18;
-                                    Chart.defaults.global.defaultFontColor = '#777';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
 
                                     let chart_scales_" . $filename . " = new Chart(myChart_scales_" . $filename . ", {
                                         type: 'line',
@@ -382,7 +382,7 @@
                                     options:{
                                         legend:{
                                             display:true,
-                                            position:'right',
+                                            position:'top',
                                             labels:{
                                                 fontSize: 12,
                                                 boxWidth: 28,
@@ -420,7 +420,7 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container' style='position: relative; height:50vh; width:50vh'>
+                                    <div class='chart-container' style='position: relative; height:260px; width:50vh'>
                                         <canvas class=graph id=" . $filename . "_steps_graph>
                                         </canvas>
                                     </div>
@@ -428,8 +428,8 @@
                                     let myChart_steps_" . $filename . " = document.getElementById('" . $filename . "_steps_graph').getContext('2d');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
-                                    Chart.defaults.global.defaultFontSize = 18;
-                                    Chart.defaults.global.defaultFontColor = '#777';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
 
                                     let chart_steps_" . $filename . " = new Chart(myChart_steps_" . $filename . ", {
                                         type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
@@ -501,45 +501,42 @@
                             $averagePitch = file_get_contents($averagePitch);
 
                             $movingAverage = file_get_contents($movingAverage);
-                            $movingAverage = "[" . $movingAverage . "]";
-
+                            $movingAverage = explode(',', $movingAverage);
+                            $movingAverageEncoded = json_encode($movingAverage);
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container' style='position: relative; height:50vh; width:50vh'>
+                                    <div class='chart-container' style='position: relative; height:260px; width:50vh'>
                                         <canvas class=graph id=" . $filename . "_pitch_moving_graph>
                                         </canvas>
+
                                     </div>
                                     <script>                                  
                                     let myChart_pitch_moving_" . $filename . " = document.getElementById('" . $filename . "_pitch_moving_graph').getContext('2d');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
-                                    Chart.defaults.global.defaultFontSize = 18;
-                                    Chart.defaults.global.defaultFontColor = '#777';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
 
-                                        let chart_steps_" . $filename . " = new Chart(myChart_pitch_moving_" . $filename . ", {
-                                            type: 'bar',
-                                            data:{
-                                                datasets:[{
-                                                  label:'Population',
-                                                  data:" . $movingAverage . " 
-                                                }]
-                                              },
-
-                                            options:{
-                                              legend:{
-                                                display:false,
-                                              },
-                                              layout:{
-                                                padding:{
-                                                  left:50,
-                                                  right:0,
-                                                  bottom:0,
-                                                  top:0
+                                        let chart_pitch_moving_" . $filename . " = new Chart(myChart_pitch_moving_" . $filename . ", {
+                                            type: 'line',
+                                            data: {
+                                              labels:" . $movingAverageEncoded . ",
+                                              datasets: [
+                                                {
+                                                  label: 'Population (millions)',
+                                                  data:" . $movingAverageEncoded . ",
+                                                  backgroundColor:'rgba(255, 99, 132, 0.8)',
+                                                  pointRadius: .01,
+                                                  pointHoverRadius: .01
                                                 }
-                                              },
-                                              tooltips:{
-                                                enabled:true
+                                                ]
+                                            },
+                                            options: {
+                                              legend: { display: false },
+                                              title: {
+                                                display: true,
+                                                text: 'Moving Average of Pitches'
                                               }
                                             }
                                         });
