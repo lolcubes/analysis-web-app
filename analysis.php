@@ -596,24 +596,24 @@
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
                                 <script>
-                                console.log(\"" . $mostUsedPitchesData . "\");
-                                console.log(\"" . $mostUsedPitchesLabels . "\");
+                                console.log('" . $mostUsedPitchesData . "');
+                                console.log('" . $mostUsedPitchesLabels . "');
                                 </script>
 
 
                                     <div class='chart-container' >
-                                        <canvas class=graph id=" . $filename . "_most-used-pitches-graph>
+                                        <canvas class=graph id=" . $filename . "_most_used_pitches_graph>
                                         </canvas>
 
                                     </div>
                                     <script>
-                                    let myChart_most-used-pitches-graph_" . $filename . " = document.getElementById('" . $filename . "_most-used-pitches-graph').getContext('2d');
+                                    let myChart_most_used_pitches_graph_" . $filename . " = document.getElementById('" . $filename . "_most_used_pitches_graph').getContext('2d');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
-                                        let chart_most-used-pitches-graph_" . $filename . " = new Chart(myChart_most-used-pitches-graph_" . $filename . ", {
+                                        let chart_most_used_pitches_graph_" . $filename . " = new Chart(myChart_most_used_pitches_graph_" . $filename . ", {
     
                                         });
                                     </script>

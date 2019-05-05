@@ -125,8 +125,8 @@ greatestPercent=$(bc -l <<< $b/$totallines)
 if [ "$greatestPercent" -eq "0" ]; then
     echo "test"
 else 
-    echo $a > $firstOutput
-    bc -l <<< $b/$totallines > $firstPercent
+    echo $a | tr -d '\n' > $firstOutput
+    bc -l <<< $b/$totallines | tr -d '\n' > $firstPercent
 fi
 
 
@@ -186,8 +186,8 @@ secondgreatestPercent=$(bc -l <<< $secondLargest/$totallines)
 if [ "$secondgreatestPercent" -eq "0" ]; then
     echo "test"
 else 
-    echo $secondGreatest > $secondOutput
-    echo $secondgreatestPercent > $secondPercent 
+    echo $secondGreatest | tr -d '\n' > $secondOutput
+    echo $secondgreatestPercent | tr -d '\n' > $secondPercent 
 fi
 
 
@@ -245,8 +245,8 @@ thirdgreatestPercent=$(bc -l <<< $thirdLargest/$totallines)
 if [ "$thirdgreatestPercent" -eq "0" ]; then
     echo "test"
 else 
-    echo $thirdGreatest > $thirdOutput
-    echo $thirdgreatestPercent > $thirdPercent 
+    echo $thirdGreatest | tr -d '\n' > $thirdOutput
+    echo $thirdgreatestPercent | tr -d '\n' > $thirdPercent 
 fi
 
 
@@ -304,8 +304,8 @@ fourthgreatestPercent=$(bc -l <<< $fourthLargest/$totallines)
 if [ "$fourthgreatestPercent" -eq "0" ]; then
     echo "test"
 else 
-    echo $fourthGreatest > $fourthOutput
-    echo $fourthgreatestPercent > $fourthPercent 
+    echo $fourthGreatest | tr -d '\n' > $fourthOutput
+    echo $fourthgreatestPercent | tr -d '\n' > $fourthPercent 
 fi
 
 
@@ -365,8 +365,8 @@ fifthgreatestPercent=$(bc -l <<< $fifthLargest/$totallines)
 if [ "$fifthgreatestPercent" -eq "0" ]; then
     echo "test"
 else 
-    echo $fifthGreatest > $fifthOutput
-    echo $fifthgreatestPercent > $fifthPercent 
+    echo $fifthGreatest | tr -d '\n' > $fifthOutput
+    echo $fifthgreatestPercent | tr -d '\n' > $fifthPercent 
 fi
 
 sixthLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '6q;d')
@@ -423,8 +423,8 @@ sixthgreatestPercent=$(bc -l <<< $sixthLargest/$totallines)
 if [ "$sixthgreatestPercent" -eq "0" ]; then
     echo "test"
 else 
-    echo $sixthGreatest > $sixthOutput
-    echo $sixthgreatestPercent > $sixthPercent 
+    echo $sixthGreatest | tr -d '\n' > $sixthOutput
+    echo $sixthgreatestPercent | tr -d '\n' > $sixthPercent 
 fi
 
 
@@ -483,6 +483,6 @@ seventhgreatestPercent=$(bc -l <<< $seventhLargest/$totallines)
 if [ "$seventhgreatestPercent" -eq "0" ]; then
     echo "test"
 else 
-    echo $seventhGreatest > $seventhOutput
-    echo $seventhgreatestPercent > $seventhPercent 
+    echo $seventhGreatest | tr -d '\n' > $seventhOutput
+    echo $seventhgreatestPercent | tr -d '\n' > $seventhPercent 
 fi
