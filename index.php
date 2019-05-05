@@ -548,7 +548,7 @@ function changeDetailsMessage(){
 
                     </script>
 
-        <form method="post" action="analysis.php" onsubmit="addHiddenValue()" name="analysis-form">
+        <form method="post" action="analysis.php" onsubmit="addHiddenValue();startLoader()" name="analysis-form">
             <br/>
 
             <br>
@@ -640,11 +640,16 @@ function changeDetailsMessage(){
 
             <br>
             <br>
-                <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis">
+                <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis" >
                 <input type="hidden" name='userfilelocations'/> 
             </form>
 
     </div> 
+    <script>
+        function startLoader(){
+            document.getElementById("loading-bar").className = "loading";
+        }
+    </script>
     <br>
     <br>
 

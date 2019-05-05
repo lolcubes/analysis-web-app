@@ -42,16 +42,15 @@
         <p> Retrieved data: </p>
 
         <?php
+            $timeperiod = $_POST['time-period'];
+            echo $timeperiod;
 
-        $timeperiod = $_POST['time-period'];
-        echo $timeperiod;
-
-        //     $files = scandir('../Song_Database');
-        //     foreach($files as $file) {
-        //         echo $file;
-        //         echo "<br>";
-        //     }
-        $filedirs = array();
+            //     $files = scandir('../Song_Database');
+            //     foreach($files as $file) {
+            //         echo $file;
+            //         echo "<br>";
+            //     }
+            $filedirs = array();
 
             foreach (new DirectoryIterator('../Song_Database') as $fileInfo) {
                 if($fileInfo->isDot()) continue;

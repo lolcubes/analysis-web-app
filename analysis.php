@@ -558,6 +558,33 @@
                              </div>";
                             
                         }
+
+                        if ($analysisname == "most-used-pitches") {
+
+                            echo "
+                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                                <div class=analysis-content>
+                                    <div class='chart-container' >
+                                        <canvas class=graph id=" . $filename . "_pitch_moving_graph>
+                                        </canvas>
+
+                                    </div>
+                                    <script>                                  
+                                    let myChart_pitch_moving_" . $filename . " = document.getElementById('" . $filename . "_pitch_moving_graph').getContext('2d');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
+
+                                        let chart_pitch_moving_" . $filename . " = new Chart(myChart_pitch_moving_" . $filename . ", {
+    
+                                        });
+                                    </script>
+                                    <br>
+                                </div>
+                             </div>";
+                            
+                        }
                     }
                             //CREATE GENERAL SECTION ==================//
                             //==========================================
@@ -591,3 +618,15 @@
         </script>
     </body>
 </html>
+
+
+
+$i = 0; 
+        $dir = '/Applications/MAMP/htdocs/NewTestings/Song_Database/1_Prelude_in_A-flat_Major/data/average-pitch';
+        if ($handle = opendir($dir)) {
+            while (($file = readdir($handle)) !== false){
+                if (!in_array($file, array('.', '..')) && !is_dir($dir.$file)) 
+                    $i++;
+            }
+        }
+        echo "There were $i files";
