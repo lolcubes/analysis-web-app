@@ -578,25 +578,28 @@
                             $mostUsedPitchesData = array();
                             $mostUsedPitchesLabels = array();
 
-                            while($x <= $i) {
+                            $x = 1; 
 
+                            while ($x <= $i) {
                                 $mostUsedPitchesLabelFile = $mostUsedPitchesDir . "/Percent_" . $x . ".txt";
                                 $mostUsedPitchesLabels[] = file_get_contents($mostUsedPitchesLabelFile);
                             
                                 $mostUsedPitchesDataFile = $mostUsedPitchesDir . "/" . $x . ".txt";
                                 $mostUsedPitchesData[] = file_get_contents($mostUsedPitchesDataFile);
-                            } 
+                                $x++;
+                            }
+
                             $mostUsedPitchesData = json_encode($mostUsedPitchesData);
                             $mostUsedPitchesLabels = json_encode($mostUsedPitchesLabels);
 
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                
                                 <script>
-                                    console.log(\"" . $mostUsedPitchesLabels . "\");
-                                    console.log(\"" . $mostUsedPitchesData . "\");                                                                    
+                                console.log(\"" . $mostUsedPitchesData . "\");
+                                console.log(\"" . $mostUsedPitchesLabels . "\");
                                 </script>
+
 
                                     <div class='chart-container' >
                                         <canvas class=graph id=" . $filename . "_most-used-pitches-graph>
