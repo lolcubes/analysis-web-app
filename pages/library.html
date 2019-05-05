@@ -45,7 +45,7 @@
         <br> 
 
         <div id="" class="panels">
-            <form action=database-process.php method="POST">
+            <form action=database-process.php method="POST" name="data-form">
                 <div id="input-section-database">
                     <span>Time Period:&nbsp;&nbsp;&nbsp;</span>
                     <select name="time-period">
@@ -70,10 +70,12 @@
                                 })
                             </script>
                                     
-                        <label class=container>Toggle All&nbsp;&nbsp;
-                            <input type="checkbox" id="select-all" /> 
-                            <span class=checkmark></span>
-                        </label>
+                        <div id="check-all">
+                            <label class="container">Check All&nbsp;&nbsp;
+                                <input type=checkbox class="buttonform" onclick="checkAll('data-form')"  />
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                                     
                         <label class=container>One&nbsp;&nbsp;
                                 <input type=checkbox name="data-type[]" id="datatypecheck">
@@ -100,6 +102,37 @@
                 <br>
                 <input type="submit" value="Get Data" class="buttonform">
             </form>
+
+            <script>
+                function unCheckAll(formname) {
+                    var checkboxes = new Array(); 
+                    checkboxes = document[formname].getElementsByTagName('input');
+                    
+                    for (var i=0; i<checkboxes.length; i++)  {
+                        if (checkboxes[i].type == 'checkbox')   {
+                            checkboxes[i].checked = false;
+                        }
+                    }
+
+                    document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input type=checkbox class="buttonform" onclick="checkAll(\'data-form\')"  /><span class="checkmark"></span>';
+                        console.log("test");
+                    }
+
+
+                function checkAll(formname){
+                var checkboxes = new Array(); 
+                checkboxes = document[formname].getElementsByTagName('input');
+                
+                for (var i=0; i<checkboxes.length; i++)  {
+                    if (checkboxes[i].type == 'checkbox')   {
+                        checkboxes[i].checked = true;
+                    }
+                }
+
+                document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input checked=checked type=checkbox class="buttonform" onclick="unCheckAll(\'data-form\')"  /><span class="checkmark"></span>';
+                }
+            </script>
+
         </div>
     </center>
 

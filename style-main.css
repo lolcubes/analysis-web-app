@@ -839,22 +839,20 @@ audio {
   top: 1px;
 }
 
+
 ::-webkit-scrollbar-track {
   background: none;
   -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
-  z-index: 10000000000000;
 }
 ::-webkit-scrollbar {
-  width: 11px;
+  width: 10px;
   height: 10px;
-  z-index: 10000000000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(66, 66, 66);
+  background: rgb(88, 88, 88);
   border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 7px rgb(0,0,0);
-  z-index: 10000000000000;
 }
+
 
 #selected-files-text {
   line-height: 5px;

@@ -174,3 +174,9 @@ body {
 .chart-container:hover {
   background-color: var(--panel-color-hover);
 }
+
+
+::-webkit-resizer {
+  background: none;
+  background-color: rgba(0,0,0,0)
+}
