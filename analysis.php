@@ -228,7 +228,7 @@
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
                                     let chart_" . $filename . " = new Chart(myChart_" . $filename . ", {
-                                    type:'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                    type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                                     data:{
                                         labels:JSON.parse('" . $keySigValuesEncoded . "'),
                                         datasets:[{
@@ -526,7 +526,7 @@
                                               labels:" . $movingAverageEncoded . ",
                                               datasets: [
                                                 {
-                                                  label: 'Population (millions)',
+                                                  label: 'Moving Average',
                                                   data:" . $movingAverageEncoded . ",
                                                   backgroundColor:'rgba(255, 99, 132, 0.8)',
                                                   hoverBackgroundColor:'rgba(214, 47, 82, 0.8)',
@@ -614,7 +614,24 @@
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
                                         let chart_most_used_pitches_graph_" . $filename . " = new Chart(myChart_most_used_pitches_graph_" . $filename . ", {
-    
+                                            type: 'bar',
+                                            data: {
+                                            labels:" . $mostUsedPitchesData . ",
+                                            datasets: [
+                                                {
+                                                label: 'Population (millions)',
+                                                backgroundColor: ['#3e95cd', '#8e5ea2','#3cba9f','#e8c3b9','#c45850'],
+                                                data:" . $mostUsedPitchesLabels . ",
+                                                }
+                                            ]
+                                            },
+                                            options: {
+                                            legend: { display: true },
+                                            title: {
+                                                display: true,
+                                                text: 'Predicted world population (millions) in 2050'
+                                            }
+                                            }
                                         });
                                     </script>
                                     <br>
