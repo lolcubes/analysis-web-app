@@ -150,10 +150,10 @@ $("body").on('DOMSubtreeModified', "#demo", function() {
     top:0;
     width:100%;
     height:100%;
-    background-image: url('https://www.loading.io/spinners/azure/lg.azure-round-loader.gif');
-    background-size: 100px 100px;
+    background-image: url('image-assets/animation.gif');
+    background-size: 600px 600px;
     background-position: 50% 30%;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,0.95);
     background-repeat: no-repeat;
 }
 
@@ -452,7 +452,7 @@ function changeDetailsMessage(){
 
                         <p id="infoexplain">In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
                             <form onsubmit="successDetailsMessage();addHiddenValue()" method="post" action="details-upload.php" name="infoform" id="infoform" target="votar" onchange="changeDetailsMessage()">
-                                <div id="boi">Song Name:&nbsp;&nbsp;
+                                <div id="boi">Composer Name:&nbsp;&nbsp;
                                 <input id="composer_input" name="composer_input" type="text"/>
                                 </div>
                                 <br>
@@ -460,6 +460,7 @@ function changeDetailsMessage(){
                                 <div id="TimePeriod_Dropdown" >
                                     Time Period:&nbsp;&nbsp;&nbsp;
                                     <select name="periodDropdown" id="periodDropdown">
+                                        <option value="None">None</option>
                                         <option value="Renaissance">Renaissance</option>
                                         <option value="Baroque">Baroque</option>
                                         <option value="Classical">Classical</option>
@@ -477,7 +478,6 @@ function changeDetailsMessage(){
 
                             </form>
                     </div>
-    <!----------------------- -->
 
                 <script>
                     function successDetailsMessage(){
