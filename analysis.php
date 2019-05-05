@@ -575,20 +575,27 @@
                             }
                             $i = $i / 2;
 
+                            $mostUsedPitchesData = array();
+                            $mostUsedPitchesLabels = array();
+
                             while($x <= $i) {
-                                echo "
-                                <script>
-                                console.log(\"" . $x . "\");
-                                </script>";
-                                $x++;
-                            } 
+
+                                $mostUsedPitchesLabelFile = $mostUsedPitchesDir . "/Percent_" . $x . ".txt";
+                                $mostUsedPitchesLabels[] = file_get_contents($mostUsedPitchesLabelFile);
                             
+                                $mostUsedPitchesDataFile = $mostUsedPitchesDir . "/" . $x . ".txt";
+                                $mostUsedPitchesData[] = file_get_contents($mostUsedPitchesDataFile);
+                            } 
+                            $mostUsedPitchesData = json_encode($mostUsedPitchesData);
+                            $mostUsedPitchesLabels = json_encode($mostUsedPitchesLabels);
+
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
                                 
                                 <script>
-                                    console.log(\"" . $i . "\");                                  
+                                    console.log(\"" . $mostUsedPitchesLabels . "\");
+                                    console.log(\"" . $mostUsedPitchesData . "\");                                                                    
                                 </script>
 
                                     <div class='chart-container' >

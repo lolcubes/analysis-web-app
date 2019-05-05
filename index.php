@@ -92,7 +92,6 @@ $("#filechooserform").on("change", function(){
         cache: false,
         processData: false,
         success: function(data){
-            console.log(data);
             document.getElementById("demo").innerHTML = data;
         }           
     });
@@ -212,7 +211,6 @@ function addAudioPlayers(){
         var dir = dirs[i];
 
         var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ')" controls="controls" src="' + dir + '/song.wav" type="audio/wav">'
-        console.log(appendtext);
         $("#audioplayer").append('<div id="audioelement"><br><span id="audiotext">' + name + ':</span><br><br>' + appendtext + '</div><br>');
     }               
 
@@ -407,11 +405,8 @@ function addAudioPlayers(){
 
 function addMusicalNotation( directory, name ) {
     $('#musicalnotation').delay(800).show("slow");
-    console.log(directory);
-    console.log(name);
 
     var file = directory + "/song.txt"
-    console.log(file);
     var div = document.getElementById("musicalnotation");
 
     var appendtext = 'displayHumdrum({autoResize: true,source: "song_svg",' + 'url:"' + file + '",scale: 35,spacingStaff: 12,})'
@@ -435,11 +430,8 @@ function addHiddenValue() {
      var filearray = document.getElementById("demo").innerHTML;
      var parsed = JSON.parse(filearray);
      var filearraylocations = parsed.relativedirs;
-     console.log("test");
-     console.log(filearraylocations);
      document.getElementsByName("filesarrayinput")[0].value = filearraylocations;
      document.getElementsByName("userfilelocations")[0].value = filearraylocations;
-     console.log(document.getElementsByName("userfilelocations")[0].value)
 }
 
 function changeDetailsMessage(){
@@ -529,7 +521,6 @@ function changeDetailsMessage(){
                             }
 
                             document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input type=checkbox class="buttonform" onclick="checkAll(\'analysis-form\')"  /><span class="checkmark"></span>';
-                                console.log("test");
                             }
 
 
