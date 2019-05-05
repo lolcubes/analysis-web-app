@@ -11,7 +11,9 @@
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     <body>
 
@@ -527,8 +529,10 @@
                                                   label: 'Population (millions)',
                                                   data:" . $movingAverageEncoded . ",
                                                   backgroundColor:'rgba(255, 99, 132, 0.8)',
-                                                  pointRadius: .01,
-                                                  pointHoverRadius: .01
+                                                  hoverBackgroundColor:'rgba(214, 47, 82, 0.8)',
+                                                  pointBackgroundColor:'rgba(0, 0, 0, 0.8)',
+                                                  pointRadius: 0.1,
+                                                  pointHoverRadius: 4
                                                 }
                                                 ]
                                             },
@@ -560,23 +564,46 @@
                         }
 
                         if ($analysisname == "most-used-pitches") {
+                            $mostUsedPitchesDir = $value . "/data/most-used-pitches";
+                            $i = 0; 
+                            $dir = $mostUsedPitchesDir;
+                            if ($handle = opendir($dir)) {
+                                while (($file = readdir($handle)) !== false){
+                                    if (!in_array($file, array('.', '..')) && !is_dir($dir.$file)) 
+                                        $i++;
+                                }
+                            }
+                            $i = $i / 2;
 
+                            while($x <= $i) {
+                                echo "
+                                <script>
+                                console.log(\"" . $x . "\");
+                                </script>";
+                                $x++;
+                            } 
+                            
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
+                                
+                                <script>
+                                    console.log(\"" . $i . "\");                                  
+                                </script>
+
                                     <div class='chart-container' >
-                                        <canvas class=graph id=" . $filename . "_pitch_moving_graph>
+                                        <canvas class=graph id=" . $filename . "_most-used-pitches-graph>
                                         </canvas>
 
                                     </div>
-                                    <script>                                  
-                                    let myChart_pitch_moving_" . $filename . " = document.getElementById('" . $filename . "_pitch_moving_graph').getContext('2d');
+                                    <script>
+                                    let myChart_most-used-pitches-graph_" . $filename . " = document.getElementById('" . $filename . "_most-used-pitches-graph').getContext('2d');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
-                                        let chart_pitch_moving_" . $filename . " = new Chart(myChart_pitch_moving_" . $filename . ", {
+                                        let chart_most-used-pitches-graph_" . $filename . " = new Chart(myChart_most-used-pitches-graph_" . $filename . ", {
     
                                         });
                                     </script>
@@ -611,7 +638,9 @@
         <br>
         <br>
         <script>
-            
+              $( function() {
+                    $( "#analysis-panel" ).draggable();
+                } );
             $(window).bind('beforeunload', function(){
                 return 'Your changes will not be saved! Continue?';
             });
@@ -621,12 +650,3 @@
 
 
 
-$i = 0; 
-        $dir = '/Applications/MAMP/htdocs/NewTestings/Song_Database/1_Prelude_in_A-flat_Major/data/average-pitch';
-        if ($handle = opendir($dir)) {
-            while (($file = readdir($handle)) !== false){
-                if (!in_array($file, array('.', '..')) && !is_dir($dir.$file)) 
-                    $i++;
-            }
-        }
-        echo "There were $i files";
