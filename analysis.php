@@ -331,7 +331,7 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container' style='position: relative; height:260px; width:50vh'>
+                                    <div class='chart-container'>
                                         <canvas class=graph id=" . $filename . "_scales_graph>
                                         </canvas>
                                     </div>
@@ -420,7 +420,7 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container' style='position: relative; height:260px; width:50vh'>
+                                    <div class='chart-container'>
                                         <canvas class=graph id=" . $filename . "_steps_graph>
                                         </canvas>
                                     </div>
@@ -506,7 +506,7 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container' style='position: relative; height:260px; width:50vh'>
+                                    <div class='chart-container' >
                                         <canvas class=graph id=" . $filename . "_pitch_moving_graph>
                                         </canvas>
 

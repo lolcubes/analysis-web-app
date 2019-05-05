@@ -165,8 +165,8 @@ body {
 .chart-container {
   background-color: var(--main-panel-color);
   padding: 20px;
-  height:260px;
-  width: 200px;
+  height:200px;
+  width: 350px;
   position: relative;
   border-radius: 20px;
 }
