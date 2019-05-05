@@ -209,7 +209,7 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container' style='position: relative; height:260px; width:30vh'>
+                                    <div class='chart-container'>
                                         <canvas class=graph id=" . $filename . "_keysig_graph>
                                         </canvas>
                                     </div>

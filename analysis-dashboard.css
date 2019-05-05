@@ -30,8 +30,8 @@
   background-color:var(--main-panel-color);
   color: rgb(255, 255, 255);
   display: inline-block;
-  height: 400px;
-  width: 43%;
+  height: 440px;
+  width: 47%;
   margin: 30px;
   border-radius: 20px;
   overflow: auto;
@@ -161,3 +161,16 @@ body {
   max-width: 400px;
   max-height: 200px;
 } */
+
+.chart-container {
+  background-color: var(--main-panel-color);
+  padding: 20px;
+  height:260px;
+  width: 200px;
+  position: relative;
+  border-radius: 20px;
+}
+
+.chart-container:hover {
+  background-color: var(--panel-color-hover);
+}
