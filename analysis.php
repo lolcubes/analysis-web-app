@@ -967,7 +967,82 @@
                                                 labels: ['2 Note', '3 Note', '4 Note', '5 Note', '6 Note'],
                                                 datasets: [{ 
                                                         data: " . $repeatedPitches . ",
-                                                        label: 'Ascending Single',
+                                                        label: 'Repeated Pitches',
+                                                        borderColor: '#8e5ea2',
+                                                        fill: false,
+                                                        lineTension: '0'
+    
+                                                    }
+                                                ]
+                                            },
+    
+                                        options:{
+                                            legend:{
+                                                display:true,
+                                                position:'top',
+                                                labels:{
+                                                    fontSize: 12,
+                                                    boxWidth: 28,
+                                                    boxWidth: 12,
+                                                    fontColor:'#fff'
+                                                }
+                                            },
+                                            layout:{
+                                            padding:{
+                                                left:10,
+                                                right:10,
+                                                bottom:28,
+                                                top:10
+                                            }
+                                            },
+                                            tooltips:{
+                                            enabled:true
+                                            }
+                                        }
+                                        });
+                                    </script>
+                                    <br>
+                                </div>
+                             </div>";
+                            
+                        }
+
+                        //REPEATED NOTE VALUE
+                        //=========================
+
+                        if ($analysisname == "repeated-note-value") {
+                            $repeatedPitchesDirValue = $value . "/data/repeated-note-value/";
+                            $repeatedPitchesValue = array();
+                            $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "2.txt");
+                            $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "3.txt");
+                            $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "4.txt");
+                            $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "5.txt");
+                            $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "6.txt");
+
+                            $repeatedPitchesValue = json_encode($repeatedPitchesValue);
+                            echo "
+                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                                <div class=analysis-content>
+
+                                    <div class='chart-container' >
+                                        <canvas class=graph id=" . $filename . "_repeated_values_graph>
+                                        </canvas>
+
+                                    </div>
+                                    <script>                                  
+                                    let myChart_repeated_values_" . $filename . " = document.getElementById('" . $filename . "_repeated_values_graph').getContext('2d');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
+
+                                        let chart_repeated_values_" . $filename . " = new Chart(myChart_repeated_values_" . $filename . ", {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['2 Note', '3 Note', '4 Note', '5 Note', '6 Note'],
+                                                datasets: [{ 
+                                                        data: " . $repeatedPitchesValue . ",
+                                                        label: 'Repeated Note Values',
                                                         borderColor: '#8e5ea2',
                                                         fill: false,
                                                         lineTension: '0'
