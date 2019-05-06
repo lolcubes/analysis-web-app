@@ -98,9 +98,8 @@ greatestPercent=$(bc -l <<< $largest/$totallines)
 
 if [ "$greatestPercent" -eq "0" ]; then
     echo "test"
-
 else 
-    echo $greatest | tr -d '\n' > $firstOutput
+    echo "1/$greatest" | tr -d '\n' > $firstOutput
     bc -l <<< $largest/$totallines | tr -d '\n' > $firstPercent
 fi
 
@@ -135,7 +134,7 @@ if [ "$secondgreatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $secondGreatest | tr -d '\n' > $secondOutput
+    echo "1/$secondGreatest" | tr -d '\n' > $secondOutput
     bc -l <<< $secondLargest/$totallines | tr -d '\n' > $secondPercent
 fi
 
@@ -171,7 +170,7 @@ if [ "$thirdgreatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $thirdGreatest | tr -d '\n' > $thirdOutput
+    echo "1/$thirdGreatest" | tr -d '\n' > $thirdOutput
     bc -l <<< $thirdLargest/$totallines | tr -d '\n' > $thirdPercent
 fi
 
@@ -208,7 +207,7 @@ if [ "$fourthgreatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $fourthGreatest | tr -d '\n' > $fourthOutput
+    echo "1/$fourthGreatest" | tr -d '\n' > $fourthOutput
     bc -l <<< $fourthLargest/$totallines | tr -d '\n' > $fourthPercent
 fi
 
@@ -245,7 +244,7 @@ if [ "$fifthgreatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $fifthGreatest | tr -d '\n' > $fifthOutput
+    echo "1/$fifthGreatest" | tr -d '\n' > $fifthOutput
     bc -l <<< $fifthLargest/$totallines | tr -d '\n' > $fifthPercent
 fi
 
@@ -286,7 +285,7 @@ firstPercentTime=$(bc -l <<< $largestTime/$totaltime)
 if [ "$firstPercentTime" == "0" ]; then
     echo "test"
 else 
-    echo $GreatestTime | tr -d '\n' > $firstTimeOutput
+    echo "1/$GreatestTime" | tr -d '\n' > $firstTimeOutput
     echo $firstPercentTime | tr -d '\n' > $firstTimePercent
 fi
 
@@ -321,7 +320,7 @@ secondPercentTime=$(bc -l <<< $secondlargestTime/$totaltime)
 if [ "$secondPercentTime" -eq "0" ]; then
     echo "test"
 else 
-    echo $secondGreatestTime | tr -d '\n' > $secondTimeOutput
+    echo "1/$secondGreatestTime" | tr -d '\n' > $secondTimeOutput
     echo $secondPercentTime | tr -d '\n' > $secondTimePercent
 fi
 
@@ -358,7 +357,7 @@ if [ "$thirdPercentTime" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $thirdGreatestTime | tr -d '\n' > $thirdTimeOutput
+    echo "1/$thirdGreatestTime" | tr -d '\n' > $thirdTimeOutput
     bc -l <<< $thirdlargestTime/$totaltime | tr -d '\n' > $thirdTimePercent
 fi
 
@@ -393,7 +392,7 @@ if [ "$fourthPercentTime" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $fourthGreatestTime | tr -d '\n' > $fourthTimeOutput
+    echo "1/$fourthGreatestTime" | tr -d '\n' > $fourthTimeOutput
     bc -l <<< $fourthlargestTime/$totaltime | tr -d '\n' > $fourthTimePercent
 fi
 
@@ -429,6 +428,6 @@ if [ "$fifthPercentTime" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $fifthGreatestTime | tr -d '\n' > $fifthTimeOutput
+    echo "1/$fifthGreatestTime" | tr -d '\n' > $fifthTimeOutput
     bc -l <<< $fifthlargestTime/$totaltime | tr -d '\n' > $fifthTimePercent
 fi

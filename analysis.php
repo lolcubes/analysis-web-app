@@ -810,10 +810,126 @@
                                             }
                                         });
                                     </script>
-                                    <br>
-                                </div>
-                             </div>";
-                            
+                                    <br>";                            
+
+                             $mostUsedTimeDir = $value . "/data/most-used-note-value/time";
+                             $j = 0; 
+                             $dir2 = $mostUsedTimeDir;
+                             if ($handle = opendir($dir2)) {
+                                 while (($file = readdir($handle)) !== false){
+                                     if (!in_array($file, array('.', '..')) && !is_dir($dir2.$file)) 
+                                         $j++;
+                                 }
+                             }
+                             $j = $j / 2;
+ 
+                             $mostUsedTimeData = array();
+                             $mostUsedTimeLabels = array();
+ 
+                             $x = 1; 
+ 
+                             while ($x <= $j) {
+                                 $mostUsedTimeLabelFile = $mostUsedTimeDir . "/Percent_" . $x . ".txt";
+                                 $mostUsedTimeLabels[] = file_get_contents($mostUsedTimeLabelFile);
+                             
+                                 $mostUsedTimeDataFile = $mostUsedTimeDir . "/" . $x . ".txt";
+                                 $mostUsedTimeData[] = file_get_contents($mostUsedTimeDataFile);
+                                 $x++;
+                             }
+ 
+                             $mostUsedTimeData = json_encode($mostUsedTimeData);
+                             $mostUsedTimeLabels = json_encode($mostUsedTimeLabels);
+ 
+                             echo "
+ 
+                                     <div class='chart-container' >
+                                         <canvas class=graph id=" . $filename . "_most_used_time_graph>
+                                     </canvas>
+ 
+                                     </div>
+                                     <script>
+                                     let myChart_most_used_time_graph_" . $filename . " = document.getElementById('" . $filename . "_most_used_time_graph').getContext('2d');
+                                     var dataNews = JSON.parse('" . $mostUsedTimeLabels . "');
+                                     var labelsNews = JSON.parse('" . $mostUsedTimeData . "');
+                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                     Chart.defaults.global.defaultFontSize = 14;
+                                     Chart.defaults.global.defaultFontColor = '#fff';
+ 
+                                         let chart_most_used_time_graph_" . $filename . " = new Chart(myChart_most_used_time_graph_" . $filename . ", {
+                                             type: 'bar',
+                                             data:{
+                                                 labels: ['Note Values (Time)'],
+                                                 datasets:[
+                                                     {
+                                                         label:[labelsNews[0]],
+                                                         data: [dataNews[0]] ,
+                     
+                                                         backgroundColor:[
+                                                             'rgba(255, 99, 132, 0.6)',
+                                                         ],
+ 
+                                                     },
+                                                     {
+                                                         label:[labelsNews[1]],
+                                                         data: [dataNews[1]],
+                         
+                                                         backgroundColor:[
+                                                             'rgba(54, 162, 235, 0.6)',
+                                                         ],
+     
+                                                     },
+                                                     {
+                                                         label:[labelsNews[2]],
+                                                         data: [dataNews[2]],
+                         
+                                                         backgroundColor:[
+                                                             'rgba(255, 206, 86, 0.6)',
+                                                         ],
+     
+                                                     },
+                                                     {
+                                                         label:[labelsNews[23]],
+                                                         data: [dataNews[3]],
+                         
+                                                         backgroundColor:[
+                                                             'rgba(75, 192, 192, 0.6)',
+                                                         ],
+     
+                                                     },
+                                                     {
+                                                         label:[labelsNews[4]],
+                                                         data: [dataNews[4]],
+                         
+                                                         backgroundColor:[
+                                                             'rgba(153, 102, 255, 0.6)',
+                                                         ],
+     
+                                                     }
+                                                 ]
+                                             },
+ 
+ 
+                                             options: {
+                                             scales: {
+                                                 yAxes: [{
+                                                     ticks: {
+                                                         beginAtZero: true
+                                                     }
+                                                 }]
+                                             },
+                                             legend: { 
+                                                 display: true,
+                                                 position: 'right'
+                                             },
+                                             title: {
+                                                 display: false,
+                                             }
+                                             }
+                                         });
+                                     </script>
+                                     <br>
+                                 </div>
+                              </div>";
                         }
                         //================================
                         
