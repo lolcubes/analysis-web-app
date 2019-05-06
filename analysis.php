@@ -944,14 +944,11 @@
                             $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "5.txt");
                             $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "6.txt");
 
-                            $repeatedPitches = 
+                            $repeatedPitches = json_encode($repeatedPitches);
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                <script>
 
-
-                                </script>
                                     <div class='chart-container' >
                                         <canvas class=graph id=" . $filename . "_repeated_pitches_graph>
                                         </canvas>
@@ -965,6 +962,43 @@
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
                                         let chart_repeated_pitches_" . $filename . " = new Chart(myChart_repeated_pitches_" . $filename . ", {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['2 Note', '3 Note', '4 Note', '5 Note', '6 Note'],
+                                                datasets: [{ 
+                                                        data: " . $repeatedPitches . ",
+                                                        label: 'Ascending Single',
+                                                        borderColor: '#8e5ea2',
+                                                        fill: false,
+                                                        lineTension: '0'
+    
+                                                    }
+                                                ]
+                                            },
+    
+                                        options:{
+                                            legend:{
+                                                display:true,
+                                                position:'top',
+                                                labels:{
+                                                    fontSize: 12,
+                                                    boxWidth: 28,
+                                                    boxWidth: 12,
+                                                    fontColor:'#fff'
+                                                }
+                                            },
+                                            layout:{
+                                            padding:{
+                                                left:10,
+                                                right:10,
+                                                bottom:28,
+                                                top:10
+                                            }
+                                            },
+                                            tooltips:{
+                                            enabled:true
+                                            }
+                                        }
                                         });
                                     </script>
                                     <br>
