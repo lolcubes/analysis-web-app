@@ -932,6 +932,46 @@
                               </div>";
                         }
                         //================================
+
+                        // REPEATED NOTE VALUE 
+                        // ======================
+                        if ($analysisname == "repeated-pitches") {
+                            $repeatedPitchesDir = $value . "/data/repeated-pitches/";
+                            $repeatedPitches = array();
+                            $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "2.txt");
+                            $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "3.txt");
+                            $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "4.txt");
+                            $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "5.txt");
+                            $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "6.txt");
+
+                            $repeatedPitches = 
+                            echo "
+                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                                <div class=analysis-content>
+                                <script>
+
+
+                                </script>
+                                    <div class='chart-container' >
+                                        <canvas class=graph id=" . $filename . "_repeated_pitches_graph>
+                                        </canvas>
+
+                                    </div>
+                                    <script>                                  
+                                    let myChart_repeated_pitches_" . $filename . " = document.getElementById('" . $filename . "_repeated_pitches_graph').getContext('2d');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
+
+                                        let chart_repeated_pitches_" . $filename . " = new Chart(myChart_repeated_pitches_" . $filename . ", {
+                                        });
+                                    </script>
+                                    <br>
+                                </div>
+                             </div>";
+                            
+                        }
                         
                     }
                             //CREATE GENERAL SECTION ==================//

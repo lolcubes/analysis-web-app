@@ -29,11 +29,11 @@ largest="${sorted##*$'\n'}"
 valueoflargest="$(echo "$bothcolumns" | grep "${sorted##*$'\n'}" | tr  " " "~" |  cut -d '~' -f1 | sort -n | head -n 1 | sed 's|^|1/|')"
 
  
-echo $three > $threeOutput
-echo $four > $fourOutput
-echo $five > $fiveOutput
-echo $six > $sixOutput
-echo $above > $aboveOutput
-echo $largest > $largestOutput
-bc -l <<< $valueoflargest*$largest > $timeOutput
-echo $valueoflargest > $valueOutput
+echo $three | tr -d '\n' > $threeOutput
+echo $four | tr -d '\n' > $fourOutput
+echo $five | tr -d '\n' > $fiveOutput
+echo $six | tr -d '\n' > $sixOutput
+echo $above | tr -d '\n' > $aboveOutput
+echo $largest | tr -d '\n' > $largestOutput
+bc -l <<< $valueoflargest*$largest | tr -d '\n' > $timeOutput
+echo $valueoflargest | tr -d '\n' > $valueOutput

@@ -30,10 +30,10 @@ else
     boi=`expr $above - $test`
 fi
 
-echo $two > $twoOutput
-echo $three > $threeOutput
-echo $four > $fourOutput
-echo $five > $fiveOutput
-echo $six > $sixOutput
-echo $boi > $aboveOutput
-echo $largest > $largestOutput
+echo $two | tr -d '\n' > $twoOutput
+echo $three | tr -d '\n' > $threeOutput
+echo $four | tr -d '\n' > $fourOutput
+echo $five | tr -d '\n' > $fiveOutput
+echo $six | tr -d '\n' > $sixOutput
+echo $boi | tr -d '\n' > $aboveOutput
+echo $largest | tr -d '\n' > $largestOutput
