@@ -100,8 +100,8 @@ if [ "$greatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $greatest > $firstOutput
-    bc -l <<< $largest/$totallines > $firstPercent
+    echo $greatest | tr -d '\n' > $firstOutput
+    bc -l <<< $largest/$totallines | tr -d '\n' > $firstPercent
 fi
 
 secondLargest=$(printf '%s\n' "${array[@]}" | sort -rn | sed '2q;d')
@@ -135,8 +135,8 @@ if [ "$secondgreatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $secondGreatest > $secondOutput
-    bc -l <<< $secondLargest/$totallines > $secondPercent
+    echo $secondGreatest | tr -d '\n' > $secondOutput
+    bc -l <<< $secondLargest/$totallines | tr -d '\n' > $secondPercent
 fi
 
 
@@ -171,8 +171,8 @@ if [ "$thirdgreatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $thirdGreatest > $thirdOutput
-    bc -l <<< $thirdLargest/$totallines > $thirdPercent
+    echo $thirdGreatest | tr -d '\n' > $thirdOutput
+    bc -l <<< $thirdLargest/$totallines | tr -d '\n' > $thirdPercent
 fi
 
 
@@ -208,8 +208,8 @@ if [ "$fourthgreatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $fourthGreatest > $fourthOutput
-    bc -l <<< $fourthLargest/$totallines > $fourthPercent
+    echo $fourthGreatest | tr -d '\n' > $fourthOutput
+    bc -l <<< $fourthLargest/$totallines | tr -d '\n' > $fourthPercent
 fi
 
 
@@ -245,8 +245,8 @@ if [ "$fifthgreatestPercent" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $fifthGreatest > $fifthOutput
-    bc -l <<< $fifthLargest/$totallines > $fifthPercent
+    echo $fifthGreatest | tr -d '\n' > $fifthOutput
+    bc -l <<< $fifthLargest/$totallines | tr -d '\n' > $fifthPercent
 fi
 
 
@@ -286,8 +286,8 @@ firstPercentTime=$(bc -l <<< $largestTime/$totaltime)
 if [ "$firstPercentTime" == "0" ]; then
     echo "test"
 else 
-    echo $GreatestTime > $firstTimeOutput
-    echo $firstPercentTime > $firstTimePercent
+    echo $GreatestTime | tr -d '\n' > $firstTimeOutput
+    echo $firstPercentTime | tr -d '\n' > $firstTimePercent
 fi
 
 
@@ -321,8 +321,8 @@ secondPercentTime=$(bc -l <<< $secondlargestTime/$totaltime)
 if [ "$secondPercentTime" -eq "0" ]; then
     echo "test"
 else 
-    echo $secondGreatestTime > $secondTimeOutput
-    echo $secondPercentTime > $secondTimePercent
+    echo $secondGreatestTime | tr -d '\n' > $secondTimeOutput
+    echo $secondPercentTime | tr -d '\n' > $secondTimePercent
 fi
 
 
@@ -358,8 +358,8 @@ if [ "$thirdPercentTime" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $thirdGreatestTime > $thirdTimeOutput
-    bc -l <<< $thirdlargestTime/$totaltime > $thirdTimePercent
+    echo $thirdGreatestTime | tr -d '\n' > $thirdTimeOutput
+    bc -l <<< $thirdlargestTime/$totaltime | tr -d '\n' > $thirdTimePercent
 fi
 
 fourtimethlargestTime=$(printf '%s\n' "${timearray[@]}" | sort -rn | sed '4q;d')
@@ -393,8 +393,8 @@ if [ "$fourthPercentTime" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $fourthGreatestTime > $fourthTimeOutput
-    bc -l <<< $fourthlargestTime/$totaltime > $fourthTimePercent
+    echo $fourthGreatestTime | tr -d '\n' > $fourthTimeOutput
+    bc -l <<< $fourthlargestTime/$totaltime | tr -d '\n' > $fourthTimePercent
 fi
 
 
@@ -429,6 +429,6 @@ if [ "$fifthPercentTime" -eq "0" ]; then
     echo "test"
 
 else 
-    echo $fifthGreatestTime > $fifthTimeOutput
-    bc -l <<< $fifthlargestTime/$totaltime > $fifthTimePercent
+    echo $fifthGreatestTime | tr -d '\n' > $fifthTimeOutput
+    bc -l <<< $fifthlargestTime/$totaltime | tr -d '\n' > $fifthTimePercent
 fi

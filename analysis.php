@@ -228,7 +228,7 @@
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
                                     let chart_" . $filename . " = new Chart(myChart_" . $filename . ", {
-                                    type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                    type:'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                                     data:{
                                         labels:JSON.parse('" . $keySigValuesEncoded . "'),
                                         datasets:[{
@@ -595,11 +595,6 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
                                 <div class=analysis-content>
-                                <script>
-                                console.log('" . $mostUsedPitchesData . "');
-                                console.log('" . $mostUsedPitchesLabels . "');
-                                </script>
-
 
                                     <div class='chart-container' >
                                         <canvas class=graph id=" . $filename . "_most_used_pitches_graph>
@@ -608,28 +603,80 @@
                                     </div>
                                     <script>
                                     let myChart_most_used_pitches_graph_" . $filename . " = document.getElementById('" . $filename . "_most_used_pitches_graph').getContext('2d');
-
+                                    var data = JSON.parse('" . $mostUsedPitchesLabels . "');
+                                    var labels = JSON.parse('" . $mostUsedPitchesData . "');
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
                                         let chart_most_used_pitches_graph_" . $filename . " = new Chart(myChart_most_used_pitches_graph_" . $filename . ", {
                                             type: 'bar',
-                                            data: {
-                                            labels:" . $mostUsedPitchesData . ",
-                                            datasets: [
-                                                {
-                                                label: 'Population (millions)',
-                                                backgroundColor: ['#3e95cd', '#8e5ea2','#3cba9f','#e8c3b9','#c45850'],
-                                                data:" . $mostUsedPitchesLabels . ",
-                                                }
-                                            ]
+                                            data:{
+                                                labels: ['Pitches (Scale Degree)'],
+                                                datasets:[
+                                                    {
+                                                        label:[labels[0]],
+                                                        data: [data[0]] ,
+                    
+                                                        backgroundColor:[
+                                                            'rgba(255, 99, 132, 0.6)',
+                                                        ],
+
+                                                    },
+                                                    {
+                                                        label:[labels[1]],
+                                                        data: [data[1]],
+                        
+                                                        backgroundColor:[
+                                                            'rgba(54, 162, 235, 0.6)',
+                                                        ],
+    
+                                                    },
+                                                    {
+                                                        label:[labels[2]],
+                                                        data: [data[2]],
+                        
+                                                        backgroundColor:[
+                                                            'rgba(255, 206, 86, 0.6)',
+                                                        ],
+    
+                                                    },
+                                                    {
+                                                        label:[labels[3]],
+                                                        data: [data[3]],
+                        
+                                                        backgroundColor:[
+                                                            'rgba(75, 192, 192, 0.6)',
+                                                        ],
+    
+                                                    },
+                                                    {
+                                                        label:[labels[4]],
+                                                        data: [data[4]],
+                        
+                                                        backgroundColor:[
+                                                            'rgba(153, 102, 255, 0.6)',
+                                                        ],
+    
+                                                    }
+                                                ]
                                             },
+
+
                                             options: {
-                                            legend: { display: true },
-                                            title: {
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true
+                                                    }
+                                                }]
+                                            },
+                                            legend: { 
                                                 display: true,
-                                                text: 'Predicted world population (millions) in 2050'
+                                                position: 'right'
+                                            },
+                                            title: {
+                                                display: false,
                                             }
                                             }
                                         });
@@ -639,6 +686,137 @@
                              </div>";
                             
                         }
+
+
+
+                        /// MOST USED NOTE VALUES
+                        //+=========================
+
+                        if ($analysisname == "most-used-note-value") {
+                            $mostUsedOccurrencesDir = $value . "/data/most-used-note-value/occurrences";
+                            $i = 0; 
+                            $dir = $mostUsedOccurrencesDir;
+                            if ($handle = opendir($dir)) {
+                                while (($file = readdir($handle)) !== false){
+                                    if (!in_array($file, array('.', '..')) && !is_dir($dir.$file)) 
+                                        $i++;
+                                }
+                            }
+                            $i = $i / 2;
+
+                            $mostUsedOccurrencesData = array();
+                            $mostUsedOccurrencesLabels = array();
+
+                            $x = 1; 
+
+                            while ($x <= $i) {
+                                $mostUsedOccurrencesLabelFile = $mostUsedOccurrencesDir . "/Percent_" . $x . ".txt";
+                                $mostUsedOccurrencesLabels[] = file_get_contents($mostUsedOccurrencesLabelFile);
+                            
+                                $mostUsedOccurrencesDataFile = $mostUsedOccurrencesDir . "/" . $x . ".txt";
+                                $mostUsedOccurrencesData[] = file_get_contents($mostUsedOccurrencesDataFile);
+                                $x++;
+                            }
+
+                            $mostUsedOccurrencesData = json_encode($mostUsedOccurrencesData);
+                            $mostUsedOccurrencesLabels = json_encode($mostUsedOccurrencesLabels);
+
+                            echo "
+                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                                <div class=analysis-content>
+
+                                    <div class='chart-container' >
+                                        <canvas class=graph id=" . $filename . "_most_used_occurrences_graph>
+                                    </canvas>
+
+                                    </div>
+                                    <script>
+                                    let myChart_most_used_occurrences_graph_" . $filename . " = document.getElementById('" . $filename . "_most_used_occurrences_graph').getContext('2d');
+                                    var dataNew = JSON.parse('" . $mostUsedOccurrencesLabels . "');
+                                    var labelsNew = JSON.parse('" . $mostUsedOccurrencesData . "');
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
+
+                                        let chart_most_used_occurrences_graph_" . $filename . " = new Chart(myChart_most_used_occurrences_graph_" . $filename . ", {
+                                            type: 'bar',
+                                            data:{
+                                                labels: ['Note Values (Occurrences)'],
+                                                datasets:[
+                                                    {
+                                                        label:[labelsNew[0]],
+                                                        data: [dataNew[0]] ,
+                    
+                                                        backgroundColor:[
+                                                            'rgba(255, 99, 132, 0.6)',
+                                                        ],
+
+                                                    },
+                                                    {
+                                                        label:[labelsNew[1]],
+                                                        data: [dataNew[1]],
+                        
+                                                        backgroundColor:[
+                                                            'rgba(54, 162, 235, 0.6)',
+                                                        ],
+    
+                                                    },
+                                                    {
+                                                        label:[labelsNew[2]],
+                                                        data: [dataNew[2]],
+                        
+                                                        backgroundColor:[
+                                                            'rgba(255, 206, 86, 0.6)',
+                                                        ],
+    
+                                                    },
+                                                    {
+                                                        label:[labelsNew[3]],
+                                                        data: [dataNew[3]],
+                        
+                                                        backgroundColor:[
+                                                            'rgba(75, 192, 192, 0.6)',
+                                                        ],
+    
+                                                    },
+                                                    {
+                                                        label:[labelsNew[4]],
+                                                        data: [dataNew[4]],
+                        
+                                                        backgroundColor:[
+                                                            'rgba(153, 102, 255, 0.6)',
+                                                        ],
+    
+                                                    }
+                                                ]
+                                            },
+
+
+                                            options: {
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true
+                                                    }
+                                                }]
+                                            },
+                                            legend: { 
+                                                display: true,
+                                                position: 'right'
+                                            },
+                                            title: {
+                                                display: false,
+                                            }
+                                            }
+                                        });
+                                    </script>
+                                    <br>
+                                </div>
+                             </div>";
+                            
+                        }
+                        //================================
+                        
                     }
                             //CREATE GENERAL SECTION ==================//
                             //==========================================
