@@ -130,13 +130,17 @@ body {
 }
 
 #shelf {
-  width: 100%;
+  font-size: 15px;
+  width: 85%;
+  height: 340px;
   background-color: var(--main-panel-color);
+  margin-right: 0px;
   margin-left: 6px;
   margin-top: 6px;
   padding-top: 6px;
   padding-bottom: 6px;
   box-shadow: 1px 4px 9px  rgba(0, 0, 0, .7);
+  overflow: auto;
 }
 
 .analysis-content {
@@ -144,7 +148,8 @@ body {
   background-color: var(--main-bg-color);
   padding: 20px;
   color: white;
-  margin: 20px;
+  margin-left: 0px;
+  margin-top: 20px;
   transition: .3s;
   border-radius: 20px;
   box-shadow: 1px 4px 13px  rgba(0, 0, 0, .6);
@@ -166,17 +171,35 @@ body {
   background-color: var(--main-panel-color);
   padding: 20px;
   height:200px;
-  width: 350px;
+  width: 80%;
   position: relative;
   border-radius: 20px;
+  box-shadow: 1px 4px 13px  rgba(0, 0, 0, .6);
+  transition: .2s;
 }
 
 .chart-container:hover {
   background-color: var(--panel-color-hover);
+  box-shadow: 1px 4px 15px  rgba(0, 0, 0, .8);
+  transition: .2s;
 }
 
 
 ::-webkit-resizer {
   background: none;
   background-color: rgba(0,0,0,0)
+}
+
+
+::-webkit-scrollbar-track {
+  background: none;
+  -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--main-bg-color);
+  border-radius: 5px;
 }

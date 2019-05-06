@@ -158,7 +158,7 @@
 
                 // CREATES CONTENT FOR EACH ANALYSIS TYPE//
                 echo "
-                <div id=largeitem>";
+                <div id=largeitem style=\"width: 70%;\">";
                 foreach($_POST['data-choose'] as $selected){
                         $analysisname = substr($selected, 0, strpos($selected, "."));
                         
@@ -331,7 +331,7 @@
                             $descDoubleArray = str_replace('"', "", $descDoubleArray);
 
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none; width: 100%;\">
                                 <div class=analysis-content>
                                     <div class='chart-container'>
                                         <canvas class=graph id=" . $filename . "_scales_graph>
@@ -1021,7 +1021,7 @@
 
                             $repeatedPitchesValue = json_encode($repeatedPitchesValue);
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none; width: 300px\">
                                 <div class=analysis-content>
 
                                     <div class='chart-container' >
