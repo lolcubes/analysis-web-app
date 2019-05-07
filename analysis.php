@@ -158,7 +158,7 @@
 
                 // CREATES CONTENT FOR EACH ANALYSIS TYPE//
                 echo "
-                <div id=largeitem style=\"width: 70%;\">";
+                <div id=largeitem style=\"width: 76%;\">";
                 foreach($_POST['data-choose'] as $selected){
                         $analysisname = substr($selected, 0, strpos($selected, "."));
                         

@@ -37,3 +37,4 @@ echo $five | tr -d '\n' > $fiveOutput
 echo $six | tr -d '\n' > $sixOutput
 echo $boi | tr -d '\n' > $aboveOutput
 echo $largest | tr -d '\n' > $largestOutput
+

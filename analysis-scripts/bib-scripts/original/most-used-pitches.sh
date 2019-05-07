@@ -368,3 +368,36 @@ else
     echo $fifthGreatest | tr -d '\n' > $fifthOutput
     echo $fifthgreatestPercent | tr -d '\n' > $fifthPercent 
 fi
+
+
+for i in {1..5}; do
+    filepath="${occurencesOutput}/${i}.txt"
+    value=$(cat $filepath)
+
+    if [ $value == "1" ]; then
+        echo "${value} (Tonic)" | tr -d '\n' > $filepath;
+    fi
+
+    if [ $value == "2" ]; then
+        echo "${value} (Supertonic)" | tr -d '\n' > $filepath;
+    fi
+
+    if [ $value == "3" ]; then
+        echo "${value} (Mediant)" | tr -d '\n' > $filepath;
+    fi
+
+    if [ $value == "4" ]; then
+        echo "${value} (Subdominant)" | tr -d '\n' > $filepath;
+    fi
+
+    if [ $value == "5" ]; then
+        echo "${value} (Dominant)" | tr -d '\n' > $filepath;
+    fi
+
+    if [ $value == "6" ]; then
+        echo "${value} (Submediant)" | tr -d '\n' > $filepath;
+    fi
+    if [ $value == "6" ]; then
+        echo "${value} (Leading tone)" | tr -d '\n' > $filepath;
+    fi
+done
