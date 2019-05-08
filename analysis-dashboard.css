@@ -30,9 +30,8 @@
   background-color:var(--main-panel-color);
   color: rgb(255, 255, 255);
   display: inline-block;
-  height: 440px;
-  width: 45%;
-  margin: 30px;
+  width: 42%;
+  margin: 2%;
   border-radius: 20px;
   overflow: auto;
   font-family: 'Courier New', Courier, monospace;
@@ -130,9 +129,9 @@ body {
 }
 
 #shelf {
+  width: 100%;
   font-size: 15px;
-  width: 120px;
-  height: 340px;
+  max-height: 340px;
   background-color: var(--main-panel-color);
   margin-right: 0px;
   margin-left: 6px;
@@ -158,19 +157,12 @@ body {
 #largeitem {
   display: inline-block;
   vertical-align: top;
+  margin-right: 8px;
 }
-
-/* .graph {
-  min-width: 400px;
-  min-height: 200px;
-  max-width: 400px;
-  max-height: 200px;
-} */
 
 .chart-container {
   background-color: var(--main-panel-color);
   padding: 20px;
-  height:200px;
   width: 80%;
   position: relative;
   border-radius: 20px;
@@ -202,4 +194,14 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--main-bg-color);
   border-radius: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visuallyhidden {
+  opacity: 0;
+  height:0;
+  width: 0;
 }

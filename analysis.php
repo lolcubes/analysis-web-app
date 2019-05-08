@@ -67,17 +67,31 @@
         <br>
         
         <script>
-            function showDiv(classVar, contentId) { 
-                var x = document.getElementsByClassName(contentId);
-                var i;
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";
+                function showDiv(classVar, contentId) { 
+                    var x = document.getElementsByClassName(contentId);
+                    var i;
+                    for (i = 0; i < x.length; i++) {
+                        // x[i].style.display = "none";
+                        $(x[i]).addClass('visuallyhidden');
+
+
+                        setTimeout(function () {
+                            console.log('test')
+                        }, 5);
+                        $(x[i]).addClass('hidden')
+
+                    }
+
+                    var box = document.getElementById(classVar);
+    
+                    $(box).removeClass('hidden');
+                    setTimeout(function () {
+                        $(box).removeClass('visuallyhidden');
+                    }, 5);
+
+                // var y = document.getElementById(classVar);
+                // y.style.display = "inline-block";
                 }
-
-
-                var y = document.getElementById(classVar);
-                y.style.display = "inline-block";
-            }
         </script>
         <br>
         </div>
@@ -115,7 +129,7 @@
 
                 echo "<div class=analysis-panel><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
 
-                echo "<div id='largeitem'>";
+                echo "<div id='largeitem' style=\"width: 22%;\">";
 
                 echo "
                 <div id=shelf>";
@@ -158,7 +172,7 @@
 
                 // CREATES CONTENT FOR EACH ANALYSIS TYPE//
                 echo "
-                <div id=largeitem style=\"width: 76%;\">";
+                <div id=largeitem style=\"width: 72%;\">";
                 foreach($_POST['data-choose'] as $selected){
                         $analysisname = substr($selected, 0, strpos($selected, "."));
                         
@@ -169,7 +183,7 @@
                             $timepath = $value . "/data/total-time/time.txt";
                             $timecontent = file_get_contents($timepath);
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
                                     <span>" . 
                                         $timecontent
@@ -209,7 +223,7 @@
                             $keySigPercentsEncoded = json_encode($keySigPercentsExploded);
 
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
                                     <div class='chart-container'>
                                         <canvas class=graph id=" . $filename . "_keysig_graph>
@@ -331,11 +345,12 @@
                             $descDoubleArray = str_replace('"', "", $descDoubleArray);
 
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none; width: 100%;\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
                                     <div class='chart-container'>
                                         <canvas class=graph id=" . $filename . "_scales_graph>
                                         </canvas>
+
                                     </div>
 
                                     <script>                                  
@@ -420,7 +435,7 @@
                             $firstLast = file_get_contents($firstLastPath);
 
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
                                     <div class='chart-container'>
                                         <canvas class=graph id=" . $filename . "_steps_graph>
@@ -506,7 +521,7 @@
                             $movingAverage = explode(',', $movingAverage);
                             $movingAverageEncoded = json_encode($movingAverage);
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
                                     <div class='chart-container' >
                                         <canvas class=graph id=" . $filename . "_pitch_moving_graph>
@@ -593,7 +608,7 @@
                             $mostUsedPitchesLabels = json_encode($mostUsedPitchesLabels);
 
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
 
                                     <div class='chart-container' >
@@ -722,7 +737,7 @@
                             $mostUsedOccurrencesLabels = json_encode($mostUsedOccurrencesLabels);
 
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
 
                                     <div class='chart-container' >
@@ -946,7 +961,7 @@
 
                             $repeatedPitches = json_encode($repeatedPitches);
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none;\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
 
                                     <div class='chart-container' >
@@ -1021,7 +1036,7 @@
 
                             $repeatedPitchesValue = json_encode($repeatedPitchesValue);
                             echo "
-                            <div class=analysis-container_" . $filename . " id=" . $analysisname . "_" . $filename . "  style=\"display: none; width: 300px\">
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
 
                                     <div class='chart-container' >
@@ -1087,7 +1102,7 @@
                             //==========================================
                             
                             echo "
-                            <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  ">
+                            <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                                 <div class=analysis-content>
                                     <span>
                                         General
