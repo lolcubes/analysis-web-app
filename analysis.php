@@ -14,6 +14,7 @@
         
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Kelly+Slab|Open+Sans" rel="stylesheet">   
     </head>
     <body>
 
@@ -76,7 +77,6 @@
 
 
                         setTimeout(function () {
-                            console.log('test')
                         }, 5);
                         $(x[i]).addClass('hidden')
 
@@ -172,27 +172,14 @@
 
                 // CREATES CONTENT FOR EACH ANALYSIS TYPE//
                 echo "
-                <div id=largeitem style=\"width: 72%;\">";
+                <div id=largeitem style=\"width: 68%;\">";
                 foreach($_POST['data-choose'] as $selected){
                         $analysisname = substr($selected, 0, strpos($selected, "."));
                         
                         // ECHOES CONTENT OF EACH ANALYSIS TYPE!!!!                        
                         // change it based on type!!
                         //=============================
-                        if ($analysisname == "total-time") {
-                            $timepath = $value . "/data/total-time/time.txt";
-                            $timecontent = file_get_contents($timepath);
-                            echo "
-                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
-                                <div class=analysis-content>
-                                    <span>" . 
-                                        $timecontent
-                                    ."
-                                    </span>
-                                </div>
-                            </div>";
-                        
-                        }
+
                         if ($analysisname == "key-signature") {
                             $datafolder = $value . "/data";
                             $keySigDir = $datafolder . "/key-signature";
@@ -1092,6 +1079,25 @@
                                         });
                                     </script>
                                     <br>
+                                </div>
+                             </div>";
+                            
+                        }
+                        if ($analysisname == "total-time") {
+                            $timePath = $value . "/data/total-time/time.txt";
+
+                            $timePath = file_get_contents($timePath);
+                            $timePath = str_replace(" ", "  ", $timePath);
+                            echo "
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
+                                <div class=analysis-content>
+                                <br>
+                                <br>
+                                            <span id=clock>" . $timePath ."</span>
+                                    <br>
+                                    <br>
+                                    <br>
+
                                 </div>
                              </div>";
                             
