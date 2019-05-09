@@ -1,9 +1,9 @@
 :root {
-  --main-bg-color: #001c2e;
+  --main-bg-color: #001420;
   --main-bg-color-lighter: rgb(0, 32, 68);
-  --main-panel-color: #0a344e;
+  --main-panel-color: #072a3f;
   --panel-lighter: rgb(33, 58, 88); 
-  --panel-color-hover: #13415e;
+  --panel-color-hover: #0e3953;
 }
 
 
@@ -22,7 +22,7 @@
   transition: .2s;
 }
 
-#dashboard-header:hover {
+#dashboard-header:hover {`
   background-color: var(--panel-color-hover);
   border: 1px solid var(--panel-color-hover);
   box-shadow: 1px 0px 22px  rgb(0, 0, 0);
