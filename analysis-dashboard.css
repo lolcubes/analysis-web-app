@@ -1,9 +1,9 @@
 :root {
-  --main-bg-color: rgb(17,27,39);
-  --main-bg-color-lighter: rgb(23, 36, 53);
-  --main-panel-color: rgb(31, 45, 61);
-  --panel-lighter: rgb(41, 64, 90); 
-  --panel-color-hover: rgb(39, 53, 71);
+  --main-bg-color: #001c2e;
+  --main-bg-color-lighter: rgb(0, 32, 68);
+  --main-panel-color: #0a344e;
+  --panel-lighter: rgb(33, 58, 88); 
+  --panel-color-hover: #13415e;
 }
 
 
@@ -18,11 +18,15 @@
   background-color: var(--main-panel-color);
   color: white;
   box-shadow: 1px 0px 18px  rgba(0, 0, 0, .7);
+  border: 0px solid var(--main-panel-color);
+  transition: .2s;
 }
 
 #dashboard-header:hover {
-  border: 1px solid rgb(34,45,59);
+  background-color: var(--panel-color-hover);
+  border: 1px solid var(--panel-color-hover);
   box-shadow: 1px 0px 22px  rgb(0, 0, 0);
+  transition: .2s;
 }
 
 .analysis-panel {
