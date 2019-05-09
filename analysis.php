@@ -280,6 +280,112 @@
                             
                         }
 
+                        // ==================
+                        /// TIME SIGNATURE
+                        //===================
+                    
+                        
+                        if ($analysisname == "time-signature") {
+                            $datafolder = $value . "/data";
+                            $timeSigDir = $datafolder . "/time-signature";
+
+                            $currentTimeSigFile = array();
+        
+                            foreach (new DirectoryIterator($timeSigDir) as $fileInfo) {
+                                if($fileInfo->isDot()) continue;
+                                $currentTimeSigFile[] = $fileInfo->getFilename();
+                                
+                            }
+        
+                            $timeSigsRead = array();
+
+                            foreach ($currentTimeSigFile as $readTimeSig){
+                                $fullKeySigPath = $timeSigDir . "/" . $readKeySig;
+                                $timeSigsReadNotArray = file_get_contents($fullKeySigPath);
+                                $timeSigsRead[] = trim(preg_replace('/\s\s+/', '', $timeSigsReadNotArray));
+                            }
+                            $timeSigValuesDir = $timeSigDir . "/occurrences-values.txt";
+                            $timeSigValues = file_get_contents($timeSigValuesDir);
+                            $timeSigValuesExploded = explode(",", $timeSigValues);
+                            $timeSigValuesEncoded = json_encode($timeSigValuesExploded);
+
+                            $timeSigPercentsDir = $timeSigDir . "/occurrences-percents.txt";
+                            $timeSigPercents = file_get_contents($timeSigPercentsDir);
+                            $timeSigPercentsExploded = explode(",", $timeSigPercents);
+                            $timeSigPercentsEncoded = json_encode($timeSigPercentsExploded);
+
+                            echo "
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
+                                <div class=analysis-content>
+                                    <div class='chart-container'>
+                                        <canvas class=graph id=" . $filename . "_timesig_graph>
+                                        </canvas>
+                                    </div>
+                                    " 
+                                     . 
+                                    "
+                                    <script>                                  
+                                    let myChart_timesig_" . $filename . " = document.getElementById('" . $filename . "_timesig_graph').getContext('2d');
+                                    var timeSigVals = JSON.parse('" . $timeSigValuesEncoded . "');
+                                    var timeSigPercents = JSON.parse('" . $timeSigPercentsEncoded . "');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
+
+                                    let chart_timesig_" . $filename . " = new Chart(myChart_timesig_" . $filename . ", {
+                                    type:'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                    data:{
+                                        labels:JSON.parse('" . $timeSigValuesEncoded . "'),
+                                        datasets:[{
+                                        label:'Key Signatures',
+                                        data:JSON.parse('" . $timeSigPercentsEncoded . "'),
+
+                                        backgroundColor:[
+                                            'rgba(255, 99, 132, 0.6)',
+                                            'rgba(54, 162, 235, 0.6)',
+                                            'rgba(255, 206, 86, 0.6)',
+                                            'rgba(75, 192, 192, 0.6)',
+                                            'rgba(153, 102, 255, 0.6)',
+                                            'rgba(255, 159, 64, 0.6)',
+                                            'rgba(255, 99, 132, 0.6)'
+                                        ],
+
+                                        borderWidth:1,
+                                        borderColor:'#777',
+                                        hoverBorderWidth:3,
+                                        hoverBorderColor:'#000'
+                                        }]
+                                    },
+                                    options:{
+                                        legend:{
+                                        display:true,
+                                        position:'right',
+                                        labels:{
+                                            fontColor:'#fff'
+                                        }
+                                        },
+                                        layout:{
+                                        padding:{
+                                            left:10,
+                                            right:10,
+                                            bottom:28,
+                                            top:10
+                                        }
+                                        },
+                                        tooltips:{
+                                        enabled:true
+                                        }
+                                    }
+                                    });
+                                    </script>
+                                    <br>
+                                </div>
+                             </div>";
+                            
+                        }
+
+                        
                         // ========================
                         //  SCALES
                         //=======================\
