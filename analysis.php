@@ -671,6 +671,74 @@
                             
                         }
 
+
+                        if ($analysisname == "average-note-value") {
+                            $movingAverage = $value . "/data/average-note-value/moving-average.txt";
+                            $averageValue = $value . "/data/average-note-value/value.txt";
+
+                            $averageValue = file_get_contents($averageValue);
+
+                            $movingAverage = file_get_contents($movingAverage);
+                            $movingAverage = explode(',', $movingAverage);
+                            $movingAverageEncoded = json_encode($movingAverage);
+                            echo "
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
+                                <div class=analysis-content>
+                                    <div class='chart-container' >
+                                        <canvas class=graph id=" . $filename . "_value_moving_graph>
+                                        </canvas>
+
+                                    </div>
+                                    <script>                                  
+                                    let myChart_value_moving_" . $filename . " = document.getElementById('" . $filename . "_value_moving_graph').getContext('2d');
+
+                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontSize = 14;
+                                    Chart.defaults.global.defaultFontColor = '#fff';
+
+                                        let chart_value_moving_" . $filename . " = new Chart(myChart_value_moving_" . $filename . ", {
+                                            type: 'line',
+                                            data: {
+                                              labels:" . $movingAverageEncoded . ",
+                                              datasets: [
+                                                {
+                                                  label: 'Moving Average',
+                                                  data:" . $movingAverageEncoded . ",
+                                                  backgroundColor:'rgba(255, 99, 132, 0.8)',
+                                                  hoverBackgroundColor:'rgba(214, 47, 82, 0.8)',
+                                                  pointBackgroundColor:'rgba(0, 0, 0, 0.8)',
+                                                  pointRadius: 0.1,
+                                                  pointHoverRadius: 4
+                                                }
+                                                ]
+                                            },
+                                            options: {
+                                              legend: { display: false },
+                                              title: {
+                                                display: true,
+                                                text: 'Moving Average of Pitches'
+                                              },
+                                              scales: {
+                                                xAxes: [{
+                                                  gridLines: {
+                                                    display: false
+                                                  }
+                                                }],
+                                                yAxes: [{
+                                                  gridLines: {
+                                                    display: false
+                                                  }
+                                                }]
+                                              }                                              
+                                            }
+                                        });
+                                    </script>
+                                    <br>
+                                </div>
+                             </div>";
+                            
+                        }
+
                         if ($analysisname == "most-used-pitches") {
                             $mostUsedPitchesDir = $value . "/data/most-used-pitches";
                             $i = 0; 

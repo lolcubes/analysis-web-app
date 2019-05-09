@@ -22,7 +22,7 @@
   transition: .2s;
 }
 
-#dashboard-header:hover {`
+#dashboard-header:hover {
   background-color: var(--panel-color-hover);
   border: 1px solid var(--panel-color-hover);
   box-shadow: 1px 0px 22px  rgb(0, 0, 0);

@@ -20,7 +20,7 @@ uniq=$(cat "${output}/occurrences.txt" | sort | uniq -c | sed -e 's/^[ \t]*//' |
 lines=$(cat "${output}/occurrences.txt" | wc -l )
 numbers=$(echo "$uniq" | cut -d '~' -f1)
 vals=$(echo "$uniq" | cut -d '~' -f2)
-percents=$(echo "$numbers" | while read line; do echo "$line/$lines" | bc -l; done )
+percents=$(echo "$numbers" | while read line; do echo "scale=2;(${line}/${lines})*100" | bc -l; done )
 seqVal=$(echo "$percents" | wc -l)
 
 seqValMinus=$(echo "$seqVal - 1" | bc -l)
