@@ -15,6 +15,8 @@
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Kelly+Slab|Open+Sans" rel="stylesheet">   
+        <script src="css-element-queries/src/ResizeSensor.js"></script>
+        <script src="css-element-queries/src/ElementQueries.js"></script>
     </head>
     <body>
 
@@ -121,14 +123,12 @@
                 $filename = str_replace("Song_Database/", "", $value);
                 $removedFileName = strstr($filename, '_');
                 $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
-
                 $containernames = "analysis-container_" . $filename;
 
                 // $explodedname = explode("_", $filename);
                 // print_r($explodedname);
 
                 echo "<div class=analysis-panel><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
-
                 echo "<div id='largeitem' style=\"width: 22%;\">";
 
                 echo "
@@ -438,16 +438,21 @@
                             $descDoubleArray = str_replace('"', "", $descDoubleArray);
 
                             echo "
+
+                            <script>
+
+                            </script>
+
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
                                     <div class='chart-container'>
-                                        <canvas class=graph id=" . $filename . "_scales_graph>
+                                        <canvas class=graph id=" . $completeFileName . "_scales_graph>
                                         </canvas>
 
                                     </div>
 
                                     <script>                                  
-                                    let myChart_scales_" . $filename . " = document.getElementById('" . $filename . "_scales_graph').getContext('2d');
+                                    let myChart_scales_" . $filename . " = document.getElementById('" . $completeFileName . "_scales_graph').getContext('2d');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
                                     Chart.defaults.global.defaultFontSize = 14;
@@ -491,7 +496,6 @@
 
                                     options:{
                                         legend:{
-                                            display:true,
                                             position:'top',
                                             labels:{
                                                 fontSize: 12,
@@ -513,6 +517,32 @@
                                         }
                                     }
                                     });
+
+
+                                    function afterResizing(){
+                                        var canvasheight=document.getElementById('" . $completeFileName . "_scales_graph').width;
+                                        if (canvasheight <=300) {
+                                            chart_scales_" . $filename . ".options.legend.display=false;
+                                        }
+
+                                        else {
+                                            chart_scales_" . $filename . ".options.legend.display=true;
+                                        }
+
+                                        chart_scales_" . $filename . ".update();
+                                    }
+        
+                                    
+                                    var resizeId;
+                                    $(window).resize(function() {
+                                        clearTimeout(resizeId);
+                                        resizeId = setTimeout(afterResizing, 100);
+                                    });
+
+                                    var resizeId;
+                                    new ResizeSensor(jQuery('.analysis-panel'), function(){ 
+                                        clearTimeout(resizeId);
+                                        resizeId = setTimeout(afterResizing, 100);
                                     </script>
                                 </div>
                              </div>";
@@ -1303,9 +1333,9 @@
         <br>
         <br>
         <script>
-              $( function() {
-                    $( "#analysis-panel" ).draggable();
-                } );
+            //   $( function() {
+            //         $( ".analysis-panel" ).draggable();
+            //     } );
             $(window).bind('beforeunload', function(){
                 return 'Your changes will not be saved! Continue?';
             });

@@ -30,8 +30,8 @@
 }
 
 .analysis-panel {
-  /* resize: both;
-  background-color:var(--main-panel-color); */
+  resize: both;
+  min-width: 200px;
   color: rgb(255, 255, 255);
   display: inline-block;
   width: 42%;
@@ -167,6 +167,10 @@ body {
   padding-top: 6px;
   padding-bottom: 6px;
   overflow: auto;
+  box-shadow: 1px 4px 25px  rgba(0, 0, 0, .4);
+}
+#shelf:hover {
+  box-shadow: 1px 4px 30px  rgba(0, 0, 0, .5);
 }
 
 .analysis-content {
