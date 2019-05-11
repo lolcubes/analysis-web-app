@@ -71,6 +71,7 @@
         
         <script>
                 function showDiv(classVar, contentId) { 
+
                     var x = document.getElementsByClassName(contentId);
                     var i;
                     for (i = 0; i < x.length; i++) {
@@ -84,8 +85,17 @@
 
                     }
 
-                    var shelfItem = document.getElementsByClassName(classVar);
-                    $('.shelfActive').removeClass('shelfActive');
+
+                    var shelfItem = document.getElementById(contentId).getElementsByClassName(classVar);
+                    
+                    var shelfActive = document.getElementById(contentId).getElementsByClassName("shelfActive");
+
+                    var k;
+                    for (k = 0; k < shelfActive.length; k++) {
+
+                        $(shelfActive[k]).removeClass('shelfActive');
+                    }
+
 
                     var j;
                     for (j = 0; j < shelfItem.length; j++) {
@@ -104,6 +114,7 @@
                 // y.style.display = "inline-block";
                 }
         </script>
+
         <br>
         </div>
         <br>
@@ -137,11 +148,11 @@
                 // $explodedname = explode("_", $filename);
                 // print_r($explodedname);
 
-                echo "<div class=analysis-panel><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
+                echo "<div class=analysis-panel id=analysis-panel" . $filename . "><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
                 echo "<div id='largeitem' style=\"width: 22%;\">";
 
                 echo "
-                <div id=shelf>";
+                <div id=analysis-container" . "_" . $filename . " class=shelf>";
                 echo "
                     <div id=shelf-item class=general" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
                         <span>
@@ -455,13 +466,13 @@
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
                                     <div class='chart-container'>
-                                        <canvas class=graph id=" . $completeFileName . "_scales_graph>
+                                        <canvas class=graph id=" . $filename . "_scales_graph>
                                         </canvas>
 
                                     </div>
 
                                     <script>                                  
-                                    let myChart_scales_" . $filename . " = document.getElementById('" . $completeFileName . "_scales_graph').getContext('2d');
+                                    let myChart_scales_" . $filename . " = document.getElementById('" . $filename . "_scales_graph').getContext('2d');
 
                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
                                     Chart.defaults.global.defaultFontSize = 14;
@@ -528,31 +539,30 @@
                                     });
 
 
-                                    function afterResizing(){
-                                        var canvasheight=document.getElementById('" . $completeFileName . "_scales_graph').width;
-                                        if (canvasheight <=300) {
+
+                                    var resizeIdScales" . $filename  . ";
+                                    $(window).resize(function() {
+                                        clearTimeout(resizeIdScales" . $filename  . " );
+                                        resizeIdScales" . $filename  . " = setTimeout(afterResizingScales" . $filename . ", 100);
+                                    });
+
+                                    var resizeIdScales" . $filename  . ";
+                                    new ResizeSensor(jQuery('#analysis-panel" . $filename . "'), function(){ 
+                                        clearTimeout(resizeIdScales" . $filename  . " );
+                                        resizeIdScales" . $filename  . " = setTimeout(afterResizingScales" . $filename . ", 100);
+                                    });
+
+                                    var canvasheightScales". $filename . ";
+                                    function afterResizingScales" . $filename . "(){
+                                        var canvasheightScales" . $filename . " = document.getElementById('" . $filename . "_scales_graph').width;
+                                        if(canvasheightScales" . $filename . " <=360) {
                                             chart_scales_" . $filename . ".options.legend.display=false;
                                         }
-
                                         else {
                                             chart_scales_" . $filename . ".options.legend.display=true;
                                         }
-
-                                        chart_scales_" . $filename . ".update();
+                                            chart_scales_" . $filename . ".update();
                                     }
-        
-                                    
-                                    var resizeId;
-                                    $(window).resize(function() {
-                                        clearTimeout(resizeId);
-                                        resizeId = setTimeout(afterResizing, 100);
-                                    });
-
-                                    var resizeId;
-                                    new ResizeSensor(jQuery('.analysis-panel'), function(){ 
-                                        clearTimeout(resizeId);
-                                        resizeId = setTimeout(afterResizing, 100);
-                                    });
 
                                     </script>
                                 </div>
@@ -897,6 +907,32 @@
                                             }
                                             }
                                         });
+
+                                        var resizeId" . $filename  . ";
+                                        $(window).resize(function() {
+                                            clearTimeout(resizeId" . $filename  . " );
+                                            resizeId" . $filename  . " = setTimeout(afterResizingMostUsedPitches" . $filename . ", 100);
+                                        });
+    
+                                        var resizeId" . $filename  . ";
+                                        new ResizeSensor(jQuery('#analysis-panel" . $filename . "'), function(){ 
+                                            clearTimeout(resizeId" . $filename  . " );
+                                            resizeId" . $filename  . " = setTimeout(afterResizingMostUsedPitches" . $filename . ", 100);
+                                        });
+    
+                                        var canvasheightMostUsedPitches". $filename . ";
+                                        function afterResizingMostUsedPitches" . $filename . "(){
+                                            var canvasheightMostUsedPitches" . $filename . " = document.getElementById('" . $filename . "_most_used_pitches_graph').width;
+                                            if(canvasheightMostUsedPitches" . $filename . " <=396) {
+                                                chart_most_used_pitches_graph_" . $filename . ".options.legend.display=false;
+                                            }
+                                            else {
+                                                chart_most_used_pitches_graph_" . $filename . ".options.legend.display=true;
+                                            }
+                                                chart_most_used_pitches_graph_" . $filename . ".update();
+                                        }
+
+                                        
                                     </script>
                                     <br>
                                 </div>
