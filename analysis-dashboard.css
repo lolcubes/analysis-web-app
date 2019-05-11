@@ -156,6 +156,15 @@ body {
   border: solid 2px var(--main-bg-color);
 }
 
+#shelf-item:active {
+  background-color: rgba(169, 216, 255, 0.4);
+}
+
+#shelf-item.shelfActive {
+  background-color: rgba(169, 245, 255, 0.103);
+  border: solid 2px var(--main-bg-color);
+}
+
 #shelf {
   width: 100%;
   font-size: 15px;
@@ -213,8 +222,7 @@ body {
 
 
 ::-webkit-resizer {
-  background: none;
-  background-color: rgba(0,0,0,0)
+  background-color: rgb(255, 255, 255)
 }
 
 

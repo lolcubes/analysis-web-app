@@ -84,6 +84,15 @@
 
                     }
 
+                    var shelfItem = document.getElementsByClassName(classVar);
+                    $('.shelfActive').removeClass('shelfActive');
+
+                    var j;
+                    for (j = 0; j < shelfItem.length; j++) {
+                        // x[i].style.display = "none";
+                        $(shelfItem[j]).addClass('shelfActive');
+                    }
+
                     var box = document.getElementById(classVar);
     
                     $(box).removeClass('hidden');
@@ -543,6 +552,8 @@
                                     new ResizeSensor(jQuery('.analysis-panel'), function(){ 
                                         clearTimeout(resizeId);
                                         resizeId = setTimeout(afterResizing, 100);
+                                    });
+
                                     </script>
                                 </div>
                              </div>";
