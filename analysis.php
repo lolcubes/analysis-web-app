@@ -1366,6 +1366,8 @@
                                     </span>
                                 </div>
                             </div>";
+                            
+                            
 
                 echo "
                 </div>";
@@ -1375,6 +1377,78 @@
             }
                     
 
+            // AVERAGES SECTION //
+            //======================
+
+            if ( sizeof($explodedfiledirs) == "1" ) {
+
+            }
+            else {
+                echo "<div class=analysis-panel id=analysis-panel-averages><div class=panelheader><h1>Averages</h1>";
+                echo "</div>";
+
+                echo "<div id='largeitem' style=\"width: 22%;\">";
+
+                echo "
+                <div id=analysis-container_averages class=shelf>";
+
+                foreach($_POST['data-choose'] as $selected){
+                    $analysisname = substr($selected, 0, strpos($selected, "."));
+                    $containernames = "analysis-container_averages";
+
+                    echo "
+
+                    <div id=shelf-item class=" . $analysisname . "_" . "averages onclick=\"showDiv(this.className, '" . $containernames . "');\">
+                        <span>"
+                        . $analysisname . "
+                        </span>
+                    </div>";                    
+                }
+                
+                echo "</div>";
+
+                echo "</div>";
+
+
+                echo "</div>";
+
+            }
+
+            //OCCURRENCES SECTION
+            //-------------------
+            //-==================
+
+            if ( sizeof($explodedfiledirs) == "1" ) {
+
+            }
+            else {
+                echo "<div class=analysis-panel id=analysis-panel-occurrences><div class=panelheader><h1>Occurrences</h1>";
+                echo "</div>";
+
+                echo "<div id='largeitem' style=\"width: 22%;\">";
+
+                echo "
+                <div id=analysis-container_occurrences class=shelf>";
+
+                foreach($_POST['data-choose'] as $selected){
+                    $analysisname = substr($selected, 0, strpos($selected, "."));
+                    $containernames = "analysis-container_occurrences";
+
+                    echo "
+
+                    <div id=shelf-item class=" . $analysisname . "_" . "occurrences onclick=\"showDiv(this.className, '" . $containernames . "');\">
+                        <span>"
+                        . $analysisname . "
+                        </span>
+                    </div>";                    
+                }
+                
+                echo "</div>";
+
+                echo "</div>";
+                echo "</div>";
+
+            }
         ?>
         
         <br>
