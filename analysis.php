@@ -261,12 +261,12 @@
 
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
-                                <div class=analysis-content style='width:20%'>
+                                <div class=analysis-content style='width:17%'>
                                     <span class=keysiglist>" . $keySigsList
                                     . "</span>
                                 </div>
 
-                                <div class=analysis-content style='width:60%'>
+                                <div class=analysis-content style='width:53%'>
                                         <canvas class='chart-container' height=250px id=" . $filename . "_keysig_graph>
                                         </canvas>
 

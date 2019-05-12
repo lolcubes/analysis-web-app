@@ -36,7 +36,7 @@ code {
 
 h1, h2, h3, h4, h5, h6, h7 {
   font-weight: normal;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light', sans-serif;
 
   /* padding-top: 30px;
   line-height: 0px;
@@ -501,7 +501,7 @@ h4 {
 
 #input-section-database,
 #input-section-database-types {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light', sans-serif;
   font-size:18px;
   background-color: rgb(255, 255, 255);
   padding: 20px;
