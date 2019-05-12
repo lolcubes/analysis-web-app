@@ -603,11 +603,6 @@ function changeDetailsMessage(){
                 <br>
                 <br>
 
-                <label class="container">Total Time&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="total-time.sh" >
-                    <span class="checkmark"></span>
-                </label>
-
                 <label class="container">Average Note Value&nbsp;&nbsp;
                     <input type="checkbox" name="data-choose[]" value="average-note-value.sh">
                     <span class="checkmark"></span>

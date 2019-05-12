@@ -147,7 +147,6 @@
 
                 // $explodedname = explode("_", $filename);
                 // print_r($explodedname);
-
                 echo "<div class=analysis-panel id=analysis-panel" . $filename . "><div class=panelheader><h1>" . $completeFileName . "</h1></div>";
                 echo "<div id='largeitem' style=\"width: 22%;\">";
 
@@ -166,13 +165,18 @@
                     $analysisname = substr($selected, 0, strpos($selected, "."));
                     $directory = $value . "/data/" . "$analysisname";
                     mkdir($directory);
+
+                    $analysisnamecapitals = str_replace("-", " ", $analysisname);
+                    $analysisnamecapitals = ucwords($analysisnamecapitals);
+
                     $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
                     $output = shell_exec("$scriptdirec $song");
+                    $timeoutput = shell_exec("analysis-scripts/bib-scripts/original/total-time.sh $song");
                     echo "
                     <div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className, '" . $containernames . "');\">
                         <span>"
-                        . $analysisname . "
+                        . $analysisnamecapitals . "
                         </span>
                     </div>";                    
 
@@ -181,6 +185,21 @@
                     //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
                     
                 }
+
+                echo "
+                <div id=shelf-item class=keyscape" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
+                    <span>
+                        Keyscape
+                    </span>
+                </div>";
+
+                echo "
+                <div id=shelf-item class=proll" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
+                    <span>
+                        Piano Roll
+                    </span>
+                </div>";
+
                 echo "
                     </div>";
                 echo "
@@ -228,7 +247,7 @@
                             $keySigPercents = file_get_contents($keySigPercentsDir);
                             $keySigPercentsExploded = explode(",", $keySigPercents);
                             $keySigPercentsEncoded = json_encode($keySigPercentsExploded);
-
+                            
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
@@ -249,7 +268,7 @@
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
                                     let chart_" . $filename . " = new Chart(myChart_" . $filename . ", {
-                                    type:'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                    type:'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                                     data:{
                                         labels:JSON.parse('" . $keySigValuesEncoded . "'),
                                         datasets:[{
@@ -486,28 +505,28 @@
                                                     data: " . $ascSingleArray . ",
                                                     label: 'Ascending Single',
                                                     borderColor: '#8e5ea2',
-                                                    fill: false,
+                                                    fill: true,
                                                     lineTension: '0'
 
                                                 }, { 
                                                     data: " . $ascDoubleArray . ",
                                                     label: 'Ascending Double',
                                                     borderColor: '#3cba9f',
-                                                    fill: false,
+                                                    fill: true,
                                                     lineTension: '0'
 
                                                 }, { 
                                                     data: " . $descSingleArray . ",
                                                     label: 'Descending Single',
                                                     borderColor: '#e8c3b9',
-                                                    fill: false,
+                                                    fill: true,
                                                     lineTension: '0'
 
                                                 }, { 
                                                     data: " . $descDoubleArray . ",
                                                     label: 'Descending Double',
                                                     borderColor: '#c45850',
-                                                    fill: false,
+                                                    fill: true,
                                                     lineTension: '0'
 
                                                 }
@@ -564,6 +583,12 @@
                                             chart_scales_" . $filename . ".update();
                                     }
 
+                                    </script>
+                                    <script>
+                                        $(function() {
+                                            chart_scales_" . $filename . ".options.legend.display=true;
+                                            chart_scales_" . $filename . ".update();
+                                        });
                                     </script>
                                 </div>
                              </div>";
@@ -687,7 +712,7 @@
                                                 {
                                                   label: 'Moving Average',
                                                   data:" . $movingAverageEncoded . ",
-                                                  backgroundColor:'rgba(255, 99, 132, 0.8)',
+                                                  backgroundColor:'rgb(255, 79, 125)',
                                                   hoverBackgroundColor:'rgba(214, 47, 82, 0.8)',
                                                   pointBackgroundColor:'rgba(0, 0, 0, 0.8)',
                                                   pointRadius: 0.1,
@@ -1221,10 +1246,10 @@
                                                 datasets: [{ 
                                                         data: " . $repeatedPitches . ",
                                                         label: 'Repeated Pitches',
-                                                        borderColor: '#8e5ea2',
-                                                        fill: false,
-                                                        lineTension: '0'
-    
+                                                        borderColor:'rgb(255, 79, 125)',
+                                                        fill: true,
+                                                        lineTension: '0',
+                                                        backgroundColor:'rgb(255, 79, 125)'
                                                     }
                                                 ]
                                             },
@@ -1296,10 +1321,10 @@
                                                 datasets: [{ 
                                                         data: " . $repeatedPitchesValue . ",
                                                         label: 'Repeated Note Values',
-                                                        borderColor: '#8e5ea2',
-                                                        fill: false,
-                                                        lineTension: '0'
-    
+                                                        borderColor: 'rgb(255, 79, 125)',
+                                                        fill: true,
+                                                        lineTension: '0',
+                                                        backgroundColor:'rgb(255, 79, 125)'
                                                     }
                                                 ]
                                             },
@@ -1334,45 +1359,62 @@
                              </div>";
                             
                         }
-                        if ($analysisname == "total-time") {
-                            $timePath = $value . "/data/total-time/time.txt";
 
+                        
+                    }
+                            //CREATE GENERAL SECTION ==================//
+                            //==========================================
+
+
+                            $timePath = $value . "/data/total-time/time.txt";
                             $timePath = file_get_contents($timePath);
                             $timePath = str_replace(" ", "  ", $timePath);
+
                             echo "
-                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
+                            <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                                 <div class=analysis-content>
-                                <br>
-                                <br>
-                                            <span id=clock>" . $timePath ."</span>
+                                    <br>
+                                    <br>
+                                    <span id=clock>" . $timePath ."</span>
                                     <br>
                                     <br>
                                     <br>
 
                                 </div>
                              </div>";
-                            
-                        }
-                        
-                    }
-                            //CREATE GENERAL SECTION ==================//
-                            //==========================================
-                            
+
+
+                            //===================================
+                            //====================================
+
+
                             echo "
-                            <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=keyscape" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                                 <div class=analysis-content>
-                                    <span>
-                                        General
-                                    </span>
+
+                                    <br>
+                                    <img src='Song_Database/" . $filename . "/image-assets/keyscape.png' alt='Keyscape Chart' width=400px; height=200px>
                                 </div>
                             </div>";
-                            
-                            
+
+                            echo "
+                            <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=proll" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
+                                <div class=analysis-content>
+
+                                    <br>
+                                    <div class=chart-container style='width:400px; height:200px; overflow: auto;'> 
+                                    <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height=180px>
+                                    </div>
+                                </div>
+                            </div>";
 
                 echo "
                 </div>";
                 echo "
                 </div>";
+                echo "
+                </div>";
+
 
             }
                     
@@ -1446,6 +1488,19 @@
                 echo "</div>";
 
                 echo "</div>";
+                echo "<div id=largeitem>";
+                foreach($_POST['data-choose'] as $selected){
+                    $analysisname = substr($selected, 0, strpos($selected, "."));
+                    $containernames = "analysis-container_occurrences";
+
+                    echo "
+                    <div class='analysis-container_occurrences hidden visuallyhidden' id=" . $analysisname . "_occurrences  style=\" width: 100%; transition: all .4s ease;\">
+                        <div class=analysis-content>
+                        </div>
+                    </div>";
+                }
+                echo "</div>";
+
                 echo "</div>";
 
             }

@@ -79,9 +79,8 @@
                 shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/degrunner.sh $fileconvert $degoutput");
                 shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/proll $fileconvert > $prolloutput");
                 shell_exec( "/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/mkeyscape $target > $keyscapeoutput");
-                shell_exec( "/usr/local/bin/convert $keyscapeoutput $keyscapeoutputpng");
-                shell_exec( "/usr/local/bin/convert $prolloutput $prolloutputpng");
-
+                shell_exec( "/usr/local/bin/convert $keyscapeoutput -transparent white $keyscapeoutputpng");
+                shell_exec( "/usr/local/bin/convert $prolloutput -transparent black $prolloutputpng");
             }       
 
 ?>

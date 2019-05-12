@@ -35,7 +35,9 @@
   color: rgb(255, 255, 255);
   display: inline-block;
   width: 42%;
+
   margin: 2%;
+
   border-radius: 20px;
   overflow: auto;
   font-family: 'Courier New', Courier, monospace;
@@ -128,6 +130,8 @@
 
 body {
   background-color: var(--main-bg-color);
+  text-align: center;
+
 }
 
 #shelf-item {
@@ -218,12 +222,6 @@ body {
   background-color: var(--panel-color-hover);
   box-shadow: 1px 4px 15px  rgba(0, 0, 0, .8);
   transition: .2s;
-}
-
-
-::-webkit-resizer {
-  background-color: rgb(255, 255, 255);
-  z-index: 1000000000000000;
 }
 
 
