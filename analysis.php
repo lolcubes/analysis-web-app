@@ -190,6 +190,9 @@
                 mkdir($timedirectory);
                 $timeoutput = shell_exec("analysis-scripts/bib-scripts/original/total-time.sh $song");
 
+                shell_exec("cd $value && zip -r assets.zip .");
+
+
                 echo "
                 <div id=shelf-item class=keyscape" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
                     <span>
