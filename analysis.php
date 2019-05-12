@@ -1429,91 +1429,101 @@
             }
                     
 
-            // AVERAGES SECTION //
-            //======================
+            //===================
+            //conditional:
+                        // if ( sizeof($explodedfiledirs) == "1" ) {
 
-            if ( sizeof($explodedfiledirs) == "1" ) {
+                        // }
+                        // else {
+            //==================================
 
-            }
-            else {
+
                 echo "<div class=analysis-panel id=analysis-panel-averages><div class=panelheader><h1>Averages</h1>";
                 echo "</div>";
 
-                echo "<div id='largeitem' style=\"width: 22%;\">";
+                // echo "<div id='largeitem' style=\"width: 22%;\">";
 
-                echo "
-                <div id=analysis-container_averages class=shelf>";
+                // echo "
+                // <div id=analysis-container_averages class=shelf>";
 
-                foreach($_POST['data-choose'] as $selected){
-                    $analysisname = substr($selected, 0, strpos($selected, "."));
-                    $containernames = "analysis-container_averages";
+                // foreach($_POST['data-choose'] as $selected){
+                //     $analysisname = substr($selected, 0, strpos($selected, "."));
+                //     $containernames = "analysis-container_averages";
 
-                    echo "
+                //     echo "
 
-                    <div id=shelf-item class=" . $analysisname . "_" . "averages onclick=\"showDiv(this.className, '" . $containernames . "');\">
-                        <span>"
-                        . $analysisname . "
-                        </span>
-                    </div>";                    
-                }
+                //     <div id=shelf-item class=" . $analysisname . "_" . "averages onclick=\"showDiv(this.className, '" . $containernames . "');\">
+                //         <span>"
+                //         . $analysisname . "
+                //         </span>
+                //     </div>";                    
+                // }
                 
-                echo "</div>";
+                // echo "</div>";
+
+                // echo "</div>";
+
+                foreach ($explodedfiledirs as $value) {
+                    $filename = str_replace("Song_Database/", "", $value);
+                    $removedFileName = strstr($filename, '_');
+                    $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
+                    $containernames = "analysis-container_" . $filename;
+                    echo "<div id=downloadSection><p> " . $completeFileName . "</p></div>";
+                    echo "<button class=darkform><a href='/images/myw3schoolsimage.jpg' download>Download Something</button>";
+                }
 
                 echo "</div>";
 
-
-                echo "</div>";
-
-            }
+            
 
             //OCCURRENCES SECTION
             //-------------------
             //-==================
 
-            if ( sizeof($explodedfiledirs) == "1" ) {
+            // if ( sizeof($explodedfiledirs) == "1" ) {
 
-            }
-            else {
-                echo "<div class=analysis-panel id=analysis-panel-occurrences><div class=panelheader><h1>Occurrences</h1>";
-                echo "</div>";
+            // }
+            // else {
+            //     echo "<div class=analysis-panel id=analysis-panel-occurrences><div class=panelheader><h1>Occurrences</h1>";
+            //     echo "</div>";
 
-                echo "<div id='largeitem' style=\"width: 22%;\">";
+            //     echo "<div id='largeitem' style=\"width: 22%;\">";
 
-                echo "
-                <div id=analysis-container_occurrences class=shelf>";
+            //     echo "
+            //     <div id=analysis-container_occurrences class=shelf>";
 
-                foreach($_POST['data-choose'] as $selected){
-                    $analysisname = substr($selected, 0, strpos($selected, "."));
-                    $containernames = "analysis-container_occurrences";
+            //     foreach($_POST['data-choose'] as $selected){
+            //         $analysisname = substr($selected, 0, strpos($selected, "."));
+            //         $containernames = "analysis-container_occurrences";
 
-                    echo "
+            //         echo "
 
-                    <div id=shelf-item class=" . $analysisname . "_" . "occurrences onclick=\"showDiv(this.className, '" . $containernames . "');\">
-                        <span>"
-                        . $analysisname . "
-                        </span>
-                    </div>";                    
-                }
+            //         <div id=shelf-item class=" . $analysisname . "_" . "occurrences onclick=\"showDiv(this.className, '" . $containernames . "');\">
+            //             <span>"
+            //             . $analysisname . "
+            //             </span>
+            //         </div>";                    
+            //     }
                 
-                echo "</div>";
+            //     echo "</div>";
 
-                echo "</div>";
-                echo "<div id=largeitem>";
-                foreach($_POST['data-choose'] as $selected){
-                    $analysisname = substr($selected, 0, strpos($selected, "."));
-                    $containernames = "analysis-container_occurrences";
+            //     echo "</div>";
+            //     echo "<div id=largeitem>";
+            //     foreach($_POST['data-choose'] as $selected){
+            //         $analysisname = substr($selected, 0, strpos($selected, "."));
+            //         $containernames = "analysis-container_occurrences";
 
-                    echo "
-                    <div class='analysis-container_occurrences hidden visuallyhidden' id=" . $analysisname . "_occurrences  style=\" width: 100%; transition: all .4s ease;\">
-                        <div class=analysis-content>
-                        </div>
-                    </div>";
-                }
-                echo "</div>";
+            //         echo "
+            //         <div class='analysis-container_occurrences hidden visuallyhidden' id=" . $analysisname . "_occurrences  style=\" width: 100%; transition: all .4s ease;\">
+            //             <div class=analysis-content>
+            //             </div>
+            //         </div>";
+            //     }
+            //     echo "</div>";
 
-                echo "</div>";
+            //     echo "</div>";
 
-            }
+            // }
         ?>
         
         <br>

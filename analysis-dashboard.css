@@ -269,3 +269,34 @@ body {
   box-shadow: 1px 4px 16px  rgba(0, 0, 0, .9);
   transition: .3s;
 }
+
+#downloadSection{
+  background-color: var(--main-bg-color);
+  width: 40%;
+  border-radius: 15px;
+  margin: 2%;
+  height: 300px;
+  display: inline-block;
+  padding: 5px;
+  transition: .2s;
+}
+
+#downloadSection:hover {
+  background-color: var(--main-bg-color-lighter);
+  transition: .2s;
+}
+
+.darkform {
+  color: white;
+  padding: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 10px;
+  transition: .2s;
+  box-shadow: 1px 6px 16px  rgba(0, 0, 0, .4);
+  z-index: 1000;
+  background-color: rgba(169, 245, 255, 0.1);
+  transition: .18s;
+  border: solid 3px var(--main-bg-color);
+}

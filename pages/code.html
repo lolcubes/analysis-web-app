@@ -39,83 +39,26 @@
                 <h2>About</h2>
         </div>
 
-        <div id=welcome>
-            <br>
-            <p><strong>The following is all the code we used to find our data</strong><p>
-                <center>
-                    <button class="accordion">Section 1</button>
-                    <div class="panel">
-                        <br>
-                        <br>
-                        <span> This code will find something</span>
-                            <a class="embedly-card" data-card-controls="0" data-card-theme="light" href="https://gist.github.com/BeatsInBytes/81218b6858f5892ab1a66668a5d1d8c4"></a> <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-                        <br>
-                        <span>Usage:</span>
-                        <span>With a given kern file, simply run this script with the file as the first argument. Use the following command for reference:</span>
-                            <code>
-                                /path/to/averagesteps.sh /path/to/song.kern
-                            </code>
-                            <br>
-                            <br>
-                        <br>
+            <p><strong>
+                    The following is all the code we used to find our data
+            </strong><p>
+
+            <center>
+                <div class=panels>
+                    <div id=heading>
+                        <p id="data-heading">Average Steps Per Jump:</p>
                     </div>
+                    <span> This code will find something</span>
+                    <a class="embedly-card" data-card-controls="0" data-card-theme="light" href="https://gist.github.com/BeatsInBytes/81218b6858f5892ab1a66668a5d1d8c4"></a> <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
 
-                    <button class="accordion">Section 2</button>
-                    <div class="panel">
-                      <p>Lorem ipsum...</p>
-                        <button class="accordion">Section 2</button>
-                        <div class="panel">
-                        <p>Lorem ipsum...</p>
-                        </div>
+                    <span>With a given kern file, simply run this script with the file as the first argument. Use the following command for reference:</span>
+                        <code>
+                            /path/to/averagesteps.sh /path/to/song.kern
+                        </code>
+
                     </div>
-
-                    <button class="accordion">Section 3</button>
-                    <div class="panel">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                </center>
-
-                <script>
-                    var acc = document.getElementsByClassName("accordion");
-                    var i;
-
-                    for (i = 0; i < acc.length; i++) {
-                    acc[i].addEventListener("click", function() {
-                        /* Toggle between adding and removing the "active" class,
-                        to highlight the button that controls the panel */
-                        this.classList.toggle("active");
-
-                        /* Toggle between hiding and showing the active panel */
-                        var panel = this.nextElementSibling;
-                        if (panel.style.display === "block") {
-                        panel.style.display = "none";
-                        } else {
-                        panel.style.display = "block";
-                        }
-                    });
-                    }
-                </script>
-
-                <script>
-                        var acc = document.getElementsByClassName("accordion");
-                        var i;
-
-                        for (i = 0; i < acc.length; i++) {
-                        acc[i].addEventListener("click", function() {
-                            this.classList.toggle("active");
-                            var panel = this.nextElementSibling;
-                            if (panel.style.maxHeight){
-                            panel.style.maxHeight = null;
-                            } else {
-                            panel.style.maxHeight = panel.scrollHeight + "px";
-                            } 
-                        });
-                        }
-                        </script>
-            <hr>
-
+            </center> 
     </body>
-
 </html>
 
 
