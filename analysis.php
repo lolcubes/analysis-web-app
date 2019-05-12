@@ -254,14 +254,22 @@
                             $keySigPercents = file_get_contents($keySigPercentsDir);
                             $keySigPercentsExploded = explode(",", $keySigPercents);
                             $keySigPercentsEncoded = json_encode($keySigPercentsExploded);
-                            
+
+                            $keySigsListDir = $keySigDir . "/occurrences.txt";
+                            $keySigsList = file_get_contents($keySigsListDir);
+                            $keySigsList = nl2br($keySigsList);
+
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
-                                <div class=analysis-content style='width:70%'>
-                                    <div class='chart-container'>
-                                        <canvas class=graph id=" . $filename . "_keysig_graph>
+                                <div class=analysis-content style='width:20%'>
+                                    <span class=keysiglist>" . $keySigsList
+                                    . "</span>
+                                </div>
+
+                                <div class=analysis-content style='width:60%'>
+                                        <canvas class='chart-container' height=250px id=" . $filename . "_keysig_graph>
                                         </canvas>
-                                    </div>
+
                                     " 
                                      . 
                                     "
@@ -283,13 +291,13 @@
                                         data:JSON.parse('" . $keySigPercentsEncoded . "'),
 
                                         backgroundColor:[
-                                            'rgba(255, 99, 132, 0.6)',
-                                            'rgba(54, 162, 235, 0.6)',
-                                            'rgba(255, 206, 86, 0.6)',
-                                            'rgba(75, 192, 192, 0.6)',
-                                            'rgba(153, 102, 255, 0.6)',
-                                            'rgba(255, 159, 64, 0.6)',
-                                            'rgba(255, 99, 132, 0.6)'
+                                            'rgba(255, 99, 132, 0.8)',
+                                            'rgba(54, 162, 235, 0.8)',
+                                            'rgba(255, 206, 86, 0.8)',
+                                            'rgba(75, 192, 192, 0.8)',
+                                            'rgba(153, 102, 255, 0.8)',
+                                            'rgba(255, 159, 64, 0.8)',
+                                            'rgba(255, 99, 132, 0.8)'
                                         ],
 
                                         borderWidth:1,
@@ -301,8 +309,10 @@
                                     options:{
                                         legend:{
                                         display:true,
-                                        position:'right',
+                                        position:'top',
                                         labels:{
+                                            fontSize: 14,
+
                                             fontColor:'#fff'
                                         }
                                         },
@@ -322,7 +332,6 @@
                                     </script>
                                     <br>
                                 </div>
-                                <div class=analysis-content style='width:20%'></div>
                              </div>";
 
                         }

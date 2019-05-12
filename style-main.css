@@ -7,6 +7,19 @@
   border: 0px;
 }
 
+
+@font-face {
+  font-family: 'Avenir Light'; 
+  src: url('fonts/avenir/avenir-light.otf'); 
+
+  font-family: 'Avenir Semi-Light'; 
+  src: url('fonts/avenir/avenir-semi-light.otf'); 
+
+  font-family: 'Avenir Light'; 
+  src: url('fonts/avenir/avenir-medium.otf'); 
+}
+
+
 #demo {
       display: none;
 }
@@ -68,7 +81,7 @@ ul li {
 ul li a {
     display: block;
     text-decoration: none;
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
     color: white;
     padding: 0px 25px;
     text-align: center;
@@ -128,7 +141,7 @@ label {
 p,
 h2,
 h3 {
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
     margin: 40px;
 }
 
@@ -156,7 +169,7 @@ textarea {
 	-moz-border-radius-bottomleft:9px;
     border-bottom-left-radius:9px;
 	border: 1px dashed #cccccc;
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
 
 }
 
@@ -183,7 +196,7 @@ textarea {
 	height:24px;
 	line-height:24px;
     width:100px;
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
     text-decoration: none;
 
 }
@@ -228,7 +241,7 @@ textarea {
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 15x;
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -302,12 +315,12 @@ textarea {
   }
 
 span {
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
   }
 
 .buttonform {
     background-color: white;
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
     border: 2px solid  rgb(0, 84, 211);
     padding: 15px 20px;
     text-align: center;
@@ -357,7 +370,7 @@ span {
 }
 
 h4 {
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
 }
 
 .inputfile {
@@ -471,7 +484,7 @@ h4 {
 #TimePeriod,
 #TimePeriod_Dropdown {
 
-    font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Avenir Light'; 
     font-size:18px;
     background-color:rgb(44, 44, 44);
     padding: 8px;

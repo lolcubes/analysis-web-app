@@ -6,6 +6,10 @@
   --panel-color-hover: rgba(49,53,129,1);
 }
 
+@font-face {
+  font-family: 'Avenir Light'; /*a name to be used later*/
+  src: url('fonts/avenir/avenir-light.otf'); /*URL to font*/
+}
 
 * {
   margin: 0px;
@@ -197,6 +201,7 @@ body {
   border-radius: 20px;
   box-shadow: 1px 4px 13px  rgba(0, 0, 0, .6);
   display: inline-block;
+  vertical-align: top
 }
 .analysis-content:hover {
   box-shadow: 1px 4px 17px  rgba(0, 0, 0, .8);
@@ -210,13 +215,15 @@ body {
 }
 
 .chart-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: var(--main-panel-color);
-  padding: 20px;
   width: 80%;
   position: relative;
   border-radius: 20px;
   box-shadow: 1px 4px 13px  rgba(0, 0, 0, .6);
   transition: .2s;
+  vertical-align: middle;
 }
 
 .chart-container:hover {
@@ -299,7 +306,7 @@ body {
   text-align: center;
   border-radius: 10px;
   transition: .2s;
-  box-shadow: 1px 6px 16px  rgba(0, 0, 0, .4);
+  box-shadow: 1px 6px 16px  rgb(0, 0, 0);
   z-index: 1000;
   background-color: rgba(79, 148, 250, 0.644);
   transition: .18s;
@@ -313,4 +320,8 @@ body {
 
 .downloadbutton {
   text-decoration: none;
+}
+
+.keysiglist {
+  font-family: 'Avenir Light';
 }
