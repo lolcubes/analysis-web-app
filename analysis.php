@@ -257,7 +257,7 @@
                             
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
-                                <div class=analysis-content>
+                                <div class=analysis-content style='width:70%'>
                                     <div class='chart-container'>
                                         <canvas class=graph id=" . $filename . "_keysig_graph>
                                         </canvas>
@@ -322,8 +322,9 @@
                                     </script>
                                     <br>
                                 </div>
+                                <div class=analysis-content style='width:20%'></div>
                              </div>";
-                            
+
                         }
 
                         // ==================
@@ -1468,8 +1469,18 @@
                     $removedFileName = strstr($filename, '_');
                     $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
                     $containernames = "analysis-container_" . $filename;
-                    echo "<div id=downloadSection><p> " . $completeFileName . "</p></div>";
-                    echo "<button class=darkform><a href='/images/myw3schoolsimage.jpg' download>Download Something</button>";
+                    $zipdir = $value . "/assets.zip";
+                    echo "
+                    <div id=downloadSection>
+                        <p> " . $completeFileName . "</p>";
+                    echo "
+                        <a class=downloadbutton href='" . $zipdir . "' download>
+                            <button class=darkform>
+                                All Assets
+                            </button>
+                        </a>";
+                    echo "
+                    </div>";
                 }
 
                 echo "</div>";
