@@ -9,14 +9,8 @@
 
 
 @font-face {
-  font-family: 'Avenir Light'; 
-  src: url('fonts/avenir/avenir-light.otf'); 
-
-  font-family: 'Avenir Semi-Light'; 
-  src: url('fonts/avenir/avenir-semi-light.otf'); 
-
-  font-family: 'Avenir Light'; 
-  src: url('fonts/avenir/avenir-medium.otf'); 
+  font-family: 'Avenir Light'; /*a name to be used later*/
+  src: url('fonts/avenir/avenir-light.otf'); /*URL to font*/
 }
 
 

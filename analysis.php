@@ -1269,7 +1269,7 @@
                                                         borderColor:'rgb(255, 79, 125)',
                                                         fill: true,
                                                         lineTension: '0',
-                                                        backgroundColor:'rgb(255, 79, 125)'
+                                                        backgroundColor:'rgba(255, 79, 125, 0.7)'
                                                     }
                                                 ]
                                             },
@@ -1344,7 +1344,7 @@
                                                         borderColor: 'rgb(255, 79, 125)',
                                                         fill: true,
                                                         lineTension: '0',
-                                                        backgroundColor:'rgb(255, 79, 125)'
+                                                        backgroundColor:'rgba(255, 79, 125, 0.7)'
                                                     }
                                                 ]
                                             },
