@@ -270,7 +270,7 @@
 
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
-                                <div class=analysis-content style='width:17%'>
+                                <div class=analysis-content style='width:17%;height:250px;'>
                                     <div class=keysiglist>" . $keySigsList
                                     . "</div>
                                 </div>
@@ -292,7 +292,7 @@
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
                                     let chart_" . $filename . " = new Chart(myChart_" . $filename . ", {
-                                    type:'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                    type:'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                                     data:{
                                         labels:JSON.parse('" . $keySigValuesEncoded . "'),
                                         datasets:[{
@@ -407,13 +407,13 @@
                                         data:JSON.parse('" . $timeSigPercentsEncoded . "'),
 
                                         backgroundColor:[
-                                            'rgba(255, 99, 132, 0.6)',
-                                            'rgba(54, 162, 235, 0.6)',
-                                            'rgba(255, 206, 86, 0.6)',
-                                            'rgba(75, 192, 192, 0.6)',
-                                            'rgba(153, 102, 255, 0.6)',
-                                            'rgba(255, 159, 64, 0.6)',
-                                            'rgba(255, 99, 132, 0.6)'
+                                            'rgba(255, 99, 132, 0.9)',
+                                            'rgba(54, 162, 235, 0.9)',
+                                            'rgba(255, 206, 86, 0.9)',
+                                            'rgba(75, 192, 192, 0.9)',
+                                            'rgba(153, 102, 255, 0.9)',
+                                            'rgba(255, 159, 64, 0.9)',
+                                            'rgba(255, 99, 132, 0.9)'
                                         ],
 
                                         borderWidth:1,
