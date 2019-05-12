@@ -17,6 +17,15 @@
         <link href="https://fonts.googleapis.com/css?family=Kelly+Slab|Open+Sans" rel="stylesheet">   
         <script src="css-element-queries/src/ResizeSensor.js"></script>
         <script src="css-element-queries/src/ElementQueries.js"></script>
+    
+        <style>
+            @font-face {
+                font-family: 'Avenir Light'; /*a name to be used later*/
+                src: url('fonts/avenir/avenir-light.otf'); /*URL to font*/
+            }
+
+        </style>
+    
     </head>
     <body>
 
@@ -262,8 +271,8 @@
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content style='width:17%'>
-                                    <span class=keysiglist>" . $keySigsList
-                                    . "</span>
+                                    <div class=keysiglist>" . $keySigsList
+                                    . "</div>
                                 </div>
 
                                 <div class=analysis-content style='width:53%'>
@@ -278,7 +287,7 @@
                                     var keySigVals = JSON.parse('" . $keySigValuesEncoded . "');
                                     var keySigPercents = JSON.parse('" . $keySigPercentsEncoded . "');
 
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -385,7 +394,7 @@
                                     var timeSigVals = JSON.parse('" . $timeSigValuesEncoded . "');
                                     var timeSigPercents = JSON.parse('" . $timeSigPercentsEncoded . "');
 
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -510,7 +519,7 @@
                                     <script>                                  
                                     let myChart_scales_" . $filename . " = document.getElementById('" . $filename . "_scales_graph').getContext('2d');
 
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -633,7 +642,7 @@
                                     <script>                                  
                                     let myChart_steps_" . $filename . " = document.getElementById('" . $filename . "_steps_graph').getContext('2d');
 
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -720,7 +729,7 @@
                                     <script>                                  
                                     let myChart_pitch_moving_" . $filename . " = document.getElementById('" . $filename . "_pitch_moving_graph').getContext('2d');
 
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -788,7 +797,7 @@
                                     <script>                                  
                                     let myChart_value_moving_" . $filename . " = document.getElementById('" . $filename . "_value_moving_graph').getContext('2d');
 
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -877,7 +886,7 @@
                                     let myChart_most_used_pitches_graph_" . $filename . " = document.getElementById('" . $filename . "_most_used_pitches_graph').getContext('2d');
                                     var data = JSON.parse('" . $mostUsedPitchesLabels . "');
                                     var labels = JSON.parse('" . $mostUsedPitchesData . "');
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -1032,7 +1041,7 @@
                                     let myChart_most_used_occurrences_graph_" . $filename . " = document.getElementById('" . $filename . "_most_used_occurrences_graph').getContext('2d');
                                     var dataNew = JSON.parse('" . $mostUsedOccurrencesLabels . "');
                                     var labelsNew = JSON.parse('" . $mostUsedOccurrencesData . "');
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -1149,7 +1158,7 @@
                                      let myChart_most_used_time_graph_" . $filename . " = document.getElementById('" . $filename . "_most_used_time_graph').getContext('2d');
                                      var dataNews = JSON.parse('" . $mostUsedTimeLabels . "');
                                      var labelsNews = JSON.parse('" . $mostUsedTimeData . "');
-                                     Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                     Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                      Chart.defaults.global.defaultFontSize = 14;
                                      Chart.defaults.global.defaultFontColor = '#fff';
  
@@ -1255,7 +1264,7 @@
                                     <script>                                  
                                     let myChart_repeated_pitches_" . $filename . " = document.getElementById('" . $filename . "_repeated_pitches_graph').getContext('2d');
 
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -1330,7 +1339,7 @@
                                     <script>                                  
                                     let myChart_repeated_values_" . $filename . " = document.getElementById('" . $filename . "_repeated_values_graph').getContext('2d');
 
-                                    Chart.defaults.global.defaultFontFamily = 'Nanum Gothic';
+                                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
                                     Chart.defaults.global.defaultFontSize = 14;
                                     Chart.defaults.global.defaultFontColor = '#fff';
 
@@ -1395,7 +1404,7 @@
                                 <div class=analysis-content>
                                     <br>
                                     <br>
-                                    <span id=clock>" . $timePath ."</span>
+                                    <div id=clock>" . $timePath ."</div>
                                     <br>
                                     <br>
                                     <br>

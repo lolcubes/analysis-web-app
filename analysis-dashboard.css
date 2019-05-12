@@ -324,6 +324,11 @@ body {
 
 .keysiglist {
   font-family: 'Avenir';
-  background-color: rgba(255,255,255,.4);
-  border-radius:
+  background-color: var(--main-panel-color);
+  border-radius: 4px;
+  padding: 5px;
+  color: white;
+}
+.keysiglist:hover {
+  background-color: var(--panel-color-hover);
 }
