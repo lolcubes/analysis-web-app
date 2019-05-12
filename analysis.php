@@ -172,7 +172,7 @@
                     $scriptdirec = "analysis-scripts/bib-scripts/original/" . $selected;
 
                     $output = shell_exec("$scriptdirec $song");
-                    $timeoutput = shell_exec("analysis-scripts/bib-scripts/original/total-time.sh $song");
+
                     echo "
                     <div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className, '" . $containernames . "');\">
                         <span>"
@@ -185,6 +185,10 @@
                     //within bash, we can derive the output directory based on the current bash script being run, and the song.txt argument, so no need for an output arg here
                     
                 }
+
+                $timedirectory = $value . "/data/total-time";
+                mkdir($timedirectory);
+                $timeoutput = shell_exec("analysis-scripts/bib-scripts/original/total-time.sh $song");
 
                 echo "
                 <div id=shelf-item class=keyscape" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
@@ -504,29 +508,32 @@
                                             datasets: [{ 
                                                     data: " . $ascSingleArray . ",
                                                     label: 'Ascending Single',
-                                                    borderColor: '#8e5ea2',
                                                     fill: true,
+                                                    borderColor: 'rgba(172, 25, 252, 0.8)',
+                                                    backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
-
                                                 }, { 
                                                     data: " . $ascDoubleArray . ",
                                                     label: 'Ascending Double',
-                                                    borderColor: '#3cba9f',
                                                     fill: true,
+                                                    borderColor: 'rgba(172, 25, 252, 0.8)',
+                                                    backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
                                                 }, { 
                                                     data: " . $descSingleArray . ",
                                                     label: 'Descending Single',
-                                                    borderColor: '#e8c3b9',
                                                     fill: true,
+                                                    borderColor: 'rgba(172, 25, 252, 0.8)',
+                                                    backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
                                                 }, { 
                                                     data: " . $descDoubleArray . ",
                                                     label: 'Descending Double',
-                                                    borderColor: '#c45850',
                                                     fill: true,
+                                                    borderColor: 'rgba(172, 25, 252, 0.8)',
+                                                    backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
                                                 }
