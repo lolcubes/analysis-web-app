@@ -270,10 +270,24 @@
 
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
-                                <div class=analysis-content style='width:17%;height:250px;'>
-                                    <div class=keysiglist>" . $keySigsList
-                                    . "</div>
+                                <div class=testoto style='width:26%; display: inline-block;margin-right:5%'>
+                                    <div class=analysis-content style='width:100%;height:150px;overflow:auto;display:block;'>
+                                        <div class=keysiglist >
+                                            " . $keySigsList
+                                            . "
+                                        </div>
+                                    </div>
+
+                                    <div class=analysis-content style='width:100%;height:40px;overflow:auto;display:block;'>
+                                        <div class=keysiglist >
+                                        " . sizeof($keySigsRead)
+                                        . "
+                                        </div>
+                                    
+                                    </div>
+
                                 </div>
+
 
                                 <div class=analysis-content style='width:53%'>
                                         <canvas class='chart-container' height=250px id=" . $filename . "_keysig_graph>
@@ -1457,7 +1471,7 @@
             //==================================
 
 
-                echo "<div class=analysis-panel id=analysis-panel-averages><div class=panelheader><h1>Averages</h1>";
+                echo "<div class=analysis-panel id=analysis-panel-averages><div class=panelheader><h1>Downloads</h1>";
                 echo "</div>";
 
                 // echo "<div id='largeitem' style=\"width: 22%;\">";
@@ -1490,7 +1504,7 @@
                     $zipdir = $value . "/assets.zip";
                     echo "
                     <div id=downloadSection>
-                        <p> " . $completeFileName . "</p>";
+                        <p class=panelheader> " . $completeFileName . "</p>";
                     echo "
                         <a class=downloadbutton href='" . $zipdir . "' download>
                             <button class=darkform>
