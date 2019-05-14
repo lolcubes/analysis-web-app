@@ -162,7 +162,7 @@
                 echo "
                 <div id=analysis-container" . "_" . $filename . " class=shelf>";
                 echo "
-                    <div id=shelf-item class=general" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
+                    <div id=shelf-item class='general" . "_" . $filename .  " shelfActive' onclick=\"showDiv(this.className, '" . $containernames . "')\">
                         <span>
                             General
                         </span>
@@ -268,20 +268,29 @@
                             $keySigsList = file_get_contents($keySigsListDir);
                             $keySigsList = nl2br($keySigsList);
 
+                            $linecount = -1;
+                            $handle = fopen($keySigsListDir, "r");
+                            while(!feof($handle)){
+                            $line = fgets($handle);
+                            $linecount++;
+                            }
+                            
+                            fclose($handle);
+
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=testoto style='width:26%; display: inline-block;margin-right:5%'>
-                                    <div class=analysis-content style='width:100%;height:150px;overflow:auto;display:block;'>
+                                    <div class=analysis-content style='width:100%;max-height:150px;overflow:auto;display:block;'>
                                         <div class=keysiglist >
                                             " . $keySigsList
                                             . "
                                         </div>
                                     </div>
 
-                                    <div class=analysis-content style='width:100%;height:40px;overflow:auto;display:block;'>
-                                        <div class=keysiglist >
-                                        " . sizeof($keySigsRead)
-                                        . "
+                                    <div class=analysis-content style='width:100%;overflow:auto;display:block;'>
+                                        <div class=keysiglist  style='font-size:18px;'>
+                                        " . $linecount
+                                        . " Key Signatures
                                         </div>
                                     
                                     </div>
