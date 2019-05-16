@@ -182,12 +182,24 @@
 
                     $output = shell_exec("$scriptdirec $song");
 
-                    echo "
-                    <div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className, '" . $containernames . "');\">
-                        <span>"
-                        . $analysisnamecapitals . "
-                        </span>
-                    </div>";                    
+                    if ($analysisname == 'scales'){
+                        echo "
+                        <div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className, '" . $containernames . "');showLegendScales()\">
+                            <span>"
+                            . $analysisnamecapitals . "
+                            </span>
+                        </div>";  
+                        
+                    }
+                    else {
+                        echo "
+                        <div id=shelf-item class=" . $analysisname . "_" . $filename . " onclick=\"showDiv(this.className, '" . $containernames . "');\">
+                            <span>"
+                            . $analysisnamecapitals . "
+                            </span>
+                        </div>";  
+                    }
+                  
 
                     // echo "<button class=" . $analysisname . " onclick='showDiv(this.className)'</button>";
                     // selected is the script, song is the file
@@ -279,8 +291,8 @@
 
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
-                                <div class=testoto style='width:26%; display: inline-block;margin-right:5%'>
-                                    <div class=analysis-content style='width:100%;max-height:150px;overflow:auto;display:block;'>
+                                <div class=testoto style='width:26%; display: inline-block;margin-right:10%;vertical-align:middle;'>
+                                    <div class=analysis-content style='width:100%;max-height:150px;overflow:auto;display:block; '>
                                         <div class=keysiglist >
                                             " . $keySigsList
                                             . "
@@ -533,7 +545,7 @@
 
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . "  style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=analysis-content>
-                                    <div class='chart-container'>
+                                    <div class='chart-container' id='" . $filename . "_scales_graph_container'>
                                         <canvas class=graph id=" . $filename . "_scales_graph>
                                         </canvas>
 
@@ -587,6 +599,7 @@
 
                                     options:{
                                         legend:{
+                                            display: true,
                                             position:'top',
                                             labels:{
                                                 fontSize: 12,
@@ -594,7 +607,7 @@
                                                 boxWidth: 12,
                                                 fontColor:'#fff'
                                             }
-                                        },
+                                        }, 
                                         layout:{
                                         padding:{
                                             left:10,
@@ -628,20 +641,33 @@
                                         var canvasheightScales" . $filename . " = document.getElementById('" . $filename . "_scales_graph').width;
                                         if(canvasheightScales" . $filename . " <=360) {
                                             chart_scales_" . $filename . ".options.legend.display=false;
+                                            chart_scales_" . $filename . ".update();
+
                                         }
                                         else {
                                             chart_scales_" . $filename . ".options.legend.display=true;
-                                        }
                                             chart_scales_" . $filename . ".update();
+                                        }
                                     }
 
                                     </script>
                                     <script>
-                                        $(function() {
-                                            chart_scales_" . $filename . ".options.legend.display=true;
-                                            chart_scales_" . $filename . ".update();
-                                        });
+                                        function showLegendScales() {
+                                            var canvasheightScales" . $filename . " = document.getElementById('" . $filename . "_scales_graph_container').width;
+                                            console.log(canvasheightScales" . $filename . ");
+                                            if(canvasheightScales" . $filename . " <=360) {
+                                                chart_scales_" . $filename . ".options.legend.display=false;
+                                                chart_scales_" . $filename . ".update();
+    
+                                            }
+                                            else {
+                                                chart_scales_" . $filename . ".options.legend.display=true;
+                                                chart_scales_" . $filename . ".update();
+                                            }
+                                        }
+
                                     </script>
+
                                 </div>
                              </div>";
                         

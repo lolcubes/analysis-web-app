@@ -1,6 +1,6 @@
 :root {
   --main-bg-color: rgb(9, 9, 46);
-  --main-bg-color-lighter: rgb(0, 0, 54);
+  --main-bg-color-lighter: rgb(26, 26, 71);
   --main-panel-color: rgb(34, 35, 102);
   --panel-lighter: #313581; 
   --panel-color-hover: rgba(49,53,129,1);
@@ -235,15 +235,16 @@ body {
 
 
 ::-webkit-scrollbar-track {
-  background: none;
-  -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+  background-color: rgb(98, 110, 185);
+  -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.7);
+  border-radius: 5px;
 }
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(69, 73, 202);
+  background: var(--main-bg-color-lighter);
   border-radius: 5px;
 }
 
