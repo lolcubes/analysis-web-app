@@ -58,7 +58,8 @@ h1, h2, h3, h4, h5, h6, h7 {
   box-shadow: 1px 0px 18px  rgb(0, 0, 0);
   width: 100%;
   position: fixed;
-  z-index: 100000000000
+  z-index: 100000000000;
+  overflow:auto;
 }
 
 
@@ -70,6 +71,7 @@ ul li {
     margin-left: 0;
     margin-right: 0;
     vertical-align: center;
+    
 }
 
 ul li a {
@@ -118,10 +120,13 @@ ul li a:focus {
 nav {
     width: 100%;
   line-height: 0px;
+  overflow:auto;
 
 
 }
-
+#navbar {
+  overflow: auto;
+}
 
 label {
     cursor: pointer;

@@ -45,17 +45,6 @@
             </ul>
         </div>
         <div id="bumper">
-            <ul >
-            <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-                <a href="index.php"><img id="headerbanner" src="image-assets/headerbanner.png" alt="Header logo" height="50px" width="260" align="middle"></a>
-                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-                <li ><a >Home</a></li>
-                <li ><a >About</a></li>
-                <li ><a >Code</a></li>
-                <li ><a >Our Research</a></li>
-                <li ><a >Database</a></li>
-                <li ><a >Analysis Tools</a></li>
-            </ul>
         </div>
         <div></div>
 
@@ -174,6 +163,10 @@
                     $analysisname = substr($selected, 0, strpos($selected, "."));
                     $directory = $value . "/data/" . "$analysisname";
                     mkdir($directory);
+
+
+                    $dataFile = $value . "/dataTypes.txt";
+                    file_put_contents($dataFile, $analysisname . "\n", FILE_APPEND | LOCK_EX);
 
                     $analysisnamecapitals = str_replace("-", " ", $analysisname);
                     $analysisnamecapitals = ucwords($analysisnamecapitals);
@@ -1539,7 +1532,7 @@
                     $zipdir = $value . "/assets.zip";
                     echo "
                     <div id=downloadSection>
-                        <p class=panelheader> " . $completeFileName . "</p>";
+                        <p class=panelheader style='width:80%;margin:0 auto;'> " . $completeFileName . "</p>";
                     echo "
                         <a class=downloadbutton href='" . $zipdir . "' download>
                             <button class=darkform>

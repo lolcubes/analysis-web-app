@@ -281,7 +281,6 @@ body {
 }
 
 #downloadSection{
-  background-color: var(--main-bg-color);
   width: 40%;
   border-radius: 15px;
   margin: 2%;
@@ -289,12 +288,16 @@ body {
   display: inline-block;
   padding: 5px;
   transition: .2s;
-  box-shadow: 1px 6px 16px  rgba(0, 0, 0, .4);
+  
+  background-color: rgba(0,0,0,0);
+  overflow: auto;
+  box-shadow: 1px 4px 22px  rgba(0, 0, 0, 0.671);
 }
 
 #downloadSection:hover {
-  background-color: var(--main-bg-color-lighter);
   transition: .2s;
+  background-color: rgba(0, 0, 0, 0.055);
+  box-shadow: 1px 4px 30px  rgba(0, 0, 0, .5);
 }
 
 .darkform {
@@ -316,8 +319,9 @@ body {
 }
 
 .darkform:hover {
-  background-color: rgba(79, 147, 250, 0.438);
+  background-color: rgba(79, 147, 250, 0.027);
   transition: .18s;
+  border: solid 1px var(--main-bg-color);
 }
 
 .downloadbutton {
