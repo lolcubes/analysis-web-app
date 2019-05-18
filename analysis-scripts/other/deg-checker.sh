@@ -15,6 +15,6 @@ function checkDeg {
 
 for i in $(ls /Users/svernooy/Downloads/drive-download-20190514T211625Z-001/humdrum-data-ALL); do
     for j in $(ls /Users/svernooy/Downloads/drive-download-20190514T211625Z-001/humdrum-data-ALL/$i); do
-        echo $j
+        checkDeg "/Users/svernooy/Downloads/drive-download-20190514T211625Z-001/humdrum-data-ALL/$i/$j"
     done
 done
