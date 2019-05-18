@@ -65,6 +65,10 @@
                 <h1>Analysis Dashboard</h1> 
 
         </center>
+        <form action=formula-page.php method=post>
+            <input type="hidden" name='filesarray' id="files_array" value="<?php echo $_POST['userfilelocations'] ?>" /> 
+            <button type=submit class=darkform name='Comparison Analytics'>Comparison Analytics</button>
+        </form>
         <br>
         
         <script>

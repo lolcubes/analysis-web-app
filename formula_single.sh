@@ -13,7 +13,8 @@ echo "$datatypes" | while read line; do
     if [ "$line" == "scales" ]; then echo scales
 
         elif [ "$line" == "key-signature" ]; then echo key-signature
-
+            cat "${songdir}data/key-signature/occurrences-values.txt"
+            printf "\n"
         elif [ "$line" == "average-pitch" ]; then echo average-pitch
 
         elif [ "$line" == "average-steps" ]; then echo average-steps
