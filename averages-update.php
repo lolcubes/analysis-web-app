@@ -1,5 +1,6 @@
 <?php
     $files = scandir('Song_Database/');
+    $composers = array();
     foreach($files as $file) {
         $filetypes = 'Song_Database/' . $file . "/dataTypes.txt";
         $composer = 'Song_Database/' . $file . "/time-info/composer.txt";
@@ -8,10 +9,18 @@
         // echo $filetypes;
         // echo nl2br(file_get_contents($filetypes));
 
-        echo file_get_contents($composer);
-        echo file_get_contents($period);
+        $composer = file_get_contents($composer);
+        $composerfile = "Song_Database_Averages/composers/" . $composer;
+
+        if (file_exists($composerfile)) {
+            echo "exists";
+        }
+        else {
+            mkdir("Song_Database_Averages/composers/" . $composer);
+        }
 
         echo "<br>";
-        
+        $composers[] = $composer;
     }
+    print_r($composers);
 ?>
