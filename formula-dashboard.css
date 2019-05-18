@@ -1,5 +1,24 @@
+:root {
+    --main-bg-color: rgb(9, 9, 46);
+    --main-bg-color-lighter: rgb(26, 26, 71);
+    --main-panel-color: rgb(34, 35, 102);
+    --panel-lighter: #313581; 
+    --panel-color-hover: rgba(49,53,129,1);
+  }
+
+  body {
+      background-color: var(--main-bg-color);
+      color: white;
+      text-align: center;
+  }
+
+
 .composer-panel {
-    width: 400px;
-    height: 400px;
-    background-color: black;
+    min-width: 400px;
+    width: 40%;
+    min-height: 400px;
+    background-color: var(--main-panel-color);
+    display: inline-block;
+    border-radius: 20px;
+    margin: 2%
 }

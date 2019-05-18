@@ -79,8 +79,12 @@
             echo "</pre>";
 
             foreach ($exploded as $value) {
+                $filename = str_replace("Song_Database/", "", $value);
+                $removedFileName = strstr($filename, '_');
+                $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
+
                 echo "
-                <div class=composer-panel></div>";
+                <div class=composer-panel><p>$completeFileName</p></div>";
             }
         ?>
 
