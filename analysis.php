@@ -60,14 +60,12 @@
         <br>
         <br>
         <br>
-        <center>
 
-                <h1>Analysis Dashboard</h1> 
+                <h1 style="display: inline-block;vertical-align:middle">Analysis Dashboard</h1> 
 
-        </center>
-        <form action=formula-page.php method=post>
-            <input type="hidden" name='filesarray' id="files_array" value="<?php echo $_POST['userfilelocations'] ?>" /> 
+        <form action=formula-page.php method=post style="display: inline-block;vertical-align:middle">
             <button type=submit class=darkform name='Comparison Analytics'>Comparison Analytics</button>
+            <input type="hidden" name='filesarray' id="files_array" value="<?php echo $_POST['userfilelocations'] ?>" /> 
         </form>
         <br>
         
@@ -209,6 +207,7 @@
                 $timeoutput = shell_exec("analysis-scripts/bib-scripts/original/total-time.sh $song");
 
                 shell_exec("cd $value && zip -r assets.zip .");
+                shell_exec("cd $value/data && zip -r data.zip .");
 
 
                 echo "
@@ -1503,7 +1502,7 @@
             //==================================
 
 
-                echo "<div class=analysis-panel id=analysis-panel-averages><div class=panelheader><h1>Downloads</h1>";
+                echo "<div class=analysis-panel id=analysis-panel-averages style='overflow:auto'><div class=panelheader><h1>Downloads</h1>";
                 echo "</div>";
 
                 // echo "<div id='largeitem' style=\"width: 22%;\">";
@@ -1534,14 +1533,29 @@
                     $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
                     $containernames = "analysis-container_" . $filename;
                     $zipdir = $value . "/assets.zip";
+                    $datazipdir = $value . "/data/data.zip";
                     echo "
                     <div id=downloadSection>
                         <p class=panelheader style='width:80%;margin:0 auto;'> " . $completeFileName . "</p>";
+
                     echo "
-                        <a class=downloadbutton href='" . $zipdir . "' download>
-                            <button class=darkform>
-                                All Assets
-                            </button>
+                        <button class=darkform style='width:120px;cursor:auto;'>
+                            All Assets
+                        </button>
+
+                        <a class=downloadbutton href='" . $zipdir . "' download >
+                            <img style='display: inline-block; vertical-align:middle' src='image-assets/download.png' width=25px height=25px onmouseover=\"this.src='image-assets/download-black.png';\" onmouseout=\"this.src='image-assets/download.png';\">
+                        </a>";
+
+                    echo "<br>";
+
+                    echo "
+                        <button class=darkform style='width:120px;cursor:auto;'>
+                            Data
+                        </button>
+
+                        <a class=downloadbutton href='" . $datazipdir . "' download>
+                            <img style='display: inline-block; vertical-align:middle' src='image-assets/download.png' width=25px height=25px onmouseover=\"this.src='image-assets/download-black.png';\" onmouseout=\"this.src='image-assets/download.png';\">
                         </a>";
                     echo "
                     </div>";

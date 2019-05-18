@@ -23,4 +23,4 @@ echo $lineCount / $summed | bc -l > $output          # Evaluates the division of
 
 lineCountHalf=$(echo "scale=0;$lineCount/2" | bc -l)
 
-# bash /Applications/MAMP/htdocs/NewTestings/analysis-scripts/other/moving-average.sh "$rhythmListRecip" $lineCountHalf | tr '\n' ',' | rev | cut -c 2- | rev | tr -d '\n' > $movingOutput
+bash /Applications/MAMP/htdocs/NewTestings/analysis-scripts/other/moving-average.sh "$rhythmListRecip" $lineCountHalf | tr '\n' ',' | rev | cut -c 2- | rev | tr -d '\n' > $movingOutput
