@@ -1,25 +1,11 @@
 # macOS files
 .DS_Store
 
-# ignore timidity
-
-Timidity/
-
-# ignore Arraylists
-
-Array_Lists/
-
-# ignore file.wav
-
-file.wav
-
 # ignore midi converter
-
 mid2wav-master/
 
 # ignore Songs Database
-
 Song_Database/
 
-#ignore the converter
-test/
+# ignore Songs Database Averages
+Song_Database_Averages/
