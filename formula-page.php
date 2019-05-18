@@ -3,20 +3,33 @@
     <head>
         <title>Beats in Bytes | Analysis Tools</title>
 
+        <!-- FOR STYLESHEETS -->
+        <!-- ===========================-->
         <link rel="stylesheet" type="text/css" href="style-main.css" />
         <link rel="stylesheet" type="text/css" href="formula-dashboard.css" />
+
+        <!-- FOR FONTS -->
+        <!-- ===========================-->
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kelly+Slab|Open+Sans" rel="stylesheet">   
+
+        <!-- FOR FAVICON -->
+        <!-- ===========================-->
         <link rel="shortcut icon" type="image/png" href="image-assets/favicon.png"/>
+
+        <!-- FOR AJAX -->
+        <!-- ===========================-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 
+        <!-- FOR CHART.JS -->
+        <!-- ===========================-->
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        
+     
+        <!-- FOR JQUERY -->
+        <!-- ===========================--> 
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Kelly+Slab|Open+Sans" rel="stylesheet">   
-        <script src="css-element-queries/src/ResizeSensor.js"></script>
-        <script src="css-element-queries/src/ElementQueries.js"></script>
     
         <style>
             @font-face {
@@ -59,7 +72,16 @@
 
 
         <?php
-            echo $_POST['filesarray'];
+            $files = $_POST['filesarray'];
+            $exploded = explode(",", $files);
+            echo "<pre>";
+            print_r($exploded);
+            echo "</pre>";
+
+            foreach ($exploded as $value) {
+                echo "
+                <div class=composer-panel></div>";
+            }
         ?>
 
     </body>
