@@ -59,9 +59,9 @@ h1, h2, h3, h4, h5, h6, h7 {
   width: 100%;
   position: fixed;
   z-index: 100000000000;
-  overflow:auto;
+  overflow-inline: hidden ;
+  height: 70px
 }
-
 
 ul li {
     list-style: none;
@@ -70,18 +70,18 @@ ul li {
     color: rgb(0, 0, 0);
     margin-left: 0;
     margin-right: 0;
-    vertical-align: center;
-    
+    vertical-align: middle;
 }
 
 ul li a {
     display: block;
     text-decoration: none;
-  font-family: 'Avenir Light'; 
+    font-family: 'Avenir Light'; 
     color: white;
     padding: 0px 25px;
     text-align: center;
     transition: .3s;
+    margin:0;
 }
 
 
@@ -377,6 +377,7 @@ h4 {
 .inputfile {
     width: 0.1px;
     height: 0.1px;
+    
     opacity: 0;
     overflow: hidden;
     position: absolute;

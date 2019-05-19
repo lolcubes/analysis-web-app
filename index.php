@@ -16,7 +16,7 @@
     </head>
 
     <body id=home>
-            <div id="navbarr">
+            <div id="navbarr" >
                 <ul id=navbar>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
 
