@@ -1,3 +1,7 @@
+/* ==========================*/
+/* For the main site colors: */
+/* ==========================*/
+
 :root {
     --main-bg-color: rgb(9, 9, 46);
     --main-bg-color-lighter: rgb(26, 26, 71);
@@ -6,12 +10,19 @@
     --panel-color-hover: rgba(49,53,129,1);
   }
 
-  body {
-      background-color: var(--main-bg-color);
-      color: white;
-      text-align: center;
-  }
+/* ===================================*/
+/* For the body (center divs, color): */
+/* ===================================*/
 
+body {
+    background-color: var(--main-bg-color);
+    color: white;
+    text-align: center;
+}
+
+/* ===========================================*/
+/* For the main panels (center divs, color): */
+/* ===========================================*/
 
 .composer-panel {
     min-width: 400px;
