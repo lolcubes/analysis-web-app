@@ -154,7 +154,6 @@ function amalgamate {
         printf "most-used-pitches:$one;$two;$three;$four;$five;$perone;$pertwo;$perthree;$perfour;$perfive;\n" >> $output
    
 
-
     #timeSig
     #=====================================
     occurrences=$(cat ${datadir}time-signature/occurrences.txt)
