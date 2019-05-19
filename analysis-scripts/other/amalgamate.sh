@@ -8,6 +8,26 @@ function averageTimeSigs {
     echo "time-signature:$(echo "scale=2;$topSum/$lineNumber" | bc -l)/$(echo "scale=2;$bottomSum/$lineNumber" | bc -l);"
 }
 
+function averageKeySigs {
+    number=$(echo "$1" | wc -l)
+    sum=$(echo "$1" | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+    div=$(echo "scale=2; ${sum}/${number}" | bc -l)
+    snapped=$(echo $div | cut -d '.' -f1)
+    decim=$(echo $div | cut -d '.' -f2)
+    if [ $decim -ge "75" ]; then
+        snapped=$(echo "$snapped+1" | bc )
+    fi
+
+    if [ $decim -ge "25" ]; then
+        if [ $decim -lt "75" ]; then
+            snapped=$(echo "$snapped+0.5" | bc )
+        fi
+    fi
+    
+
+    echo "key-signature:$snapped;"
+        
+}
 
 function amalgamate {
     suffix="song.txt"
@@ -139,6 +159,11 @@ function amalgamate {
     #=====================================
     occurrences=$(cat ${datadir}time-signature/occurrences.txt)
     averageTimeSigs "$occurrences" >> $output
+
+    #KeySig
+    #=====================================
+    occurrences=$(cat ${datadir}key-signature/scale-deg-occurrences.txt)
+    averageKeySigs "$occurrences" >> $output
 }
 
 amalgamate $1
