@@ -14,6 +14,7 @@ function averageKeySigs {
     div=$(echo "scale=2; ${sum}/${number}" | bc -l)
     snapped=$(echo $div | cut -d '.' -f1)
     decim=$(echo $div | cut -d '.' -f2)
+    
     if [ $decim -ge "75" ]; then
         snapped=$(echo "$snapped+1" | bc )
     fi
@@ -24,9 +25,7 @@ function averageKeySigs {
         fi
     fi
     
-
-    echo "key-signature:$snapped;"
-        
+    echo "key-signature:$snapped;"  
 }
 
 function amalgamate {
