@@ -1,8 +1,20 @@
+function averageTimeSigs {
+    file=$1
+    lineNumber=$(echo "$file" | wc -l)
+    topNums=$(echo "$file" | cut -d '/' -f1)
+    bottomNums=$(echo "$file" | cut -d '/' -f2)
+    topSum=$(echo "$topNums" | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+    bottomSum=$(echo "$bottomNums" | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+    echo "time-signature:$(echo "scale=3;$topSum/$lineNumber" | bc -l)/$(echo "scale=3;$bottomSum/$lineNumber" | bc -l);"
+}
+
+
 function amalgamate {
     suffix="song.txt"
 
     removed=$(echo $1 | sed -e "s/$suffix$//")
     datadir="${removed}data/"
+    output="${datadir}amalgamated.txt"
 
     #============================================
     #scales
@@ -47,7 +59,68 @@ function amalgamate {
             descDoub6=$(cat ${datadir}scales/descending-double/6.txt)
             descDoub7=$(cat ${datadir}scales/descending-double/seven-above.txt)
             descDoubLargest=$(cat ${datadir}scales/descending-double/largest.txt)
+            printf "scales:${ascSing2};${ascSing3};${ascSing4};${ascSing5};${ascSing6};${ascSing7};${ascSingLargest};${ascDoub2};${ascDoub3};${ascDoub4};${ascDoub5};${ascDoub6};${ascDoub7};${ascDoubLargest};${descSing2};${descSing3};${descSing4};${descSing5};${descSing6};${descSing7};${descSingLargest};${descDoub2};${descDoub3};${descDoub4};${descDoub5};${descDoub6};${descDoub7};${descDoubLargest};\n" > $output
+    
+    #average Pitch
+    #=====================================
+        avPitch=$(cat ${datadir}average-pitch/pitch.txt)
+        printf "average-pitch:$avPitch;\n" >> $output
 
+    #average Note Value
+    #=====================================
+        avValue=$(cat ${datadir}average-note-value/value.txt)
+        printf "average-note-value:$avValue;\n" >> $output
+    #average Steps
+    #=====================================
+        absVal=$(cat ${datadir}average-steps/absolute-value.txt)
+        negs=$(cat ${datadir}average-steps/including-negatives.txt)
+        firstLast=$(cat ${datadir}average-steps/first-last.txt)
+        printf "average-steps:$absVal;$negs;$firstLast;\n" >> $output
+
+    #repeated Pitches 
+    #=====================================
+        two=$(cat ${datadir}repeated-pitches/2.txt)
+        three=$(cat ${datadir}repeated-pitches/3.txt)
+        four=$(cat ${datadir}repeated-pitches/4.txt)
+        five=$(cat ${datadir}repeated-pitches/5.txt)
+        six=$(cat ${datadir}repeated-pitches/6.txt)
+        seven=$(cat ${datadir}repeated-pitches/seven-above.txt)
+        mostreps=$(cat ${datadir}repeated-pitches/most-repetitions.txt)
+        printf "repeated-pitches:$two;$three;$four;$five;$six;$seven;$mostreps;\n" >> $output
+
+    #repeated note-value 
+    #=====================================
+        three=$(cat ${datadir}repeated-note-value/3.txt)
+        four=$(cat ${datadir}repeated-note-value/4.txt)
+        five=$(cat ${datadir}repeated-note-value/5.txt)
+        six=$(cat ${datadir}repeated-note-value/6.txt)
+        seven=$(cat ${datadir}repeated-note-value/seven-above.txt)
+        mostreps=$(cat ${datadir}repeated-note-value/most-repetitions.txt)
+        time=$(cat ${datadir}repeated-note-value/time-of-most-repetitions.txt)
+        value=$(cat ${datadir}repeated-note-value/value-of-most-repeated.txt)
+
+        printf "repeated-note-value:$three;$four;$five;$six;$seven;$mostreps;$time;$value;\n" >> $output
+
+    #most-used-note-value
+    #=====================================
+        one=$(cat ${datadir}most-used-note-value/1.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        two=$(cat ${datadir}most-used-note-value/2.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        three=$(cat ${datadir}most-used-note-value/3.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        four=$(cat ${datadir}most-used-note-value/4.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        five=$(cat ${datadir}most-used-note-value/5.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+
+        perone=$(cat ${datadir}most-used-note-value/Percent_1.txt)
+        pertwo=$(cat ${datadir}most-used-note-value/Percent_2.txt)
+        perthree=$(cat ${datadir}most-used-note-value/Percent_3.txt)
+        perfour=$(cat ${datadir}most-used-note-value/Percent_4.txt)
+        perfive=$(cat ${datadir}most-used-note-value/Percent_5.txt)
+
+        printf "most-used-note-value:$one;$two;$three;$four;$five;$perone;$pertwo;$perthree;$perfour;$perfive;\n" >> $output
+   
+    #timeSig
+    #=====================================
+    occurrences=$(cat ${datadir}time-signature/occurrences.txt)
+    averageTimeSigs "$occurrences" >> $output
 }
 
 amalgamate $1
