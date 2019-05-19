@@ -5,7 +5,7 @@ function averageTimeSigs {
     bottomNums=$(echo "$file" | cut -d '/' -f2)
     topSum=$(echo "$topNums" | tr '\n' '+' | rev | cut -c 2- | rev | bc)
     bottomSum=$(echo "$bottomNums" | tr '\n' '+' | rev | cut -c 2- | rev | bc)
-    echo "time-signature:$(echo "scale=3;$topSum/$lineNumber" | bc -l)/$(echo "scale=3;$bottomSum/$lineNumber" | bc -l);"
+    echo "time-signature:$(echo "scale=2;$topSum/$lineNumber" | bc -l)/$(echo "scale=2;$bottomSum/$lineNumber" | bc -l);"
 }
 
 
@@ -103,11 +103,11 @@ function amalgamate {
 
     #most-used-note-value
     #=====================================
-        one=$(cat ${datadir}most-used-note-value/1.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
-        two=$(cat ${datadir}most-used-note-value/2.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
-        three=$(cat ${datadir}most-used-note-value/3.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
-        four=$(cat ${datadir}most-used-note-value/4.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
-        five=$(cat ${datadir}most-used-note-value/5.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        one=$(cat ${datadir}most-used-note-value/1.txt)
+        two=$(cat ${datadir}most-used-note-value/2.txt)
+        three=$(cat ${datadir}most-used-note-value/3.txt)
+        four=$(cat ${datadir}most-used-note-value/4.txt)
+        five=$(cat ${datadir}most-used-note-value/5.txt)
 
         perone=$(cat ${datadir}most-used-note-value/Percent_1.txt)
         pertwo=$(cat ${datadir}most-used-note-value/Percent_2.txt)
@@ -117,6 +117,24 @@ function amalgamate {
 
         printf "most-used-note-value:$one;$two;$three;$four;$five;$perone;$pertwo;$perthree;$perfour;$perfive;\n" >> $output
    
+    #most-used-pitch
+    #========================================
+        one=$(cat ${datadir}most-used-pitches/1.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        two=$(cat ${datadir}most-used-pitches/2.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        three=$(cat ${datadir}most-used-pitches/3.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        four=$(cat ${datadir}most-used-pitches/4.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+        five=$(cat ${datadir}most-used-pitches/5.txt | cut -d ' ' -f1 | sed s/+/.5/ | sed s/-/-0.5/ | bc)
+
+        perone=$(cat ${datadir}most-used-pitches/Percent_1.txt)
+        pertwo=$(cat ${datadir}most-used-pitches/Percent_2.txt)
+        perthree=$(cat ${datadir}most-used-pitches/Percent_3.txt)
+        perfour=$(cat ${datadir}most-used-pitches/Percent_4.txt)
+        perfive=$(cat ${datadir}most-used-pitches/Percent_5.txt)
+
+        printf "most-used-pitches:$one;$two;$three;$four;$five;$perone;$pertwo;$perthree;$perfour;$perfive;\n" >> $output
+   
+
+
     #timeSig
     #=====================================
     occurrences=$(cat ${datadir}time-signature/occurrences.txt)
