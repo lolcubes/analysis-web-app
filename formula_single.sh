@@ -2,6 +2,7 @@
 
 songfile=$1
 comparefile=$2
+lines=$(cat $songfile | wc -l)
 
 
 function percentError() {
@@ -15,5 +16,3 @@ function percentError() {
     fi
 
 }
-
-percentError $1 $2
