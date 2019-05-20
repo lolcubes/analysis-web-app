@@ -147,13 +147,16 @@
             echo '0'
         fi
     }
+    function mostUsedNoteValue {
+        echo 'hi'
+    }
 #==============================================
 
 
 
 # Loop through each line of the amalgamated data file. 
 # Based on the current metric, execute the functions.
-    while read line; do
+    while read -r line; do
         analysisName=$(echo $line | cut -d ':' -f1)
         compareLine=$(grep "$analysisName" $comparefile)
 
@@ -171,7 +174,10 @@
             repeatedPitches $line $compareLine
         elif [ $analysisName == "repeated-note-value" ]; then
             repeatedNoteValue $line $compareLine
+        elif [ $analysisName == "most-used-note-value" ]; then
+            mostUsedNoteValue $line $compareLine
         fi
     done < $songfile
 #=======================================================
+
 

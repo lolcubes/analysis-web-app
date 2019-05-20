@@ -209,6 +209,7 @@
                 shell_exec("cd $value && zip -r assets.zip .");
                 shell_exec("cd $value/data && zip -r data.zip .");
 
+                shell_exec("analysis-scripts/other/amalgamate.sh $song");
 
                 echo "
                 <div id=shelf-item class=keyscape" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
