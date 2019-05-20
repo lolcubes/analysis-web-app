@@ -7,26 +7,31 @@
     lines=$(cat $songfile | wc -l)
 #========================
 
+# Define threshold:
+#==================
+    threshold=0.5
+#==================
+
 
 #Define the mathematical functions below: ======================
     function percentError {
         val1=$1
         val2=$2
-        
-        if [ $val2 -eq 0 ]; then
-            if [ $val1 -ne 0 ]; then
+
+        if [ $val2 = 0 ]; then
+            if [ $val1 != 0 ]; then
                 val2=.5
             fi
-        elif [ $val1 -eq 0 ]; then
-            if [ $val2 -ne 0 ]; then
+        elif [ $val1 = 0 ]; then
+            if [ $val2 != 0 ]; then
                 val1=0.5
             fi
         fi
 
-        if [ $val1 -eq 0 ]; then
-            if [ $val2 -eq 0 ]; then
+        if [ $val1 = 0 ]; then
+            if [ $val2 = 0 ]; then
                 echo 1
-            elif (( $(echo "$val1 > $val2" | bc -l) )); then
+            elif (( $(echo "$val1 > $val2" | bc -l) ))  ; then
                 echo "scale=5;$val2/$val1" | bc -l
             else
                 echo "scale=5;$val1/$val2" | bc -l
@@ -51,7 +56,22 @@
         done
 
         scaleErrorSum=$(printf $scaleError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
-        echo "scale=4;$scaleErrorSum/28" | bc -l
+        value=$(echo "scale=4;$scaleErrorSum/28" | bc -l)
+        if (( $(echo "$value > $threshold" | bc -l) )); then
+            echo '1'
+        else
+            echo '0'
+        fi
+    }
+    function averagePitch {
+        data=$(echo $1 | cut -d ':' -f2 | cut -d ';' -f1)
+        compareData=$(echo $2 | cut -d ':' -f2 | cut -d ';' -f1)
+        avPitchError=$(percentError $data $compareData)
+        if (( $(echo "$avPitchError > $threshold" | bc -l) )); then
+            echo '1'
+        else
+            echo '0'
+        fi
     }
 #==============================================
 
@@ -65,8 +85,8 @@
 
         if [ $analysisName == "scales" ]; then
             scales $line $compareLine
-        elif [ $analysisName == "scales" ]; then
-            scales $line $compareLine
+        elif [ $analysisName == "average-pitch" ]; then
+            averagePitch $line $compareLine
         fi
     done < $songfile
 #=======================================================
