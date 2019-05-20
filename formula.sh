@@ -49,11 +49,9 @@
 
 # Define the metric functions below: =========
     function scales {
-        datas=$(echo $1 | cut -d ':' -f2)
-        compareDatas=$(echo $2 | cut -d ':' -f2)
         for i in {1..28}; do
-            data=$(echo "$datas" | cut -d ';' -f${i})
-            compareData=$(echo "$compareDatas" | cut -d ';' -f${i})
+            data=$(echo "$1" | cut -d ';' -f${i})
+            compareData=$(echo "$2" | cut -d ';' -f${i})
             scaleError="$scaleError$(percentError $data $compareData)\n"
         done
 
@@ -67,8 +65,8 @@
     }
 
     function averagePitch {
-        data=$(echo $1 | cut -d ':' -f2 | cut -d ';' -f1)
-        compareData=$(echo $2 | cut -d ':' -f2 | cut -d ';' -f1)
+        data=$(echo $1 | cut -d ';' -f1)
+        compareData=$(echo $2 | cut -d ';' -f1)
         avPitchError=$(percentError $data $compareData)
         if (( $(echo "$avPitchError > $threshold" | bc -l) )); then
             echo '1'
@@ -78,8 +76,8 @@
     }
 
     function averageNoteValue {
-        data=$(echo $1 | cut -d ':' -f2 | cut -d ';' -f1)
-        compareData=$(echo $2 | cut -d ':' -f2 | cut -d ';' -f1)
+        data=$(echo $1 | cut -d ';' -f1)
+        compareData=$(echo $2 | cut -d ';' -f1)
         avValueError=$(percentError $data $compareData)
         if (( $(echo "$avValueError > $threshold" | bc -l) )); then
             echo '1'
@@ -89,14 +87,12 @@
     }
 
     function averageSteps {
-        datas=$(echo $1 | cut -d ':' -f2)
-        compareDatas=$(echo $2 | cut -d ':' -f2)
-
         for i in {1..3}; do
-            data=$(echo "$datas" | cut -d ';' -f${i})
-            compareData=$(echo "$compareDatas" | cut -d ';' -f${i})
+            data=$(echo "$1" | cut -d ';' -f${i})
+            compareData=$(echo "$2" | cut -d ';' -f${i})
             stepsError="$stepsError$(percentError $data $compareData)\n"
         done
+
         abs=$(printf $stepsError | sed '1q;d')
         neg=$(printf $stepsError | sed '2q;d')
         firstLast=$(printf $stepsError | sed '3q;d')
@@ -113,11 +109,9 @@
     }
 
     function repeatedPitches {
-        datas=$(echo $1 | cut -d ':' -f2)
-        compareDatas=$(echo $2 | cut -d ':' -f2)
         for i in {1..6}; do
-            data=$(echo "$datas" | cut -d ';' -f${i})
-            compareData=$(echo "$compareDatas" | cut -d ';' -f${i})
+            data=$(echo "$1" | cut -d ';' -f${i})
+            compareData=$(echo "$2" | cut -d ';' -f${i})
             repPitchError="$repPitchError$(percentError $data $compareData)\n"
         done
 
@@ -131,11 +125,9 @@
     }
 
     function repeatedNoteValue {
-        datas=$(echo $1 | cut -d ':' -f2)
-        compareDatas=$(echo $2 | cut -d ':' -f2)
         for i in {1..8}; do
-            data=$(echo "$datas" | cut -d ';' -f${i})
-            compareData=$(echo "$compareDatas" | cut -d ';' -f${i})
+            data=$(echo "$1" | cut -d ';' -f${i})
+            compareData=$(echo "$2" | cut -d ';' -f${i})
             repValueError="$repValueError$(percentError $data $compareData)\n"
         done
 
@@ -148,7 +140,8 @@
         fi
     }
     function mostUsedNoteValue {
-        echo 'hi'
+        echo $1
+        echo $2
     }
 #==============================================
 
@@ -158,8 +151,8 @@
 # Based on the current metric, execute the functions.
     while read -r line; do
         analysisName=$(echo $line | cut -d ':' -f1)
-        compareLine=$(grep "$analysisName" $comparefile)
-
+        compareLine=$(grep "$analysisName" $comparefile | cut -d ':' -f2)
+        line=$(echo $line | cut -d ':' -f2)
         if [ $analysisName == "scales" ]; then
             scales $line $compareLine
         elif [ $analysisName == "average-pitch" ]; then
