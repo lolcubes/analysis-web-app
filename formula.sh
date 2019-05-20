@@ -18,29 +18,31 @@
         val1=$1
         val2=$2
 
-        if [ $val2 = 0 ]; then
-            if [ $val1 != 0 ]; then
-                val2=.5
-            fi
-        elif [ $val1 = 0 ]; then
-            if [ $val2 != 0 ]; then
-                val1=0.5
+        # if [ $val2 = 0 ]; then
+        #     if [ $val1 != 0 ]; then
+        #         val2=.5
+        #     fi
+        # elif [ $val1 = 0 ]; then
+        #     if [ $val2 != 0 ]; then
+        #         val1=0.5
+        #     fi
+        # fi
+        return=
+        if [ $val1 = 0 ]; then
+            if [ $val2 = 0 ]; then
+                return=1
+            fi 
+        fi
+
+        if [ "$return" != "1" ]; then
+            if (( $(echo "$val1 > $val2" | bc -l) )); then
+                return=$(echo "scale=5;$val2/$val1" | bc -l)
+            else
+                return=$(echo "scale=5;$val1/$val2" | bc -l)
             fi
         fi
 
-        if [ $val1 = 0 ]; then
-            if [ $val2 = 0 ]; then
-                echo 1
-            elif (( $(echo "$val1 > $val2" | bc -l) ))  ; then
-                echo "scale=5;$val2/$val1" | bc -l
-            else
-                echo "scale=5;$val1/$val2" | bc -l
-            fi
-        elif (( $(echo "$val1 > $val2" | bc -l) )); then
-            echo "scale=5;$val2/$val1" | bc -l
-        else
-            echo "scale=5;$val1/$val2" | bc -l
-        fi
+        echo $return
     }
 
 #=============================================================
@@ -63,11 +65,83 @@
             echo '0'
         fi
     }
+
     function averagePitch {
         data=$(echo $1 | cut -d ':' -f2 | cut -d ';' -f1)
         compareData=$(echo $2 | cut -d ':' -f2 | cut -d ';' -f1)
         avPitchError=$(percentError $data $compareData)
         if (( $(echo "$avPitchError > $threshold" | bc -l) )); then
+            echo '1'
+        else
+            echo '0'
+        fi
+    }
+
+    function averageNoteValue {
+        data=$(echo $1 | cut -d ':' -f2 | cut -d ';' -f1)
+        compareData=$(echo $2 | cut -d ':' -f2 | cut -d ';' -f1)
+        avValueError=$(percentError $data $compareData)
+        if (( $(echo "$avValueError > $threshold" | bc -l) )); then
+            echo '1'
+        else
+            echo '0'
+        fi
+    }
+
+    function averageSteps {
+        datas=$(echo $1 | cut -d ':' -f2)
+        compareDatas=$(echo $2 | cut -d ':' -f2)
+
+        for i in {1..3}; do
+            data=$(echo "$datas" | cut -d ';' -f${i})
+            compareData=$(echo "$compareDatas" | cut -d ';' -f${i})
+            stepsError="$stepsError$(percentError $data $compareData)\n"
+        done
+        abs=$(printf $stepsError | sed '1q;d')
+        neg=$(printf $stepsError | sed '2q;d')
+        firstLast=$(printf $stepsError | sed '3q;d')
+
+        abs=$(echo "$abs * 0.35" | bc -l )
+        neg=$(echo "$neg * 0.55" | bc -l )
+        firstLast=$(echo "$firstLast * 0.1" | bc -l )
+        value=$(echo "${abs}+${neg}+${firstLast}" | bc -l)
+        if (( $(echo "$value > $threshold" | bc -l) )); then
+            echo '1'
+        else
+            echo '0'
+        fi
+    }
+
+    function repeatedPitches {
+        datas=$(echo $1 | cut -d ':' -f2)
+        compareDatas=$(echo $2 | cut -d ':' -f2)
+        for i in {1..6}; do
+            data=$(echo "$datas" | cut -d ';' -f${i})
+            compareData=$(echo "$compareDatas" | cut -d ';' -f${i})
+            repPitchError="$repPitchError$(percentError $data $compareData)\n"
+        done
+
+        repPitchErrorSum=$(printf $repPitchError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
+        value=$(echo "scale=4;$repPitchErrorSum/7" | bc -l)
+        if (( $(echo "$value > $threshold" | bc -l) )); then
+            echo '1'
+        else
+            echo '0'
+        fi
+    }
+
+    function repeatedNoteValue {
+        datas=$(echo $1 | cut -d ':' -f2)
+        compareDatas=$(echo $2 | cut -d ':' -f2)
+        for i in {1..8}; do
+            data=$(echo "$datas" | cut -d ';' -f${i})
+            compareData=$(echo "$compareDatas" | cut -d ';' -f${i})
+            repValueError="$repValueError$(percentError $data $compareData)\n"
+        done
+
+        repValueErrorSum=$(printf $repValueError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
+        value=$(echo "scale=4;$repValueErrorSum/8" | bc -l)
+        if (( $(echo "$value > $threshold" | bc -l) )); then
             echo '1'
         else
             echo '0'
@@ -87,6 +161,16 @@
             scales $line $compareLine
         elif [ $analysisName == "average-pitch" ]; then
             averagePitch $line $compareLine
+        elif [ $analysisName == "average-note-value" ]; then
+            averageNoteValue $line $compareLine
+        elif [ $analysisName == "average-steps" ]; then
+            averageSteps $line $compareLine
+        elif [ $analysisName == "average-steps" ]; then
+            averageSteps $line $compareLine
+        elif [ $analysisName == "repeated-pitches" ]; then
+            repeatedPitches $line $compareLine
+        elif [ $analysisName == "repeated-note-value" ]; then
+            repeatedNoteValue $line $compareLine
         fi
     done < $songfile
 #=======================================================
