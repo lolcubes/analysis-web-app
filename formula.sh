@@ -27,6 +27,9 @@
         #         val1=0.5
         #     fi
         # fi
+        
+        
+        
         return=
         if [ $val1 = 0 ]; then
             if [ $val2 = 0 ]; then
@@ -36,15 +39,14 @@
 
         if [ "$return" != "1" ]; then
             if (( $(echo "$val1 > $val2" | bc -l) )); then
-                return=$(echo "scale=5;$val2/$val1" | bc -l)
+                return=$(echo "scale=3;$val2/$val1" | bc -l)
             else
-                return=$(echo "scale=5;$val1/$val2" | bc -l)
+                return=$(echo "scale=3;$val1/$val2" | bc -l)
             fi
         fi
 
         echo $return
     }
-
 #=============================================================
 
 # Define the metric functions below: =========
@@ -56,37 +58,37 @@
         done
 
         scaleErrorSum=$(printf $scaleError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
-        value=$(echo "scale=4;$scaleErrorSum/28" | bc -l)
-        if (( $(echo "$value > $threshold" | bc -l) )); then
-            echo '1'
-        else
-            echo '0'
-        fi
+        echo "scale=4;$scaleErrorSum/28" | bc -l
+        # if (( $(echo "$value > $threshold" | bc -l) )); then
+        #     echo '1'
+        # else
+        #     echo '0'
+        # fi
     }
 
-    function averagePitch {
+    function average-pitch {
         data=$(echo $1 | cut -d ';' -f1)
         compareData=$(echo $2 | cut -d ';' -f1)
-        avPitchError=$(percentError $data $compareData)
-        if (( $(echo "$avPitchError > $threshold" | bc -l) )); then
-            echo '1'
-        else
-            echo '0'
-        fi
+        percentError $data $compareData
+        # if (( $(echo "$avPitchError > $threshold" | bc -l) )); then
+        #     echo '1'
+        # else
+        #     echo '0'
+        # fi
     }
 
-    function averageNoteValue {
+    function average-note-value {
         data=$(echo $1 | cut -d ';' -f1)
         compareData=$(echo $2 | cut -d ';' -f1)
-        avValueError=$(percentError $data $compareData)
-        if (( $(echo "$avValueError > $threshold" | bc -l) )); then
-            echo '1'
-        else
-            echo '0'
-        fi
+        percentError $data $compareData
+        # if (( $(echo "$avValueError > $threshold" | bc -l) )); then
+        #     echo '1'
+        # else
+        #     echo '0'
+        # fi
     }
 
-    function averageSteps {
+    function average-steps {
         for i in {1..3}; do
             data=$(echo "$1" | cut -d ';' -f${i})
             compareData=$(echo "$2" | cut -d ';' -f${i})
@@ -100,15 +102,15 @@
         abs=$(echo "$abs * 0.35" | bc -l )
         neg=$(echo "$neg * 0.55" | bc -l )
         firstLast=$(echo "$firstLast * 0.1" | bc -l )
-        value=$(echo "${abs}+${neg}+${firstLast}" | bc -l)
-        if (( $(echo "$value > $threshold" | bc -l) )); then
-            echo '1'
-        else
-            echo '0'
-        fi
+        echo "${abs}+${neg}+${firstLast}" | bc -l
+        # if (( $(echo "$value > $threshold" | bc -l) )); then
+        #     echo '1'
+        # else
+        #     echo '0'
+        # fi
     }
 
-    function repeatedPitches {
+    function repeated-pitches {
         for i in {1..6}; do
             data=$(echo "$1" | cut -d ';' -f${i})
             compareData=$(echo "$2" | cut -d ';' -f${i})
@@ -116,15 +118,15 @@
         done
 
         repPitchErrorSum=$(printf $repPitchError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
-        value=$(echo "scale=4;$repPitchErrorSum/7" | bc -l)
-        if (( $(echo "$value > $threshold" | bc -l) )); then
-            echo '1'
-        else
-            echo '0'
-        fi
+        echo "scale=4;$repPitchErrorSum/7" | bc -l
+        # if (( $(echo "$value > $threshold" | bc -l) )); then
+        #     echo '1'
+        # else
+        #     echo '0'
+        # fi
     }
 
-    function repeatedNoteValue {
+    function repeated-note-value {
         for i in {1..8}; do
             data=$(echo "$1" | cut -d ';' -f${i})
             compareData=$(echo "$2" | cut -d ';' -f${i})
@@ -132,14 +134,14 @@
         done
 
         repValueErrorSum=$(printf $repValueError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
-        value=$(echo "scale=4;$repValueErrorSum/8" | bc -l)
-        if (( $(echo "$value > $threshold" | bc -l) )); then
-            echo '1'
-        else
-            echo '0'
-        fi
+        echo "scale=4;$repValueErrorSum/8" | bc -l
+        # if (( $(echo "$value > $threshold" | bc -l) )); then
+        #     echo '1'
+        # else
+        #     echo '0'
+        # fi
     }
-    function mostUsedNoteValue {
+    function most-used-note-value {
         echo $1
         echo $2
     }
@@ -153,22 +155,23 @@
         analysisName=$(echo $line | cut -d ':' -f1)
         compareLine=$(grep "$analysisName" $comparefile | cut -d ':' -f2)
         line=$(echo $line | cut -d ':' -f2)
+        # $analysisName $line $compareLine
         if [ $analysisName == "scales" ]; then
             scales $line $compareLine
         elif [ $analysisName == "average-pitch" ]; then
-            averagePitch $line $compareLine
+            average-pitch $line $compareLine
         elif [ $analysisName == "average-note-value" ]; then
-            averageNoteValue $line $compareLine
+            average-note-value $line $compareLine
         elif [ $analysisName == "average-steps" ]; then
-            averageSteps $line $compareLine
+            average-steps $line $compareLine
         elif [ $analysisName == "average-steps" ]; then
-            averageSteps $line $compareLine
+            average-steps $line $compareLine
         elif [ $analysisName == "repeated-pitches" ]; then
-            repeatedPitches $line $compareLine
+            repeated-pitches $line $compareLine
         elif [ $analysisName == "repeated-note-value" ]; then
-            repeatedNoteValue $line $compareLine
+            repeated-note-value $line $compareLine
         elif [ $analysisName == "most-used-note-value" ]; then
-            mostUsedNoteValue $line $compareLine
+            most-used-note-value $line $compareLine
         fi
     done < $songfile
 #=======================================================
