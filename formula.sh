@@ -52,8 +52,8 @@
 # Define the metric functions below: =========
     function scales {
         for i in {1..28}; do
-            data=$(echo "$1" | cut -d ';' -f${i})
-            compareData=$(echo "$2" | cut -d ';' -f${i})
+            data=$(echo $1 | cut -d ';' -f${i})
+            compareData=$(echo $2 | cut -d ';' -f${i})
             scaleError="$scaleError$(percentError $data $compareData)\n"
         done
 
@@ -144,12 +144,12 @@
         first=$(percentError $first $compareFirst)
         last=$(percentError $last $compareLast)
         ratio=$(percentError $average $averageCompare)
-        echo "($ratio + $first + $last)/3" | bc -l
+        averageone=$(echo "($ratio + $first + $last)/3" | bc -l)
 
-        echo "================="
         data=$(echo $1 | cut -d ';' -f-5)
         comparedata=$(echo $2 | cut -d ';' -f-5)
-        comparePlaces $data $comparedata
+        averagetwo=$(comparePlaces $data $comparedata)
+        echo "($averageone + $averagetwo)/2" | bc -l
     }
     function time-signature {
         top=$(echo $1 | cut -d '/' -f1)
@@ -164,17 +164,28 @@
 
 
     function comparePlaces {
-        # echo "$1" | tr ';' '\n'
-        # echo "$2" | tr ';' '\n'
+        data=$(echo "$1" | tr ';' '\n')
+        compareData=$(echo "$2" | tr ';' '\n')
         valnums=$(echo "$1" | tr ';' '\n' | wc -l)
         combined=$(echo "$(echo $1);$2" | tr ';' '\n')
 
         unique=$(echo "$combined" | sort -n | uniq)
         uniqLines=$(echo "$unique" | wc -l)
-
+        
+        result=
         for i in $unique; do
-            echo $i
+            multi=$(echo "$combined" | grep $i | wc -l)
+            if [ $multi -eq "2" ]; then
+                val1=$(echo "$data" | grep -n $i | cut -d ':' -f1)
+                val2=$(echo "$compareData" | grep -n $i | cut -d ':' -f1)
+                result="$result$(percentError $val1 $val2)\n"
+            else
+                result="$result$(echo 0)\n"
+            fi
+            # echo $result
         done
+        sum=$(printf $result | paste -sd+ - | bc)
+        echo $sum/$uniqLines | bc -l
     }
 #==============================================
 
@@ -186,6 +197,8 @@
         analysisName=$(echo $line | cut -d ':' -f1)
         compareLine=$(grep "$analysisName" $comparefile | cut -d ':' -f2)
         line=$(echo $line | cut -d ':' -f2)
+        # printf "\n"
+        # echo $analysisName
         $analysisName $line $compareLine
         # if [ $analysisName == "scales" ]; then
         #     scales $line $compareLine
