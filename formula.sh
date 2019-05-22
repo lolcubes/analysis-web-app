@@ -5,6 +5,8 @@
     songfile=$1
     comparefile=$2
     lines=$(cat $songfile | wc -l)
+    removed=$(echo $songfile | rev | cut -c 16- | rev)
+    output="${removed}temp.txt"
 #========================
 
 # Define threshold:
@@ -190,7 +192,6 @@
     function most-used-pitches {
         percent=$(echo $1 | tr ';' '\n' | tail -n 6)
         comparePercent=$(echo $2 | tr ';' '\n' | tail -n 6)
-
         num=`echo $(echo "$percent" | wc -l)-1 | bc`
         compareNum=`echo $(echo "$comparePercent" | wc -l)-1 | bc`
 
@@ -198,9 +199,9 @@
             j=$(echo $i+1 | bc)
             val1=$(echo "$percent" | sed "${i}q;d") 
             val2=$(echo "$percent" | sed "${j}q;d" )
-            ratio="$ratio$(echo $val1/$val2 | bc -l)\n"
+            ratio="$ratio\n$(echo $val1/$val2 | bc -l)"
         done
-        sum=$(printf "$ratio" | paste -sd+ - | bc)
+        sum=$(printf "$ratio" | tr '\n' '+')
         average=$(echo $sum/$num | bc -l)
 
         for i in $(seq $compareNum); do
@@ -227,20 +228,35 @@
         averagetwo=$(comparePlaces $data $comparedata)
         echo "($averageone + $averagetwo)/2" | bc -l
     }
+    function key-signature {
+        val1=$(echo $1 | tr -d ';')
+        val2=$(echo $2 | tr -d ';')
+        dif=$(echo $val1-$val2 | bc | tr -d '-')
+        subtracted=$(echo 7-$dif | bc)
+        percentError $subtracted 7
+    }
 #==============================================
 
 
 
 # Loop through each line of the amalgamated data file. 
 # Based on the current metric, execute the functions.
+    result=
+    rm $output
     while read -r line; do
         analysisName=$(echo $line | cut -d ':' -f1)
         compareLine=$(grep "$analysisName" $comparefile | cut -d ':' -f2)
         line=$(echo $line | cut -d ':' -f2)
-        # printf "\n"
-        # echo $analysisName
-        result="$result$($analysisName $line $compareLine)\n"
+        echo $analysisName >> $output
+        $analysisName $line $compareLine >> $output
 
-    done < $songfile
-    printf $result
+    done < $songfile 
+
+    result=$(cat $output)
+    echo "$result"
+    sum=$(echo "$result" | paste -sd+ - | bc -l)
+    echo "average:"
+    echo $sum/$lines | bc -l
+    
+    
 #=======================================================
