@@ -255,8 +255,8 @@
     result=$(cat $output)
     echo "$result"
     sum=$(echo "$result" | paste -sd+ - | bc -l)
-    echo "average:"
-    echo $sum/$lines | bc -l
+    echo "average:" >> $output
+    echo $sum/$lines | bc -l >> $output
     
     
 #=======================================================
