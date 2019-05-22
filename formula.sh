@@ -57,35 +57,20 @@
             scaleError="$scaleError$(percentError $data $compareData)\n"
         done
 
-        scaleErrorSum=$(printf $scaleError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
+        scaleErrorSum=$(printf $scaleError | paste -sd+ - | bc -l)
         echo "scale=4;$scaleErrorSum/28" | bc -l
-        # if (( $(echo "$value > $threshold" | bc -l) )); then
-        #     echo '1'
-        # else
-        #     echo '0'
-        # fi
     }
 
     function average-pitch {
         data=$(echo $1 | cut -d ';' -f1)
         compareData=$(echo $2 | cut -d ';' -f1)
         percentError $data $compareData
-        # if (( $(echo "$avPitchError > $threshold" | bc -l) )); then
-        #     echo '1'
-        # else
-        #     echo '0'
-        # fi
     }
 
     function average-note-value {
         data=$(echo $1 | cut -d ';' -f1)
         compareData=$(echo $2 | cut -d ';' -f1)
         percentError $data $compareData
-        # if (( $(echo "$avValueError > $threshold" | bc -l) )); then
-        #     echo '1'
-        # else
-        #     echo '0'
-        # fi
     }
 
     function average-steps {
@@ -103,11 +88,6 @@
         neg=$(echo "$neg * 0.55" | bc -l )
         firstLast=$(echo "$firstLast * 0.1" | bc -l )
         echo "${abs}+${neg}+${firstLast}" | bc -l
-        # if (( $(echo "$value > $threshold" | bc -l) )); then
-        #     echo '1'
-        # else
-        #     echo '0'
-        # fi
     }
 
     function repeated-pitches {
@@ -117,13 +97,8 @@
             repPitchError="$repPitchError$(percentError $data $compareData)\n"
         done
 
-        repPitchErrorSum=$(printf $repPitchError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
+        repPitchErrorSum=$(printf $repPitchError | paste -sd+ - | bc -l)
         echo "scale=4;$repPitchErrorSum/7" | bc -l
-        # if (( $(echo "$value > $threshold" | bc -l) )); then
-        #     echo '1'
-        # else
-        #     echo '0'
-        # fi
     }
 
     function repeated-note-value {
@@ -133,13 +108,8 @@
             repValueError="$repValueError$(percentError $data $compareData)\n"
         done
 
-        repValueErrorSum=$(printf $repValueError | tr '\n' '+' | rev | cut -c 2- | rev | bc -l)
+        repValueErrorSum=$(printf $repValueError | paste -sd+ - | bc -l)
         echo "scale=4;$repValueErrorSum/8" | bc -l
-        # if (( $(echo "$value > $threshold" | bc -l) )); then
-        #     echo '1'
-        # else
-        #     echo '0'
-        # fi
     }
     function most-used-note-value {
         percent=$(echo $1 | tr ';' '\n' | tail -n 6)
@@ -154,7 +124,7 @@
             val2=$(echo "$percent" | sed "${j}q;d" )
             ratio="$ratio$(echo $val1/$val2 | bc -l)\n"
         done
-        sum=$(printf "$ratio" | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+        sum=$(printf "$ratio" | paste -sd+ - | bc)
         average=$(echo $sum/$num | bc -l)
 
         for i in $(seq $compareNum); do
@@ -163,7 +133,7 @@
             val2=$(echo "$percent" | sed "${j}q;d" )
             ratioCompare="$ratioCompare$(echo $val1/$val2 | bc -l)\n"
         done
-        sumCompare=$(printf "$ratioCompare" | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+        sumCompare=$(printf "$ratioCompare" | paste -sd+ - | bc)
         averageCompare=$(echo $sumCompare/$compareNum | bc -l)
 
         first=$(echo "$percent" | head -n1)
@@ -176,6 +146,35 @@
         ratio=$(percentError $average $averageCompare)
         echo "($ratio + $first + $last)/3" | bc -l
 
+        echo "================="
+        data=$(echo $1 | cut -d ';' -f-5)
+        comparedata=$(echo $2 | cut -d ';' -f-5)
+        comparePlaces $data $comparedata
+    }
+    function time-signature {
+        top=$(echo $1 | cut -d '/' -f1)
+        topcompare=$(echo $2 | cut -d '/' -f1)
+        topError=$(percentError $top $topcompare)
+
+        bottom=$(echo $1 | cut -d '/' -f2 | tr -d ';')
+        bottomcompare=$(echo $2 | cut -d '/' -f2 | tr -d ';')
+        bottomError=$(percentError $bottom $bottomcompare)
+        echo "($topError + $bottomError)/2" | bc -l
+    }
+
+
+    function comparePlaces {
+        # echo "$1" | tr ';' '\n'
+        # echo "$2" | tr ';' '\n'
+        valnums=$(echo "$1" | tr ';' '\n' | wc -l)
+        combined=$(echo "$(echo $1);$2" | tr ';' '\n')
+
+        unique=$(echo "$combined" | sort -n | uniq)
+        uniqLines=$(echo "$unique" | wc -l)
+
+        for i in $unique; do
+            echo $i
+        done
     }
 #==============================================
 
