@@ -187,6 +187,46 @@
         sum=$(printf $result | paste -sd+ - | bc)
         echo $sum/$uniqLines | bc -l
     }
+    function most-used-pitches {
+        percent=$(echo $1 | tr ';' '\n' | tail -n 6)
+        comparePercent=$(echo $2 | tr ';' '\n' | tail -n 6)
+
+        num=`echo $(echo "$percent" | wc -l)-1 | bc`
+        compareNum=`echo $(echo "$comparePercent" | wc -l)-1 | bc`
+
+        for i in $(seq $num); do
+            j=$(echo $i+1 | bc)
+            val1=$(echo "$percent" | sed "${i}q;d") 
+            val2=$(echo "$percent" | sed "${j}q;d" )
+            ratio="$ratio$(echo $val1/$val2 | bc -l)\n"
+        done
+        sum=$(printf "$ratio" | paste -sd+ - | bc)
+        average=$(echo $sum/$num | bc -l)
+
+        for i in $(seq $compareNum); do
+            j=$(echo $i+1 | bc)
+            val1=$(echo "$percent" | sed "${i}q;d") 
+            val2=$(echo "$percent" | sed "${j}q;d" )
+            ratioCompare="$ratioCompare$(echo $val1/$val2 | bc -l)\n"
+        done
+        sumCompare=$(printf "$ratioCompare" | paste -sd+ - | bc)
+        averageCompare=$(echo $sumCompare/$compareNum | bc -l)
+
+        first=$(echo "$percent" | head -n1)
+        last=$(echo "$percent" | tail -n1)
+        compareFirst=$(echo "$comparePercent" | head -n1)
+        compareLast=$(echo "$comparePercent" | tail -n1)
+
+        first=$(percentError $first $compareFirst)
+        last=$(percentError $last $compareLast)
+        ratio=$(percentError $average $averageCompare)
+        averageone=$(echo "($ratio + $first + $last)/3" | bc -l)
+
+        data=$(echo $1 | cut -d ';' -f-5)
+        comparedata=$(echo $2 | cut -d ';' -f-5)
+        averagetwo=$(comparePlaces $data $comparedata)
+        echo "($averageone + $averagetwo)/2" | bc -l
+    }
 #==============================================
 
 
@@ -199,25 +239,8 @@
         line=$(echo $line | cut -d ':' -f2)
         # printf "\n"
         # echo $analysisName
-        $analysisName $line $compareLine
-        # if [ $analysisName == "scales" ]; then
-        #     scales $line $compareLine
-        # elif [ $analysisName == "average-pitch" ]; then
-        #     average-pitch $line $compareLine
-        # elif [ $analysisName == "average-note-value" ]; then
-        #     average-note-value $line $compareLine
-        # elif [ $analysisName == "average-steps" ]; then
-        #     average-steps $line $compareLine
-        # elif [ $analysisName == "average-steps" ]; then
-        #     average-steps $line $compareLine
-        # elif [ $analysisName == "repeated-pitches" ]; then
-        #     repeated-pitches $line $compareLine
-        # elif [ $analysisName == "repeated-note-value" ]; then
-        #     repeated-note-value $line $compareLine
-        # elif [ $analysisName == "most-used-note-value" ]; then
-        #     most-used-note-value $line $compareLine
-        # fi
+        result="$result$($analysisName $line $compareLine)\n"
+
     done < $songfile
+    printf $result
 #=======================================================
-
-
