@@ -252,11 +252,11 @@
 
     done < $songfile 
 
-    result=$(cat $output)
-    echo "$result"
+    result=$(awk '$0==($0+0)' $output )
     sum=$(echo "$result" | paste -sd+ - | bc -l)
     echo "average:" >> $output
     echo $sum/$lines | bc -l >> $output
+    cat $output
     
     
 #=======================================================
