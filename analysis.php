@@ -1046,7 +1046,7 @@
                         //+=========================
 
                         if ($analysisname == "most-used-note-value") {
-                            $mostUsedOccurrencesDir = $value . "/data/most-used-note-value/occurrences";
+                            $mostUsedOccurrencesDir = $value . "/data/most-used-note-value/";
                             $i = 0; 
                             $dir = $mostUsedOccurrencesDir;
                             if ($handle = opendir($dir)) {
@@ -1366,7 +1366,6 @@
                         if ($analysisname == "repeated-note-value") {
                             $repeatedPitchesDirValue = $value . "/data/repeated-note-value/";
                             $repeatedPitchesValue = array();
-                            $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "2.txt");
                             $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "3.txt");
                             $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "4.txt");
                             $repeatedPitchesValue[] = file_get_contents($repeatedPitchesDirValue . "5.txt");
