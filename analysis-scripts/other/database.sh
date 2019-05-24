@@ -12,12 +12,10 @@ for i in $(ls $dir); do
         mkdir "${outdir}/${append}_${j%.*}/data"
         mkdir "${outdir}/${append}_${j%.*}/time-info"
 
-        echo $i > "${outdir}/${append}_${j%.*}/time-info/composer.txt"
+        echo $i | tr -d '\n' > "${outdir}/${append}_${j%.*}/time-info/composer.txt"
 
         cat $dir/$i/$j > "${outdir}/${append}_${j%.*}/song.txt"
         deg $dir/$i/$j > "${outdir}/${append}_${j%.*}/deg.txt"
-        hum2mid $dir/$i/$j -o "${outdir}/${append}_${j%.*}/song.mid"
-
 
         for h in average-note-value average-pitch average-steps key-signature most-used-note-value most-used-pitches repeated-note-value repeated-pitches scales time-signature total-time; do
             mkdir "${outdir}/${append}_${j%.*}/data/${h}"

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Beats in Bytes | Analysis Tools</title>
+        <title>Analysis Dashboard | Beats in Bytes</title>
 
         <link rel="stylesheet" type="text/css" href="style-main.css" />
         <link rel="stylesheet" type="text/css" href="analysis-dashboard.css" />
@@ -1163,7 +1163,8 @@
                                             }
                                         });
                                     </script>
-                                    <br>";                            
+                                    <br>
+                                </div>";                            
 
                             //  $mostUsedTimeDir = $value . "/data/most-used-note-value/time";
                             //  $j = 0; 

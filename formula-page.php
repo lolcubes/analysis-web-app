@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Beats in Bytes | Analysis Tools</title>
+        <title>Comparison Analytics | Beats in Bytes</title>
 
         <!-- FOR STYLESHEETS -->
         <!-- ===========================-->
@@ -30,6 +30,10 @@
         <!-- ===========================--> 
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <!-- FOR APEXCHARTS ------------->
+        <!-- ===========================--> 
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     
         <style>
             @font-face {

@@ -34,6 +34,50 @@
             <div id="bumper">
 </div>
 
+
+
+<!--- FOR UPDATING AVERAGES --->
+<!--- ====================== --->
+
+    <?php
+        $files = scandir('Song_Database/');
+        $composers = array();
+        foreach($files as $file) {
+            if (!file_exists($file)) {
+                $composer = 'Song_Database/' . $file . "/time-info/composer.txt";
+                $period = 'Song_Database/' . $file . "/time-info/period.txt";
+        
+                $composer = file_get_contents($composer);
+                $composerfile = "Song_Database_Averages/composers/" . $composer;
+
+                echo $composer;
+                $composer = str_replace(array("\n", "\r"), '', $composer);
+                echo "<br>";
+                $folderDir = "Song_Database_Averages/composers/" . $composer;
+
+                if (!file_exists($composerfile)) {
+                    mkdir($folderDir);
+                }
+        
+                $composers[] = $composer;
+                $composers["$composer"][] = "2";
+            }
+            else {
+                echo "doesn't exist";
+                echo "<br>";
+
+            }
+
+        }
+        echo "<pre>";
+        print_r(array_unique($composers));
+        echo "</pre>";
+
+    ?>
+<!--- ====================== --->
+
+
+
 <style>
     .home{
         background-color: rgb(153, 153, 153);
