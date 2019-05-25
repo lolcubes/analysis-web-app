@@ -2,9 +2,9 @@
   --main-bg-color: rgb(9, 9, 46);
   --main-bg-color-trans: rgba(9, 9, 46,.7);
   --main-bg-color-lighter: rgb(9, 9, 46);
-  --main-panel-color: rgb(30, 31, 75);
-  --panel-lighter: #282c72; 
-  --panel-color-hover: rgb(37, 41, 105);
+  --main-panel-color: rgb(34, 35, 88);
+  --panel-lighter: #292d7e; 
+  --panel-color-hover: rgb(40, 44, 110);
 
   --chart-color: #313581;
 }

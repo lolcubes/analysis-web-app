@@ -59,7 +59,7 @@
             scaleError="$scaleError$(percentError $data $compareData)\n"
         done
 
-        scaleErrorSum=$(printf $scaleError | paste -sd+ - | bc -l)
+        scaleErrorSum=$(printf $scaleError |  grep . | paste -sd+ - | bc -l)
         echo "scale=4;$scaleErrorSum/28" | bc -l
     }
 
@@ -99,7 +99,7 @@
             repPitchError="$repPitchError$(percentError $data $compareData)\n"
         done
 
-        repPitchErrorSum=$(printf $repPitchError | paste -sd+ - | bc -l)
+        repPitchErrorSum=$(printf $repPitchError |  grep . | paste -sd+ - | bc -l)
         echo "scale=4;$repPitchErrorSum/7" | bc -l
     }
 
@@ -110,32 +110,36 @@
             repValueError="$repValueError$(percentError $data $compareData)\n"
         done
 
-        repValueErrorSum=$(printf $repValueError | paste -sd+ - | bc -l)
+        repValueErrorSum=$(printf $repValueError |  grep . | paste -sd+ - | bc -l)
         echo "scale=4;$repValueErrorSum/8" | bc -l
     }
     function most-used-note-value {
-        percent=$(echo $1 | tr ';' '\n' | tail -n 6)
-        comparePercent=$(echo $2 | tr ';' '\n' | tail -n 6)
-
-        num=`echo $(echo "$percent" | wc -l)-1 | bc`
-        compareNum=`echo $(echo "$comparePercent" | wc -l)-1 | bc`
+        percent=$(echo $1 | tr ';' '\n' | grep . | tail -n 6)
+        comparePercent=$(echo $2 | tr ';' '\n' | grep . | tail -n 6)
+        num=`echo $(echo "$percent" | wc -l)-1 | bc -l`
+        compareNum=`echo $(echo "$comparePercent" | wc -l)-1 | bc -l`
 
         for i in $(seq $num); do
-            j=$(echo $i+1 | bc)
+            j=$(echo $i+1 | bc -l)
             val1=$(echo "$percent" | sed "${i}q;d") 
             val2=$(echo "$percent" | sed "${j}q;d" )
             ratio="$ratio$(echo $val1/$val2 | bc -l)\n"
         done
-        sum=$(printf "$ratio" | paste -sd+ - | bc)
+
+        sum=$(printf "$ratio" |  grep . | paste -sd+ - | bc -l)
         average=$(echo $sum/$num | bc -l)
 
+
         for i in $(seq $compareNum); do
-            j=$(echo $i+1 | bc)
-            val1=$(echo "$percent" | sed "${i}q;d") 
-            val2=$(echo "$percent" | sed "${j}q;d" )
-            ratioCompare="$ratioCompare$(echo $val1/$val2 | bc -l)\n"
+            j=$(echo $i+1 | bc -l)
+            val1=$(echo "$comparePercent" | sed "${i}q;d") 
+            val2=$(echo "$comparePercent" | sed "${j}q;d" )
+
+            ratioCompare="$ratioCompare$(echo "($val1)/($val2)" | bc -l)\n"
         done
-        sumCompare=$(printf "$ratioCompare" | paste -sd+ - | bc)
+
+
+        sumCompare=$(printf $ratioCompare | grep . | paste -sd+ - | bc -l)
         averageCompare=$(echo $sumCompare/$compareNum | bc -l)
 
         first=$(echo "$percent" | head -n1)
@@ -186,7 +190,7 @@
             fi
             # echo $result
         done
-        sum=$(printf $result | paste -sd+ - | bc)
+        sum=$(printf $result | grep . |  paste -sd+ - | bc)
         echo $sum/$uniqLines | bc -l
     }
     function most-used-pitches {
@@ -196,7 +200,7 @@
         compareNum=`echo $(echo "$comparePercent" | wc -l)-1 | bc`
 
         for i in $(seq $num); do
-            j=$(echo $i+1 | bc)
+            j=$(echo $i+1 | bc -l)
             val1=$(echo "$percent" | sed "${i}q;d") 
             val2=$(echo "$percent" | sed "${j}q;d" )
             ratio="$ratio\n$(echo $val1/$val2 | bc -l)"
@@ -205,12 +209,14 @@
         average=$(echo $sum/$num | bc -l)
 
         for i in $(seq $compareNum); do
-            j=$(echo $i+1 | bc)
-            val1=$(echo "$percent" | sed "${i}q;d") 
-            val2=$(echo "$percent" | sed "${j}q;d" )
+            j=$(echo $i+1 | bc -l)
+            val1=$(echo "$comparePercent" | sed "${i}q;d") 
+            val2=$(echo "$comparePercent" | sed "${j}q;d" )
             ratioCompare="$ratioCompare$(echo $val1/$val2 | bc -l)\n"
         done
-        sumCompare=$(printf "$ratioCompare" | paste -sd+ - | bc)
+
+
+        sumCompare=$(printf "$ratioCompare" |  grep . | paste -sd+ - | bc)
         averageCompare=$(echo $sumCompare/$compareNum | bc -l)
 
         first=$(echo "$percent" | head -n1)
@@ -252,11 +258,10 @@
 
     done < $songfile 
 
+
     result=$(awk '$0==($0+0)' $output )
     sum=$(echo "$result" | paste -sd+ - | bc -l)
-    echo "average:" >> $output
-    echo $sum/$lines | bc -l >> $output
-    cat $output
+    echo $sum/$lines | bc -l
     
     
 #=======================================================
