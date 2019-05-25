@@ -47,7 +47,7 @@
 <br>
 <div id="center">
 <br>
-
+<br>
 <div id="analysis-header">
     <h1>Musical Analysis Tools</h1>
 </div>
@@ -57,6 +57,7 @@
 
 <button class="buttonform" id="uploadfilesbutton">Upload File</button>
 &nbsp;&nbsp;&nbsp;
+
 <span id="orspan">or</span>
 &nbsp;&nbsp;&nbsp;
 <button class="buttonform" id="choosedatabasebutton">Choose From Database</button>

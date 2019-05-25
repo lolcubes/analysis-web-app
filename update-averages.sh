@@ -65,10 +65,98 @@ function averageNoteValue {
     echo "average-note-value:$(echo "$averagePitch / $num" | bc -l);"
 }
 
+function averageSteps {
+    num=$(echo "$1" | wc -l)
+    first=$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f1 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+    second=$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f2 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+    third=$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f3 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+    
+    first=$(echo $first / $num | bc -l)
+    second=$(echo $second / $num | bc -l)
+    third=$(echo $third / $num | bc -l)
 
+    echo "average-steps:${first};${second};${third}"
+}
 
+function averageRepeatedPitches {
+    num=$(echo "$1" | wc -l)
 
+    one=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f1 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    two=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f2 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    three=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f3 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    four=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f4 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    five=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f5 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    six=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f6 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    seven=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f7 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    
+    echo "repeated-pitches:${one};${two};${three};${four};${five};${six};${seven}"
+}
 
+function averageRepeatedNoteValue {
+    num=$(echo "$1" | wc -l)
+
+    one=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f1 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    two=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f2 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    three=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f3 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    four=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f4 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    five=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f5 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    six=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f6 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    seven=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f7 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+    eight=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f8 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc) / $num " | bc -l)
+
+    echo "repeated-note-value:${one};${two};${three};${four};${five};${six};${seven};${eight}"
+}
+function mostUsedNoteValue {
+    num=$(echo "$1" | wc -l)
+    one=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f1 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    two=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f2 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    three=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f3 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    four=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f4 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    five=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f5 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    six=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f6 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    seven=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f7 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    eight=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f8 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    nine=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f9 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    ten=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f10 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+   
+    echo "most-used-note-value:${one};${two};${three};${four};${five};${six};${seven};${eight};${nine};${ten}"
+
+}
+
+function mostUsedPitches {
+    num=$(echo "$1" | wc -l)
+    one=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f1 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    two=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f2 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    three=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f3 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    four=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f4 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    five=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f5 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    six=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f6 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    seven=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f7 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    eight=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f8 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    nine=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f9 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+    ten=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d ';' -f10 | grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num " | bc -l)
+   
+    echo "most-used-pitches:${one};${two};${three};${four};${five};${six};${seven};${eight};${nine};${ten}"
+}
+
+function averageTimeSignature {
+    num=$(echo "$1" | wc -l)
+    top=$(echo "scale=3;$(echo "$1" | cut -d ':' -f2 | cut -d '/' -f1 | grep . | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num" | bc -l)
+    bottom=$(echo "scale=3;$(echo "$1" | cut -d '/' -f2 | tr -d ';' | grep . | tr '\n' '+' | rev | cut -c 2- | rev | bc -l) / $num" | bc -l)
+
+    echo "time-signature:$top/$bottom;"
+
+}
+
+function averageKeySignature {
+    num=$(echo "$1" | wc -l)
+    average=$(echo "$(echo "$1" | tr -d ';' | cut -d ':' -f2 | grep . | tr '\n' '+' | rev | cut -c 2- | bc -l) / $num" | bc -l)
+    if [ -z $average ]; then
+        echo "key-signature:0;" 
+    else 
+        echo "key-signature:$average;"
+    fi
+}
 
 # FOR ALL THE COMPOSERS:
 for j in $(seq $len); do  
@@ -82,6 +170,14 @@ for j in $(seq $len); do
     # STARTS A LOOP FOR EACH SONG IN CERTAIN COMPOSER
     scales=
     avPitch=
+    avNoteValue=
+    avSteps=
+    repPitch=
+    repNV=
+    mUNV=
+    mUP=
+    timeSignature=
+    keySignature=
     while read nameLine; do
         nameLine=$(echo $nameLine | sed "s/_[^_]*$//")
 
@@ -94,7 +190,22 @@ for j in $(seq $len); do
                 avPitch="$avPitch$amalgLine\n"
             elif [ "$amalgName" == "average-note-value" ]; then
                 avNoteValue="$avNoteValue$amalgLine\n"
+            elif [ "$amalgName" == "average-steps" ]; then
+                avSteps="$avSteps$amalgLine\n"
+            elif [ "$amalgName" == "repeated-pitches" ]; then
+                repPitch="$repPitch$amalgLine\n"
+            elif [ "$amalgName" == "repeated-note-value" ]; then
+                repNV="$repNV$amalgLine\n"
+            elif [ "$amalgName" == "most-used-note-value" ]; then
+                mUNV="$mUNV$amalgLine\n"
+            elif [ "$amalgName" == "most-used-pitches" ]; then
+                mUP="$mUP$amalgLine\n"
+            elif [ "$amalgName" == "time-signature" ]; then
+                timeSignature="$timeSignature$amalgLine\n"
+            elif [ "$amalgName" == "key-signature" ]; then
+                keySignature="$keySignature$amalgLine\n"
             fi
+
         done < "/Applications/MAMP/htdocs/NewTestings/Song_Database/$nameLine/data/amalgamated.txt"
     done <<< "$read"
 
@@ -106,5 +217,26 @@ for j in $(seq $len); do
     
     avNoteValue=$(printf $avNoteValue)
     averageNoteValue "$avNoteValue" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
+    
+    avSteps=$(printf $avSteps)
+    averageSteps "$avSteps" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
+
+    repPitch=$(printf $repPitch)
+    averageRepeatedPitches "$repPitch" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
+    
+    repNV=$(printf $repNV)
+    averageRepeatedNoteValue "$repNV" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
+
+    mUNV=$(printf $mUNV)
+    mostUsedNoteValue "$mUNV" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
+    
+    mUP=$(printf $mUP)
+    mostUsedPitches "$mUP" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
+    
+    timeSignature=$(printf $timeSignature)
+    averageTimeSignature "$timeSignature" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
+
+    keySignature=$(printf $keySignature)
+    averageKeySignature "$keySignature" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
 
 done
