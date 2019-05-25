@@ -14,16 +14,18 @@ name=$(printf $name)
 
 
 function averageScales {
-    echo "$1" | wc -l
+    num=$(echo "$1" | wc -l)
+    sum=$(echo "$1" | cut -d ';' -f4 | grep . | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+    echo "scale=4;$sum / $num" | bc -l
+
 }
 
 
 
 
 
-
 # FOR ALL THE COMPOSERS:
-for j in $(seq 1 $len); do  
+for j in $(seq $len); do  
     line=$(echo "$dirs" | sed "${j}q;d")
     averagesDir="/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}"
     echo $line

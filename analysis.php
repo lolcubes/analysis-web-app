@@ -285,23 +285,23 @@
                             }
                             
                             fclose($handle);
+                            if ($linecount > 1) {
+                                $sOpt="s";
+                            }
+                            else {
+                                $sOpt="";
+                            }
 
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=testoto style='width:26%; display: inline-block;margin-right:10%;vertical-align:middle;'>
-                                    <div class=analysis-content style='width:100%;max-height:150px;overflow:auto;display:block; '>
-                                        <div class=keysiglist >
+                                    <div class=analysis-content style='font-family:Avenir Light;width:100%;max-height:150px;overflow:auto;display:block; '>
                                             " . $keySigsList
                                             . "
-                                        </div>
                                     </div>
 
-                                    <div class=analysis-content style='width:100%;overflow:auto;display:block;'>
-                                        <div class=keysiglist  style='font-size:18px;'>
-                                        " . $linecount
-                                        . " Key Signatures
-                                        </div>
-                                    
+                                    <div class=analysis-content style='width:100%;overflow:auto;display:block;height:40px'>
+                                        " . $linecount . " Key Signature" . $sOpt . "
                                     </div>
 
                                 </div>

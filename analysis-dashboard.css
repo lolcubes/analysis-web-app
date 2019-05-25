@@ -332,7 +332,10 @@ body {
   font-family: 'Avenir';
   background-color:var(--main-panel-color);
   color:black;
-  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-bottom: 6px;
+  padding-top: 6px;
   border-radius: 5px;
   color: white;
 }
