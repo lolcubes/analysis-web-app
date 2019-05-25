@@ -59,6 +59,14 @@ function averagePitch {
     echo "average-pitch:$(echo "$averagePitch / $num" | bc -l);"
 }
 
+function averageNoteValue {
+    num=$(echo "$1" | wc -l)
+    averagePitch=$(echo "$1" | tr ';' '\n' | grep . | cut -d ':' -f2 |  grep .  | tr '\n' '+' | rev | cut -c 2- | rev | bc)
+    echo "average-note-value:$(echo "$averagePitch / $num" | bc -l);"
+}
+
+
+
 
 
 
@@ -84,6 +92,8 @@ for j in $(seq $len); do
                 scales="$scales$amalgLine\n"
             elif [ "$amalgName" == "average-pitch" ]; then
                 avPitch="$avPitch$amalgLine\n"
+            elif [ "$amalgName" == "average-note-value" ]; then
+                avNoteValue="$avNoteValue$amalgLine\n"
             fi
         done < "/Applications/MAMP/htdocs/NewTestings/Song_Database/$nameLine/data/amalgamated.txt"
     done <<< "$read"
@@ -93,5 +103,8 @@ for j in $(seq $len); do
     
     avPitch=$(printf $avPitch)
     averagePitch "$avPitch" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
+    
+    avNoteValue=$(printf $avNoteValue)
+    averageNoteValue "$avNoteValue" >> "/Applications/MAMP/htdocs/NewTestings/Song_Database_Averages/composers/${line}/data.txt"
 
 done

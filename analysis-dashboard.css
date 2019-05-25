@@ -1,9 +1,12 @@
 :root {
   --main-bg-color: rgb(9, 9, 46);
-  --main-bg-color-lighter: rgb(26, 26, 71);
-  --main-panel-color: rgb(34, 35, 102);
-  --panel-lighter: #313581; 
-  --panel-color-hover: rgba(49,53,129,1);
+  --main-bg-color-trans: rgba(9, 9, 46,.7);
+  --main-bg-color-lighter: rgb(9, 9, 46);
+  --main-panel-color: rgb(30, 31, 75);
+  --panel-lighter: #282c72; 
+  --panel-color-hover: rgb(37, 41, 105);
+
+  --chart-color: #313581;
 }
 
 @font-face {
@@ -74,17 +77,6 @@
 .analysis-panel:hover::before {
   opacity: 1;
 }
-
-/* #=========================== */
-
-/* .analysis-panel:hover {
-  background-image: linear-gradient(var(--main-panel-color),var(--panel-color-hover));
-  box-shadow: 1px 0px 18px  rgb(0, 0, 0);
-	position: relative;
-  top: .2px;
-	transition: background 0.2s ease-in-out;
-} */
-
 
 #analysis-panel:hover > #panelheader {
   transition: .2s;
@@ -193,21 +185,15 @@ body {
 
 .analysis-content {
   width: 100%;
-  background-color: var(--main-bg-color);
+  background-color: rgba(0,0,0,0);
   padding: 15px;
   color: white;
   margin-left: 0px;
   margin-top: 20px;
   transition: .3s;
   border-radius: 20px;
-  box-shadow: 1px 4px 13px  rgba(0, 0, 0, .6);
   display: inline-block;
   vertical-align: top;
-  border: 2px solid var(--panel-lighter))
-}
-.analysis-content:hover {
-  box-shadow: 1px 4px 17px  rgba(0, 0, 0, .8);
-  background-color: var(--main-bg-color-lighter)
 }
 
 #largeitem {
@@ -217,20 +203,17 @@ body {
 }
 
 .chart-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: var(--main-panel-color);
-  width: 80%;
-  position: relative;
-  border-radius: 20px;
-  box-shadow: 1px 4px 13px  rgba(0, 0, 0, .6);
+  padding: 15px;
+  background-color: rgba(60, 167, 255, 0.199);
+  width: 95%;
+  border-radius: 5px;
+  box-shadow: 1px 4px 13px  rgba(0, 0, 0, .5);
   transition: .2s;
   vertical-align: middle;
 }
 
 .chart-container:hover {
-  background-color: var(--panel-color-hover);
-  box-shadow: 1px 4px 15px  rgba(0, 0, 0, .8);
+  box-shadow: 1px 4px 15px  rgba(0, 0, 0, .6);
   transition: .2s;
 }
 
@@ -265,11 +248,11 @@ body {
   background-color: var(--main-panel-color);
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 1px 4px 12px  rgba(0, 0, 0, .8);
+  box-shadow: 1px 4px 12px  rgba(0, 0, 0, .4);
   font-size: 30px;
   font-stretch: expanded;
   font-variant-caps: small-caps;
-  margin: 20px;
+  margin-top: 20px;
   padding: 20px;
   transition: .3s;
   height: 100%;
@@ -277,7 +260,7 @@ body {
 
 #clock:hover {
   background-color: var(--panel-color-hover);
-  box-shadow: 1px 4px 16px  rgba(0, 0, 0, .9);
+  box-shadow: 1px 4px 16px  rgba(0, 0, 0, .5);
   transition: .3s;
 }
 

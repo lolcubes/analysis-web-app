@@ -42,8 +42,9 @@
         <p> Retrieved data: </p>
 
         <?php
-            $timeperiod = $_POST['time-period'];
-            echo $timeperiod;
+            // $timeperiod = $_POST['time-period'];
+            // echo $timeperiod;
+            $timeperiod = "Bach";
 
             //     $files = scandir('../Song_Database');
             //     foreach($files as $file) {
@@ -57,21 +58,25 @@
                 $currentfilerel = $fileInfo->getFilename();
                 $currentfile = "/Applications/MAMP/htdocs/NewTestings/Song_Database/" . $currentfilerel;
 
-                $period = $currentfile . "/period.txt";
+                $period = $currentfile . "/time-info/composer.txt";
 
-                $periodcontents = file_get_contents($period);
-                
-                if ($periodcontents == $timeperiod){
-                    $filedirs[] = $currentfile;
+                if (file_exists($period)) {
+                    $periodcontents = file_get_contents($period);
+                    if ("$periodcontents" == "$timeperiod"){
+                        $filedirs[] = $currentfile;
+                    }
                 }
-
-                echo "<br>";
 
             }
             echo "<pre>";
             print_r($filedirs);
             echo "</pre>";
-
+            foreach ($filedirs as $value) {
+                $valueo = $value . '/song.txt';
+                echo "<pre>";
+                echo file_get_contents($valueo);
+                echo "</pre>";
+            }
         ?>
 
         <a href="library.html"> <button class="buttonform"><span>Back</span></button></a>

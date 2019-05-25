@@ -17,7 +17,11 @@
         <link href="https://fonts.googleapis.com/css?family=Kelly+Slab|Open+Sans" rel="stylesheet">   
         <script src="css-element-queries/src/ResizeSensor.js"></script>
         <script src="css-element-queries/src/ElementQueries.js"></script>
-    
+
+        <!-- FOR APEXCHARTS ------------->
+        <!-- ===========================--> 
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+         
         <style>
             @font-face {
                 font-family: 'Avenir Light'; /*a name to be used later*/
@@ -61,13 +65,15 @@
         <br>
         <br>
 
-                <h1 style="display: inline-block;vertical-align:middle">Analysis Dashboard</h1> 
+        <h1 style="display: inline-block;vertical-align:middle">Analysis Dashboard</h1> 
 
         <form action=formula-page.php method=post style="display: inline-block;vertical-align:middle">
             <button type=submit class=darkform name='Comparison Analytics'>Comparison Analytics</button>
             <input type="hidden" name='filesarray' id="files_array" value="<?php echo $_POST['userfilelocations'] ?>" /> 
         </form>
         <br>
+        
+    
         
         <script>
                 function showDiv(classVar, contentId) { 
@@ -117,6 +123,7 @@
 
         <br>
         </div>
+
         <br>
         <?php
             function deleteDir($path) {
@@ -1445,17 +1452,59 @@
                             $timePath = file_get_contents($timePath);
                             $timePath = str_replace(" ", "  ", $timePath);
 
+
+
+                            // 
+                            $movingAverage = $value . "/data/average-pitch/pitch-moving-average.txt";
+                            $averagePitch = $value . "/data/average-pitch/pitch.txt";
+
+                            $averagePitch = file_get_contents($averagePitch);
+
+                            $movingAverage = file_get_contents($movingAverage);
+                            $movingAverage = explode(',', $movingAverage);
+                            $movingAverageEncoded = json_encode($movingAverage);
+
                             echo "
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
-                                <div class=analysis-content>
-                                    <br>
-                                    <br>
+                            <div class=analysis-content>
+
+                                <div id=pitchChart" . $filename . " class=chart-container style='width:55%;padding:10px'></div>
+        
+                                <script>
+                                    var options = {
+                                    chart: {
+                                        type: 'line',
+                                        sparkline: {
+                                            enabled: true
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'sales',
+                                        data: " . $movingAverageEncoded . "
+                                    }],
+                                    xaxis: {
+                                        categories: " . $movingAverageEncoded . "
+                                    },
+                                    tooltip: {
+                                        enabled: false,
+                                    },
+                                    stroke: {
+                                        curve: 'smooth',
+                                        width: 3,
+                                      },
+                                    }
+                        
+                                    var chart" . $filename . " = new ApexCharts(document.querySelector(\"#pitchChart" . $filename . "\"), options);
+                        
+                                    chart" . $filename . ".render();
+                                </script>
+
                                     <div id=clock>" . $timePath ."</div>
                                     <br>
-                                    <br>
-                                    <br>
+
 
                                 </div>
+                                
                              </div>";
 
 
