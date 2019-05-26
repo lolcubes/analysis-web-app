@@ -104,7 +104,7 @@
                     if (!file_exists($file)) {
                         $data = 'Song_Database_Averages/composers/' . $file . "/data.txt";
                         $arg1 = $value . "/data/amalgamated.txt";
-                        // shell_exec("./formula.sh $arg1 $data");
+                        shell_exec("./formula.sh $arg1 $data");
                     }
                 }
                 
