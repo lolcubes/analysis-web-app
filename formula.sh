@@ -5,8 +5,11 @@
     songfile=$1
     comparefile=$2
     lines=$(cat $songfile | wc -l)
-    removed=$(echo $songfile | rev | cut -c 16- | rev)
-    output="${removed}temp.txt"
+    removed=$(echo $songfile | rev | cut -c 22- | rev)
+    echo $removed
+    composer=$(echo $comparefile | cut -d '/' -f3)
+    genoutput="${removed}/comparison-outputs/averages/$composer.txt"
+
 #========================
 
 # Define threshold:
@@ -248,20 +251,18 @@
 # Loop through each line of the amalgamated data file. 
 # Based on the current metric, execute the functions.
     result=
-    rm $output
     while read -r line; do
         analysisName=$(echo $line | cut -d ':' -f1)
         compareLine=$(grep "$analysisName" $comparefile | cut -d ':' -f2)
         line=$(echo $line | cut -d ':' -f2)
-        echo $analysisName >> $output
-        $analysisName $line $compareLine >> $output
+        result="$result$($analysisName $line $compareLine)\n"
 
     done < $songfile 
 
-
-    result=$(awk '$0==($0+0)' $output )
-    sum=$(echo "$result" | paste -sd+ - | bc -l)
-    echo $sum/$lines | bc -l
+    echo "$(printf $result | grep . | paste -sd+ - | bc -l) / 10" | bc -l > $genoutput
+    # result=$(awk '$0==($0+0)' $output )
+    # sum=$(echo "$result" | paste -sd+ - | bc -l)
+    # echo $sum/$lines | bc -l > $genoutput
     
     
 #=======================================================

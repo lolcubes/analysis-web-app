@@ -87,9 +87,53 @@
                 $removedFileName = strstr($filename, '_');
                 $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
 
+                
+                // TO CREATE THE NECESSARY DIRS
+                //===============================
+                $formuladir = $value . "/comparison-outputs";
+                mkdir($formuladir);
+
+                $generalDir = $formuladir . "/averages";
+                mkdir($generalDir);
+
+
+                //TO EXECUTE THE SCRIPT
+                //=======================
+                $files = scandir('Song_Database_Averages/composers/');
+                foreach ($files as $file) {
+                    if (!file_exists($file)) {
+                        $data = 'Song_Database_Averages/composers/' . $file . "/data.txt";
+                        $arg1 = $value . "/data/amalgamated.txt";
+                        // shell_exec("./formula.sh $arg1 $data");
+                    }
+                }
+                
+
+                //TO GET THE ARRAYS
+                //=======================
+                $outputdir = $value . "/comparison-outputs/averages";
+
+                $composerNames = array();
+                $comparisonValues = array();
+
+                $files = scandir($outputdir);
+                foreach ($files as $file) {
+                    $composerNames[] = substr($file, 0, -4);
+                    $dirCur = $outputdir . "/" . $file;
+                    if (is_file($dirCur)) {
+                        $comparisonValues[] = file_get_contents($dirCur);
+                    }
+                }
+                echo "<pre>";
+                print_r($comparisonValues);
+                print_r($composerNames);
+                echo "</pre>";
+
                 echo "
                 <div class=composer-panel><p>$completeFileName</p></div>";
             }
+            echo "<div class=big-panel>
+            </div>"
         ?>
 
     </body>
