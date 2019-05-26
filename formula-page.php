@@ -79,7 +79,6 @@
             $files = $_POST['filesarray'];
             $exploded = explode(",", $files);
             echo "<pre>";
-            print_r($exploded);
             echo "</pre>";
 
             foreach ($exploded as $value) {
@@ -104,7 +103,7 @@
                     if (!file_exists($file)) {
                         $data = 'Song_Database_Averages/composers/' . $file . "/data.txt";
                         $arg1 = $value . "/data/amalgamated.txt";
-                        shell_exec("./formula.sh $arg1 $data");
+                        // shell_exec("./formula.sh $arg1 $data");
                     }
                 }
                 
@@ -118,19 +117,24 @@
 
                 $files = scandir($outputdir);
                 foreach ($files as $file) {
-                    $composerNames[] = substr($file, 0, -4);
                     $dirCur = $outputdir . "/" . $file;
                     if (is_file($dirCur)) {
+                        $composerNames[] = substr($file, 0, -4);
                         $comparisonValues[] = file_get_contents($dirCur);
                     }
                 }
                 echo "<pre>";
-                print_r($comparisonValues);
-                print_r($composerNames);
+
+                $combined = array_combine($composerNames,$comparisonValues);
+                $max = max($combined);
+                $max = $max * 100;
                 echo "</pre>";
 
                 echo "
-                <div class=composer-panel><p>$completeFileName</p></div>";
+                <div class=composer-panel>
+                <p>$completeFileName</p>
+                    <p>This song is most correlated with " . array_search(max($combined),$combined) . " with a correlation value of " . $max . " percent
+                </div>";
             }
             echo "<div class=big-panel>
             </div>"
