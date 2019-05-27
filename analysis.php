@@ -408,6 +408,7 @@
                                 $timeSigsReadNotArray = file_get_contents($fullKeySigPath);
                                 $timeSigsRead[] = trim(preg_replace('/\s\s+/', '', $timeSigsReadNotArray));
                             }
+
                             $timeSigValuesDir = $timeSigDir . "/occurrences-values.txt";
                             $timeSigValues = file_get_contents($timeSigValuesDir);
                             $timeSigValuesExploded = explode(",", $timeSigValues);
@@ -874,7 +875,7 @@
                                               legend: { display: false },
                                               title: {
                                                 display: true,
-                                                text: 'Moving Average of Pitches'
+                                                text: 'Moving Average of Note Value'
                                               },
                                               scales: {
                                                 xAxes: [{
@@ -1399,7 +1400,7 @@
                                         let chart_repeated_values_" . $filename . " = new Chart(myChart_repeated_values_" . $filename . ", {
                                             type: 'line',
                                             data: {
-                                                labels: ['2 Note', '3 Note', '4 Note', '5 Note', '6 Note'],
+                                                labels: ['3 Note', '4 Note', '5 Note', '6 Note'],
                                                 datasets: [{ 
                                                         data: " . $repeatedPitchesValue . ",
                                                         label: 'Repeated Note Values',

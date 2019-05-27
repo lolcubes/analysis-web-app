@@ -27,11 +27,11 @@ body {
 .composer-panel {
     min-width: 400px;
     width: 40%;
-    min-height: 400px;
+    height: 400px;
     background-color: var(--main-panel-color);
     display: inline-block;
     border-radius: 20px;
-    margin: 2%;
+    margin: 1%;
     transition: .2s;
     box-shadow: 1px 3px 10px rgba(0,0,0,.5);
 }
@@ -45,7 +45,8 @@ body {
 /* For the big panels (center divs, color): */
 /* ===========================================*/
 .big-panel {
-    width: 80%;
+    color: white;
+    width: 82%;
     min-height: 400px;
     background-color: var(--main-panel-color);
     display: inline-block;
@@ -59,3 +60,62 @@ body {
     transition: .2s;
     box-shadow: 1px 3px 15px rgba(0,0,0,.8);
 }
+
+/* ===========================================*/
+/* For the big panels (center divs, color): */
+/* ===========================================*/
+.meterBar {
+    height: 70px;
+    background-color: rgba(0,0,0,0);
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+}
+.bar {
+    width: 8%;
+    background-color: white;
+    margin-top: 8px;
+    height: 65px;
+    border: 2px solid rgba(255, 255, 255, 0.473);
+    border-radius: 2px;
+    margin-right: 0%;
+    margin-left: 0%;
+    display: inline-block;
+}
+
+.barOn {
+    background-color: red;
+}
+
+.barOn1 {
+    background-color: #ff4319;
+}
+
+.barOn2 {
+    background-color: #ff8018;
+}
+
+.barOn3 {
+    background-color: #ffa618;
+}
+
+.barOn4 {
+    background-color: rgb(255, 238, 0);
+}
+
+.barOn5 {
+    background-color: rgb(157, 255, 0);
+}
+
+.barOn6 {
+    background-color: rgb(19, 230, 0);
+}
+
+.barOn7 {
+    background-color: rgb(0, 192, 16);
+}
+
+.barOff {
+    background-color: rgba(0,0,0,0);
+} 

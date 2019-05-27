@@ -63,7 +63,6 @@
         </div>
         <div id="bumper">
         </div>
-        <div></div>
 
         <style>
             .home{
@@ -78,8 +77,6 @@
         <?php
             $files = $_POST['filesarray'];
             $exploded = explode(",", $files);
-            echo "<pre>";
-            echo "</pre>";
 
             foreach ($exploded as $value) {
                 $filename = str_replace("Song_Database/", "", $value);
@@ -90,10 +87,10 @@
                 // TO CREATE THE NECESSARY DIRS
                 //===============================
                 $formuladir = $value . "/comparison-outputs";
-                mkdir($formuladir);
+                // mkdir($formuladir);
 
                 $generalDir = $formuladir . "/averages";
-                mkdir($generalDir);
+                // mkdir($generalDir);
 
 
                 //TO EXECUTE THE SCRIPT
@@ -102,7 +99,11 @@
                 foreach ($files as $file) {
                     if (!file_exists($file)) {
                         $data = 'Song_Database_Averages/composers/' . $file . "/data.txt";
+
                         $arg1 = $value . "/data/amalgamated.txt";
+                        $output = $value . "/comparison-outputs/averages/" . $file . ".txt";
+
+                        // shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
                         // shell_exec("./formula.sh $arg1 $data");
                     }
                 }
@@ -123,21 +124,196 @@
                         $comparisonValues[] = file_get_contents($dirCur);
                     }
                 }
-                echo "<pre>";
 
                 $combined = array_combine($composerNames,$comparisonValues);
                 $max = max($combined);
                 $max = $max * 100;
-                echo "</pre>";
+                $max = substr($max, 0, -3);
+
+                $rounded = substr(round($max, -1), 0, -1);
+                $minus = 10 - $rounded;
+
+                $barArray = array();
+
+                $i = "";
+                for ($i;$i<$rounded;$i++) {
+                    $barArray[] = "barOn" . $i;
+                }
+
+                $j = "";
+                for ($j;$j<$minus;$j++) {
+                    $barArray[] = "barOff";
+                }
 
                 echo "
-                <div class=composer-panel>
-                <p>$completeFileName</p>
-                    <p>This song is most correlated with " . array_search(max($combined),$combined) . " with a correlation value of " . $max . " percent
+                <div class='composer-panel'>
+                    <p> $completeFileName 
+                    <p> This song is most correlated with " . array_search(max($combined),$combined) . " with a correlation value of " . $max . "% 
+                    <div class=meterBar>
+                        <div class='bar " . $barArray[0] . "'></div>
+                        <div class='bar " . $barArray[1] . "'></div>
+                        <div class='bar " . $barArray[2] . "'></div>
+                        <div class='bar " . $barArray[3] . "'></div>
+                        <div class='bar " . $barArray[4] . "'></div>
+                        <div class='bar " . $barArray[5] . "'></div>
+                        <div class='bar " . $barArray[6] . "'></div>
+                        <div class='bar " . $barArray[7] . "'></div>
+                        <div class='bar " . $barArray[8] . "'></div>
+                        <div class='bar " . $barArray[9] . "'></div>
+                    </div>
                 </div>";
             }
-            echo "<div class=big-panel>
-            </div>"
+            echo "
+            <div class=big-panel>
+                <div id=heatmap> </div>
+            </div>";
+            echo "
+            <script>
+                    var data = [
+                    ";
+                    foreach ($exploded as $value) {
+                        $filename = str_replace("Song_Database/", "", $value);
+                        $removedFileName = strstr($filename, '_');
+                        $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
+
+                        $outputdir = $value . "/comparison-outputs/averages";
+
+                        $composerNames = array();
+                        $comparisonValues = array();
+        
+                        $files = scandir($outputdir);
+                        foreach ($files as $file) {
+                            $dirCur = $outputdir . "/" . $file;
+                            if (is_file($dirCur)) {
+                                $composerNames[] = substr($file, 0, -4);
+                                $comparisonValues[] = file_get_contents($dirCur);
+                            }
+                        }
+                        $comparisonValues = json_encode($comparisonValues);
+                        echo "
+                        {
+                            name: '" . $completeFileName . "',
+                            data: " . $comparisonValues . "
+                        },
+                        ";                        
+                    }
+                    echo "]";
+
+                    echo "
+                    var options = {
+                        chart: {
+                            height: 450,
+                            type: 'heatmap',
+                            foreColor: '#fff',
+                            fontFamily: 'Avenir Light',
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        series: data,
+                        xaxis: {
+                            type: 'category',
+                            categories: ['African','Bach','Beethoven','Chinese','Chopin','Corelli','DuFay','Frescobaldi','Haydn','Hummel','Joplin','Josquin','Martini','Mozart','NativeAmerican','Rue','Scarlatti','Schubert'],
+                            labels: {
+                                style: {
+                                    fontSize: '18px',
+                                }
+                            }
+                        },
+                        legend: {
+                            show: false,
+                        },
+                        grid: {
+                            show: false,
+                        },
+                        yaxis: {
+                            labels: {
+                                style: {
+                                    fontSize: '18px',
+                                }
+                            } 
+                        },
+                        grid: {
+                            padding: {
+                                right: 20
+                            }
+                        },
+                        plotOptions: {
+                            heatmap: {
+                                
+                              enableShades: true,
+                              shadeIntensity: 1,
+                              colorScale: {
+                                ranges: [{
+                                    from: 0,
+                                    to: .48,
+                                    color: '#e01a1a',
+                                    name: 'Low',
+                                  },
+                                  {
+                                    from: .48,
+                                    to: .54,
+                                    color: '#ff9605',
+                                    name: 'medium',
+                                  },
+                                  {
+                                    from:.54,
+                                    to: .6,
+                                    color: '#ffe207',
+                                    name: 'high',
+                                  },
+                                  {
+                                    from:.6,
+                                    to: .9,
+                                    color: '#0fc109',
+                                    name: 'high',
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                    }
+            
+                    var chart = new ApexCharts(
+                        document.querySelector('#heatmap'),
+                        options
+                    );
+            
+                    chart.render();
+                </script>";
+                foreach ($exploded as $value) {
+                    $filename = str_replace("Song_Database/", "", $value);
+                    $removedFileName = strstr($filename, '_');
+                    $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
+                    echo "<div class=composer-panel>
+                            <div id=radarChart" . $filename . "></div>";
+                    echo "</div>";
+                    echo "
+                    <script>
+                        var options = {
+                            series: [
+                            {
+                                name: 'Radar Series 1',
+                                data: [45, 52, 38, 24, 33, 10]
+                            },
+                            {
+                                name: 'Radar Series 2',
+                                data: [26, 21, 20, 6, 8, 15]
+                            }
+                            ],
+                            labels: ['April', 'May', 'June', 'July', 'August', 'September']
+                        }
+
+                        var chart = new ApexCharts(
+                            document.querySelector('#radarChart" . $filename . "'),
+                            options
+                        );
+                
+                        chart.render();
+
+                    </script>";
+                }
+                
         ?>
 
     </body>

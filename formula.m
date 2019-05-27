@@ -1,5 +1,5 @@
 %function song_correlation = kai_compare(file1, file2);
-function song_correlation = kai_compare;
+function song_correlation = formula;
   
 arg_list = argv();
 
@@ -160,7 +160,7 @@ for j = 1:7
 %%%%%%%%%%%%%%%%%%%%%%
 % analysis 6: repeated note value
 %%%%%%%%%%%%%%%%%%%%%% 
- for j = 1:8
+ for j = 1:7
   if (max(x51(j), x52(j)) == 0) 
     y5(j) = 1;
    else 
