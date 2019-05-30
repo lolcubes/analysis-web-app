@@ -89,11 +89,29 @@
                 $target = "$filedirectory" . "/song.mid";
                 $degoutput = "$filedirectory" . "/deg.txt";
                 $assetsdir = "$filedirectory" . "/image-assets";
+                $conversionsDir = "$filedirectory" . "/data-conversions";
+
+                mkdir($conversionsDir);
                 mkdir($assetsdir);
+
+                $abcOutput = $conversionsDir . "/song.abc";
+                $enpOutput = $conversionsDir . "/song.enp";
+                $gmnOutput = $conversionsDir . "/song.gmn";
+                $meiOutput = $conversionsDir . "/song.mei";
+                $museOutput = $conversionsDir . "/song.muse";
+                $xmlOutput = $conversionsDir . "/song.xml";
+
                 $prolloutput = "$filedirectory" . "/image-assets/proll.ppm";
                 $prolloutputpng = "$filedirectory" . "/image-assets/proll.png";
                 $keyscapeoutput = "$filedirectory" . "/image-assets/keyscape.ppm";
                 $keyscapeoutputpng = "$filedirectory" . "/image-assets/keyscape.png";
+
+                exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/conversions/hum2abc $fileconvert | grep -v '^%%abcx-conversion-date' > $abcOutput");
+                exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/conversions/hum2enp $fileconvert > $enpOutput");
+                exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/conversions/hum2gmn $fileconvert | grep -v Converted > $gmnOutput");
+                exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/conversions/hum2mei $fileconvert > $meiOutput");
+                exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/conversions/hum2muse $fileconvert > $museOutput");
+                exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/conversions/hum2xml $fileconvert > $xmlOutput");
 
                 exec("/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
                 exec( "/Applications/MAMP/htdocs/NewTestings/mid2wav-master/mid2wav $target");

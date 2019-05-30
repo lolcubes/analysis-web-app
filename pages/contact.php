@@ -13,4 +13,10 @@
 
     $message = $_POST['message'];
     echo "Message:" . nl2br($message);
+    if (PHP_OS == "Darwin") {
+        echo "Mac :(";
+    }
+    else {
+        echo "Linux :)";
+    }
 ?>
