@@ -87,10 +87,10 @@
                 // TO CREATE THE NECESSARY DIRS
                 //===============================
                 $formuladir = $value . "/comparison-outputs";
-                // mkdir($formuladir);
+                mkdir($formuladir);
 
                 $generalDir = $formuladir . "/averages";
-                // mkdir($generalDir);
+                mkdir($generalDir);
 
 
                 //TO EXECUTE THE SCRIPT
@@ -103,7 +103,7 @@
                         $arg1 = $value . "/data/amalgamated.txt";
                         $output = $value . "/comparison-outputs/averages/" . $file . ".txt";
 
-                        // shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
+                        shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
                         // shell_exec("./formula.sh $arg1 $data");
                     }
                 }
@@ -161,8 +161,10 @@
                         <div class='bar " . $barArray[8] . "'></div>
                         <div class='bar " . $barArray[9] . "'></div>
                     </div>
+                    <div id=barChartSmall" . $removedFileName . "></div>
                 </div>";
             }
+            echo "<script></script>";
             echo "
             <div class=big-panel>
                 <div id=heatmap> </div>
@@ -227,6 +229,7 @@
                             show: false,
                         },
                         yaxis: {
+                            
                             labels: {
                                 style: {
                                     fontSize: '18px',
@@ -281,36 +284,171 @@
             
                     chart.render();
                 </script>";
+
+                    $outputdir = $value . "/comparison-outputs/averages";
+
+                    $composerNames = array();
+                    $comparisonValues = array();
+
+                    $files = scandir($outputdir);
+                    foreach ($files as $file) {
+                        $dirCur = $outputdir . "/" . $file;
+                        if (is_file($dirCur)) {
+                            $composerNames[] = substr($file, 0, -4);
+                            $comparisonValues[] = file_get_contents($dirCur);
+                        }
+                    }
+
+                    $combined = array_combine($composerNames,$comparisonValues);
+                    arsort($combined);
+
+                    $sortedKeys = array_keys($combined);
+                    $sortedValues = array_values($combined);
+
+                    $sortedKeys = json_encode($sortedKeys);
+                    $sortedValues = json_encode($sortedValues);
+
+                echo "
+                <div class=big-panel>
+                    <canvas id=barmap> </canvas>
+                </div>";
+                echo "
+                <script>
+                    let myChart = document.getElementById('barmap').getContext('2d');
+
+                    // Global Options
+                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
+                    Chart.defaults.global.defaultFontSize = 18;
+                    Chart.defaults.global.defaultFontColor = '#fff';
+                
+                    let massPopChart = new Chart(myChart, {
+                    type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                    data:{
+                        labels: $sortedKeys,
+                        datasets:[{
+                        label:'Correlation Value',
+                        data: $sortedValues,
+                        backgroundColor:'rgb(53, 98, 194)',
+                        borderWidth:1,
+                        borderColor:'#777',
+                        hoverBorderWidth:3,
+                        hoverBorderColor:'#000'
+                        }]
+                    },
+                    options:{
+                        title:{
+                        display:true,
+                        text:'Correlation to Composers',
+                        fontSize:25
+                        },
+                        legend:{
+                        display:true,
+                        position:'right',
+                        labels:{
+                            fontColor:'#000'
+                        }
+                        },
+                        layout:{
+                        padding:{
+                            left:50,
+                            right:0,
+                            bottom:0,
+                            top:0
+                        }
+                        },
+                        legend:{
+                            display:false
+                        },
+                        tooltips:{
+                        enabled:true
+                        }
+                    }
+                    });
+                    </script>
+                ";
+
                 foreach ($exploded as $value) {
                     $filename = str_replace("Song_Database/", "", $value);
                     $removedFileName = strstr($filename, '_');
+                    $removedUnder = str_replace("_", "", $removedFileName);
                     $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
-                    echo "<div class=composer-panel>
-                            <div id=radarChart" . $filename . "></div>";
+
+
+                    $outputdir = $value . "/comparison-outputs/averages";
+
+                        $composerNames = array();
+                        $comparisonValues = array();
+        
+                        $files = scandir($outputdir);
+                        foreach ($files as $file) {
+                            $dirCur = $outputdir . "/" . $file;
+                            if (is_file($dirCur)) {
+                                $composerNames[] = substr($file, 0, -4);
+                                $comparisonValues[] = file_get_contents($dirCur);
+                            }
+                        }
+
+                        $max = max($comparisonValues);
+                        $min = min($comparisonValues);
+                        $halfmin = $min/2;
+                        $subtracted = array();
+
+                        foreach ($comparisonValues as $num) {
+                            $subtracted[] = $num - $halfmin;
+                        }
+
+                        $subtracted = json_encode($subtracted);
+
+                        echo "<script>console.log('Min:" . $min . "')</script>";
+                        echo "<script>console.log('Max:" . $max . "')</script>";
+
+                        $comparisonValues = json_encode($comparisonValues);
+
+                    echo "
+                        <div class=composer-panel>
+                            <div id=radarChart" . $removedUnder . "></div>";
                     echo "</div>";
                     echo "
                     <script>
-                        var options = {
-                            series: [
-                            {
-                                name: 'Radar Series 1',
-                                data: [45, 52, 38, 24, 33, 10]
-                            },
-                            {
-                                name: 'Radar Series 2',
-                                data: [26, 21, 20, 6, 8, 15]
+                    var options = {
+                        chart: {
+                            height: 350,
+                            type: 'radar',
+                            dropShadow: {
+                                enabled: true,
+                                blur: .2,
+                                left: 1,
+                                top: 1
                             }
-                            ],
-                            labels: ['April', 'May', 'June', 'July', 'August', 'September']
-                        }
-
+                        },
+                        series: [{
+                            name: 'Series 1',
+                            data: " . $subtracted . ",
+                        }],
+                        title: {
+                            text: 'Radar Chart - Multi Series'
+                        },
+                        stroke: {
+                            width: 0
+                        },
+                        fill: {
+                            opacity: 0.4
+                        },
+                        markers: {
+                            size: 0
+                        },
+                        yaxis: {
+                            show: false
+                        },
+                        labels: ['African','Bach','Beethoven','Chinese','Chopin','Corelli','DuFay','Frescobaldi','Haydn','Hummel','Joplin','Josquin','Martini','Mozart','NativeAmerican','Rue','Scarlatti','Schubert'],
+                    }
+            
                         var chart = new ApexCharts(
-                            document.querySelector('#radarChart" . $filename . "'),
+                            document.querySelector('#radarChart" . $removedUnder . "'),
                             options
                         );
                 
                         chart.render();
-
                     </script>";
                 }
                 

@@ -4,7 +4,7 @@
         <title>About</title>
         <link rel="stylesheet" type="text/css" href="../style-main.css" />
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-        <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+        <link rel="shortcut icon" type="image/png" href="../image-assets/favicon.png"/>
 
     </head>
     <div id="navbarr">
@@ -23,30 +23,157 @@
             </ul>
         </div>
         <div id="bumper">
-</div>
+    </div>
+    <center>
+    <style>
+        .about{
+            background-color: rgb(153, 153, 153);
+            box-shadow: 1px 4px 28px  rgb(0, 0, 0);
+            outline: 0;
+        }
+        #title {
+            font-size: 50px;
+            font-weight:300;
+        }
+        .bio {
+            display: inline-block;
+            vertical-align: top;
+            width: 290px;
+            margin-right: 45px;
+        }
+        .third {
+            border-radius: 4px;
+            width: 28%;
+            background-color: white;
+            box-shadow: 1px 2px 17px rgba(0,0,0,.2);
+            height: 400px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 1%;
+            transition: .16s
 
-<style>
-    .about{
-        background-color: rgb(153, 153, 153);
-        box-shadow: 1px 4px 28px  rgb(0, 0, 0);
-        outline: 0;
-    }
-</style>
-<center>
-        <div class=subheader>
-                <h2>About</h2>
+        }
+        .third:hover {
+            box-shadow: 1px 2px 24px rgba(0,0,0,.24);
+            transition: .16s
+        }
+        .form {
+            all: initial; 
+            border: 2px solid rgba(0,0,0,.2);
+            border-radius: 3px;
+            font-family: 'Avenir Light';
+            padding: 5px;
+            transition: .3s;
+        }
+        .form:focus {
+            border: 2px solid rgba(0,0,0,.4);
+            transition: .3s;
+            box-shadow: 2px 2px 6px rgba(0,0,0,.3)
+        }
+        .rightForm {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: top;
+        }
+        .leftForm {
+            display: inline-block;
+            line-height: 7px;
+        }
+        #messageBox {
+            height: 100px;
+            width: 300px;
+        }
+    </style>
+
+    <body>
+        <script>
+            function verify(id){
+                el = document.getElementById(id);
+                
+            }    
+        </script>
+        
+        <br style='line-height:10px'>
+
+        <br>
+        <h1 id=title>Beats  in  Bytes</h1>
+        <br style='line-height:40px'>
+
+        <div id=bios>
+            <div class=bio>
+                <img src="../icons-misc/profile/pony.png" height=270/>
+                <p style="margin:0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            </div>
+
+            <div class=bio>
+                <img src="../icons-misc/profile/cue.png" height=270/>
+                <p style="margin:0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            </div>
+
+            <div class=bio>
+                <img src="../icons-misc/profile/hat.png" height=270/>
+                <p style="margin:0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            </div>
         </div>
-        <body>
-        <div id=welcome>
+        <br style='line-height:100px'>
+        <div id=thirds>
 
-                <p> <br />The goal of beats in bytes is to do stuff.
-                    <br /><hr /> 
-        </div>
-                <br />
-            </center>
+            <div class=third>
+                <h2 style='font-size:32px;margin-bottom:10px'>Analysis Tools</h2>    
+                <p>We create analysis tools for musicologists, researchers, and the general public alike.</p>
+                <a href='../index.php' ><button class=buttonform>Analysis Page</button></a>
+                <br style='line-height:30px'>
+                <br style='line-height:30px'>
+                <img src="../icons-misc/sparkline.png" width=80%/>
 
+            </div>
             
+            <div class=third>
+                <h2>Research</h2>    
+            </div>
+
+            <div class=third>
+                <h2>Code</h2>    
+            </div>
+
+        </div>
+
+        <br>
+        <br>
+        <h2 style='font-size:32px;margin-bottom:10px'>Contact Us</h2>    
+        <br>
+        <form method=post action=contact.php>
+            <div class=leftForm>
+                <input onchange="verify(this.id)" class=form type="text" name="name" placeholder=" Name" required><br><br>
+                <input class=form type="email" name="email" placeholder=" Email" required><br><br>
+                <input class=form type="text" name="subject" placeholder=" Subject" required><br><br><br>
+            </div>
+            <div class=rightForm>
+                    <textarea id=messageBox width=300px height=200px class=form name="message" placeholder=" Message" required></textarea><br><br><br>
+            </div>
+            <br>
+                <button type=submit class=buttonform>Submit</button>
+        </form>
     </body>
+    <br>
+    <footer>
+        <br>
+        <span>Beats in Bytes - Updated May 30, 2019</span>
+        <div id=footermenu>
+            <p class=footerMenuItem>Home
+            <p class=footerMenuSeparater>|
+            <p class=footerMenuItem>Analysis Tools
+            <p class=footerMenuSeparater>|
+            <p class=footerMenuItem>About
+            <p class=footerMenuSeparater>|
+            <p class=footerMenuItem>Code
+            <p class=footerMenuSeparater>|
+            <p class=footerMenuItem>Research
+            <p class=footerMenuSeparater>|
+            <p class=footerMenuItem>Database
+        </div>
+    </footer>
+    </center>
 </html>
 
 
