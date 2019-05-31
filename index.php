@@ -109,8 +109,7 @@ $( document ).ajaxComplete(function() {
     document.getElementById("loading-bar").className = "loaded";
     document.getElementById("selected-files-div").innerHTML = "<p id=selected-files-text>Selected Files:</p>";
     addHiddenValue();
-    populateDropdown("playSongDropdown");
-
+    addDownloadSection();
 
 });
 
@@ -218,6 +217,20 @@ function addAudioPlayers(){
     }               
 
 }
+function addDownloadSection(){
+    var array = document.getElementById("demo").innerHTML;
+    var arrayparsed = JSON.parse(array);
+    var dirs = arrayparsed.relativedirs;
+    var names = arrayparsed.names;
+
+    for (i=0; i<names.length; i++){ 
+        var name = names[i];
+        var dir = dirs[i];
+        console.log(name);
+        console.log(dir);
+        $("#downloadSection").append('<div class=downloadSong></div>')
+    }
+}
 
 </script>
     
@@ -288,8 +301,8 @@ function addAudioPlayers(){
                         $('#file-info-accordions').delay(800).show("slow");
                         document.getElementById("selected-files-div").innerHTML = "<p>Selected Files:</p>";
 
-                        populateDropdown("playSongDropdown");
                         addHiddenValue();
+                        addDownloadSection();
 
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
@@ -492,23 +505,12 @@ function changeDetailsMessage(){
 
 
                     <div class="panels">
-                        <p>To begin, please choose one of your uploaded songs.</p>
-
-
-                        <select name="editor" id="playSongDropdown" onchange="singleSelectChangeText('playSongDropdown')">
-                            <option value="" selected disabled hidden>
-                                Select a song
-                            </option>
-                        </select>
-
-                        <br>
-                        <!-- <button class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
-                        <script id="displaysong">displayHumdrum({autoResize: true,source: "song_svg",url:"Song_Database/3_1/song.txt",scale: 35,spacingStaff: 12,})</script>
-                        <script type="text/x-humdrum" id="song_svg"></script> -->
-                        <br>
+                    <h1>Download Files</h1>
                         <br>
                         <iframe name="votar" style="display:none;"></iframe>
 
+                        <div id=downloadSection>
+                        </div>
                     </div>
 
 

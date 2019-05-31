@@ -1,5 +1,5 @@
-
-
+/*  DELETE AUTO MARGINS */
+/* ======================*/
 * {
   margin: 0px;
   padding: 0px;
@@ -7,19 +7,24 @@
   border: 0px;
 }
 
-/*  oh man adding comments to this will be disasterous */
-/* ====================================================*/
 
+/*  CREATE AVENIR FONT */
+/* =======================*/
 @font-face {
-  font-family: 'Avenir Light'; /*a name to be used later*/
-  src: url('fonts/avenir/avenir-light.otf'); /*URL to font*/
+  font-family: 'Avenir Light';
+  src: url('fonts/avenir/avenir-light.otf');
 }
 
 
+/*  HIDE THE DIV THAT CONTAINS THE FILES ARRAY*/
+/* ============================================*/
 #demo {
-      display: none;
+ display: none;
 }
 
+
+/*  STYLE ANY CODE SNIPPETS/
+/* =========================*/
 code {
   background-color: rgb(228, 228, 228);
   padding: 4px 4px 4px 4px;
@@ -27,118 +32,124 @@ code {
   border-radius: 4px;
 }
 
+
+/*  HIDE OPTIONS ON LOAD/
+/* ======================*/
 #file-info-accordions {
   display: none;
 }
 
-#bumper {
-  height: 70px;
-  width: 100%
-}
-
-h1, h2, h3, h4, h5, h6, h7 {
+/*  REMOVE STYLING FROM H TAGS/
+/* =========================*/
+h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-family: 'Avenir Light', sans-serif;
-
-  /* padding-top: 30px;
-  line-height: 0px;
-  width: 300px;
-  height: 30px;
-  border-radius: 20px;
-  background-color: rgb(41, 41, 41);
-  color: white;
-  box-shadow: 3px 3px 8px rgb(143, 143, 143);
-  display: block;
-  transition: .2s;
-  position: absolute;
-  left: 50%;
-  margin-left: -150px; */
-}
-
-#navbarr {
-  background-color: black;
-  box-shadow: 1px 0px 18px  rgb(0, 0, 0);
-  width: 100%;
-  position: fixed;
-  z-index: 100000000000;
-  overflow: hidden ;
-  height: 70px
-}
-
-ul li {
-    list-style: none;
-    display: inline-block;
-    line-height: 70px;
-    color: rgb(0, 0, 0);
-    margin-left: 0;
-    margin-right: 0;
-    vertical-align: middle;
-}
-
-ul li a {
-    display: block;
-    text-decoration: none;
-    font-family: 'Avenir Light'; 
-    color: white;
-    padding: 0px 25px;
-    text-align: center;
-    transition: .3s;
-    margin:0;
 }
 
 
-ul li a:hover {
-    background-color: rgb(206, 206, 206);
-    transition: .3s;
-    box-shadow: 1px 4px 10px  rgb(53, 53, 53);
-    outline: 0;
-    transition-delay: .1s;
-    color: black;
-}
 
-ul li a:active {
-  background-color: rgb(153, 153, 153);
-  transition: .3s;
-  box-shadow: 1px 20px 58px  rgb(0, 0, 0);
-  outline: 0;
-  color: rgb(255, 255, 255);
+/*  STYLE THE NAVBAR /
+=========================================*/
+/* =========================================*/
+    #bumper {
+      height: 70px;
+      width: 100%
+    }
 
-}
+    #navbarr {
+      background-color: black;
+      box-shadow: 1px 0px 18px  rgb(0, 0, 0);
+      width: 100%;
+      position: fixed;
+      z-index: 100000000000;
+      overflow: hidden ;
+      height: 70px
+    }
 
-ul li a:focus {
-  background-color: rgb(126, 126, 126);
-  transition: .3s;
-  box-shadow: 1px 4px 28px  rgb(0, 0, 0);
-  outline: 0;
-  color: rgb(255, 255, 255);
+  /*STYLE THE NAVBAR ITEMS */
+  /*========================*/
+    ul li {
+        list-style: none;
+        display: inline-block;
+        line-height: 70px;
+        color: rgb(0, 0, 0);
+        margin-left: 0;
+        margin-right: 0;
+        vertical-align: middle;
+    }
 
-}
-#headerbanner {
-  vertical-align: center;
-  position: relative;
-  top: -4px;
-}
+    ul li a {
+        display: block;
+        text-decoration: none;
+        font-family: 'Avenir Light'; 
+        color: white;
+        padding: 0px 25px;
+        text-align: center;
+        transition: .3s;
+        margin:0;
+    }
 
-nav {
-    width: 100%;
-  line-height: 0px;
-  overflow:auto;
+
+    ul li a:hover {
+        background-color: rgb(206, 206, 206);
+        transition: .3s;
+        box-shadow: 1px 4px 10px  rgb(53, 53, 53);
+        outline: 0;
+        transition-delay: .1s;
+        color: black;
+    }
+
+    ul li a:active {
+      background-color: rgb(153, 153, 153);
+      transition: .3s;
+      box-shadow: 1px 20px 58px  rgb(0, 0, 0);
+      outline: 0;
+      color: rgb(255, 255, 255);
+
+    }
+
+    ul li a:focus {
+      background-color: rgb(126, 126, 126);
+      transition: .3s;
+      box-shadow: 1px 4px 28px  rgb(0, 0, 0);
+      outline: 0;
+      color: rgb(255, 255, 255);
+
+    }
+
+    #headerbanner {
+      vertical-align: center;
+      position: relative;
+      top: -4px;
+    }
+
+  /*REMOVE OVERFLOW, ADD CLEANUP */
+  /*========================*/
+    nav {
+      width: 100%;
+      line-height: 0px;
+      overflow:auto;
+    }
+
+    #navbar {
+      overflow: auto;
+    }
+/* ==========================================================*/
 
 
-}
-#navbar {
-  overflow: auto;
-}
 
 label {
-    cursor: pointer;
-  }
+  cursor: pointer;
+}
 
-
+/* CENTER THE CENTER DIV */
+/*========================*/
 #center {
     text-align: center;
 }
 
+/*ADD AVENIR AND MARGIN TO TEXT*/
+/*=============================*/
 p,
 h2,
 h3 {
@@ -151,66 +162,6 @@ p {
 }
 
 
-textarea {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 520px;
-    height: 200px;
-    -webkit-border-top-left-radius:9px;
-	-moz-border-radius-topleft:9px;
-	border-top-left-radius:9px;
-	-webkit-border-top-right-radius:9px;
-	-moz-border-radius-topright:9px;
-	border-top-right-radius:9px;
-	-webkit-border-bottom-right-radius:9px;
-	-moz-border-radius-bottomright:9px;
-	border-bottom-right-radius:9px;
-	-webkit-border-bottom-left-radius:9px;
-	-moz-border-radius-bottomleft:9px;
-    border-bottom-left-radius:9px;
-	border: 1px dashed #cccccc;
-  font-family: 'Avenir Light'; 
-
-}
-
-
-.test {
-
-    -webkit-border-top-left-radius:9px;
-	-moz-border-radius-topleft:9px;
-	border-top-left-radius:9px;
-	-webkit-border-top-right-radius:9px;
-	-moz-border-radius-topright:9px;
-	border-top-right-radius:9px;
-	-webkit-border-bottom-right-radius:9px;
-	-moz-border-radius-bottomright:9px;
-	border-bottom-right-radius:9px;
-	-webkit-border-bottom-left-radius:9px;
-	-moz-border-radius-bottomleft:9px;
-    border-bottom-left-radius:9px;
-    text-align: center;
-	background-color:#ededed;
-	border: 1px solid #dcdcdc;
-	display: -webkit-box;
-	color: black;
-	height:24px;
-	line-height:24px;
-    width:100px;
-  font-family: 'Avenir Light'; 
-    text-decoration: none;
-
-}
-
-.test:hover {
-	background-color:#dfdfdf;
-}
-.test:active {
-	position:relative;
-    top:0.5px;
-    background-color:#f0fdff;
-
-}
 
 .checkboxone {
     width: 40px;
@@ -928,6 +879,10 @@ audio {
 	margin: 0 auto
 }
 
+
+/*  FOR THE FOOTER  */
+/* =======================*/
+/* =======================*/
 footer {
   height: 150px;
   background-color: black;
@@ -958,4 +913,16 @@ footer {
   margin: 0px;
   padding: 0px;
   font-family: "Avenir Light";
+}
+/* =======================*/
+
+
+
+/*  FOR THE DOWNLOAD SECTION  */
+/* =======================*/
+.downloadSong {
+  height: 200px;
+  width: 100px;
+  margin: 20px;
+  display: inline-block;
 }

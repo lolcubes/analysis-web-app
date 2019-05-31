@@ -98,7 +98,7 @@
                 $enpOutput = $conversionsDir . "/song.enp";
                 $gmnOutput = $conversionsDir . "/song.gmn";
                 $meiOutput = $conversionsDir . "/song.mei";
-                $museOutput = $conversionsDir . "/song.muse";
+                $museOutput = $conversionsDir . "/song.md2";
                 $xmlOutput = $conversionsDir . "/song.xml";
 
                 $prolloutput = "$filedirectory" . "/image-assets/proll.ppm";

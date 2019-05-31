@@ -31,9 +31,7 @@
         </style>
     
     </head>
-    <body>
-
-        <div id="navbarr">
+    <div id="navbarr">
             <ul id=navbar>
             <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
 
@@ -73,6 +71,9 @@
         </form>
         <br>
         
+    <body>
+
+
     
         
         <script>
@@ -302,16 +303,18 @@
                             echo "
                             <div class='analysis-container_" . $filename . " hidden visuallyhidden' id=" . $analysisname . "_" . $filename . " style=\" width: 100%; transition: all .4s ease;\">
                                 <div class=testoto style='width:26%; display: inline-block;margin-right:10%;vertical-align:middle;'>
-                                    <div class=analysis-content style='font-family:Avenir Light;width:100%;max-height:150px;overflow:auto;display:block; '>
+                                    <div class=analysis-content>
+                                    <div class=chart-container style='font-family:Avenir Light;width:100%;max-height:150px;overflow:auto;display:block;margin-bottom:20px; '>
                                             " . $keySigsList
                                             . "
                                     </div>
 
-                                    <div class=analysis-content style='width:100%;overflow:auto;display:block;height:40px'>
+                                    <div class=chart-container style='width:100%;overflow:auto;display:block;height:40px'>
                                         " . $linecount . " Key Signature" . $sOpt . "
                                     </div>
-
                                 </div>
+
+                            </div>
 
 
                                 <div class=analysis-content style='width:53%'>
