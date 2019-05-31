@@ -922,7 +922,38 @@ footer {
 /* =======================*/
 .downloadSong {
   height: 200px;
-  width: 100px;
+  width: 170px;
   margin: 20px;
   display: inline-block;
+  box-shadow: 2px 2px 8px rgba(0,0,0,.3);
+  border-radius: 2px;
+
+}
+
+.downloadHeader {
+  width: 55px;
+  height: 25px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,.4);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+
+/*  FOR THE SMALL SECTIONS  */
+/* =======================*/
+.third {
+  border-radius: 4px;
+  width: 28%;
+  background-color: white;
+  box-shadow: 1px 2px 17px rgba(0,0,0,.2);
+  height: 400px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1%;
+  transition: .16s
+
+}
+.third:hover {
+  box-shadow: 1px 2px 24px rgba(0,0,0,.24);
+  transition: .16s
 }

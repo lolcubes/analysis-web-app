@@ -55,10 +55,12 @@
   box-shadow: 1px 4px 19px  rgb(0, 0, 0, .9);
   background-color: var(--main-panel-color);
   position: relative;
+  transition: .2s;
   /* background-image: linear-gradient(var(--main-panel-color),var(--panel-color-hover)); */
   z-index: 1;
 }
 .analysis-panel:hover {
+  transition: .2s;
   background-color: var(--panel-color-hover);
 }
 /* 
@@ -228,6 +230,7 @@ body {
 }
 
 .chart-container:hover {
+  background-color: rgba(60, 167, 255, 0.151);
   box-shadow: 1px 4px 15px  rgba(0, 0, 0, .6);
   transition: .2s;
 }
@@ -257,22 +260,6 @@ body {
   width: 0;
 }
 
-#clock {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: medium;
-  background-color: var(--main-panel-color);
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 1px 4px 12px  rgba(0, 0, 0, .4);
-  font-size: 30px;
-  font-stretch: expanded;
-  font-variant-caps: small-caps;
-  margin-top: 20px;
-  padding: 20px;
-  transition: .3s;
-  height: 100%;
-}
-
 #clock:hover {
   background-color: var(--panel-color-hover);
   box-shadow: 1px 4px 16px  rgba(0, 0, 0, .5);
@@ -280,23 +267,24 @@ body {
 }
 
 #downloadSection{
+  padding: 15px;
+  background-color: rgba(60, 167, 255, 0.2);
   width: 40%;
-  border-radius: 15px;
+  border-radius: 5px;
+  box-shadow: 1px 4px 13px  rgba(0, 0, 0, .5);
+  transition: .2s;
+  vertical-align: middle;
   margin: 2%;
   height: 300px;
   display: inline-block;
-  padding: 5px;
   transition: .2s;
-  
-  background-color: rgba(0,0,0,0);
   overflow: auto;
-  box-shadow: 1px 4px 22px  rgba(0, 0, 0, 0.671);
 }
 
 #downloadSection:hover {
+  background-color: rgba(60, 167, 255, 0.151);
+  box-shadow: 1px 4px 15px  rgba(0, 0, 0, .6);
   transition: .2s;
-  background-color: rgba(0, 0, 0, 0.055);
-  box-shadow: 1px 4px 30px  rgba(0, 0, 0, .5);
 }
 
 .darkform {

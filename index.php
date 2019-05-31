@@ -222,13 +222,14 @@ function addDownloadSection(){
     var arrayparsed = JSON.parse(array);
     var dirs = arrayparsed.relativedirs;
     var names = arrayparsed.names;
+    var icons = arrayparsed.fileicon;
 
     for (i=0; i<names.length; i++){ 
         var name = names[i];
         var dir = dirs[i];
-        console.log(name);
-        console.log(dir);
-        $("#downloadSection").append('<div class=downloadSong></div>')
+        var icon = icons[i];
+
+        $("#downloadSection").append('<div class=downloadSong><img src=' + icon + ' height=70px><br style="line-height:7px"><span>' + name + '</span><br><br><div class=downloadHeader><span>XML</span></div><a href=' + dir + '/data-conversions/song.xml download ><img style="display: inline-block; vertical-align:middle;cursor: pointer" src="image-assets/download-black.png" width=25px height=25px></a></div>')
     }
 }
 

@@ -1503,7 +1503,7 @@
                                     chart" . $filename . ".render();
                                 </script>
 
-                                    <div id=clock>" . $timePath ."</div>
+                                    <div class=chart-container style='width:initial;height:35px;font-size:28px;margin-top:20px;'>" . $timePath ."</div>
                                     <br>
 
 
@@ -1590,10 +1590,11 @@
                     $datazipdir = $value . "/data/data.zip";
                     echo "
                     <div id=downloadSection>
-                        <p class=panelheader style='width:80%;margin:0 auto;'> " . $completeFileName . "</p>";
+                        <p class=panelheader style='width:80%;margin:0 auto;'> " . $completeFileName . "</p>
+                        <div style='display:block'>";
 
                     echo "
-                        <button class=darkform style='width:120px;cursor:auto;'>
+                        <button id=shelf-item style='font-size:15px;font-family:'Avenir Light';width:120px;cursor:auto;'>
                             All Assets
                         </button>
 
@@ -1601,10 +1602,11 @@
                             <img style='display: inline-block; vertical-align:middle' src='image-assets/download.png' width=25px height=25px onmouseover=\"this.src='image-assets/download-black.png';\" onmouseout=\"this.src='image-assets/download.png';\">
                         </a>";
 
-                    echo "<br>";
+                    echo "</div>";
 
                     echo "
-                        <button class=darkform style='width:120px;cursor:auto;'>
+                    <div style='display:block'>
+                        <button id=shelf-item style='font-size:15px;font-family:'Avenir Light';width:120px;cursor:auto;'>
                             Data
                         </button>
 
@@ -1612,6 +1614,7 @@
                             <img style='display: inline-block; vertical-align:middle' src='image-assets/download.png' width=25px height=25px onmouseover=\"this.src='image-assets/download-black.png';\" onmouseout=\"this.src='image-assets/download.png';\">
                         </a>";
                     echo "
+                    </div>
                     </div>";
                 }
 
