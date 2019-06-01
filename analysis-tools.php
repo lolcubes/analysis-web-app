@@ -16,6 +16,7 @@
     </head>
 
     <body id=home>
+    <div id=fullpagecontent>
             <div id="navbarr" >
                 <ul id=navbar>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
@@ -420,7 +421,7 @@ function addDownloadSection(){
                             <div class="modal-header">
                                 <br>
                                 <span class="close">&times;</span>
-                                <h1>Play Songs & Musical Notation</h1>
+                                <h1 style='margin-bottom:20px;'>Play Songs & Musical Notation</h1>
                             <div name="audioplayer" id="audioplayer">
                                 <p>Play chosen songs:</p>
 
@@ -431,7 +432,7 @@ function addDownloadSection(){
                                         <div id="svg-button">
                                             <button style='display:none' id=saveSvgButton class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
                                         </div>
-                                        <p id=notationInstruction>To view musical notation, play a song on left</p>
+                                        <p style='line-height:7px' id=notationInstruction>To view musical notation, play a song on left</p>
                                         <script type="text/x-humdrum" id="song_svg"></script>
                                     </div>
                             </div>
@@ -636,9 +637,6 @@ function changeDetailsMessage(){
 
             <br>
             <br>
-
-            <hr>
-
             <h2 id="data-heading">Select Analysis Types:</h2>
 
             <br>
@@ -741,7 +739,53 @@ function changeDetailsMessage(){
         //      return 'Your changes will not be saved! Continue?';
         // });
     </script>
-    
+
+
+    </div>
+
+    <footer>
+        
+        <br>
+        <div id=footerLogo>
+            <img src="image-assets/footerbanner.png" height=40px></img>
+        </div>
+        <hr>
+        <br>
+        <div id=footerContent>
+            <div class=half>
+                <div id=footermenu>
+                    <p class=footerMenuItem>Home
+                    <p class=footerMenuSeparater>|
+                    <p href=about.html#contact class=footerMenuItem><a class="hoverme" href=about.html#contact>Analysis Tools</a></p>
+                    <p class=footerMenuSeparater>|</p>
+                    <p class=footerMenuItem><a class="hoverme" href=about.html>About</a></p>
+                    <p class=footerMenuSeparater>|
+                    <p class=footerMenuItem><a class="hoverme" href=code.html>Code</a></p>
+                    <p class=footerMenuSeparater>|
+                    <p class=footerMenuItem><a class="hoverme" href=research.html>Research</a></p>
+                    <p class=footerMenuSeparater>|
+                    <p class=footerMenuItem><a class="hoverme" href=library.html>Database</a></p>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class=half id=contactInfo>
+                <span>For questions and comments, contact: <a style='color: #54b4ff' href="mailto:beatsinbytesofficial@gmail.com?subject=">beatsinbytesofficial@gmail.com</a></span>
+            </div>
+            <br>
+            
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div id=footerUpdated style='text-align:left; margin-left: 12%;'> 
+            <span >Beats in Bytes - Updated June 1st, 2019</span>
+        </div>
+        <br>
+
+    </footer>
+        </div>
 </body>
+
 
 </html>

@@ -38,12 +38,12 @@
                 <a href="index.php"><img id="headerbanner" src="image-assets/headerbanner.png" alt="Header logo" height="50px" width="260" align="middle"></a>
                 <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
                 <!-- <li id="Menu" class="logoimage"><img src="headerbanner.png" alt="Header logo" height="60px" width="313px"></img></li> -->
-                <li id="Menu" class="home"><a href="index.php">Home</a></li>
+                <li id="Menu" ><a href="index.php">Home</a></li>
+                <li id="Menu" class="home"><a href="analysis-tools.php">Analysis Tools</a></li>
                 <li id="Menu"><a href="pages/about.html">About</a></li>
                 <li id="Menu"><a href="pages/code.html">Code</a></li>
                 <li id="Menu"><a href="pages/research.html">Our Research</a></li>
                 <li id="Menu"><a href="pages/library.html">Database</a></li>
-                <li id="Menu"><a href="pages/analysis-tools.html">Analysis Tools</a></li>
             </ul>
         </div>
         <div id="bumper">
@@ -1594,7 +1594,8 @@
                         <div style='display:block'>";
 
                     echo "
-                        <button id=shelf-item style=\"font-size:15px;font-family:'Avenir Light';width:120px;cursor:auto;\">
+                    <br>
+                        <button id=shelf-item style=\"font-size:15px;font-family:'Avenir Light';width:55%;margin-right:5%;border-radius:5px;margin-bottom:1%;cursor:auto;\">
                             All Assets
                         </button>
 
@@ -1605,8 +1606,9 @@
                     echo "</div>";
 
                     echo "
+                    <br>
                     <div style='display:block'>
-                        <button id=shelf-item style=\"font-size:15px;font-family:'Avenir Light';width:120px;cursor:auto;\">
+                        <button id=shelf-item style=\"font-size:15px;font-family:'Avenir Light';width:55%;margin-right:5%;border-radius:5px;margin-bottom:1%;cursor:auto;\">
                             Data
                         </button>
 

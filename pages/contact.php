@@ -7,5 +7,5 @@
     $subjectLine = "BiB | " . $subject;
     $from = "From: " . $email;
 
-    echo 'mail("kaivernooy@gmail.com", "' . "$subjectLine, $message, $from" . ")";
+    mail("kaivernooy@gmail.com", "$subjectLine", $message, $from);
 ?>
