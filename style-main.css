@@ -731,7 +731,7 @@ span.button {
 }
 
 #audioplayer {
-  
+  vertical-align: top;
   width: 32%;
   max-height: 400px;
   border-radius: 20px;
@@ -754,10 +754,10 @@ span.button {
 #audioelement {
   line-height: 10px;
   width: 90%;
-  border-radius: 20px;
-  background-color: rgb(73, 73, 73);
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
   color: white;
-  box-shadow: 3px 3px 8px rgb(143, 143, 143);
+  box-shadow: 1px 3px 10px rgb(0, 0, 0, .4);
   padding: 5px;
   box-align: center;
   margin: 0 auto;

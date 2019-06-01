@@ -1,22 +1,11 @@
 <?php 
     $name = $_POST['name'];
-    echo "Name: $name";
-    echo "<br>";
-
     $email = $_POST['email'];
-    echo "Email: $email";
-    echo "<br>";
-
     $subject = $_POST['subject'];
-    echo "Subject: $subject";
-    echo "<br>";
-
     $message = $_POST['message'];
-    echo "Message:" . nl2br($message);
-    if (PHP_OS == "Darwin") {
-        echo "Mac :(";
-    }
-    else {
-        echo "Linux :)";
-    }
+
+    $subjectLine = "BiB | " . $subject;
+    $from = "From: " . $email;
+
+    echo 'mail("kaivernooy@gmail.com", "' . "$subjectLine, $message, $from" . ")";
 ?>

@@ -1594,7 +1594,7 @@
                         <div style='display:block'>";
 
                     echo "
-                        <button id=shelf-item style='font-size:15px;font-family:'Avenir Light';width:120px;cursor:auto;'>
+                        <button id=shelf-item style=\"font-size:15px;font-family:'Avenir Light';width:120px;cursor:auto;\">
                             All Assets
                         </button>
 
@@ -1606,7 +1606,7 @@
 
                     echo "
                     <div style='display:block'>
-                        <button id=shelf-item style='font-size:15px;font-family:'Avenir Light';width:120px;cursor:auto;'>
+                        <button id=shelf-item style=\"font-size:15px;font-family:'Avenir Light';width:120px;cursor:auto;\">
                             Data
                         </button>
 
