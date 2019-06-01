@@ -199,20 +199,29 @@ $( "#filechooserform" ).on("change", function() {
 
 
 <script>
+function showHidePlayContent() {
+    var text = document.getElementById("notationInstruction");
+    text.style.display = "none";
+
+    var button = document.getElementById("saveSvgButton");
+    button.style.display = "";
+}
 function addAudioPlayers(){
 
     var array = document.getElementById("demo").innerHTML;
     var arrayparsed = JSON.parse(array);
     var dirs = arrayparsed.relativedirs;
     var names = arrayparsed.names;
-    document.getElementById("audioplayer").innerHTML = "";
+    // document.getElementById("audioplayer").innerHTML = "";
 
 
     for (i=0; i<names.length; i++){ 
         var name = names[i];
         var dir = dirs[i];
 
-        var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ')" controls="controls" src="' + dir + '/song.wav" type="audio/wav">'
+
+
+        var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ');showHidePlayContent();" controls="controls" src="' + dir + '/song.wav" type="audio/wav">'
         $("#audioplayer").append('<div id="audioelement"><br><span id="audiotext">' + name + ':</span><br><br>' + appendtext + '</div><br>');
     }               
 
@@ -401,23 +410,35 @@ function addDownloadSection(){
 
                     </script>
 
+                    <div class=third>
+                        <h3>Play Songs</h3>
+                        <button id="myBtn" class='openBtn buttonform'>Open</button>
+                    </div>
 
-
-                <div class="panels">
-                            <p>Play chosen songs:</p>
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <br>
+                                <span class="close">&times;</span>
+                                <h1>Play Songs & Musical Notation</h1>
                             <div name="audioplayer" id="audioplayer">
+                                <p>Play chosen songs:</p>
 
                             </div>
                             <div id="musicalnotation">
-                                <p>View musical notation:</p>
+                                <h3>View musical notation:</h3>
                                 <div id="notation-content">
                                         <div id="svg-button">
-                                            <button class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
+                                            <button style='display:none' id=saveSvgButton class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
                                         </div>
+                                        <p id=notationInstruction>To view musical notation, play a song on left</p>
                                         <script type="text/x-humdrum" id="song_svg"></script>
                                     </div>
                             </div>
-                </div>
+                            </div>
+                        </div>
+                    </div>
+
 <script>
 
 function addMusicalNotation( directory, name ) {
@@ -456,11 +477,19 @@ function changeDetailsMessage(){
 }
 </script>
 
-<!-- ADD THE addHiddenValue() function on ajax load? -->
-                    <div class="panels">
 
-                        <p id="infoexplain">In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
-                            <form onsubmit="successDetailsMessage();addHiddenValue()" method="post" action="details-upload.php" name="infoform" id="infoform" target="votar" onchange="changeDetailsMessage()">
+
+                    <div class=third>
+                        <h3>Play Songs</h3>
+                        <button id="myBtn" class='openBtn buttonform'>Open</button>
+                    </div>
+
+                    <div id="myModal" class="modal ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span class="close">&times;</span>
+                                <p id="infoexplain">In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
+                                <form onsubmit="successDetailsMessage();addHiddenValue()" method="post" action="details-upload.php" name="infoform" id="infoform" target="votar" onchange="changeDetailsMessage()">
                                 <div id="boi">Composer Name:&nbsp;&nbsp;
                                 <input id="composer_input" name="composer_input" type="text"/>
                                 </div>
@@ -486,6 +515,8 @@ function changeDetailsMessage(){
                                 <br>
 
                             </form>
+                            </div>
+                        </div>
                     </div>
 
                 <script>
@@ -504,16 +535,71 @@ function changeDetailsMessage(){
 
                     <a id="midianchor"></a>
 
+                    <div class=third>
+                        <h3>Download Conversions</h3>
+                        <button id="myBtn" class='openBtn buttonform'>Open</button>
+                    </div>
 
-                    <div class="panels">
-                    <h1>Download Files</h1>
-                        <br>
-                        <iframe name="votar" style="display:none;"></iframe>
-
-                        <div id=downloadSection>
+                    <div id="myModal" class="modal ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span class="close">&times;</span>
+                                <h1>Download Files</h1>
+                                <br>
+                                <iframe name="votar" style="display:none;"></iframe>
+                                <div id=downloadSection>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+
+                    
+                    <script>
+                        var modal = document.getElementsByClassName("modal")[0];
+                        var btn = document.getElementsByClassName("openBtn")[0];
+                        var span = document.getElementsByClassName("close")[0];
+                        btn.onclick = function() {
+                            modal.style.display = "block";
+                            
+                        }
+                        span.onclick = function() {
+                            modal.style.display = "none";
+                        }
+
+                        var modal2 = document.getElementsByClassName("modal")[1];
+                        var btn2 = document.getElementsByClassName("openBtn")[1];
+                        var span2 = document.getElementsByClassName("close")[1];
+
+                        btn2.onclick = function() {
+                            modal2.style.display = "block";
+                        }
+                        span2.onclick = function() {
+                            modal2.style.display = "none";
+                        }
+
+                        var modal3 = document.getElementsByClassName("modal")[2];
+                        var btn3 = document.getElementsByClassName("openBtn")[2];
+                        var span3 = document.getElementsByClassName("close")[2];
+
+                        btn3.onclick = function() {
+                            modal3.style.display = "block";
+                        }
+                        span3.onclick = function() {
+                            modal3.style.display = "none";
+                        }
+                        window.onclick = function(event) {
+                            if (event.target == modal2) {
+                                modal2.style.display = "none";
+                            }
+                            if (event.target == modal3) {
+                                modal3.style.display = "none";
+                            }
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                    </script>
 
                     <script >
                             function unCheckAll(formname) {
@@ -526,7 +612,7 @@ function changeDetailsMessage(){
                                 }
                             }
 
-                            document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input type=checkbox class="buttonform" onclick="checkAll(\'analysis-form\')"  /><span class="checkmark"></span>';
+                            document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input type=checkbox style="display:none" class="buttonform" onclick="checkAll(\'analysis-form\')"  /><span class="checkmark"></span>';
                             }
 
 
@@ -540,7 +626,7 @@ function changeDetailsMessage(){
                             }
                         }
 
-                        document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input checked=checked type=checkbox class="buttonform" onclick="unCheckAll(\'analysis-form\')"  /><span class="checkmark"></span>';
+                        document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input checked=checked type=checkbox class="buttonform" style="display:none" onclick="unCheckAll(\'analysis-form\')"  /><span class="checkmark"></span>';
                         }
 
                     </script>
@@ -558,7 +644,7 @@ function changeDetailsMessage(){
             <br>
             <div id="check-all">
                 <label class="container">Check All&nbsp;&nbsp;
-                    <input type=checkbox class="buttonform" onclick="checkAll('analysis-form')"  />
+                    <input style="display:none" type=checkbox class="buttonform" onclick="checkAll('analysis-form')"  />
                     <span class="checkmark"></span>
                 </label>
             </div>
