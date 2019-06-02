@@ -567,9 +567,21 @@ function changeDetailsMessage(){
                                 <h1>Download Files</h1>
                                 <br>
                                 <div id=downloadContent>
-                                <div id=selectAllDownloadIcon class="filetypeDownload unselected" onclick="selectAllFileTypes(this.id)" style='vertical-align:middle'>
-                                    <span style='position:relative;top:43%;'> Select All </span>
-                                </div>
+
+
+
+                                    <div id=selectAllDownloadFiles class="filetypeDownload unselected" onclick="selectAllFiles(this.id)" style='vertical-align:middle'>
+                                        <span style='position:relative;top:43%;'> Select All </span>
+                                    </div>
+
+                                    <div class=selectionSection id=downloadfilesselectionsection>
+                                    </div>
+
+                                    <br>
+                                    <br>
+                                    <div id=selectAllDownloadIcon class="filetypeDownload unselected" onclick="selectAllFileTypes(this.id)" style='vertical-align:middle'>
+                                        <span style='position:relative;top:43%;'> Select All </span>
+                                    </div>
                                     <div class=selectionSection>
 
                                         <div id=abcDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
@@ -609,14 +621,7 @@ function changeDetailsMessage(){
                                         </div>
 
                                     </div>
-                                    <br>
-                                    <br>
-                                    <div id=selectAllDownloadFiles class="filetypeDownload unselected" onclick="selectAllFiles(this.id)" style='vertical-align:middle'>
-                                        <span style='position:relative;top:43%;'> Select All </span>
-                                    </div>
-
-                                    <div class=selectionSection id=downloadfilesselectionsection>
-                                    </div>
+                                    
                                 </div>
                                 <div id=downloadSection>
                                 </div>
