@@ -118,8 +118,8 @@
                 shell_exec( "analysis-scripts/humdrum/deg/degrunner.sh $fileconvert $degoutput");
                 shell_exec( "analysis-scripts/humdrum/proll $fileconvert > $prolloutput");
                 shell_exec( "analysis-scripts/humdrum/mkeyscape $target > $keyscapeoutput");
-                shell_exec( "/usr/local/bin/convert $keyscapeoutput -transparent white $keyscapeoutputpng");
-                shell_exec( "/usr/local/bin/convert $prolloutput -transparent black $prolloutputpng");
+                shell_exec( "/usr/bin/convert $keyscapeoutput -transparent white $keyscapeoutputpng");
+                shell_exec( "/usr/bin/convert $prolloutput -transparent black $prolloutputpng");
             }       
 
 ?>
