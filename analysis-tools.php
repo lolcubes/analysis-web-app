@@ -655,15 +655,13 @@ function changeDetailsMessage(){
                             var classname = document.getElementById(id).className
                             if (classname == 'filetypeDownload unselected') {
                                 var els = document.getElementsByClassName('filetypeDownload');
-                                var num = els.length - 1
-                                for (var i=0; i<num; i++)  {
+                                for (var i=1; i<els.length; i++)  {
                                     document.getElementsByClassName('filetypeDownload')[i].className = 'filetypeDownload selected'
                                 }
                             }
                             if (classname == 'filetypeDownload selected') {
                                 var els = document.getElementsByClassName('filetypeDownload');
-                                var num = els.length - 1
-                                for (var i=0; i<num; i++)  {
+                                for (var i=1; i<els.length; i++)  {
                                     document.getElementsByClassName('filetypeDownload')[i].className = 'filetypeDownload unselected'
                                 }
                             }
