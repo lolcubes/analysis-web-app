@@ -1458,7 +1458,7 @@
 
 
 
-                            // 
+                            // PITCH MOVING AVERAGE
                             $movingAverage = $value . "/data/average-pitch/pitch-moving-average.txt";
                             $averagePitch = $value . "/data/average-pitch/pitch.txt";
 
@@ -1468,12 +1468,28 @@
                             $movingAverage = explode(',', $movingAverage);
                             $movingAverageEncoded = json_encode($movingAverage);
 
+
+
+
+                            //KEY SIGNATURE
+
+                                $repeatedPitchesDir = $value . "/data/repeated-pitches/";
+                                $repeatedPitches = array();
+                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "2.txt");
+                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "3.txt");
+                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "4.txt");
+                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "5.txt");
+                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "6.txt");
+
+                                $repeatedPitches = json_encode($repeatedPitches);
+                                
                             echo "
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                             <div class=analysis-content>
 
-                                <div id=pitchChart" . $filename . " class=chart-container style='width:55%;padding:10px'></div>
-        
+                                <div id=pitchChart" . $filename . " class=chart-container style='display:inline-block;width:45%;padding:10px;height:30%'></div>
+                                <div id=pieChart" . $filename . " class=chart-container style='display:inline-block;width:35%;padding:10px;height:30%'></div>
+
                                 <script>
                                     var options = {
                                     chart: {
@@ -1501,9 +1517,39 @@
                                     var chart" . $filename . " = new ApexCharts(document.querySelector(\"#pitchChart" . $filename . "\"), options);
                         
                                     chart" . $filename . ".render();
+
+
+
+                                    
+
+                                    var pieOptions = {
+                                        chart: {
+                                            type: 'line',
+                                            sparkline: {
+                                                enabled: true
+                                            }
+                                        },
+                                        stroke: {
+                                            curve: 'smooth',
+                                            width: 3,
+                                        },
+                                        tooltip: {
+                                            enabled: false,
+                                        },
+
+                                        series: [{
+                                            name: 'sales',
+                                            data: $repeatedPitches,
+                                        }],
+                                        
+                                    }
+
+                                    var pieChart" . $filename . " = new ApexCharts(document.querySelector(\"#pieChart" . $filename . "\"), pieOptions);
+                                    pieChart" . $filename . ".render();
+
                                 </script>
 
-                                    <div class=chart-container style='width:initial;height:35px;font-size:28px;margin-top:20px;'>" . $timePath ."</div>
+                                    <div class=chart-container style='width:auto;height:35px;font-size:28px;margin-top:20px;'>" . $timePath ."</div>
                                     <br>
 
 

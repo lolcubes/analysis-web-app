@@ -421,22 +421,22 @@ function addDownloadSection(){
                             <div class="modal-header">
                                 <br>
                                 <span class="close">&times;</span>
-                                <h1 style='margin-bottom:20px;'>Play Songs & Musical Notation</h1>
+                                <h1 style='margin-bottom:40px'>Play Songs & Musical Notation</h1>
                             <div name="audioplayer" id="audioplayer">
-                                <p>Play chosen songs:</p>
-
                             </div>
                             <div id="musicalnotation">
-                                <h3>View musical notation:</h3>
                                 <div id="notation-content">
+                                        <p id=notationInstruction>To view musical notation, play a song on left</p>
                                         <div id="svg-button">
                                             <button style='display:none' id=saveSvgButton class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
                                         </div>
-                                        <p style='line-height:7px' id=notationInstruction>To view musical notation, play a song on left</p>
                                         <script type="text/x-humdrum" id="song_svg"></script>
                                     </div>
                             </div>
                             </div>
+                            <br>
+                            <br>
+                            <br>
                         </div>
                     </div>
 
@@ -481,7 +481,7 @@ function changeDetailsMessage(){
 
 
                     <div class=third>
-                        <h3>Play Songs</h3>
+                        <h3>Add to BiB Database</h3>
                         <button id="myBtn" class='openBtn buttonform'>Open</button>
                     </div>
 
@@ -547,13 +547,91 @@ function changeDetailsMessage(){
                                 <span class="close">&times;</span>
                                 <h1>Download Files</h1>
                                 <br>
-                                <iframe name="votar" style="display:none;"></iframe>
+                                <div id=downloadContent>
+                                <div id=selectAllDownloadIcon class="filetypeDownload unselected" onclick="selectAllFileTypes(this.id)" style='vertical-align:middle'>
+                                    <span style='position:relative;top:43%;'> Select All </span>
+                                </div>
+                                    <div class=selectionSection>
+
+                                        <div id=abcDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/abc.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                        <div id=enpDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/enp.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                        <div id=gmnDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/gmn.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                        <div id=kernDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/kern.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                        <div id=meiDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/mei.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                        <div id=midiDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/midi.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                        <div id=mp3DownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/mp3.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                        <div id=museDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/muse.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                        <div id=xmlDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <img src='icons-misc/conversions/xml.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        </div>
+
+                                    </div>
+                                </div>
                                 <div id=downloadSection>
                                 </div>
+                                <br><br>
+
                             </div>
                         </div>
                     </div>
+                    <script>
+                        function selectAllFileTypes(id) {
+                            var classname = document.getElementById(id).className
+                            if (classname == 'filetypeDownload unselected') {
+                                var els = document.getElementsByClassName('filetypeDownload');
+                                for (var i=0; i<els.length; i++)  {
+                                    document.getElementsByClassName('filetypeDownload')[i].className = 'filetypeDownload selected'
+                                }
+                            }
+                            if (classname == 'filetypeDownload selected') {
+                                var els = document.getElementsByClassName('filetypeDownload');
+                                for (var i=0; i<els.length; i++)  {
+                                    document.getElementsByClassName('filetypeDownload')[i].className = 'filetypeDownload unselected'
+                                }
+                            }
+                        }
 
+                        function addSelectedClass(id) {
+                            var el = document.getElementById(id);
+                            var classo = el.className
+
+                            if (classo == 'filetypeDownload unselected'){
+                                el.className = '';
+                                el.className = 'filetypeDownload selected'
+                            }; 
+                            if (classo == 'filetypeDownload selected') {
+                                el.className = '';
+                                el.className = 'filetypeDownload unselected';
+                            }
+                            
+                        }
+                    </script>
+
+                    <iframe name="votar" style="display:none;"></iframe>
 
                     
                     <script>
