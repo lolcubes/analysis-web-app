@@ -641,7 +641,7 @@ span.button {
 }
 
 
-#dropzonefileicons {
+.dropzonefileicons {
   display: inline-block;
   padding-top: 14px;
   font-size: 8px;
@@ -656,7 +656,7 @@ span.button {
   border: 2px solid rgba(255, 255, 255, 1)
 }
 
-#dropzonefileicons:hover {
+.dropzonefileicons:hover {
   background-color: rgba(255, 255, 255, 0.644);
   transition: .25s;
   color: black;
@@ -985,7 +985,12 @@ a.hoverme {
 }
 
 .filetypeDownload.selected {
-  background-color: rgb(17, 116, 17);
+  background-color: rgb(27, 221, 120);
+  color:white;
+}
+
+.dropzonefileicons.selected {
+  background-color: rgb(27, 221, 120);
   color:white;
 }
 

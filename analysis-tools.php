@@ -127,11 +127,26 @@ $( document ).ajaxComplete(function() {
                 var icon = icons[i];
                 var name = names[i];
                 var thissize = size[i];
-                $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<p>' + name + '</p>' + '<p>' + thissize + ' kb' + '</p>' + '</div>');
+                $("#dropzone").append( '<div class="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<p>' + name + '</p>' + '<p>' + thissize + ' kb' + '</p>' + '</div>');
             }
             
         }
+    function populateDownloadSectionFiles(){
+        var array = document.getElementById("demo").innerHTML;
+            var arrayparsed = JSON.parse(array);
+            var names = arrayparsed.names;
+            var icons = arrayparsed.fileicon;
+            var size = arrayparsed.filesize
 
+            $("#downloadfilesselectionsection").append("<br>");
+
+            for (var i = 0; i < icons.length; i += 1) {
+                var icon = icons[i];
+                var name = names[i];
+                var thissize = size[i];
+                $("#downloadfilesselectionsection").append( '<div class="dropzonefileicons unselected"  style="cursor:pointer;" id="dropzonefileicons' + name + '" onclick="addSelectedClassFiles(this.id)">' + '<img src=' + icon + " height=90px;" + '>' + '<p>' + name + '</p>' + '</div>');
+            }
+    }
 </script>
 
 <script>
@@ -139,6 +154,7 @@ $("body").on('DOMSubtreeModified', "#demo", function() {
     $('#dropzone').empty();
 
     populateDropzone();
+    populateDownloadSectionFiles()
     addAudioPlayers();
 });
 </script>
@@ -176,6 +192,7 @@ $( "#dropzone" ).on("drop", function() {
             }
             else {
                 populateDropzone();
+                populateDownloadSectionFiles()
 
             }
    });
@@ -190,7 +207,8 @@ $( "#filechooserform" ).on("change", function() {
         if ( $('#demo').html().length == 0 ) {
         }
         else {
-            populateDropzone();
+            populateDropzone()
+            populateDownloadSectionFiles();
         }
     });
 });
@@ -282,7 +300,7 @@ function addDownloadSection(){
             for (var i = 0; i < icons.length; i += 1) {
                 var icon = icons[i];
                 var name = names[i];
-                $("#dropzone").append( '<div id="dropzonefileicons">' + '<img src=' + icon + " height=70px;" + '>' + '<p>' + name + '</p>' + '</div>');
+                $("#dropzone").append( '<div class="dropzonefileicons">' + '<img src=' + icon + " height=70px;" + '>' + '<p>' + name + '</p>' + '</div>');
             }
 
         }
@@ -317,6 +335,7 @@ function addDownloadSection(){
 
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
+                            populateDownloadSectionFiles()
                         }
 
 
@@ -530,7 +549,7 @@ function changeDetailsMessage(){
                 <script>
                     $('#dropzone').on("drop", function() {
                         populateDropzone();
-
+                        populateDownloadSectionFiles()
                     });
                 </script>
 
@@ -590,6 +609,14 @@ function changeDetailsMessage(){
                                         </div>
 
                                     </div>
+                                    <br>
+                                    <br>
+                                    <div id=selectAllDownloadFiles class="filetypeDownload unselected" onclick="selectAllFiles(this.id)" style='vertical-align:middle'>
+                                        <span style='position:relative;top:43%;'> Select All </span>
+                                    </div>
+
+                                    <div class=selectionSection id=downloadfilesselectionsection>
+                                    </div>
                                 </div>
                                 <div id=downloadSection>
                                 </div>
@@ -599,17 +626,39 @@ function changeDetailsMessage(){
                         </div>
                     </div>
                     <script>
+
+
+                        function selectAllFiles(id) {
+                            var classname = document.getElementById(id).className
+                            if (classname == 'filetypeDownload unselected') {
+                                var els = document.getElementsByClassName('dropzonefileicons');
+                                for (var i=0; i<els.length; i++)  {
+                                    document.getElementsByClassName('dropzonefileicons')[i].className = 'dropzonefileicons selected'
+                                }
+                                document.getElementById(id).className = 'filetypeDownload selected'
+                            }
+                            if (classname == 'filetypeDownload selected') {
+                                var els = document.getElementsByClassName('dropzonefileicons');
+                                for (var i=0; i<els.length; i++)  {
+                                    document.getElementsByClassName('dropzonefileicons')[i].className = 'dropzonefileicons unselected'
+                                }
+                                document.getElementById(id).className = 'filetypeDownload unselected'
+                            }
+                        }
+
                         function selectAllFileTypes(id) {
                             var classname = document.getElementById(id).className
                             if (classname == 'filetypeDownload unselected') {
                                 var els = document.getElementsByClassName('filetypeDownload');
-                                for (var i=0; i<els.length; i++)  {
+                                var num = els.length - 1
+                                for (var i=0; i<num; i++)  {
                                     document.getElementsByClassName('filetypeDownload')[i].className = 'filetypeDownload selected'
                                 }
                             }
                             if (classname == 'filetypeDownload selected') {
                                 var els = document.getElementsByClassName('filetypeDownload');
-                                for (var i=0; i<els.length; i++)  {
+                                var num = els.length - 1
+                                for (var i=0; i<num; i++)  {
                                     document.getElementsByClassName('filetypeDownload')[i].className = 'filetypeDownload unselected'
                                 }
                             }
@@ -626,6 +675,21 @@ function changeDetailsMessage(){
                             if (classo == 'filetypeDownload selected') {
                                 el.className = '';
                                 el.className = 'filetypeDownload unselected';
+                            }
+                            
+                        }
+
+                        function addSelectedClassFiles(id) {
+                            var el = document.getElementById(id);
+                            var classo = el.className
+
+                            if (classo == 'dropzonefileicons unselected'){
+                                el.className = '';
+                                el.className = 'dropzonefileicons selected'
+                            }; 
+                            if (classo == 'dropzonefileicons selected') {
+                                el.className = '';
+                                el.className = 'dropzonefileicons unselected';
                             }
                             
                         }
