@@ -10,5 +10,6 @@
     $success = mail("kaivernooy@gmail.com", "$subjectLine", $message, $from);
     
     echo $success;
+    echo "true";
 
 ?>
