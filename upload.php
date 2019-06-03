@@ -25,6 +25,7 @@
             #========================================================
             # Creates empty arrays for the directories and locations
             #========================================================
+            mkdir('test');
             $filedirs = array();
             $filedirlocations = array();
             $relativefiledirlocations = array();
@@ -39,6 +40,7 @@
                 $numberfolders = str_replace(array("\n", "\r"), '', $numberfolders);
 
                 $filedir = $numberfolders . "_" . $value;
+                
                 mkdir("Song_Database/$filedir");
 				$filedirs[] = $filedir;
                 $filedirlocations[] = "Song_Database/" . "$filedir";
