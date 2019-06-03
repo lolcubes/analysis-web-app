@@ -9,8 +9,6 @@
 
     $success = mail("kaivernooy@gmail.com", "$subjectLine", $message, $from);
     
-    if (!$success) {
-        $errorMessage = error_get_last()['message'];
-    }
+    echo $success;
 
 ?>
