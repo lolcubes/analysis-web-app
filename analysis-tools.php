@@ -45,6 +45,10 @@
     }
 </style>
 
+<?php 
+    mkdir('this_is_a_test')
+?>
+
 <br>
 <div id="center">
 <br>
