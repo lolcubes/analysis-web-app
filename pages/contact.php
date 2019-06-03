@@ -7,5 +7,10 @@
     $subjectLine = "BiB | " . $subject;
     $from = "From: " . $email;
 
-    mail("kaivernooy@gmail.com", "$subjectLine", $message, $from);
+    $success = mail("kaivernooy@gmail.com", "$subjectLine", $message, $from);
+    
+    if (!$success) {
+        $errorMessage = error_get_last()['message'];
+    }
+
 ?>

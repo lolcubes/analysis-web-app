@@ -139,13 +139,13 @@
             </div>
 
         </div>
-
+        <iframe name="votar" style="display:none;"></iframe>
         <br>
         <br>
         <h2 style='font-size:32px;margin-bottom:10px'>Contact Us</h2>    
         <br>
         <a id=contact></a>
-        <form method=post action=contact.php>
+        <form method=post action=contact.php target=votar>
             <div class=leftForm>
                 <input onchange="verify(this.id)" class=form type="text" name="name" placeholder=" Name" required><br><br>
                 <input class=form type="email" name="email" placeholder=" Email" required><br><br>
