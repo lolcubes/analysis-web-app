@@ -37,7 +37,7 @@
         outline: 0;
     }
 </style>
-<p>dumb stuff</p>
+<p>Nothing on this page as of right now. Check out the about page, or the analysis tools page</p>
 </body>
 
 </html>
