@@ -115,7 +115,6 @@
                 exec("analysis-scripts/humdrum/conversions/hum2xml $fileconvert > $xmlOutput");
 
                 exec("analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
-                echo exec("analysis-scripts/humdrum/hum2mid $fileconvert");
                 shell_exec( "timidity $target -Ow");
                 shell_exec( "analysis-scripts/humdrum/deg/degrunner.sh $fileconvert $degoutput");
                 shell_exec( "analysis-scripts/humdrum/proll $fileconvert > $prolloutput");
