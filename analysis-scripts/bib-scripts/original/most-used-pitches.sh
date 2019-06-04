@@ -23,7 +23,7 @@ fifthOutput="${occurencesOutput}/5.txt"
 fifthPercent="${occurencesOutput}/Percent_5.txt"
 
 
-fileprep=$(/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/deg $file | grep -v '=' | grep -v '*' | grep -v '!' | tr  "\t" "\n" |  grep . )
+fileprep=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '=' | grep -v '*' | grep -v '!' | tr  "\t" "\n" |  grep . )
 totallines=$( echo "$fileprep" | grep -v '\.' | grep -v 'r' | sed '/^$/d' | wc -l)
 
 seven="$(echo "$fileprep" | grep '7' | grep -v '7-' | grep -v '7+' | wc -l)"

@@ -14,7 +14,7 @@ sixOutput="${output}6.txt"
 aboveOutput="${output}seven-above.txt"
 largestOutput="${output}most-repetitions.txt"
 
-fileprep=$(/Applications/MAMP/htdocs/NewTestings/analysis-scripts/humdrum/deg/deg $file | grep -v '*' | grep -v '=' | grep -v '!' | grep -v 'r' | grep -v '\.' | tr '\t' '\n' | grep . | sed 's/[\^v]//g' | uniq -c | awk '{print $2,$1}' | tr ' ' '~' | cut -d '~' -f2)
+fileprep=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '*' | grep -v '=' | grep -v '!' | grep -v 'r' | grep -v '\.' | tr '\t' '\n' | grep . | sed 's/[\^v]//g' | uniq -c | awk '{print $2,$1}' | tr ' ' '~' | cut -d '~' -f2)
 
 two=$(echo "$fileprep" | grep '\b2\b' | wc -l)
 three=$(echo "$fileprep" | grep '\b3\b' | wc -l)
