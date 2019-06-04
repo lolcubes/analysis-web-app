@@ -12,7 +12,7 @@ movingOutput="${removed}data/average-pitch/pitch-moving-average.txt"
 filePrep=$(cat $deg | grep -v '=' | grep -v '*' | grep -v '!' | grep -v 'r' | tr -d '^' | tr -d 'v' | tr -d . | tr '\t' '\n' | tr ' ' '\n' | grep . );
 
 # Converts the scale degree into numbers
-tradeDecim=$( echo "$filePrep" | sed '/^$/d' | sed 's/+/.5/g' | sed 's/1-/0.5/g' | sed 's/2-/1.5/g' | sed 's/3-/2.5/g' | sed 's/4-/3.5/g' | sed 's/5-/4.5/g' | sed 's/6-/5.5/g' | sed 's/7-/6.5/g' | grep -v '>' | grep '[0-9]' | grep -v '[a-z]' | grep -v '[A-Z]' | tr -d ';');
+tradeDecim=$( echo "$filePrep" | sed '/^$/d' | sed 's/+/.5/g' | sed 's/1-/0.5/g' | sed 's/2-/1.5/g' | sed 's/3-/2.5/g' | sed 's/4-/3.5/g' | sed 's/5-/4.5/g' | sed 's/6-/5.5/g' | sed 's/7-/6.5/g' | grep -v '>' | grep '[0-9]' | grep -v '[a-z]' | grep -v '[A-Z]' | sed 's/[^0-9]*//g');
 
 # Sums the converted numbers
 sumDecim=$(echo "$tradeDecim" | tr '\n' '+' | awk '{print $0"0"}' | bc -l);
@@ -22,8 +22,8 @@ totalLines="$(echo "$filePrep" | wc -l)";
 
 lineCountHalf=$(echo "scale=0;$totalLines/2" | bc -l)
 
-echo "$tradeDecim" > $movingOutput
-#/var/www/html/analysis-scripts/other/moving-average.sh "$tradeDecim" $lineCountHalf | tr '\n' ',' | rev | cut -c 2- | rev | tr -d '\n' > $movingOutput
+# echo "$tradeDecim" > $movingOutput
+/var/www/html/analysis-scripts/other/moving-average.sh "$tradeDecim" $lineCountHalf | tr '\n' ',' | rev | cut -c 2- | rev | tr -d '\n' > $movingOutput
 
 # Divides the sum of the pitches by the number of notes for an average
 
