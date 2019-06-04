@@ -1423,9 +1423,9 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                             <div class=analysis-content>
-                                <div class=sparklines style='width:45%;'>
-                                    <div id=pitchChart" . $filename . " class=chart-container style='margin-left:0;margin-right:4%;width:40%;padding:10px;height:30%'></div>
-                                    <div id=pieChart" . $filename . " class=chart-container style='width:40%;padding:10px;height:30%'></div>
+                                <div class=sparklines style='width:40%;'>
+                                    <div id=pitchChart" . $filename . " class=chart-container style='margin-left:0;width:100%;padding:10px;height:30%;margin-bottom:15px'></div>
+                                    <div id=pieChart" . $filename . " class=chart-container style='width:100%;padding:10px;height:30%'></div>
                                 </div>
                                 <script>
                                     var options = {
