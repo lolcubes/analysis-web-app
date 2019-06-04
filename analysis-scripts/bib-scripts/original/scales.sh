@@ -25,7 +25,7 @@ ascSingle=$(echo "$ascendingSingle" | while read i; do echo "$i+1" | bc; done )
 descSingle=$(echo "$descendingSingle" | while read i; do echo "$i-1" | bc; done | sed 's/^.//')
 descDouble=$(echo "$descendingDouble" | while read i; do echo "$i/2" | bc; done | while read i; do echo "$i-1" | bc; done | sed 's/^.//')
 ascDouble=$(echo "$ascendingDouble" | while read i; do echo "$i/2" | bc; done | while read i; do echo "$i+1" | bc; done )
-
+echo "$ascSingle" > "${output}test.txt" 
 ascSingleTwo=$( echo "$ascSingle" | grep '\b2\b' | wc -l)
 ascSingleThree=$( echo "$ascSingle" | grep '\b3\b' | wc -l)
 ascSingleFour=$( echo "$ascSingle" | grep '\b4\b' | wc -l)
