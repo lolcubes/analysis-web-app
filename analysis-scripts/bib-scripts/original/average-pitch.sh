@@ -13,7 +13,7 @@ filePrep=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '=' | 
 
 # Converts the scale degree into numbers
 tradeDecim=$( echo "$filePrep" | sed '/^$/d' | sed 's/+/.5/g' | sed 's/1-/0.5/g' | sed 's/2-/1.5/g' | sed 's/3-/2.5/g' | sed 's/4-/3.5/g' | sed 's/5-/4.5/g' | sed 's/6-/5.5/g' | sed 's/7-/6.5/g' | grep -v '>' | sed 's/[^0-9]*//g' | grep .);
-echo "$tradeDecim" > $movingOutput
+#echo "$tradeDecim" > $movingOutput
 # Sums the converted numbers
 sumDecim=$(echo "$tradeDecim" | tr '\n' '+' | awk '{print $0"0"}' | bc -l);
 
@@ -22,7 +22,7 @@ totalLines="$(echo "$filePrep" | wc -l)";
 
 lineCountHalf=$(echo "scale=0;$totalLines/2" | bc -l)
 
-#/var/www/html/analysis-scripts/other/moving-average.sh "$( cat $movingOutput)" $lineCountHalf > $movingOutput
+/var/www/html/analysis-scripts/other/moving-average.sh "$tradeDecim" $lineCountHalf > $movingOutput
 
 #cat "$movingOutput" | tr '\n' ',' | rev | cut -c 2- | rev > $movingOutput
 
