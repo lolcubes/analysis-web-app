@@ -590,7 +590,7 @@
                                     options:{
                                         legend:{
                                             display: true,
-                                            position:'top',
+                                            position:'right',
                                             labels:{
                                                 fontSize: 12,
                                                 boxWidth: 28,
@@ -1488,10 +1488,10 @@
 
                                     <div class=chart-container style='width:auto;height:35px;font-size:28px;margin-top:20px;'>" . $timePath ."</div>
                                     
-                                    <div class=chart-container style='width:400px; height:200px; overflow: auto;'> 
+                                    <div class=chart-container style='width:80%; height:200px; overflow: auto;'> 
                                         <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height=180px>
                                     </div>
-                                    
+
                                     <br>
 
 
