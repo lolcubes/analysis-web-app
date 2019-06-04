@@ -1438,7 +1438,7 @@
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                             <div class=analysis-content>
 
-                                <div id=pitchChart" . $filename . " class=chart-container style='display:inline-block;width:40%;padding:10px;height:30%'></div>
+                                <div id=pitchChart" . $filename . " class=chart-container style='margin-left:0;margin-right:4%;display:inline-block;width:40%;padding:10px;height:30%'></div>
                                 <div id=pieChart" . $filename . " class=chart-container style='display:inline-block;width:40%;padding:10px;height:30%'></div>
 
                                 <script>
