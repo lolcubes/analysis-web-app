@@ -57,6 +57,17 @@ do
 	esac
 done
 shift `expr $OPTIND - 1`
+# If no parameters were specified, print out a help screen
+if [ -n "$HELP" ]
+then
+	if [ -f ${HUMDRUM}/bin/helpscrn/deg.hlp ]
+	then
+		cat ${HUMDRUM}/bin/helpscrn/deg.hlp
+	else
+		echo "No help available on this command."
+	fi
+	exit
+fi
 # Process any remaining filenames
 while [ "$#" -ne 0 ]
 do
