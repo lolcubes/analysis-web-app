@@ -24,7 +24,7 @@ totalLines="$(echo "$filePrep" | wc -l)";
 
 lineCountHalf=$(echo "scale=0;$totalLines/2" | bc -l)
 
-bash /var/www/html/analysis-scripts/other/moving-average.sh "$( cat $movingOutput)" $lineCountHalf | paste -sd, - | tr -d '\n' > $movingOutput
+#bash /var/www/html/analysis-scripts/other/moving-average.sh "$( cat $movingOutput)" $lineCountHalf | paste -sd, - | tr -d '\n' > $movingOutput
 
 # Divides the sum of the pitches by the number of notes for an average
 
