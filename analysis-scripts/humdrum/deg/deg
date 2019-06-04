@@ -102,3 +102,4 @@ if [ -z $FILENAME ]
 then
    FILENAME="-"
 fi 
+$AWK_VER -f /var/www/html/analysis-scripts/humdrum/deg/deg.awk "DUMMY" "${OPTIONS:-null}" $FILENAME
