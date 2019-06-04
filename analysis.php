@@ -220,20 +220,6 @@
                 shell_exec("analysis-scripts/other/amalgamate.sh $song");
 
                 echo "
-                <div id=shelf-item class=keyscape" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
-                    <span>
-                        Keyscape
-                    </span>
-                </div>";
-
-                echo "
-                <div id=shelf-item class=proll" . "_" . $filename .  " onclick=\"showDiv(this.className, '" . $containernames . "')\">
-                    <span>
-                        Piano Roll
-                    </span>
-                </div>";
-
-                echo "
                     </div>";
                 echo "
                 </div>";
@@ -1501,6 +1487,11 @@
                                 </script>
 
                                     <div class=chart-container style='width:auto;height:35px;font-size:28px;margin-top:20px;'>" . $timePath ."</div>
+                                    
+                                    <div class=chart-container style='width:400px; height:200px; overflow: auto;'> 
+                                        <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height=180px>
+                                    </div>
+                                    
                                     <br>
 
 
@@ -1527,9 +1518,7 @@
                                 <div class=analysis-content>
 
                                     <br>
-                                    <div class=chart-container style='width:400px; height:200px; overflow: auto;'> 
-                                    <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height=180px>
-                                    </div>
+
                                 </div>
                             </div>";
 
