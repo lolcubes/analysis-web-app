@@ -24,7 +24,7 @@ lineCountHalf=$(echo "scale=0;$totalLines/2" | bc -l)
 
 /var/www/html/analysis-scripts/other/moving-average.sh "$tradeDecim" $lineCountHalf > $movingOutput
 
-cat "$movingOutput" | paste -sd, - > $movingOutput
+paste -sd, - $movingOutput > $movingOutput
 
 # Divides the sum of the pitches by the number of notes for an average
 
