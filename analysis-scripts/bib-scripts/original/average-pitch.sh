@@ -24,7 +24,7 @@ lineCountHalf=$(echo "scale=0;$totalLines/2" | bc -l)
 
 /var/www/html/analysis-scripts/other/moving-average.sh "$( cat $movingOutput)" $lineCountHalf > $movingOutput
 
-#cat "$movingOutput" | tr '\n' ',' | rev | cut -c 2- | rev > $movingOutput
+cat "$movingOutput" | tr '\n' ',' | rev | cut -c 2- | rev > $movingOutput
 
 # Divides the sum of the pitches by the number of notes for an average
 
