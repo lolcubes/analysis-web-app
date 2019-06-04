@@ -21,8 +21,6 @@ descendingSingle=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -
 ascendingDouble=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '!' | grep -v '=' | grep -v '*' | tr '\t' '~' | perl -F'~' -lane '$A[$_][$.-1] = $F[$_] for 0 .. $#F;}{print join $/, @{$A[$_]} for 0 .. $#A;' | grep . | sed 's/[^0-9]*//g' | grep . | awk '{l=p=$1}{while((r=getline)>=0){if($1==p+2){p=$1;continue};print(l==p?l:l","p);l=p=$1;if(r==0){ break };}}' |  grep ',' | tr ',' '\t' | awk 'BEGIN { OFS = "\t" } { $3 = $2 - $1 } 1' |  tr "\t" "~" | cut -d '~' -f3)
 descendingDouble=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '!' | grep -v '=' | grep -v '*' | tr '\t' '~' | perl -F'~' -lane '$A[$_][$.-1] = $F[$_] for 0 .. $#F;}{print join $/, @{$A[$_]} for 0 .. $#A;' | grep . | sed 's/[^0-9]*//g' | grep . | awk '{l=p=$1}{while((r=getline)>=0){if($1==p-2){p=$1;continue};print(l==p?l:l","p);l=p=$1;if(r==0){ break };}}' |  grep ',' | tr ',' '\t' | awk 'BEGIN { OFS = "\t" } { $3 = $2 - $1 } 1' | tr "\t" "~" | cut -d '~' -f3)
 
-echo "$ascendingSingle" > "${output}test.txt"
-
 ascSingle=$(echo "$ascendingSingle" | while read i; do echo "$i+1" | bc; done )
 descSingle=$(echo "$descendingSingle" | while read i; do echo "$i-1" | bc; done | sed 's/^.//')
 descDouble=$(echo "$descendingDouble" | while read i; do echo "$i/2" | bc; done | while read i; do echo "$i-1" | bc; done | sed 's/^.//')
