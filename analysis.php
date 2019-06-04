@@ -1425,14 +1425,14 @@
 
                             //KEY SIGNATURE
 
-                            $movingAverage = $value . "/data/average-note-value/moving-average.txt";
-                            $averageValue = $value . "/data/average-note-value/value.txt";
+                            $noteValueMovingAverage = $value . "/data/average-note-value/moving-average.txt";
+                            $noteValueAverageValue = $value . "/data/average-note-value/value.txt";
 
-                            $averageValue = file_get_contents($averageValue);
+                            $noteValueAverageValue = file_get_contents($noteValueAverageValue);
 
-                            $movingAverage = file_get_contents($movingAverage);
-                            $movingAverage = explode(',', $movingAverage);
-                            $movingAverageEncoded = json_encode($movingAverage);
+                            $noteValueMovingAverage = file_get_contents($noteValueMovingAverage);
+                            $noteValueMovingAverage = explode(',', $noteValueMovingAverage);
+                            $noteValueMovingAverageEncoded = json_encode($noteValueMovingAverage);
                                 
                             echo "
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
@@ -1490,7 +1490,7 @@
 
                                         series: [{
                                             name: 'sales',
-                                            data: $movingAverageEncoded,
+                                            data: $noteValueMovingAverageEncoded,
                                         }],
                                         
                                     }
