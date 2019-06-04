@@ -1423,70 +1423,12 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                             <div class=analysis-content>
-                                <div class=sparklines style='width:40%;'>
+                                <div class=sparklines style='width:40%;display:inline-block'>
                                     <div id=pitchChart" . $filename . " class=chart-container style='margin-left:0;width:100%;padding:10px;height:30%;margin-bottom:15px'></div>
                                     <div id=pieChart" . $filename . " class=chart-container style='width:100%;padding:10px;height:30%'></div>
                                 </div>
-                                <script>
-                                    var options = {
-                                    chart: {
-                                        type: 'line',
-                                        sparkline: {
-                                            enabled: true
-                                        }
-                                    },
-                                    series: [{
-                                        name: 'sales',
-                                        data: " . $movingAverageEncoded . "
-                                    }],
-                                    xaxis: {
-                                        categories: " . $movingAverageEncoded . "
-                                    },
-                                    tooltip: {
-                                        enabled: false,
-                                    },
-                                    stroke: {
-                                        curve: 'smooth',
-                                        width: 3,
-                                      },
-                                    }
-                        
-                                    var chart" . $filename . " = new ApexCharts(document.querySelector(\"#pitchChart" . $filename . "\"), options);
-                        
-                                    chart" . $filename . ".render();
 
-
-
-                                    
-
-                                    var pieOptions = {
-                                        chart: {
-                                            type: 'line',
-                                            sparkline: {
-                                                enabled: true
-                                            }
-                                        },
-                                        stroke: {
-                                            curve: 'smooth',
-                                            width: 3,
-                                        },
-                                        tooltip: {
-                                            enabled: false,
-                                        },
-
-                                        series: [{
-                                            name: 'sales',
-                                            data: $noteValueMovingAverageEncoded,
-                                        }],
-                                        
-                                    }
-
-                                    var pieChart" . $filename . " = new ApexCharts(document.querySelector(\"#pieChart" . $filename . "\"), pieOptions);
-                                    pieChart" . $filename . ".render();
-
-                                </script>
-
-                                    <div class=chart-container style='width:auto;height:35px;font-size:28px;margin-top:20px;'>" . $timePath ."</div>
+                                    <div class=chart-container style='display:inline-block;width:auto;height:35px;font-size:28px;margin-top:20px;'>" . $timePath ."</div>
                                     
                                     <div class=chart-container style='width:80%; height:200px; overflow: auto;'> 
                                         <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height=180px>
@@ -1497,7 +1439,71 @@
 
                                 </div>
                                 
-                             </div>";
+                             </div>
+                             
+
+
+
+                             <script>
+                             var options = {
+                             chart: {
+                                 type: 'line',
+                                 sparkline: {
+                                     enabled: true
+                                 }
+                             },
+                             series: [{
+                                 name: 'sales',
+                                 data: " . $movingAverageEncoded . "
+                             }],
+                             xaxis: {
+                                 categories: " . $movingAverageEncoded . "
+                             },
+                             tooltip: {
+                                 enabled: false,
+                             },
+                             stroke: {
+                                 curve: 'smooth',
+                                 width: 3,
+                               },
+                             }
+                 
+                             var chart" . $filename . " = new ApexCharts(document.querySelector(\"#pitchChart" . $filename . "\"), options);
+                 
+                             chart" . $filename . ".render();
+
+
+
+                             
+
+                             var pieOptions = {
+                                 chart: {
+                                     type: 'line',
+                                     sparkline: {
+                                         enabled: true
+                                     }
+                                 },
+                                 stroke: {
+                                     curve: 'smooth',
+                                     width: 3,
+                                 },
+                                 tooltip: {
+                                     enabled: false,
+                                 },
+
+                                 series: [{
+                                     name: 'sales',
+                                     data: $noteValueMovingAverageEncoded,
+                                 }],
+                                 
+                             }
+
+                             var pieChart" . $filename . " = new ApexCharts(document.querySelector(\"#pieChart" . $filename . "\"), pieOptions);
+                             pieChart" . $filename . ".render();
+
+                         </script>
+                             
+                             ";
 
 
                             //===================================
