@@ -1425,22 +1425,21 @@
 
                             //KEY SIGNATURE
 
-                                $repeatedPitchesDir = $value . "/data/repeated-pitches/";
-                                $repeatedPitches = array();
-                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "2.txt");
-                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "3.txt");
-                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "4.txt");
-                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "5.txt");
-                                $repeatedPitches[] = file_get_contents($repeatedPitchesDir . "6.txt");
+                            $movingAverage = $value . "/data/average-note-value/moving-average.txt";
+                            $averageValue = $value . "/data/average-note-value/value.txt";
 
-                                $repeatedPitches = json_encode($repeatedPitches);
+                            $averageValue = file_get_contents($averageValue);
+
+                            $movingAverage = file_get_contents($movingAverage);
+                            $movingAverage = explode(',', $movingAverage);
+                            $movingAverageEncoded = json_encode($movingAverage);
                                 
                             echo "
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                             <div class=analysis-content>
 
-                                <div id=pitchChart" . $filename . " class=chart-container style='display:inline-block;width:45%;padding:10px;height:30%'></div>
-                                <div id=pieChart" . $filename . " class=chart-container style='display:inline-block;width:35%;padding:10px;height:30%'></div>
+                                <div id=pitchChart" . $filename . " class=chart-container style='display:inline-block;width:40%;padding:10px;height:30%'></div>
+                                <div id=pieChart" . $filename . " class=chart-container style='display:inline-block;width:40%;padding:10px;height:30%'></div>
 
                                 <script>
                                     var options = {
@@ -1491,7 +1490,7 @@
 
                                         series: [{
                                             name: 'sales',
-                                            data: $repeatedPitches,
+                                            data: $movingAverageEncoded,
                                         }],
                                         
                                     }
