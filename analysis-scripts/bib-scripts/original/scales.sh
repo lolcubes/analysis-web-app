@@ -16,10 +16,12 @@ mkdir $ascDoubleDir
 mkdir $descSingleDir
 mkdir $descDoubleDir
 
-ascendingSingle=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '!' | grep -v '=' | grep -v '*' | tr  "\t" "~" | rs -c~ -T | rs 0 1 | tr '.' 'r' | sed 's/^.//' | grep '.' | grep -v '-' | grep -v '+' | awk '{l=p=$1}{while((r=getline)>=0){if($1==p+1){p=$1;continue};print(l==p?l:l","p);l=p=$1;if(r==0){ break };}}' |  grep ',' | tr ',' '\t' | awk 'BEGIN { OFS = "\t" } { $3 = $2 - $1 } 1' | tr "\t" "~" | cut -d '~' -f3)
+ascendingSingle=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '!' | grep -v '=' | grep -v '*' | tr  "\t" "~" | rs -c~ -T | rs 0 1 | tr '.' 'r' | sed 's/^.//' | grep '.' | grep -v '-' | grep -v '+' | awk '{l=p=$1}{while((r=getline)>=0){if($1==p+1){p=$1;continue};print(l==p?l:l","p);l=p=$1;if(r==0){ break };}}')
 descendingSingle=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '!' | grep -v '=' | grep -v '*' | tr  "\t" "~" | rs -c~ -T | rs 0 1 | tr '.' 'r' | sed 's/^.//' | grep '.' | grep -v '-' | grep -v '+' | awk '{l=p=$1}{while((r=getline)>=0){if($1==p-1){p=$1;continue};print(l==p?l:l","p);l=p=$1;if(r==0){ break };}}' |  grep ',' | tr ',' '\t' | awk 'BEGIN { OFS = "\t" } { $3 = $2 - $1 } 1' | tr "\t" "~" | cut -d '~' -f3)
 ascendingDouble=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '!' | grep -v '=' | grep -v '*' | tr  "\t" "~" | rs -c~ -T | rs 0 1 | tr '.' 'r' | sed 's/^.//' | grep '.' | grep -v '-' | grep -v '+' | awk '{l=p=$1}{while((r=getline)>=0){if($1==p+2){p=$1;continue};print(l==p?l:l","p);l=p=$1;if(r==0){ break };}}' |  grep ',' | tr ',' '\t' | awk 'BEGIN { OFS = "\t" } { $3 = $2 - $1 } 1' |  tr "\t" "~" | cut -d '~' -f3)
 descendingDouble=$(/var/www/html/analysis-scripts/humdrum/deg/deg $file | grep -v '!' | grep -v '=' | grep -v '*' | tr  "\t" "~" | rs -c~ -T | rs 0 1 | tr '.' 'r' | sed 's/^.//' | grep '.' | grep -v '-' | grep -v '+' | awk '{l=p=$1}{while((r=getline)>=0){if($1==p-2){p=$1;continue};print(l==p?l:l","p);l=p=$1;if(r==0){ break };}}' |  grep ',' | tr ',' '\t' | awk 'BEGIN { OFS = "\t" } { $3 = $2 - $1 } 1' | tr "\t" "~" | cut -d '~' -f3)
+
+echo "$ascendingSingle" > "${removed}test.txt"
 
 ascSingle=$(echo "$ascendingSingle" | while read i; do echo "$i+1" | bc; done )
 descSingle=$(echo "$descendingSingle" | while read i; do echo "$i-1" | bc; done | sed 's/^.//')
