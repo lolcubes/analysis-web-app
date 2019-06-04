@@ -102,9 +102,3 @@ if [ -z $FILENAME ]
 then
    FILENAME="-"
 fi 
-if [ "X$P_OPTION" = X ]
-then
-	$AWK_VER -f /var/www/html/analysis-scripts/humdrum/deg/x_option.awk "DUMMY" $FILENAME | $AWK_VER -f /var/www/html/analysis-scripts/humdrum/deg/deg.awk "DUMMY" "${OPTIONS:-null}" -
-else
-	$AWK_VER -f /var/www/html/analysis-scripts/humdrum/deg/deg.awk "DUMMY" "${OPTIONS:-null}" $FILENAME
-fi
