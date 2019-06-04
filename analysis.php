@@ -575,14 +575,12 @@
                                                     label: 'Ascending Single',
                                                     fill: true,
                                                     borderColor: 'rgb(97, 176, 249)',
-                                                    backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
                                                 }, { 
                                                     data: " . $ascDoubleArray . ",
                                                     label: 'Ascending Double',
                                                     fill: true,
                                                     borderColor: 'rgb(255, 102, 102)',
-                                                    backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
                                                 }, { 
@@ -590,7 +588,6 @@
                                                     label: 'Descending Single',
                                                     fill: true,
                                                     borderColor: 'rgb(84, 247, 176)',
-                                                    backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
                                                 }, { 
@@ -598,7 +595,6 @@
                                                     label: 'Descending Double',
                                                     fill: true,
                                                     borderColor: 'rgb(189, 106, 252)',
-                                                    backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
                                                 }
