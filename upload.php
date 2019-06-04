@@ -122,7 +122,7 @@
                 shell_exec( "analysis-scripts/humdrum/mkeyscape $target > $keyscapeoutput");
                 shell_exec("pnmtopng -transparent white $keyscapeoutput > $keyscapeoutputpng");
 
-                shell_exec( "/usr/bin/convert $prolloutput -transparent black $prolloutputpng");
+                shell_exec( "pnmtopng $prolloutput -transparent black > $prolloutputpng");
             }       
 
 ?>
