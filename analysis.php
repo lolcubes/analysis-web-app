@@ -574,14 +574,14 @@
                                                     data: " . $ascSingleArray . ",
                                                     label: 'Ascending Single',
                                                     fill: true,
-                                                    borderColor: 'rgba(172, 25, 252, 0.8)',
+                                                    borderColor: 'rgb(97, 176, 249)',
                                                     backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
                                                 }, { 
                                                     data: " . $ascDoubleArray . ",
                                                     label: 'Ascending Double',
                                                     fill: true,
-                                                    borderColor: 'rgba(172, 25, 252, 0.8)',
+                                                    borderColor: 'rgb(255, 102, 102)',
                                                     backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
@@ -589,7 +589,7 @@
                                                     data: " . $descSingleArray . ",
                                                     label: 'Descending Single',
                                                     fill: true,
-                                                    borderColor: 'rgba(172, 25, 252, 0.8)',
+                                                    borderColor: 'rgb(84, 247, 176)',
                                                     backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
@@ -597,7 +597,7 @@
                                                     data: " . $descDoubleArray . ",
                                                     label: 'Descending Double',
                                                     fill: true,
-                                                    borderColor: 'rgba(172, 25, 252, 0.8)',
+                                                    borderColor: 'rgb(189, 106, 252)',
                                                     backgroundColor: 'rgba(172, 25, 252, 0.1)',
                                                     lineTension: '0'
 
@@ -629,50 +629,6 @@
                                         }
                                     }
                                     });
-
-
-
-                                    var resizeIdScales" . $filename  . ";
-                                    $(window).resize(function() {
-                                        clearTimeout(resizeIdScales" . $filename  . " );
-                                        resizeIdScales" . $filename  . " = setTimeout(afterResizingScales" . $filename . ", 100);
-                                    });
-
-                                    var resizeIdScales" . $filename  . ";
-                                    new ResizeSensor(jQuery('#analysis-panel" . $filename . "'), function(){ 
-                                        clearTimeout(resizeIdScales" . $filename  . " );
-                                        resizeIdScales" . $filename  . " = setTimeout(afterResizingScales" . $filename . ", 100);
-                                    });
-
-                                    var canvasheightScales". $filename . ";
-                                    function afterResizingScales" . $filename . "(){
-                                        var canvasheightScales" . $filename . " = document.getElementById('" . $filename . "_scales_graph').width;
-                                        if(canvasheightScales" . $filename . " <=360) {
-                                            chart_scales_" . $filename . ".options.legend.display=false;
-                                            chart_scales_" . $filename . ".update();
-
-                                        }
-                                        else {
-                                            chart_scales_" . $filename . ".options.legend.display=true;
-                                            chart_scales_" . $filename . ".update();
-                                        }
-                                    }
-
-                                    </script>
-                                    <script>
-                                        function showLegendScales() {
-                                            var canvasheightScales" . $filename . " = document.getElementById('" . $filename . "_scales_graph_container').width;
-                                            console.log(canvasheightScales" . $filename . ");
-                                            if(canvasheightScales" . $filename . " <=360) {
-                                                chart_scales_" . $filename . ".options.legend.display=false;
-                                                chart_scales_" . $filename . ".update();
-    
-                                            }
-                                            else {
-                                                chart_scales_" . $filename . ".options.legend.display=true;
-                                                chart_scales_" . $filename . ".update();
-                                            }
-                                        }
 
                                     </script>
 
