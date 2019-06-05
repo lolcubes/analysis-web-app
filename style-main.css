@@ -687,7 +687,8 @@ span.button {
   margin-bottom: 15px;
   background-color: rgb(255, 255, 255);
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.329);
-  border: 2px solid rgba(255, 255, 255, 1)
+  border: 2px solid rgba(255, 255, 255, 1);
+  width:200px;
 }
 
 .dropzonefileicons:hover {
