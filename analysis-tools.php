@@ -800,47 +800,51 @@ function changeDetailsMessage(){
                 </div>
                 <br>
                 <br>
-                    <span class=switchesLabel>Scales</span>
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="scales.sh">
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                    <div id=pitchSwitchLabels style='display:inline-block'>
+                        <span class=switchesLabel>Scales</span>
+                        <span class=switchesLabel>Key Signature</span>
+                        <span class=switchesLabel>Average Pitch</span>
+                        <span class=switchesLabel>Average Steps</span>
+                        <span class=switchesLabel>Pitch Distribution</span>
+                        <span class=switchesLabel>Repeated Pitches</span>
+                    </div>
+                    <div id=pitchSwitches style='display:inline-block;'>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="scales.sh">
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <span class=switchesLabel>Scales</span>
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <span class=switchesLabel>Scales</span>
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <span class=switchesLabel>Scales</span>
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <span class=switchesLabel>Scales</span>
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <span class=switchesLabel>Scales</span>
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
+                    </div>
                 </div>
 
                 <div id="data-types" class="panels">
