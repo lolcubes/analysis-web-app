@@ -245,22 +245,6 @@ function addAudioPlayers(){
     }               
 
 }
-function addDownloadSection(){
-    var array = document.getElementById("demo").innerHTML;
-    var arrayparsed = JSON.parse(array);
-    var dirs = arrayparsed.relativedirs;
-    var names = arrayparsed.names;
-    var icons = arrayparsed.fileicon;
-
-    for (i=0; i<names.length; i++){ 
-        var name = names[i];
-        var dir = dirs[i];
-        var icon = icons[i];
-
-        $("#downloadSection").append('<div class=downloadSong><img src=' + icon + ' height=70px><br style="line-height:7px"><span>' + name + '</span><br><br><div class=downloadHeader><span>XML</span></div><a href=' + dir + '/data-conversions/song.xml download ><img style="display: inline-block; vertical-align:middle;cursor: pointer" src="image-assets/download-black.png" width=25px height=25px></a></div>')
-    }
-}
-
 </script>
     
     
@@ -568,62 +552,67 @@ function changeDetailsMessage(){
                                 <br>
                                 <div id=downloadContent>
 
+                                    <div id=selectFiles
 
-
-                                    <div id=selectAllDownloadFiles class="filetypeDownload unselected" onclick="selectAllFiles(this.id)" style='vertical-align:middle'>
-                                        <span style='position:relative;top:43%;'> Select All </span>
-                                    </div>
-
-                                    <div class=selectionSection id=downloadfilesselectionsection>
-                                    </div>
-
-                                    <br>
-                                    <br>
-                                    <div id=selectAllDownloadIcon class="filetypeDownload unselected" onclick="selectAllFileTypes(this.id)" style='vertical-align:middle'>
-                                        <span style='position:relative;top:43%;'> Select All </span>
-                                    </div>
-                                    <div class=selectionSection>
-
-                                        <div id=abcDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/abc.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        <div id=selectAllDownloadFiles class="filetypeDownload unselected" onclick="selectAllFiles(this.id)" style='vertical-align:middle'>
+                                            <span style='position:relative;top:43%;'> Select All </span>
                                         </div>
 
-                                        <div id=enpDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/enp.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                        <div class=selectionSection id=downloadfilesselectionsection>
                                         </div>
-
-                                        <div id=gmnDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/gmn.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
-                                        </div>
-
-                                        <div id=kernDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/kern.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
-                                        </div>
-
-                                        <div id=meiDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/mei.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
-                                        </div>
-
-                                        <div id=midiDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/midi.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
-                                        </div>
-
-                                        <div id=mp3DownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/mp3.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
-                                        </div>
-
-                                        <div id=museDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/muse.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
-                                        </div>
-
-                                        <div id=xmlDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
-                                            <img src='icons-misc/conversions/xml.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
-                                        </div>
-
                                     </div>
                                     
-                                </div>
-                                <div id=downloadSection>
+                                    
+                                    <br>
+                                    <br>
+                                    
+                                    <div id=selectFileTypes style='display:none;'>
+                                        <div id=selectAllDownloadIcon class="filetypeDownload unselected" onclick="selectAllFileTypes(this.id)" style='vertical-align:middle'>
+                                            <span style='position:relative;top:43%;'> Select All </span>
+                                        </div>
+                                        <div class=selectionSection>
+
+                                            <div id=abcDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/abc.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                            <div id=enpDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/enp.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                            <div id=gmnDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/gmn.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                            <div id=kernDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/kern.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                            <div id=meiDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/mei.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                            <div id=midiDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/midi.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                            <div id=mp3DownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/mp3.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                            <div id=museDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/muse.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                            <div id=xmlDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                                <img src='icons-misc/conversions/xml.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
+                                            </div>
+
+                                        </div>
+                                        
+                                    </div>
+                                    <div id=downloadSection>
+                                    </div>
                                 </div>
                                 <br><br>
 
@@ -649,6 +638,8 @@ function changeDetailsMessage(){
                                 }
                                 document.getElementById(id).className = 'filetypeDownload unselected'
                             }
+
+                            $('#selectFileTypes').delay(200).show("slow");
                         }
 
                         function selectAllFileTypes(id) {
@@ -679,7 +670,7 @@ function changeDetailsMessage(){
                                 el.className = '';
                                 el.className = 'filetypeDownload unselected';
                             }
-                            
+                            $('#selectFileTypes').delay(200).show("slow");
                         }
 
                         function addSelectedClassFiles(id) {
