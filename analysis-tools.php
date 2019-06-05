@@ -127,7 +127,7 @@ $( document ).ajaxComplete(function() {
                 var icon = icons[i];
                 var name = names[i];
                 var thissize = size[i];
-                $("#downloadfilesselectionsection").append( '<div class="dropzonefileicons unselected"  style="cursor:pointer;" id="dropzonefileicons' + name + '" onclick="addSelectedClassFiles(this.id)">' + '<img src=' + icon + " height=90px;" + '>' + '<br style="line-height:30px"><span style="font-size:18px;margin-top:16px;margin-bottom:10px"><br style="line-height:20px">' + name + '</span>' + '</div>');
+                $("#downloadfilesselectionsection").append( '<div class="dropzonefileicons unselected"  style="cursor:pointer;" id="dropzonefileicons' + name + '" onclick="addSelectedClassFiles(this.id)">' + '<img src=' + icon + " height=90px;" + '>' + '<br style="line-height:30px"><span style="font-size:18px;margin-top:16px;margin-bottom:10px">' + name + '</span><br style="line-height:30px">' + '</div>');
             }
     }
 </script>
