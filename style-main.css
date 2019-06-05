@@ -295,6 +295,10 @@ span {
 
 }
 
+.buttonform.filled {
+  background-color: rgb(0, 84, 211);
+}
+
 .buttonform:hover {
     transition: .3s;
     cursor: pointer;
