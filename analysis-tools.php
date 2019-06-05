@@ -606,7 +606,7 @@ function changeDetailsMessage(){
                                     </div>
                                 </div>
                                 <br><br>                                
-                                <form >
+                                <form action=conversions.php method=post>
                                     <button onclick='getSelectedFiles();' style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
                                     <input type='hidden' name='downloadsFilesTypes' value='test'> 
                                 </form>
