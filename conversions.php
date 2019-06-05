@@ -24,7 +24,11 @@ print_r($types);
 
 foreach ($files as $file){
     $file = str_replace("dropzonefileicons", "", $file);
-    $path = "Song_Database/";
+    $path = "Song_Database/" . $file . "/data-conversions/";
+    foreach ($types as $type) {
+        $type = str_replace("DownloadIcon", "", $type);
+        echo "$path$type";
+    }
 }
 
 ?>
