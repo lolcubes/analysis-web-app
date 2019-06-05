@@ -843,7 +843,7 @@ audio {
 #data-heading {
   margin: 0;
   padding-bottom: 15px;
-
+  margin-top:30px;
 }
 
 #heading {
@@ -1052,7 +1052,6 @@ a.hoverme {
   width: 78%;
   background-color: white;
   box-shadow: 1px 2px 17px rgba(0,0,0,.2);
-  height: 380px;
   display: inline-block;
   vertical-align: top;
   margin: 1%;

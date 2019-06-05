@@ -783,7 +783,7 @@ function changeDetailsMessage(){
             <br>
             <br>
             <div class=mainSection>
-                <h2 id="data-heading">Select Analysis Types:</h2>
+                <h1 id="data-heading">Select Analysis Types:</h1>
 
                 <br>
                 <div id="check-all">
