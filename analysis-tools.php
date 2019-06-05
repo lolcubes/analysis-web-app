@@ -117,7 +117,7 @@ $( document ).ajaxComplete(function() {
     function populateDownloadSectionFiles(){
         var array = document.getElementById("demo").innerHTML;
             var arrayparsed = JSON.parse(array);
-            var names = arrayparsed.names;
+            var names = arrayparsed.phyisicalnames;
             var icons = arrayparsed.fileicon;
             var size = arrayparsed.filesize
 

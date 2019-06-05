@@ -26,7 +26,7 @@ body {
 /*  HIDE THE DIV THAT CONTAINS THE FILES ARRAY*/
 /* ============================================*/
 #demo {
- /* display: none; */
+ display: none;
 }
 
 
