@@ -794,86 +794,90 @@ function changeDetailsMessage(){
                 </div>
                 <br>
 
-                <div id=pitchSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;'>
-                    <span class=switchesLabel>Scales</span><br>
-                    <span class=switchesLabel>Key Signature</span><br>
-                    <span class=switchesLabel>Average Pitch</span><br>
-                    <span class=switchesLabel>Average Steps</span><br>
-                    <span class=switchesLabel>Pitch Distribution</span><br>
-                    <span class=switchesLabel>Repeated Pitches</span>
-                </div>
+                <div id=pitch style='display:inline-block;vertical-align:middle'>
+                    <div id=pitchSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;'>
+                        <span class=switchesLabel>Scales</span><br>
+                        <span class=switchesLabel>Key Signature</span><br>
+                        <span class=switchesLabel>Average Pitch</span><br>
+                        <span class=switchesLabel>Average Steps</span><br>
+                        <span class=switchesLabel>Pitch Distribution</span><br>
+                        <span class=switchesLabel>Repeated Pitches</span>
+                    </div>
 
-                <div id=pitchSwitches style='display:inline-block;'>
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="scales.sh">
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                    <div id=pitchSwitches style='display:inline-block;'>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="scales.sh">
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
 
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
-                        <span class="slider round"></span>
-                    </label>
-                    <br>
-                </div>
-
-                
-
-                <div id=noteValueSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;'>
-                    <span class=switchesLabel>Average Note Value</span><br>
-                    <span class=switchesLabel>Repeated Note Value</span><br>
-                    <span class=switchesLabel>Time Signature</span><br>
-                    <span class=switchesLabel>Note Value Distribution</span><br>
-                </div>
-
-                <div id=rhythmSwitches style='display:inline-block;'>
-
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="average-note-value.sh">
-                        <span class="slider round"></span>
-                    </label>
-
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="repeated-note-value.sh" >
-                        <span class="slider round"></span>
-                    </label>
-
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="time-signature.sh" >
-                        <span class="slider round"></span>
-                    </label>
-
-                    <label class="switch">
-                        <input type="checkbox" name="data-choose[]" value="most-used-note-value.sh" >
-                        <span class="slider round"></span>
-                    </label>
-
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
+                    </div>
                 </div>
                 
+                <div id=rhythm style='display:inline-block;vertical-align:middle'>
+                    <div id=noteValueSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;'>
+                        <span class=switchesLabel>Average Note Value</span><br>
+                        <span class=switchesLabel>Repeated Note Value</span><br>
+                        <span class=switchesLabel>Time Signature</span><br>
+                        <span class=switchesLabel>Note Value Distribution</span><br>
+                    </div>
+
+                    <div id=rhythmSwitches style='display:inline-block;'>
+
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="average-note-value.sh">
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
+
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="repeated-note-value.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
+
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="time-signature.sh" >
+                            <span class="slider round"></span>
+                        </label>
+                        <br>
+
+                        <label class="switch">
+                            <input type="checkbox" name="data-choose[]" value="most-used-note-value.sh" >
+                            <span class="slider round"></span>
+                        </label>
+
+                    </div>
+                </div>
                 <br>
                 <br>
                     <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis" >
