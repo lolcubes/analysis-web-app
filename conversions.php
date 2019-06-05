@@ -24,7 +24,7 @@ print_r($types);
 
 foreach ($files as $file){
     $file = str_replace("dropzonefileicons", "", $file);
-    $path = "Song_Database/"
+    $path = "Song_Database/";
 }
 
 ?>
