@@ -758,9 +758,8 @@ function changeDetailsMessage(){
                                 }
                             }
 
-                            document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input type=checkbox style="display:none" class="buttonform" onclick="checkAll(\'analysis-form\')"  /><span class="checkmark"></span>';
+                            document.getElementById("check-all").innerHTML = '<label class="buttonform">Check All<input type=checkbox style="display:none" class="buttonform" onclick="checkAll(\'analysis-form\')"  />';
                             }
-
 
                         function checkAll(formname){
                         var checkboxes = new Array(); 
@@ -772,7 +771,7 @@ function changeDetailsMessage(){
                             }
                         }
 
-                        document.getElementById("check-all").innerHTML = '<label class="container">Check All&nbsp;&nbsp;<input checked=checked type=checkbox class="buttonform" style="display:none" onclick="unCheckAll(\'analysis-form\')"  /><span class="checkmark"></span>';
+                        document.getElementById("check-all").innerHTML = '<label class="buttonform">Uncheck All<input checked=checked type=checkbox class="buttonform" style="display:none" onclick="unCheckAll(\'analysis-form\')"  />';
                         }
 
                     </script>
@@ -789,7 +788,6 @@ function changeDetailsMessage(){
                 <div id="check-all">
                     <label class="buttonform">Check All
                         <input style="display:none" type=checkbox class="buttonform" onclick="checkAll('analysis-form')"  />
-                        <span class="checkmark"></span>
                     </label>
                 </div>
                 <br>
