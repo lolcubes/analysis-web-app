@@ -72,6 +72,7 @@
         <br>
         
     <body>
+        
         <script>
                 function showDiv(classVar, contentId) { 
 
@@ -1536,6 +1537,10 @@
                                 </div>
                             </div>";
 
+                echo "
+                </div>";
+                echo "
+                </div>";
                 echo "
                 </div>";
 

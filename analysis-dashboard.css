@@ -132,9 +132,6 @@
 
 body {
   background-color: var(--main-bg-color);
-}
-
-#contentDivToCenter {
   text-align: center;
 }
 
