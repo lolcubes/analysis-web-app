@@ -800,35 +800,35 @@ function changeDetailsMessage(){
                 </div>
                 <br>
                 <br>
-
+                    <span>Scales</span>
                     <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="scales.sh">
                         <span class="slider round"></span>
                     </label>
 
-                    <label class="container">Key Signature&nbsp;&nbsp;
+                    <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
-                        <span class="checkmark"></span>
+                        <span class="slider round"></span>
                     </label>
 
-                    <label class="container">Average Pitch&nbsp;&nbsp;
+                    <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
-                        <span class="checkmark"></span>
+                        <span class="slider round"></span>
                     </label>
 
-                    <label class="container">Average Steps&nbsp;&nbsp;
+                    <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
-                        <span class="checkmark"></span>
+                        <span class="slider round"></span>
                     </label>
 
-                    <label class="container">Most Used Pitches&nbsp;&nbsp;
+                    <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
-                        <span class="checkmark"></span>
+                        <span class="slider round"></span>
                     </label>
 
-                    <label class="container">Repeated Pitches&nbsp;&nbsp;
+                    <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
-                        <span class="checkmark"></span>
+                        <span class="slider round"></span>
                     </label>
                 </div>
 
