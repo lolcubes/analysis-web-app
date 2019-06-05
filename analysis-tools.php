@@ -273,7 +273,7 @@ function addAudioPlayers(){
                 var icon = icons[i];
                 var name = names[i];
                 var thissize = size[i];
-                $("#dropzone").append( '<div class="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<br style="line-height:34px"><span style="font-size:18px">' + name + '</span><br style="line-height:26px">' + '<span style="font-size:18px">' + thissize + ' kb' + '</span>' + '<br style="line-height:24px"></div>');
+                $("#dropzone").append( '<div class="dropzonefileiconst">' + '<img src=' + icon + " height=90px;" + '>' + '<br style="line-height:34px"><span style="font-size:18px">' + name + '</span><br style="line-height:26px">' + '<span style="font-size:18px">' + thissize + ' kb' + '</span>' + '<br style="line-height:24px"></div>');
             }
             
         }
