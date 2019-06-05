@@ -111,7 +111,6 @@ $( document ).ajaxComplete(function() {
     document.getElementById("loading-bar").className = "loaded";
     document.getElementById("selected-files-div").innerHTML = "<p id=selected-files-text>Selected Files:</p>";
     addHiddenValue();
-    addDownloadSection();
 
 });
 
@@ -304,7 +303,6 @@ function addAudioPlayers(){
                         document.getElementById("selected-files-div").innerHTML = "<p>Selected Files:</p>";
 
                         addHiddenValue();
-                        addDownloadSection();
 
                         if ( $('#dropzone').html().length == 0 ) {
                             populateDropzone();
@@ -608,9 +606,9 @@ function changeDetailsMessage(){
                                     </div>
                                 </div>
                                 <br><br>                                
-                                <form action=conversions.php>
+                                <form >
                                     <button onclick='getSelectedFiles();' style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
-                                    <input type='hidden' name='downloadsFilesTypes[]' value='test'> 
+                                    <input type='hidden' name='downloadsFilesTypes' value='test'> 
                                 </form>
                             </div>
                         </div>
@@ -635,6 +633,7 @@ function changeDetailsMessage(){
                             }
                             console.log(list);
                             document.getElementsByName("downloadsFilesTypes")[0].value = list;
+                            console.log(document.getElementsByName("downloadsFilesTypes")[0].value)
                         }
 
                         function selectAllFiles(id) {
