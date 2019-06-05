@@ -18,9 +18,14 @@ foreach ($recieved as $value) {
         $types[] = $value;
     }
 }
-print_r($files);
-echo "<br>";
-print_r($types);
+
+
+$folderOutput = $files[0];
+echo $folderOutput;
+$folderOutputPath = "Song_Database/" . $folderOutput . "/selectedConversions";
+echo $folderOutputPath;
+
+
 
 foreach ($files as $file){
     $file = str_replace("dropzonefileicons", "", $file);
