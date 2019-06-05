@@ -607,11 +607,11 @@ function changeDetailsMessage(){
                                     <div id=downloadSection>
                                     </div>
                                 </div>
-                                <br><br>
+                                <br><br>                                
+                                <form action=conversions.php>
                                     <button onclick='getSelectedFiles();' style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
-                                    <input type='hidden' name='files[]' > 
-                                <!-- <form action=conversions.php>
-                                </form> -->
+                                    <input type='hidden' name='downloadsFilesTypes[]' value='test'> 
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -625,7 +625,7 @@ function changeDetailsMessage(){
                                 if (curEl == 'selectFiles') {
                                     console.log('Not Adding')
                                 }
-                                else if (curEl == 'selectFiles'){
+                                else if (curEl == 'selectAllDownloadIcon'){
                                     console.log('Not Adding')
                                 }
                                 else {
@@ -634,6 +634,7 @@ function changeDetailsMessage(){
                                 }
                             }
                             console.log(list);
+                            document.getElementsByName("downloadsFilesTypes")[0].value = list;
                         }
 
                         function selectAllFiles(id) {
