@@ -576,7 +576,7 @@ function changeDetailsMessage(){
                                         <div id=selectAllDownloadIcon class="filetypeDownload unselected" onclick="selectAllFileTypes(this.id)" style='vertical-align:middle'>
                                             <span style='position:relative;top:43%;'> Select All </span>
                                         </div>
-                                        <div class=selectionSection>
+                                        <div id=filetypeselectionsection class=selectionSection>
 
                                             <div id=abcDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
                                                 <img src='icons-misc/conversions/abc.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
@@ -627,7 +627,7 @@ function changeDetailsMessage(){
 
                                 </form>
                                 <script>
-                                    console.log(GetElementInsideContainer());
+                                    console.log(GetElementInsideContainer('filetypeselectionsection'));
                                 </script>
                             </div>
                         </div>
