@@ -1426,11 +1426,11 @@
                                 <div class=sparklines style='width: 28%; display: inline-block; position: relative;margin-right:10%'>
                                     
                                     <div id=pitchChart" . $filename . " class=chart-container style='margin-left:0;width:100%;padding:10px;height:30%;margin-bottom:15px'>
-                                        <span>Pitch Moving Average</span>
+                                        <span style='font-size:11px'>Pitch Moving Average</span>
                                     </div>
                                     
                                     <div id=pieChart" . $filename . " class=chart-container style='width:100%;padding:10px;height:30%'>
-                                        <span>Note Value Moving Average</span>    
+                                        <span style='font-size:11px'>Note Value Moving Average</span>    
                                     </div>
                                 
                                 </div>
