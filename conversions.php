@@ -20,7 +20,7 @@ foreach ($recieved as $value) {
 }
 
 
-$folderOutput = $files[0];
+$folderOutput = str_replace("dropzonefileicons", "", $files[0]);
 echo $folderOutput;
 $folderOutputPath = "Song_Database/" . $folderOutput . "/selectedConversions";
 echo $folderOutputPath;
