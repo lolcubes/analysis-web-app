@@ -1425,26 +1425,24 @@
                             <div class=analysis-content style='padding:0px'>
                                 <div class=sparklines style='width: 28%; display: inline-block; position: relative;margin-right:10%'>
                                     <div class=chart-container style='margin-left:0;width:100%;padding:10px;height:30%;margin-bottom:15px'>
-                                        <div id=pitchChart" . $filename . " >
-                                        </div>
+                                        <div id=pitchChart" . $filename . " ></div>
                                         <span style='font-size:11px'>Pitch Moving Average</span>
                                     </div>
                                     <div class=chart-container style='width:100%;padding:10px;height:30%'>
+                                        <div id=pieChart" . $filename . " ></div>
                                         <span style='font-size:11px'>Rhythm Moving Average</span>    
-                                        <div id=pieChart" . $filename . " >
-                                        </div>
                                     </div>
                                 
                                 </div>
 
                                 <div style='display:inline-block;vertical-align:top;width:47%'>
-                                    <div class=chart-container style='width:100%; overflow: none;'> 
+                                    <div class=chart-container style='width:100%; overflow: none;padding-top:25px; padding-bottom:25px;'> 
                                         <img src='Song_Database/" . $filename . "/image-assets/keyscape.png' alt='Keyscape Chart' width='100%' >
                                     </div>
                                     <div class=chart-container style='width:100%;height:35px;font-size:28px;margin-top:20px;vertical-align:bottom'>" . $timePath ."</div>
                                 </div>
 
-                                <div class=chart-container style='width:80%; height:80px; overflow: auto;margin-left:7%;display:inline-block;margin-top:20px'> 
+                                <div class=chart-container style='width:87%; height:80px; overflow: auto;margin-left:7%;display:inline-block;margin-top:20px'> 
                                     <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height=60px>
                                 </div>
 
