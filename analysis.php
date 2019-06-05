@@ -1424,8 +1424,9 @@
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                             <div class=analysis-content style='padding:0px'>
                                 <div class=sparklines style='width: 28%; display: inline-block; position: relative;margin-right:10%'>
-                                    
-                                    <div id=pitchChart" . $filename . " class=chart-container style='margin-left:0;width:100%;padding:10px;height:30%;margin-bottom:15px'>
+                                    <div class=chart-container style='margin-left:0;width:100%;padding:10px;height:30%;margin-bottom:15px'>
+                                        <div id=pitchChart" . $filename . " >
+                                        </div>
                                         <span style='font-size:11px'>Pitch Moving Average</span>
                                     </div>
                                     
