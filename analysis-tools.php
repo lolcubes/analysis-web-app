@@ -794,7 +794,7 @@ function changeDetailsMessage(){
 
                 <div id=pitch style='display:inline-block;vertical-align:middle;margin-right:68px;'>
                     <h2 style='margin-bottom:12px'>Pitch:</h2>
-                    <div id=pitchSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;'>
+                    <div id=pitchSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;margin-right:8px;'>
                         <span class=switchesLabel>Scales</span><br>
                         <span class=switchesLabel>Key Signature</span><br>
                         <span class=switchesLabel>Average Pitch</span><br>
@@ -843,8 +843,8 @@ function changeDetailsMessage(){
                 </div>
                 
                 <div id=rhythm style='display:inline-block;vertical-align:top'>
-                    <h2 style='margin-bottom:12px'>Rhythm:</h2>
-                    <div id=noteValueSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;'>
+                    <h2 style='margin-bottom:20px'>Rhythm:</h2>
+                    <div id=noteValueSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;argin-right:8px;'>
                         <span class=switchesLabel>Time Signature</span><br>
                         <span class=switchesLabel>Average Note Value</span><br>
                         <span class=switchesLabel>Repeated Note Value</span><br>
