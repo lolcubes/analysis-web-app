@@ -782,90 +782,92 @@ function changeDetailsMessage(){
 
             <br>
             <br>
-            <h2 id="data-heading">Select Analysis Types:</h2>
+            <div class=mainSection>
+                <h2 id="data-heading">Select Analysis Types:</h2>
 
-            <br>
-            <div id="check-all">
-                <label class="container">Check All&nbsp;&nbsp;
-                    <input style="display:none" type=checkbox class="buttonform" onclick="checkAll('analysis-form')"  />
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <br>
-            <div id="data-types" class="panels">
-                
-            <div id="heading">
-                <p id="data-heading">Pitch:</p>
-            </div>
-            <br>
-            <br>
-            
-                <label class="container">Scales&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="scales.sh">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Key Signature&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Average Pitch&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Average Steps&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Most Used Pitches&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="container">Repeated Pitches&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-
-            <div id="data-types" class="panels">
+                <br>
+                <div id="check-all">
+                    <label class="container">Check All&nbsp;&nbsp;
+                        <input style="display:none" type=checkbox class="buttonform" onclick="checkAll('analysis-form')"  />
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <br>
+                <div id="data-types" class="panels">
+                    
                 <div id="heading">
-                    <p id="data-heading">Rhythm:</p>
+                    <p id="data-heading">Pitch:</p>
                 </div>
                 <br>
                 <br>
+                
+                    <label class="container">Scales&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="scales.sh">
+                        <span class="checkmark"></span>
+                    </label>
 
-                <label class="container">Average Note Value&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="average-note-value.sh">
-                    <span class="checkmark"></span>
-                </label>
+                    <label class="container">Key Signature&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
+                        <span class="checkmark"></span>
+                    </label>
 
-                <label class="container">Repeated Note Value&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="repeated-note-value.sh" >
-                    <span class="checkmark"></span>
-                </label>
+                    <label class="container">Average Pitch&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
+                        <span class="checkmark"></span>
+                    </label>
 
-                <label class="container">Time Signature&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="time-signature.sh" >
-                    <span class="checkmark"></span>
-                </label>
+                    <label class="container">Average Steps&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
+                        <span class="checkmark"></span>
+                    </label>
 
-                <label class="container">Most Used Note Value&nbsp;&nbsp;
-                    <input type="checkbox" name="data-choose[]" value="most-used-note-value.sh" >
-                    <span class="checkmark"></span>
-                </label>
-            </div>
+                    <label class="container">Most Used Pitches&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
+                        <span class="checkmark"></span>
+                    </label>
 
-            <br>
-            <br>
-                <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis" >
-                <input type="hidden" name='userfilelocations'/> 
-            </form>
+                    <label class="container">Repeated Pitches&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
 
-    </div> 
+                <div id="data-types" class="panels">
+                    <div id="heading">
+                        <p id="data-heading">Rhythm:</p>
+                    </div>
+                    <br>
+                    <br>
+
+                    <label class="container">Average Note Value&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="average-note-value.sh">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Repeated Note Value&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="repeated-note-value.sh" >
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Time Signature&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="time-signature.sh" >
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Most Used Note Value&nbsp;&nbsp;
+                        <input type="checkbox" name="data-choose[]" value="most-used-note-value.sh" >
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <br>
+                <br>
+                    <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis" >
+                    <input type="hidden" name='userfilelocations'/> 
+                </form>
+
+            </div> 
+        </div>
     <script>
         function startLoader(){
             document.getElementById("loading-bar").className = "loading";
