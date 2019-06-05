@@ -626,14 +626,14 @@ function changeDetailsMessage(){
                         function selectAllFiles(id) {
                             var classname = document.getElementById(id).className
                             if (classname == 'filetypeDownload unselected') {
-                                var els = document.getElementsByClassName('dropzonefileicons unselected');
+                                var els = document.getElementsByClassName('dropzonefileicons');
                                 for (var i=0; i<els.length; i++)  {
                                     document.getElementsByClassName('dropzonefileicons')[i].className = 'dropzonefileicons selected'
                                 }
                                 document.getElementById(id).className = 'filetypeDownload selected'
                             }
                             if (classname == 'filetypeDownload selected') {
-                                var els = document.getElementsByClassName('dropzonefileicons selected');
+                                var els = document.getElementsByClassName('dropzonefileicons');
                                 for (var i=0; i<els.length; i++)  {
                                     document.getElementsByClassName('dropzonefileicons')[i].className = 'dropzonefileicons unselected'
                                 }
