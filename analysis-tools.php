@@ -792,7 +792,7 @@ function changeDetailsMessage(){
                 </div>
                 <br>
 
-                <div id=pitch style='display:inline-block;vertical-align:middle'>
+                <div id=pitch style='display:inline-block;vertical-align:middle;margin-right:25px;'>
                     <div id=pitchSwitchLabels style='display:inline-block;line-height:28px;text-align:left;font-size:18px;'>
                         <span class=switchesLabel>Scales</span><br>
                         <span class=switchesLabel>Key Signature</span><br>
