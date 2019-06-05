@@ -800,10 +800,16 @@ function changeDetailsMessage(){
                 </div>
                 <br>
                 <br>
-                
-                        <input type="checkbox" name="data-choose[]" value="scales.sh">
 
+                    <label class="switch">
+                        <input type="checkbox" name="data-choose[]" value="scales.sh">
+                        <span class="slider round"></span>
+                    </label>
+
+                    <label class="container">Key Signature&nbsp;&nbsp;
                         <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
+                        <span class="checkmark"></span>
+                    </label>
 
                     <label class="container">Average Pitch&nbsp;&nbsp;
                         <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
