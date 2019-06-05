@@ -1428,9 +1428,9 @@
                                     <div id=pieChart" . $filename . " class=chart-container style='width:80%;padding:10px;height:30%'></div>
                                 </div>
 
-                                <div style='display:inline-block;vertical-align:top'>
-                                    <div class=chart-container style='width:80%; height:200px; overflow: auto;margin-left:7%;display:auto'> 
-                                        <img src='Song_Database/" . $filename . "/image-assets/keyscape.png' alt='Keyscape Chart' height=180px>
+                                <div style='display:inline-block;vertical-align:top;width:40%'>
+                                    <div class=chart-container style='width:80%; height:160px; margin-left:7%;display:auto'> 
+                                        <img src='Song_Database/" . $filename . "/image-assets/keyscape.png' alt='Keyscape Chart' height=150px >
                                     </div>
                                     <div class=chart-container style=';width:auto;height:35px;font-size:28px;margin-top:20px;vertical-align:bottom'>" . $timePath ."</div>
                                 </div>
