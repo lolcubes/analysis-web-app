@@ -73,7 +73,7 @@
         
     <body>
 
-
+        <div id=contentDivToCenter>
     
         
         <script>
@@ -1677,7 +1677,7 @@
 
             // }
         ?>
-        
+        </div>
         <br>
         <br>
         <script>

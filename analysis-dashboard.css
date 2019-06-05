@@ -132,9 +132,13 @@
 
 body {
   background-color: var(--main-bg-color);
-  text-align: center;
-
 }
+
+#contentDivToCenter {
+  text-align: center;
+}
+
+
 
 #shelf-item {
   width: 85%;
