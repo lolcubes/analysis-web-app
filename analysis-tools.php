@@ -114,23 +114,6 @@ $( document ).ajaxComplete(function() {
 
 });
 
-    function populateDropzone(){
-            var array = document.getElementById("demo").innerHTML;
-            var arrayparsed = JSON.parse(array);
-            var names = arrayparsed.names;
-            var icons = arrayparsed.fileicon;
-            var size = arrayparsed.filesize
-            $("#dropzone").append("<br>");
-
-            $("#dropzone").append("<br>");
-            for (var i = 0; i < icons.length; i += 1) {
-                var icon = icons[i];
-                var name = names[i];
-                var thissize = size[i];
-                $("#dropzone").append( '<div class="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<p>' + name + '</p>' + '<p>' + thissize + ' kb' + '</p>' + '</div>');
-            }
-            
-        }
     function populateDownloadSectionFiles(){
         var array = document.getElementById("demo").innerHTML;
             var arrayparsed = JSON.parse(array);
@@ -281,12 +264,17 @@ function addAudioPlayers(){
             var arrayparsed = JSON.parse(array);
             var names = arrayparsed.names;
             var icons = arrayparsed.fileicon;
+            var size = arrayparsed.filesize
+            $("#dropzone").append("<br>");
+
+            $("#dropzone").append("<br>");
             for (var i = 0; i < icons.length; i += 1) {
                 var icon = icons[i];
                 var name = names[i];
-                $("#dropzone").append( '<div class="dropzonefileicons">' + '<img src=' + icon + " height=70px;" + '>' + '<p>' + name + '</p>' + '</div>');
+                var thissize = size[i];
+                $("#dropzone").append( '<div class="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<p>' + name + '</p>' + '<p>' + thissize + ' kb' + '</p>' + '</div>');
             }
-
+            
         }
 
         (function() {
