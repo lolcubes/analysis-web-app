@@ -1092,11 +1092,12 @@ FOR THE SLIDERS
   content: "";
   height: 20px;
   width: 20px;
-  left: 4px;
+  left: 2px;
   bottom: 4px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+  top:2px;
 }
 
 input:checked + .slider {
@@ -1108,9 +1109,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(14px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
 }
 
 /* Rounded sliders */
