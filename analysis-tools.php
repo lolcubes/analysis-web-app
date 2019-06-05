@@ -800,36 +800,47 @@ function changeDetailsMessage(){
                 </div>
                 <br>
                 <br>
-                    <span>Scales</span>
+                    <span class=switchesLabel>Scales</span>
                     <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="scales.sh">
                         <span class="slider round"></span>
                     </label>
+                    <br>
 
+                    <span class=switchesLabel>Scales</span>
                     <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
                         <span class="slider round"></span>
                     </label>
+                    <br>
 
+                    <span class=switchesLabel>Scales</span>
                     <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
                         <span class="slider round"></span>
                     </label>
+                    <br>
 
+                    <span class=switchesLabel>Scales</span>
                     <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="average-steps.sh" >
                         <span class="slider round"></span>
                     </label>
+                    <br>
 
+                    <span class=switchesLabel>Scales</span>
                     <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="most-used-pitches.sh" >
                         <span class="slider round"></span>
                     </label>
+                    <br>
 
+                    <span class=switchesLabel>Scales</span>
                     <label class="switch">
                         <input type="checkbox" name="data-choose[]" value="repeated-pitches.sh" >
                         <span class="slider round"></span>
                     </label>
+                    <br>
                 </div>
 
                 <div id="data-types" class="panels">
