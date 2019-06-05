@@ -878,13 +878,14 @@ function changeDetailsMessage(){
                 </div>
                 <br>
                 <br>
-
+                <br>
+                <br>
+                    <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis" >
+                    <input type="hidden" name='userfilelocations'/> 
+                </form>
 
             </div> 
         </div>
-        <input type="submit" id="submit" name="submit" class="buttonform" value="Begin Analysis" >
-        <input type="hidden" name='userfilelocations'/> 
-        </form>
     <script>
         function startLoader(){
             document.getElementById("loading-bar").className = "loading";
