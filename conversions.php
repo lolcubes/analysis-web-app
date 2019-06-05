@@ -28,7 +28,7 @@ foreach ($files as $file){
     foreach ($types as $type) {
         $type = str_replace("DownloadIcon", "", $type);
         $typepath = $path . "song." . $type;
-        echo file_get_contents($typepath);
+        echo $typepath;
         echo "<br>";
     }
 }
