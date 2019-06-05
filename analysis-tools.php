@@ -618,9 +618,22 @@ function changeDetailsMessage(){
                     <script>
                         function getSelectedFiles() {
                             var els = document.getElementsByClassName('selected')
+                            var list = [];
                             for (var i = 0; i < els.length; i++) {
-                                console.log(els[i].id)
+                                var curEl = els[i].id;
+
+                                if (curEl == 'selectFiles') {
+                                    console.log('Not Adding')
+                                }
+                                else if (curEl == 'selectFiles'){
+                                    console.log('Not Adding')
+                                }
+                                else {
+                                    list.push(curEl);
+                                    //add the curEl var to array to pass to php
+                                }
                             }
+                            console.log(list);
                         }
 
                         function selectAllFiles(id) {
