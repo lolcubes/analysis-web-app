@@ -45,6 +45,20 @@
     }
 </style>
 
+<script>
+        function GetElementInsideContainer(containerID) {
+            var elm = {};
+            var elms = document.getElementById(containerID).getElementsByTagName("*");
+            for (var i = 0; i < elms.length; i++) {
+                if (elms[i].class === 'selected') {
+                    elm = elms[i];
+                    break;
+                }
+            }
+            return elm;
+        }
+</script>
+
 <br>
 <div id="center">
 <br>
@@ -607,7 +621,14 @@ function changeDetailsMessage(){
                                     </div>
                                 </div>
                                 <br><br>
-                                <button style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
+                                <form action=conversions.php>
+                                    <button type=submit style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
+                                    <input type='hidden' name='files[]' > 
+
+                                </form>
+                                <script>
+                                    console.log(GetElementInsideContainer());
+                                </script>
                             </div>
                         </div>
                     </div>
