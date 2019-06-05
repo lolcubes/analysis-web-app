@@ -783,7 +783,7 @@ function changeDetailsMessage(){
             <br>
             <br>
             <div class=mainSection>
-                <h1 id="data-heading">Select Analysis Types:</h1>
+                <h1 id="data-heading">Select Analysis Types</h1>
 
                 <br>
                 <div id="check-all">
@@ -801,15 +801,9 @@ function changeDetailsMessage(){
                 <br>
                 <br>
                 
-                    <label class="container">Scales&nbsp;&nbsp;
                         <input type="checkbox" name="data-choose[]" value="scales.sh">
-                        <span class="checkmark"></span>
-                    </label>
 
-                    <label class="container">Key Signature&nbsp;&nbsp;
                         <input type="checkbox" name="data-choose[]" value="key-signature.sh" >
-                        <span class="checkmark"></span>
-                    </label>
 
                     <label class="container">Average Pitch&nbsp;&nbsp;
                         <input type="checkbox" name="data-choose[]" value="average-pitch.sh" >
