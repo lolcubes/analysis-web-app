@@ -59,24 +59,19 @@
             }
         </style>
         <div id="dashboard-header">
-            <br>
-            <br>
-            <br>
+        <br>
+        <br>
+        <br>
 
-            <h1 style="display: inline-block;vertical-align:middle">Analysis Dashboard</h1> 
+        <h1 style="display: inline-block;vertical-align:middle">Analysis Dashboard</h1> 
 
-            <form action=formula-page.php method=post style="display: inline-block;vertical-align:middle">
-                <button type=submit class=darkform name='Comparison Analytics'>Comparison Analytics</button>
-                <input type="hidden" name='filesarray' id="files_array" value="<?php echo $_POST['userfilelocations'] ?>" /> 
-            </form>
-            <br>
-            <br>
-        </div>
-    <body>
-
-        <div id=contentDivToCenter>
-    
+        <form action=formula-page.php method=post style="display: inline-block;vertical-align:middle">
+            <button type=submit class=darkform name='Comparison Analytics'>Comparison Analytics</button>
+            <input type="hidden" name='filesarray' id="files_array" value="<?php echo $_POST['userfilelocations'] ?>" /> 
+        </form>
+        <br>
         
+    <body>
         <script>
                 function showDiv(classVar, contentId) { 
 
@@ -123,7 +118,8 @@
                 }
         </script>
 
-
+        <br>
+        </div>
 
         <br>
         <?php
@@ -1542,10 +1538,6 @@
 
                 echo "
                 </div>";
-                echo "
-                </div>";
-                echo "
-                </div>";
 
 
             }
@@ -1677,7 +1669,7 @@
 
             // }
         ?>
-        </div>
+        
         <br>
         <br>
         <script>
