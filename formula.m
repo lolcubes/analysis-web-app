@@ -159,7 +159,7 @@ for j = 1:7
 %%%%%%%%%%%%%%%%%%%%%%
 % analysis 6: repeated note value
 %%%%%%%%%%%%%%%%%%%%%% 
- for j = 1:7
+ for j = 1:6
   if (max(x51(j), x52(j)) == 0) 
     y5(j) = 1;
    else 
