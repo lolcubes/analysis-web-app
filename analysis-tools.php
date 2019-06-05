@@ -800,7 +800,7 @@ function changeDetailsMessage(){
                 </div>
                 <br>
                 <br>
-                    <div id=pitchSwitchLabels style='display:inline-block'>
+                    <div id=pitchSwitchLabels style='display:inline-block;line-height:28px;text-align:left'>
                         <span class=switchesLabel>Scales</span><br>
                         <span class=switchesLabel>Key Signature</span><br>
                         <span class=switchesLabel>Average Pitch</span><br>
