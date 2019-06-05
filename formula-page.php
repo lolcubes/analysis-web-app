@@ -77,7 +77,6 @@
         <?php
             $files = $_POST['filesarray'];
             $exploded = explode(",", $files);
-            print_r($exploded);
             foreach ($exploded as $value) {
                 $filename = str_replace("Song_Database/", "", $value);
                 $removedFileName = strstr($filename, '_');

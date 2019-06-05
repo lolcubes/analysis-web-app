@@ -1,4 +1,4 @@
-function averageTimeSigs {
+averageTimeSigs() {
     file=$1
     lineNumber=$(echo "$file" | wc -l)
     topNums=$(echo "$file" | cut -d '/' -f1)
@@ -8,7 +8,7 @@ function averageTimeSigs {
     echo "time-signature:$(echo "scale=2;$topSum/$lineNumber" | bc -l)/$(echo "scale=2;$bottomSum/$lineNumber" | bc -l);"
 }
 
-function averageKeySigs {
+averageKeySigs() {
     number=$(echo "$1" | wc -l)
     sum=$(echo "$1" | tr '\n' '+' | rev | cut -c 2- | rev | bc)
     div=$(echo "scale=2; ${sum}/${number}" | bc -l)
@@ -28,7 +28,7 @@ function averageKeySigs {
     echo "key-signature:$snapped;"  
 }
 
-function amalgamate {
+amalgamate() {
     suffix="song.txt"
 
     removed=$(echo $1 | sed -e "s/$suffix$//")
