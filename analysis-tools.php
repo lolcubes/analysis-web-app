@@ -801,11 +801,11 @@ function changeDetailsMessage(){
                 <br>
                 <br>
                     <div id=pitchSwitchLabels style='display:inline-block'>
-                        <span class=switchesLabel>Scales</span>
-                        <span class=switchesLabel>Key Signature</span>
-                        <span class=switchesLabel>Average Pitch</span>
-                        <span class=switchesLabel>Average Steps</span>
-                        <span class=switchesLabel>Pitch Distribution</span>
+                        <span class=switchesLabel>Scales</span><br>
+                        <span class=switchesLabel>Key Signature</span><br>
+                        <span class=switchesLabel>Average Pitch</span><br>
+                        <span class=switchesLabel>Average Steps</span><br>
+                        <span class=switchesLabel>Pitch Distribution</span><br>
                         <span class=switchesLabel>Repeated Pitches</span>
                     </div>
                     <div id=pitchSwitches style='display:inline-block;'>
