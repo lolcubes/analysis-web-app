@@ -117,7 +117,7 @@
                 exec("analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
                 shell_exec( "timidity $target -Ow");
                 shell_exec( "analysis-scripts/humdrum/deg/degrunner.sh $fileconvert $degoutput");
-                shell_exec( "analysis-scripts/humdrum/proll -K $fileconvert > $prolloutput");
+                shell_exec( "analysis-scripts/humdrum/proll $fileconvert > $prolloutput");
 
                 shell_exec( "analysis-scripts/humdrum/mkeyscape $target > $keyscapeoutput");
                 shell_exec("pnmtopng -transparent white $keyscapeoutput > $keyscapeoutputpng");
