@@ -618,7 +618,7 @@ function changeDetailsMessage(){
                     </div>
                     <script>
                         function getSelectedFiles() {
-                            var els = document.getElementsByClass('selected')
+                            var els = document.getElementsByClassName('selected')
                             for (var i = 0; i < els.length; i++) {
                                 console.log(els.id)
                             }
