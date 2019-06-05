@@ -45,19 +45,6 @@
     }
 </style>
 
-<script>
-        function GetElementInsideContainer(containerID) {
-            var elm = {};
-            var elms = document.getElementById(containerID).getElementsByTagName("*");
-            for (var i = 0; i < elms.length; i++) {
-                if (elms[i].class === 'selected') {
-                    elm = elms[i];
-                    break;
-                }
-            }
-            return elm;
-        }
-</script>
 
 <br>
 <div id="center">
@@ -622,18 +609,20 @@ function changeDetailsMessage(){
                                 </div>
                                 <br><br>
                                 <form action=conversions.php>
-                                    <button type=submit style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
+                                    <button onclick='getSelectedFiles();' style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
                                     <input type='hidden' name='files[]' > 
 
                                 </form>
-                                <script>
-                                    console.log(GetElementInsideContainer('filetypeselectionsection'));
-                                </script>
                             </div>
                         </div>
                     </div>
                     <script>
-
+                        function getSelectedFiles() {
+                            var els = document.getElementsByClass('selected')
+                            for (var i = 0; i < els.length; i++) {
+                                console.log(els.id)
+                            }
+                        }
 
                         function selectAllFiles(id) {
                             var classname = document.getElementById(id).className
