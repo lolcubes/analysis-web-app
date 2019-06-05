@@ -127,7 +127,7 @@ $( document ).ajaxComplete(function() {
                 var icon = icons[i];
                 var name = names[i];
                 var thissize = size[i];
-                $("#downloadfilesselectionsection").append( '<div class="dropzonefileicons unselected"  style="cursor:pointer;" id="dropzonefileicons' + name + '" onclick="addSelectedClassFiles(this.id)">' + '<img src=' + icon + " height=90px;" + '>' + '<p>' + name + '</p>' + '</div>');
+                $("#downloadfilesselectionsection").append( '<div class="dropzonefileicons unselected"  style="cursor:pointer;" id="dropzonefileicons' + name + '" onclick="addSelectedClassFiles(this.id)">' + '<img src=' + icon + " height=90px;" + '>' + '<span style="margin-top:16px;margin-bottom:10px">' + name + '</span>' + '</div>');
             }
     }
 </script>
@@ -272,7 +272,7 @@ function addAudioPlayers(){
                 var icon = icons[i];
                 var name = names[i];
                 var thissize = size[i];
-                $("#dropzone").append( '<div class="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<br style="line-height:34px"><span style="font-size:18px">' + name + '</span><br style="line-height:20px">' + '<span style="font-size:18px">' + thissize + ' kb' + '</span>' + '<br style="line-height:24px"></div>');
+                $("#dropzone").append( '<div class="dropzonefileicons">' + '<img src=' + icon + " height=90px;" + '>' + '<br style="line-height:34px"><span style="font-size:18px">' + name + '</span><br style="line-height:26px">' + '<span style="font-size:18px">' + thissize + ' kb' + '</span>' + '<br style="line-height:24px"></div>');
             }
             
         }
