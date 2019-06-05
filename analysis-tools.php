@@ -771,7 +771,7 @@ function changeDetailsMessage(){
                             }
                         }
 
-                        document.getElementById("check-all").innerHTML = '<label class="buttonform filled">Uncheck All<input checked=checked type=checkbox class="buttonform" style="display:none" onclick="unCheckAll(\'analysis-form\')"  />';
+                        document.getElementById("check-all").innerHTML = '<label class="buttonformfilled">Uncheck All<input checked=checked type=checkbox class="buttonform" style="display:none" onclick="unCheckAll(\'analysis-form\')"  />';
                         }
 
                     </script>
