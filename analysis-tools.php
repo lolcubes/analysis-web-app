@@ -538,7 +538,11 @@ function changeDetailsMessage(){
                                 <span class="close">&times;</span>
                                 <h1>Download Files</h1>
                                 <br>
+                                <br>
+                                <br>
                                 <div id=downloadContent>
+                                <h3>Select files to convert:</h3>
+                                <br>
 
                                     <div id=selectFiles
 
@@ -555,6 +559,8 @@ function changeDetailsMessage(){
                                     <br>
                                     
                                     <div id=selectFileTypes style='display:none;'>
+                                        <h3>Select conversion types:</h3>
+                                        <br>
                                         <div id=selectAllDownloadIcon class="filetypeDownload unselected" onclick="selectAllFileTypes(this.id)" style='vertical-align:middle'>
                                             <span style='position:relative;top:43%;'> Select All </span>
                                         </div>
