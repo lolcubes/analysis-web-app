@@ -19,5 +19,8 @@ foreach ($recieved as $value) {
     }
 }
 print_r($files);
+echo "<br>";
+print_r($types);
+
 
 ?>
