@@ -1429,14 +1429,14 @@
                                 </div>
 
                                 <div style='display:inline-block;vertical-align:top;width:40%'>
-                                    <div class=chart-container style='width:100%; margin-left:7%;display:auto'> 
+                                    <div class=chart-container style='width:80%; height:80px; overflow: auto;margin-left:50px;margin-top: 20px'> 
                                         <img src='Song_Database/" . $filename . "/image-assets/keyscape.png' alt='Keyscape Chart' width='100%' >
                                     </div>
                                     <div class=chart-container style='width:100%;height:35px;font-size:28px;margin-top:20px;vertical-align:bottom;margin-left:6%'>" . $timePath ."</div>
                                 </div>
 
-                                <div class=chart-container style='width:80%; height:200px; overflow: auto;margin-left:7%;'> 
-                                    <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height=180px>
+                                <div class=chart-container style='width:80%; height:80px; overflow: auto;margin-left:7%;'> 
+                                    <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height=60px>
                                 </div>
 
                                     <br>
