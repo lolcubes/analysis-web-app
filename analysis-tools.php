@@ -608,11 +608,10 @@ function changeDetailsMessage(){
                                     </div>
                                 </div>
                                 <br><br>
-                                <form action=conversions.php>
                                     <button onclick='getSelectedFiles();' style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
                                     <input type='hidden' name='files[]' > 
-
-                                </form>
+                                <!-- <form action=conversions.php>
+                                </form> -->
                             </div>
                         </div>
                     </div>
@@ -620,7 +619,7 @@ function changeDetailsMessage(){
                         function getSelectedFiles() {
                             var els = document.getElementsByClassName('selected')
                             for (var i = 0; i < els.length; i++) {
-                                console.log(els.id)
+                                console.log(els[i].id)
                             }
                         }
 
