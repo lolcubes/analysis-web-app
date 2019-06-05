@@ -1423,16 +1423,16 @@
                             echo "
                             <div class=analysis-container_" . $filename . " id=general" . "_" . $filename .  " style='width: 100%; transition: all .4s ease;'>
                             <div class=analysis-content style='padding:0px'>
-                                <div class=sparklines style='width:40%;display:inline-block'>
-                                    <div id=pitchChart" . $filename . " class=chart-container style='margin-left:0;width:80%;padding:10px;height:30%;margin-bottom:15px'></div>
-                                    <div id=pieChart" . $filename . " class=chart-container style='width:80%;padding:10px;height:30%'></div>
+                                <div class=sparklines style='width: 28%; display: inline-block; position: relative;margin-right:10%'>
+                                    <div id=pitchChart" . $filename . " class=chart-container style='margin-left:0;width:100%;padding:10px;height:30%;margin-bottom:15px'></div>
+                                    <div id=pieChart" . $filename . " class=chart-container style='width:100%;padding:10px;height:30%'></div>
                                 </div>
 
                                 <div style='display:inline-block;vertical-align:top;width:40%'>
-                                    <div class=chart-container style='width:80%; height:160px; margin-left:7%;display:auto'> 
-                                        <img src='Song_Database/" . $filename . "/image-assets/keyscape.png' alt='Keyscape Chart' height=150px >
+                                    <div class=chart-container style='width:100%; margin-left:7%;display:auto'> 
+                                        <img src='Song_Database/" . $filename . "/image-assets/keyscape.png' alt='Keyscape Chart' width='100%' >
                                     </div>
-                                    <div class=chart-container style=';width:auto;height:35px;font-size:28px;margin-top:20px;vertical-align:bottom'>" . $timePath ."</div>
+                                    <div class=chart-container style='width:100%;height:35px;font-size:28px;margin-top:20px;vertical-align:bottom;margin-left:6%'>" . $timePath ."</div>
                                 </div>
 
                                 <div class=chart-container style='width:80%; height:200px; overflow: auto;margin-left:7%;'> 
