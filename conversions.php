@@ -22,5 +22,9 @@ print_r($files);
 echo "<br>";
 print_r($types);
 
+foreach ($files as $file){
+    $file = str_replace("dropzonefileicons", "", $file);
+    $path = "Song_Database/"
+}
 
 ?>
