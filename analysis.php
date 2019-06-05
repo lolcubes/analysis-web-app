@@ -1429,7 +1429,7 @@
                                 </div>
 
                                 <div style='display:inline-block;vertical-align:top;width:40%'>
-                                    <div class=chart-container style='width:100%; height:85px; overflow: none;> 
+                                    <div class=chart-container style='width:100%; height:85px; overflow: none;'> 
                                         <img src='Song_Database/" . $filename . "/image-assets/keyscape.png' alt='Keyscape Chart' width='100%' >
                                     </div>
                                     <div class=chart-container style='width:100%;height:35px;font-size:28px;margin-top:20px;vertical-align:bottom'>" . $timePath ."</div>
