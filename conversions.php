@@ -27,7 +27,9 @@ foreach ($files as $file){
     $path = "Song_Database/" . $file . "/data-conversions/";
     foreach ($types as $type) {
         $type = str_replace("DownloadIcon", "", $type);
-        echo "$path$type";
+        $typepath = $path . "/song" . $type;
+        echo $typepath;
+        echo "<br>";
     }
 }
 
