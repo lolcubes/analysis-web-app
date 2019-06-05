@@ -607,7 +607,7 @@ function changeDetailsMessage(){
                                     </div>
                                 </div>
                                 <br><br>
-
+                                <button style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
                             </div>
                         </div>
                     </div>
@@ -648,6 +648,7 @@ function changeDetailsMessage(){
                                     document.getElementsByClassName('filetypeDownload')[i].className = 'filetypeDownload unselected'
                                 }
                             }
+                            $('#conversionsButton').delay(200).show("slow");
                         }
 
                         function addSelectedClass(id) {
@@ -662,8 +663,10 @@ function changeDetailsMessage(){
                                 el.className = '';
                                 el.className = 'filetypeDownload unselected';
                             }
-                            $('#selectFileTypes').delay(200).show("slow");
+                            $('#conversionsButton').delay(200).show("slow");
+
                         }
+                        
 
                         function addSelectedClassFiles(id) {
                             var el = document.getElementById(id);
@@ -672,12 +675,14 @@ function changeDetailsMessage(){
                             if (classo == 'dropzonefileicons unselected'){
                                 el.className = '';
                                 el.className = 'dropzonefileicons selected'
+
                             }; 
                             if (classo == 'dropzonefileicons selected') {
                                 el.className = '';
                                 el.className = 'dropzonefileicons unselected';
                             }
-                            
+                            $('#selectFileTypes').delay(200).show("slow");
+
                         }
                     </script>
 
