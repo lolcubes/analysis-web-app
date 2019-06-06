@@ -38,12 +38,8 @@ foreach ($files as $file){
     foreach ($types as $type) {
         $type = str_replace("DownloadIcon", "", $type);
         $oldpath = $path . "song." . $type;
-        echo $oldpath;
-        echo "<br>";
 
         $newPath = $folderOutputPath . "/" . $file . "/song." . $type;
-        echo $newPath;
-        echo "<br>";
 
         copy($oldpath, $newPath);
     }
@@ -54,7 +50,8 @@ shell_exec("cd $cdDir && zip -r conversions.zip selectedConversions");
 
 
 $zipDir = $cdDir . "/conversions.zip";
-header("Content-Disposition: attachment; filename=\"$zipDir\"");
+echo $zipDir;
+header("Content-Disposition: application/zip; filename=\"$zipDir\"");
 
 
 
