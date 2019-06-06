@@ -531,7 +531,9 @@ function changeDetailsMessage(){
                     <a id="midianchor"></a>
 
                     <div class=third>
-                        <h3>Download Conversions</h3>
+                        <h3 style='margin:28px'>Download Conversions</h3>
+                        <img src='icons-misc/panels/download.png' width=20% style='margin-bottom:30px'></img>
+                        <br>
                         <button id="myBtn" class='openBtn buttonform'>Open</button>
                     </div>
 
