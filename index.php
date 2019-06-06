@@ -104,6 +104,10 @@
         <img src=icons-misc/home/about.png height=130px style='cursor:pointer;'></img>
         <p style='margin:4px;margin-top:10px;'>About</p>
     </div>
+    <div class=icon>
+        <img src=icons-misc/home/research.png height=130px style='cursor:pointer;'></img>
+        <p style='margin:4px;margin-top:10px;'>Research</p>
+    </div>
 </div>
 
 
