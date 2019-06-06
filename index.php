@@ -35,8 +35,19 @@
         box-shadow: 1px 4px 28px  rgb(0, 0, 0);
         outline: 0;
     }
+    #topSection {
+        width:100%;
+        height:400px;
+        background-image: linear-gradient(grey, black)
+    }
 </style>
-<p>Nothing on this page as of right now. Check out the about page, or the analysis tools page</p>
+
+
+<div id=topSection>
+    <h1 style='margin:8px;'>Simple interface.</h1>
+    <h1 style='margin:8px;'>Powerful musical analysis.</h1>
+</div>
+
 </body>
 
 </html>
