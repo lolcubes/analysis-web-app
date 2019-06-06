@@ -21,9 +21,9 @@ foreach ($recieved as $value) {
 
 
 $folderOutput = str_replace("dropzonefileicons", "", $files[0]);
-echo $folderOutput;
 $folderOutputPath = "Song_Database/" . $folderOutput . "/selectedConversions";
 echo $folderOutputPath;
+echo "<br>";
 
 
 
@@ -33,7 +33,7 @@ foreach ($files as $file){
     foreach ($types as $type) {
         $type = str_replace("DownloadIcon", "", $type);
         $typepath = $path . "song." . $type;
-        echo file_get_contents($typepath);
+        echo $typepath;
         echo "<br>";
     }
 }
