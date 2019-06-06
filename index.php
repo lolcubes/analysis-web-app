@@ -20,7 +20,7 @@
                     <li id="Menu" class="home"><a href="index.php">Home</a></li>
                     <li id="Menu"><a href="analysis-tools.php">Analysis Tools</a></li>
                     <li id="Menu"><a href="pages/about.html">About</a></li>
-                    <li id="Menu"><a href="pages/code.html">Code</a></li>
+                    <li id="Menu"><a href="https://github.com/BeatsInBytes">Code</a></li>
                     <li id="Menu"><a href="pages/research.html">Our Research</a></li>
                 </ul>
             </div>
