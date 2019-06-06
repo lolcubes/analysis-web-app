@@ -53,7 +53,11 @@
         border-radius: 4px;
         background-color: rgba(0,0,0,0);
         font-size:20px;
-
+        cursor: pointer;
+    }
+    #analysisButton:hover {
+        background-color:white;
+        color: rgba(0,0,0,0);
     }
 </style>
 
