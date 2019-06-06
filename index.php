@@ -43,15 +43,16 @@
         color:white;
     }
     #analysisButton {
-        padding-left:7px;
-        padding-right:7px;
-        padding-top:4px;
-        padding-bottom:4px;
+        padding-left:12px;
+        padding-right:12px;
+        padding-top:8px;
+        padding-bottom:8px;
         color:white;
         font-family: 'Avenir Light';
         border: 2px solid white;
         border-radius: 4px;
         background-color: rgba(0,0,0,0);
+        font-size:20px;
 
     }
 </style>
