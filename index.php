@@ -38,7 +38,7 @@
     #topSection {
         text-align:center;
         width:100%;
-        height:440px;
+        height:100%;
         background-image: linear-gradient(rgb(38,38,38), black);
         color:white;
         box-shadow:0px 2px 14px rgba(0,0,0,.4);
