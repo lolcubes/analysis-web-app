@@ -598,6 +598,7 @@ function changeDetailsMessage(){
                                     <button onclick='getSelectedFiles();' style='display:none;' id=conversionsButton class=buttonform>Download Files</button>
                                     <input type='hidden' name='downloadsFilesTypes' value='test'> 
                                 </form>
+                                <br><br><br>
                             </div>
                         </div>
                     </div>
