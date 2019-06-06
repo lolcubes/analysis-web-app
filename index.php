@@ -78,12 +78,10 @@
     <h1 style='margin:8px;font-size:40px;'>Powerful musical analysis.</h1>
     <br><br>
     <a href="analysis-tools.php"><button id=analysisButton>Try our tools</button></a>
-</div>
-
-<div id=icons-below-content>
-<img src=icons-misc/home/ye.png height=140px></img>
+    <img src=icons-misc/home/ye.png height=140px></img>
 
 </div>
+
 
 </body>
 
