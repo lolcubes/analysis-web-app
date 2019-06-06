@@ -39,8 +39,7 @@
         text-align:center;
         width:100%;
         height:440px;
-        background-color:black;
-        /* background-image: linear-gradient(rgb(50,50,50), black); */
+        background-image: linear-gradient(rgb(38,38,38), black);
         color:white;
     }
     #analysisButton {
@@ -62,6 +61,10 @@
         color: black;
         transition: .2s;
     }
+    #analysisButton:active {
+        background-color:rgb(240,240,240);
+        transition: .15s;
+    }
 </style>
 
 
@@ -73,7 +76,7 @@
     <h1 style='margin:8px;font-size:40px;'>Simple interface.</h1>
     <h1 style='margin:8px;font-size:40px;'>Powerful musical analysis.</h1>
     <br><br>
-    <button id=analysisButton>Try our tools</button>
+    <a href="analysis-tools.php"><button id=analysisButton>Try our tools</button></a>
 </div>
 
 </body>
