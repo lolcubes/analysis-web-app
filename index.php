@@ -41,6 +41,7 @@
         height:440px;
         background-image: linear-gradient(rgb(38,38,38), black);
         color:white;
+        box-shadow:0px 2px 14px rgba(0,0,0,.4);
     }
     #analysisButton {
         padding-left:12px;
@@ -77,6 +78,10 @@
     <h1 style='margin:8px;font-size:40px;'>Powerful musical analysis.</h1>
     <br><br>
     <a href="analysis-tools.php"><button id=analysisButton>Try our tools</button></a>
+</div>
+
+<div id=icons-below-content>
+
 </div>
 
 </body>
