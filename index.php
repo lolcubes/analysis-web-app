@@ -39,7 +39,8 @@
         text-align:center;
         width:100%;
         height:440px;
-        background-image: linear-gradient(rgb(50,50,50), black);
+        background-color:black;
+        /* background-image: linear-gradient(rgb(50,50,50), black); */
         color:white;
     }
     #analysisButton {
