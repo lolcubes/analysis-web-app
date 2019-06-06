@@ -416,7 +416,7 @@ function addAudioPlayers(){
                             </div>
                             <div id="musicalnotation">
                                 <div id="notation-content">
-                                        <p id=notationInstruction>To view musical notation, play a song on left</p>
+                                        <p id=notationInstruction style='line-height:20px;'>To view musical notation, play a song on left</p>
                                         <div id="svg-button">
                                             <button style='display:none' id=saveSvgButton class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
                                         </div>

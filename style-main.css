@@ -775,16 +775,17 @@ span.button {
 
 #audioplayer {
   max-height:330px; 
-  box-shadow:2px 2px 18px rgba(0,0,0,.3);
+  box-shadow:2px 2px 18px rgba(0,0,0,.17);
   vertical-align: top;
   width: 32%;
-  border-radius: 20px;
+  border-radius: 8px;
   line-height: 7px;
   display: inline-block;
   overflow: auto;
   margin-bottom: 20px;
   padding: 20px;
   transition: 0.3s;
+  margin-right: 2%;
   /* background-color: rgb(250, 250, 250);
   color: rgb(0, 0, 0);
   transition: 0.3s;
@@ -820,18 +821,18 @@ audio {
   line-height: 7px;
   display: inline-block;
   overflow: auto;
-  padding: 20px;
+  padding: 8px;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   transition: 0.3s;
   line-height:7px;
 
   border-radius: 20px;
-  box-shadow:2px 2px 18px rgba(0,0,0,.3);
+  box-shadow:2px 2px 18px rgba(0,0,0,.17);
 }
 
 #notation-content:hover {
-  box-shadow: 3px 3px 12px rgb(119, 119, 119);
+  box-shadow: 3px 3px 20px rgba(0, 0, 0,.2);
   transition: 0.3s;
 	position:relative;
   top: 1px;
