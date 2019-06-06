@@ -601,7 +601,6 @@ function changeDetailsMessage(){
                                 <br><br><br>
                             </div>
                         </div>
-                    </div>
                     <script>
                         function getSelectedFiles() {
                             var els = document.getElementsByClassName('selected')
