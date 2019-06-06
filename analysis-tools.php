@@ -73,7 +73,7 @@
 
         <div id="dropzone" class="dropzone" >
         <br><br><br><br><br><br><br><br><br>
-            <span>Drop files to upload or</span>
+            <span>Drop kern files to upload or</span>
             <div id="plusfile">
                     <form target="votar" method="post" enctype="multipart/form-data" id="filechooserform" name="filechooserform" onchange="filechooserform.submit();">
                         <input class="inputfile" name="userfile[]" type="file" multiple value="Choose Files" id="uploadchooser" /><br />
