@@ -78,7 +78,9 @@
     <h1 style='margin:8px;font-size:40px;'>Powerful musical analysis.</h1>
     <br><br>
     <a href="analysis-tools.php"><button id=analysisButton>Try our tools</button></a>
-    <img src=icons-misc/home/ye.png height=140px></img>
+    
+    <br><br>
+    <img src=icons-misc/home/ye.png height=240px style='pointer:cursor;'></img>
 
 </div>
 
