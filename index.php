@@ -39,8 +39,20 @@
         text-align:center;
         width:100%;
         height:400px;
-        background-image: linear-gradient(rgb(25,25,25), black);
+        background-image: linear-gradient(rgb(50,50,50), black);
         color:white;
+    }
+    #analysisButton {
+        padding-left:7px;
+        padding-right:7px;
+        padding-top:4px;
+        padding-bottom:4px;
+        color:white;
+        font-family: 'Avenir Light';
+        border: 2px solid white;
+        border-radius: 4px;
+        background-color: rgba(0,0,0,0);
+
     }
 </style>
 
@@ -50,6 +62,7 @@
     <br>
     <h1 style='margin:8px;font-size:40px;'>Simple interface.</h1>
     <h1 style='margin:8px;font-size:40px;'>Powerful musical analysis.</h1>
+    <button id=analysisButton>Try our tools</button>
 </div>
 
 </body>
