@@ -71,6 +71,7 @@
         transition: .15s;
         width:130px;
         display: inline-block;
+        margin-right:4%;
 
     }
     .icon:hover {
