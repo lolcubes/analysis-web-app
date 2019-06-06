@@ -66,6 +66,15 @@
         background-color:rgb(240,240,240);
         transition: .15s;
     }
+    .icon {
+        color: black;
+        transition: .15s;
+
+    }
+    .icon:hover {
+        color:white;
+        transition: .15s;
+    }
 </style>
 
 
@@ -80,8 +89,10 @@
     <a href="analysis-tools.php"><button id=analysisButton>Try our tools</button></a>
     
     <br><br>
-    <img src=icons-misc/home/ye.png height=240px style='pointer:cursor;'></img>
-
+    <div class=icon>
+        <img src=icons-misc/home/analysis.png height=200px style='cursor:pointer;'></img>
+        <p>Analysis</p>
+    </div>
 </div>
 
 
