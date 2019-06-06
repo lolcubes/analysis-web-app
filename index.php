@@ -39,7 +39,7 @@
         text-align:center;
         width:100%;
         height:100vh;
-        background-image: linear-gradient(rgb(38,38,38),black, black);
+        background-image: linear-gradient(rgb(34,34,34), black);
         color:white;
         box-shadow:0px 2px 14px rgba(0,0,0,.4);
     }
