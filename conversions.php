@@ -49,4 +49,13 @@ foreach ($files as $file){
     }
 }
 
+$cdDir = "Song_Database/" . $folderOutput;
+shell_exec("cd $cdDir && zip -r conversions.zip selectedConversions");
+
+
+$zipDir = $cdDir . "/conversions.zip"
+header("Content-Disposition: attachment; filename=\"$zipDir\"");
+
+
+
 ?>
