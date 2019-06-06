@@ -36,16 +36,20 @@
         outline: 0;
     }
     #topSection {
+        text-align:center;
         width:100%;
         height:400px;
-        background-image: linear-gradient(grey, black)
+        background-image: linear-gradient(rgb(25,25,25), black);
+        color:white;
     }
 </style>
 
 
 <div id=topSection>
-    <h1 style='margin:8px;'>Simple interface.</h1>
-    <h1 style='margin:8px;'>Powerful musical analysis.</h1>
+    <br>
+    <br>
+    <h1 style='margin:8px;font-size:40px;'>Simple interface.</h1>
+    <h1 style='margin:8px;font-size:40px;'>Powerful musical analysis.</h1>
 </div>
 
 </body>
