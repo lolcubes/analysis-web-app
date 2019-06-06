@@ -41,7 +41,7 @@ foreach ($files as $file){
         echo $oldpath;
         echo "<br>";
 
-        $newPath = $folderOutputPath . "/" . $file . "/" . $type;
+        $newPath = $folderOutputPath . "/" . $file . "/song." . $type;
         echo $newPath;
         echo "<br>";
 
