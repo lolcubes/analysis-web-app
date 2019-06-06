@@ -38,7 +38,7 @@
     #topSection {
         text-align:center;
         width:100%;
-        height:400px;
+        height:500px;
         background-image: linear-gradient(rgb(50,50,50), black);
         color:white;
     }
@@ -66,7 +66,7 @@
 
 <div id=topSection>
     <br style='line-height:20px;'>
-    <img src=image-assets/BeatsBytesSmall.png height=200px></img>
+    <img src=image-assets/BeatsBytesSmall.png height=120px></img>
     <br style='line-height:20px;'>
 
     <h1 style='margin:8px;font-size:40px;'>Simple interface.</h1>
