@@ -70,6 +70,7 @@
         color: black;
         transition: .15s;
         width:130px;
+        display: inline-block;
 
     }
     .icon:hover {
@@ -92,7 +93,7 @@
     <br><br>
     <div class=icon>
         <img src=icons-misc/home/analysis.png height=130px style='cursor:pointer;'></img>
-        <p>Analysis</p>
+        <p style='margin:4px;margin-top:10px;'>Analysis</p>
     </div>
 </div>
 
