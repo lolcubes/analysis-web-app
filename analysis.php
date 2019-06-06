@@ -1438,7 +1438,7 @@
                                     <div class=chart-container style='width:100%;height:35px;font-size:28px;margin-top:20px;vertical-align:bottom'>" . $timePath ."</div>
                                 </div>
 
-                                <div class=chart-container style='width:87%; height:100px; overflow-y: none;margin-left:7%;display:inline-block;margin-top:20px;padding:4px'> 
+                                <div class=chart-container style='width:87%; overflow-x:auto;margin-left:7%;display:inline-block;margin-top:20px;padding:4px'> 
                                     <img src='Song_Database/" . $filename . "/image-assets/proll.png' alt='Piano Roll' height='100px'>
                                 </div>
 
