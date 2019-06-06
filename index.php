@@ -54,10 +54,12 @@
         background-color: rgba(0,0,0,0);
         font-size:20px;
         cursor: pointer;
+        transition: .2s;
     }
     #analysisButton:hover {
         background-color:white;
-        color: rgba(0,0,0,0);
+        color: black;
+        transition: .2s;
     }
 </style>
 
@@ -67,6 +69,7 @@
     <br>
     <h1 style='margin:8px;font-size:40px;'>Simple interface.</h1>
     <h1 style='margin:8px;font-size:40px;'>Powerful musical analysis.</h1>
+    <br><br>
     <button id=analysisButton>Try our tools</button>
 </div>
 
