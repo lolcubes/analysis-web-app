@@ -401,9 +401,11 @@ function addAudioPlayers(){
                     </script>
 
                     <div class=third>
-                        <h3 style='margin:20px'>Play Songs</h3>
-                        <img src='icons-misc/panels/play.png' width=20% style='margin-bottom:20px'></img>
+                        <h3 style='margin:28px'>Play Songs</h3>
+                        <img src='icons-misc/panels/play.png' width=20% style='margin-bottom:35px'></img>
+                        <br>
                         <button id="myBtn" class='openBtn buttonform'>Open</button>
+                    
                     </div>
 
                     <div id="myModal" class="modal">
