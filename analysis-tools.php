@@ -473,7 +473,9 @@ function changeDetailsMessage(){
 
 
                     <div class=third>
-                        <h3>Add to BiB Database</h3>
+                        <h3 style='margin:28px'>Add to BiB Database</h3>
+                        <img src='icons-misc/panels/add.png' width=20% style='margin-bottom:30px'></img>
+                        <br>
                         <button id="myBtn" class='openBtn buttonform'>Open</button>
                     </div>
 
