@@ -92,7 +92,7 @@
     <a href="analysis-tools.php"><button id=analysisButton>Try our tools</button></a>
     
     <br><br>
-    <br style='line-height:40px;'>
+    <br style='line-height:80px;'>
     <div class=icon>
         <img src=icons-misc/home/analysis.png height=130px style='cursor:pointer;'></img>
         <p style='margin:4px;margin-top:10px;'>Analysis</p>
