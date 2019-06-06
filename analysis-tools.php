@@ -402,7 +402,7 @@ function addAudioPlayers(){
 
                     <div class=third>
                         <h3 style='margin:28px'>Play Songs</h3>
-                        <img src='icons-misc/panels/play.png' width=20% style='margin-bottom:35px'></img>
+                        <img src='icons-misc/panels/play.png' width=20% style='margin-bottom:30px'></img>
                         <br>
                         <button id="myBtn" class='openBtn buttonform'>Open</button>
                     
