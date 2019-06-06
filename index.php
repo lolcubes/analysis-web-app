@@ -81,6 +81,7 @@
 </div>
 
 <div id=icons-below-content>
+<img src=icons-misc/home/ye.png height=140px></img>
 
 </div>
 
