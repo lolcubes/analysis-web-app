@@ -22,19 +22,29 @@ foreach ($recieved as $value) {
 
 $folderOutput = str_replace("dropzonefileicons", "", $files[0]);
 $folderOutputPath = "Song_Database/" . $folderOutput . "/selectedConversions";
-echo $folderOutputPath;
-echo "<br>";
+mkdir($folderOutputPath);
 
+ 
 
 
 foreach ($files as $file){
     $file = str_replace("dropzonefileicons", "", $file);
     $path = "Song_Database/" . $file . "/data-conversions/";
+
+    $songOutputPath = $folderOutputPath . "/" . $file;
+    mkdir($songOutputPath);
+
+
     foreach ($types as $type) {
         $type = str_replace("DownloadIcon", "", $type);
-        $typepath = $path . "song." . $type;
-        echo $typepath;
+        $oldpath = $path . "song." . $type;
+        echo $oldpath;
         echo "<br>";
+
+        $newPath = $folderOutputPath . "/" . $file . "/" . $type;
+        echo $newPath;
+        echo "<br>";
+
     }
 }
 
