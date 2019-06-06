@@ -51,8 +51,9 @@ shell_exec("cd $cdDir && zip -r conversions.zip selectedConversions");
 
 $zipDir = $cdDir . "/conversions.zip";
 echo $zipDir;
-header("Content-Disposition: application/zip; filename=\"$zipDir\"");
 
-
+header("Content-disposition: attachment; filename=\"$zipDir\"");
+header("Content-type: application/zip");
+readfile("$zipDir");
 
 ?>
