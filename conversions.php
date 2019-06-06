@@ -49,13 +49,24 @@ $cdDir = "Song_Database/" . $folderOutput;
 shell_exec("cd $cdDir && zip -r conversions.zip selectedConversions");
 
 
-$zipDir = $cdDir . "/conversions.zip";
-echo $zipDir;
+$zipname = $cdDir . "/conversions.zip";
 
-header("Content-type: application/zip"); 
-header("Content-Disposition: attachment; filename=$zipDir");
-header("Content-length: " . filesize($zipDir));
-header("Pragma: no-cache"); 
-header("Expires: 0"); 
-readfile("$zipDir");
+$zip = new ZipArchive;
+$zip->open($zipname, ZipArchive::CREATE);
+if ($handle = opendir('.')) {
+  while (false !== ($entry = readdir($handle))) {
+    if ($entry != "." && $entry != ".." && !strstr($entry,'.php')) {
+        $zip->addFile($entry);
+    }
+  }
+  closedir($handle);
+}
+
+$zip->close();
+
+header('Content-Type: application/zip');
+header("Content-Disposition: attachment; filename='$zipname'");
+header('Content-Length: ' . filesize($zipname));
+header("Location: $zipname");
+
 ?>
