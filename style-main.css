@@ -43,7 +43,7 @@ code {
 /*  HIDE OPTIONS ON LOAD/
 /* ======================*/
 #file-info-accordions {
-  display: none;
+  /* display: none; */
 }
 
 /*  REMOVE STYLING FROM H TAGS/
@@ -805,9 +805,11 @@ span.button {
   padding: 10px;
   box-align: center;
   margin: 0 auto;
+  transition: .1s;
 }
 #audioelement:hover {
   box-shadow: 1px 3px 18px rgb(0, 0, 0, .2);
+  transition: .1s;
 }
 audio {
   width: 90%;
@@ -817,7 +819,7 @@ audio {
 
 #notation-content {
   width: 90%;
-  height:330px;
+  height:55vh;
   line-height: 7px;
   display: inline-block;
   overflow: auto;
