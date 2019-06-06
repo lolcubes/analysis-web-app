@@ -88,6 +88,7 @@
             foreach ($relativefiledirlocations as $filedirectory){ 
                 $fileconvert = "$filedirectory" . "/song.txt";
                 $target = "$filedirectory" . "/song.mid";
+                $wavTarget = "$filedirectory" . "/song.wav";
                 $degoutput = "$filedirectory" . "/deg.txt";
                 $assetsdir = "$filedirectory" . "/image-assets";
                 $conversionsDir = "$filedirectory" . "/data-conversions";
@@ -114,15 +115,29 @@
                 exec("analysis-scripts/humdrum/conversions/hum2muse $fileconvert > $museOutput");
                 exec("analysis-scripts/humdrum/conversions/hum2xml $fileconvert > $xmlOutput");
 
+
+
+
                 exec("analysis-scripts/humdrum/hum2mid $fileconvert -o $target");
                 shell_exec( "timidity $target -Ow");
+
+                $newMidiDir = $conversionsDir . "/song.mid";
+                copy($target,$newMidiDir);
+
+                $newWavDir = $conversionsDir . "/song.wav";
+                copy($wavTarget,$newWavDir);
+
+                $newKernDir = $conversionsDir . "/song.krn";
+                copy($fileconvert,$newKernDir);
+
+
                 shell_exec( "analysis-scripts/humdrum/deg/degrunner.sh $fileconvert $degoutput");
                 shell_exec( "analysis-scripts/humdrum/proll $fileconvert > $prolloutput");
 
                 shell_exec( "analysis-scripts/humdrum/mkeyscape $target > $keyscapeoutput");
                 shell_exec("pnmtopng -transparent white $keyscapeoutput > $keyscapeoutputpng");
 
-                shell_exec( "pnmtopng $prolloutput -transparent black > $prolloutputpng");
+                shell_exec( "pnmtopng -transparent black $prolloutput > $prolloutputpng");
             }       
 
 ?>
