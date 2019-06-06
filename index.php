@@ -95,6 +95,10 @@
         <img src=icons-misc/home/analysis.png height=130px style='cursor:pointer;'></img>
         <p style='margin:4px;margin-top:10px;'>Analysis</p>
     </div>
+    <div class=icon>
+        <img src=icons-misc/home/code.png height=130px style='cursor:pointer;'></img>
+        <p style='margin:4px;margin-top:10px;'>Code</p>
+    </div>
 </div>
 
 
