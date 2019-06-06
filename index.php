@@ -66,7 +66,7 @@
 
 <div id=topSection>
     <br style='line-height:20px;'>
-    <img src=image-assets/BeatsBytesSmall.png height=100px></img>
+    <img src=image-assets/BeatsBytesSmall.png height=200px></img>
     <br style='line-height:20px;'>
 
     <h1 style='margin:8px;font-size:40px;'>Simple interface.</h1>
