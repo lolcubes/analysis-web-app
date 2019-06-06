@@ -29,7 +29,6 @@
                     <li id="Menu"><a href="pages/about.html">About</a></li>
                     <li id="Menu"><a href="pages/code.html">Code</a></li>
                     <li id="Menu"><a href="pages/research.html">Our Research</a></li>
-                    <li id="Menu"><a href="pages/library.html">Database</a></li>
                 </ul>
             </div>
             <div id="bumper">
