@@ -94,19 +94,19 @@
     <br><br>
     <br style='line-height:80px;'>
     <div class=icon>
-        <img src=icons-misc/home/analysis.png height=130px style='cursor:pointer;'></img>
+        <a href=analysis-tools.php> <img src=icons-misc/home/analysis.png height=130px style='cursor:pointer;'></img></a>
         <p style='margin:4px;margin-top:10px;'>Analysis</p>
     </div>
     <div class=icon>
-        <img src=icons-misc/home/code.png height=130px style='cursor:pointer;'></img>
+        <a href="https://github.com/BeatsinBytes"><img src=icons-misc/home/code.png height=130px style='cursor:pointer;'></img></a>
         <p style='margin:4px;margin-top:10px;'>Code</p>
     </div>
     <div class=icon>
-        <img src=icons-misc/home/about.png height=130px style='cursor:pointer;'></img>
+        <a href='pages/about.html'><img src=icons-misc/home/about.png height=130px style='cursor:pointer;'></img></a>
         <p style='margin:4px;margin-top:10px;'>About</p>
     </div>
     <div class=icon>
-        <img src=icons-misc/home/research.png height=130px style='cursor:pointer;'></img>
+        <a href='pages/research.html'><img src=icons-misc/home/research.png height=130px style='cursor:pointer;'></img></a>
         <p style='margin:4px;margin-top:10px;'>Research</p>
     </div>
 </div>
