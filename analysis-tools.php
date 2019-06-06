@@ -575,7 +575,7 @@ function changeDetailsMessage(){
                                                 <img src='icons-misc/conversions/gmn.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
                                             </div>
 
-                                            <div id=kernDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <div id=krnDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
                                                 <img src='icons-misc/conversions/kern.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
                                             </div>
 
@@ -583,15 +583,15 @@ function changeDetailsMessage(){
                                                 <img src='icons-misc/conversions/mei.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
                                             </div>
 
-                                            <div id=midiDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <div id=midDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
                                                 <img src='icons-misc/conversions/midi.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
                                             </div>
 
-                                            <div id=mp3DownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <div id=wavDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
                                                 <img src='icons-misc/conversions/mp3.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
                                             </div>
 
-                                            <div id=museDownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
+                                            <div id=md2DownloadIcon class="filetypeDownload unselected" onclick="addSelectedClass(this.id)">
                                                 <img src='icons-misc/conversions/muse.png' width=100px style="box-shadow:2px 2px 7px rgba(0,0,0,.5);border-radius:50%;margin:6.4px;"  ></img>
                                             </div>
 
