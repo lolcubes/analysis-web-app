@@ -45,6 +45,7 @@ foreach ($files as $file){
         echo $newPath;
         echo "<br>";
 
+        copy($oldpath, $newPath);
     }
 }
 
