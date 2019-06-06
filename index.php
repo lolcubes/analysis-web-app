@@ -65,8 +65,10 @@
 
 
 <div id=topSection>
-    <br>
-    <br>
+    <br style='line-height:20px;'>
+    <img src=image-assets/BeatsBytesSmall.png height=100px></img>
+    <br style='line-height:20px;'>
+
     <h1 style='margin:8px;font-size:40px;'>Simple interface.</h1>
     <h1 style='margin:8px;font-size:40px;'>Powerful musical analysis.</h1>
     <br><br>
