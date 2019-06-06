@@ -46,8 +46,6 @@ foreach ($files as $file){
 }
 
 $cdDir = "Song_Database/" . $folderOutput;
-shell_exec("cd $cdDir && zip -r conversions.zip selectedConversions");
-
 
 $zipname = $cdDir . "/conversions.zip";
 
