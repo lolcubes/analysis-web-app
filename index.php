@@ -69,6 +69,7 @@
     .icon {
         color: black;
         transition: .15s;
+        width:130px;
 
     }
     .icon:hover {
@@ -90,7 +91,7 @@
     
     <br><br>
     <div class=icon>
-        <img src=icons-misc/home/analysis.png height=200px style='cursor:pointer;'></img>
+        <img src=icons-misc/home/analysis.png height=130px style='cursor:pointer;'></img>
         <p>Analysis</p>
     </div>
 </div>
