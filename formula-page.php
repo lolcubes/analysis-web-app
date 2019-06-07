@@ -238,12 +238,12 @@
                             <div class='bar " . $barArray[9] . "'></div>
                         </div>
                     </div>
-                    <div class='content-section' style='display:inline-block;width:45%'>
+                    <div class='content-section' style='margin-right:2%;display:inline-block;width:41%'>
                         <br><br>
-                        <h2 style='margin:4px'>Top Three Correlations:</h2>
+                        <h2 style='margin:4px'>Top Correlations:</h2>
                         <div id=barmap" . $filename . "> </div>
                     </div>
-                    <div class='content-section' style='display:inline-block;width:40%'>
+                    <div class='content-section' style='display:inline-block;width:44%'>
                         <h2 style='margin-top:4px'>Radar Chart:</h2>
 
                         <div id=radarChart" . $removedUnder . "></div>
