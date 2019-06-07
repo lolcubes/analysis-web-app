@@ -246,12 +246,13 @@
                         <div id=barmap" . $filename . "> </div>
                     </div>
                     <div class='content-section' style='display:inline-block;width:80%;height:300px;vertical-align:top'>
-                        <h2 style='margin-top:4px'>Radar Chart:</h2>
+                        <h2 style='margin-top:6px;margin-bottom:10px;'>Radar Chart:</h2>
 
                         <div id=radarChart" . $removedUnder . "></div>
                         <style>
 
                         </style>
+                        <br>
                     <script>
                     var options = {
                         chart: {
