@@ -179,7 +179,7 @@
 
                 echo "
                 <div class='composer-panel'>
-                    <h2> $completeFileName</h2> 
+                    <h1> $completeFileName</h1> 
                     <p> This song is most correlated with " . array_search(max($combined),$combined) . " with a correlation value of " . $max . "% 
                     <div class=meterBar>
                         <div class='bar " . $barArray[0] . "'></div>
@@ -196,7 +196,7 @@
                     <div id=barChartSmall" . $removedFileName . "></div>
                     <br>
                     <br><br>
-                    <h3>Top Three Correlations</h3>
+                    <h2>Top Three Correlations</h2>
                     <div id=barmap" . $filename . "> </div>
 
                 <script>
