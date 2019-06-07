@@ -196,7 +196,7 @@
                     <div id=barChartSmall" . $removedFileName . "></div>
                     <br>
 
-                    <div id=barmap" . $usableFileName . "> </div>
+                    <div id=barmap" . $filename . "> </div>
 
                 <script>
                     var baroptions = {
@@ -232,7 +232,7 @@
                     }
             
                 var barchart = new ApexCharts(
-                        document.querySelector('#barmap" . $usableFileName . "'),
+                        document.querySelector('#barmap" . $filename . "'),
                         baroptions
                     );
                 
@@ -255,7 +255,6 @@
                         $filename = str_replace("Song_Database/", "", $value);
                         $removedFileName = strstr($filename, '_');
                         $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
-                        $usableFileName = str_replace("_", "", substr($removedFileName, 1));
 
                         $outputdir = $value . "/comparison-outputs/averages";
 
