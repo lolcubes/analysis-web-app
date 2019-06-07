@@ -218,12 +218,13 @@
                         baroptions
                     );
                 
-                barchart.render();";
+                barchart.render();
+                </script>
+                </div>";
             }
 
 
 
-            echo "<script></script>";
             echo "
             <div class=big-panel>
                 <div id=heatmap> </div>
