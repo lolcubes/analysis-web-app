@@ -203,6 +203,7 @@
                         chart: {
                             height: 200,
                             type: 'bar',
+                            forecolor: '#fff',
                         },
 
                         dataLabels: {
@@ -216,6 +217,9 @@
                         },
                         yaxis: {
                             min: $minimum
+                        },
+                        grid: {
+                            show: false
                         }
                     }
             
