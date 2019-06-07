@@ -143,6 +143,37 @@
                     $barArray[] = "barOff";
                 }
 
+                //for the bar chart
+                //=====================
+
+                $outputdir = $value . "/comparison-outputs/averages";
+
+                $composerNames = array();
+                $comparisonValues = array();
+
+                $files = scandir($outputdir);
+                foreach ($files as $file) {
+                    $dirCur = $outputdir . "/" . $file;
+                    if (is_file($dirCur)) {
+                        $composerNames[] = substr($file, 0, -4);
+                        $comparisonValues[] = file_get_contents($dirCur);
+                    }
+                }
+
+                $combined = array_combine($composerNames,$comparisonValues);
+                arsort($combined);
+
+                $sortedKeys = array_keys($combined);
+                $sortedValues = array_values($combined);
+
+                $sortedKeys = array_slice($sortedKeys, 0, 3);
+                $sortedValues = array_slice($sortedValues, 0, 3);
+
+                $sortedKeys = json_encode($sortedKeys);
+                $sortedValues = json_encode($sortedValues);
+
+
+
                 echo "
                 <div class='composer-panel'>
                     <p> $completeFileName 
@@ -160,6 +191,62 @@
                         <div class='bar " . $barArray[9] . "'></div>
                     </div>
                     <div id=barChartSmall" . $removedFileName . "></div>
+                    <br>
+
+                    <canvas id=barmap" . $value . "> </canvas>
+                <script>
+                    let myChart = document.getElementById('barmap" . $value . "').getContext('2d');
+
+                    // Global Options
+                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
+                    Chart.defaults.global.defaultFontSize = 18;
+                    Chart.defaults.global.defaultFontColor = '#fff';
+                
+                    let massPopChart = new Chart(myChart, {
+                    type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                    data:{
+                        labels: $sortedKeys,
+                        datasets:[{
+                        label:'Correlation Value',
+                        data: $sortedValues,
+                        backgroundColor:'rgb(53, 98, 194)',
+                        borderWidth:1,
+                        borderColor:'#777',
+                        hoverBorderWidth:3,
+                        hoverBorderColor:'#000'
+                        }]
+                    },
+                    options:{
+                        title:{
+                        display:true,
+                        text:'Correlation to Composers',
+                        fontSize:25
+                        },
+                        legend:{
+                        display:true,
+                        position:'right',
+                        labels:{
+                            fontColor:'#000'
+                        }
+                        },
+                        layout:{
+                        padding:{
+                            left:50,
+                            right:0,
+                            bottom:0,
+                            top:0
+                        }
+                        },
+                        legend:{
+                            display:false
+                        },
+                        tooltips:{
+                        enabled:true
+                        }
+                    }
+                    });
+                    </script>
+                    
                 </div>";
             }
             echo "<script></script>";
@@ -282,91 +369,6 @@
             
                     chart.render();
                 </script>";
-
-                    $outputdir = $value . "/comparison-outputs/averages";
-
-                    $composerNames = array();
-                    $comparisonValues = array();
-
-                    $files = scandir($outputdir);
-                    foreach ($files as $file) {
-                        $dirCur = $outputdir . "/" . $file;
-                        if (is_file($dirCur)) {
-                            $composerNames[] = substr($file, 0, -4);
-                            $comparisonValues[] = file_get_contents($dirCur);
-                        }
-                    }
-
-                    $combined = array_combine($composerNames,$comparisonValues);
-                    arsort($combined);
-
-                    $sortedKeys = array_keys($combined);
-                    $sortedValues = array_values($combined);
-
-                    $sortedKeys = array_slice($sortedKeys, 0, 3);
-                    $sortedValues = array_slice($sortedValues, 0, 3);
-
-                    $sortedKeys = json_encode($sortedKeys);
-                    $sortedValues = json_encode($sortedValues);
-
-                echo "
-                <div class=big-panel>
-                    <canvas id=barmap> </canvas>
-                </div>";
-                echo "
-                <script>
-                    let myChart = document.getElementById('barmap').getContext('2d');
-
-                    // Global Options
-                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
-                    Chart.defaults.global.defaultFontSize = 18;
-                    Chart.defaults.global.defaultFontColor = '#fff';
-                
-                    let massPopChart = new Chart(myChart, {
-                    type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-                    data:{
-                        labels: $sortedKeys,
-                        datasets:[{
-                        label:'Correlation Value',
-                        data: $sortedValues,
-                        backgroundColor:'rgb(53, 98, 194)',
-                        borderWidth:1,
-                        borderColor:'#777',
-                        hoverBorderWidth:3,
-                        hoverBorderColor:'#000'
-                        }]
-                    },
-                    options:{
-                        title:{
-                        display:true,
-                        text:'Correlation to Composers',
-                        fontSize:25
-                        },
-                        legend:{
-                        display:true,
-                        position:'right',
-                        labels:{
-                            fontColor:'#000'
-                        }
-                        },
-                        layout:{
-                        padding:{
-                            left:50,
-                            right:0,
-                            bottom:0,
-                            top:0
-                        }
-                        },
-                        legend:{
-                            display:false
-                        },
-                        tooltips:{
-                        enabled:true
-                        }
-                    }
-                    });
-                    </script>
-                ";
 
                 foreach ($exploded as $value) {
                     $filename = str_replace("Song_Database/", "", $value);
