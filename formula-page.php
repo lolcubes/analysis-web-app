@@ -110,7 +110,7 @@
                         $output = $value . "/comparison-outputs/averages/" . $file . ".txt";
 
 
-                        shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
+                        // shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
                         // shell_exec("./formula.sh $arg1 $data");
                     }
                 }
@@ -244,8 +244,7 @@
                         <div id=barmap" . $filename . "> </div>
                     </div>
                     <div class='content-section' style='display:inline-block;width:40%'>
-                    <div class=composer-panel>
-                        <h1 style='margin-top:30px'>Radar Chart: " . $completeFileName . "</h1>
+                        <h2 style='margin-top:4px'>Radar Chart: " . $completeFileName . "</h2>
 
                         <div id=radarChart" . $removedUnder . "></div>
                     <script>
