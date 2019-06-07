@@ -210,6 +210,9 @@
                         }],
                         xaxis: {
                             categories: $sortedKeys,
+                        },
+                        yaxis: {
+                            min:0.4;
                         }
                     }
             
