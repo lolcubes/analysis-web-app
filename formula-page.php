@@ -213,9 +213,6 @@
                               }
                             }
                           },
-                        dataLabels: {
-                            enabled: false
-                        },
                         series: [{
                             data: $sortedValues
                         }],
