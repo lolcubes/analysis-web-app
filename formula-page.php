@@ -432,9 +432,7 @@
                             name: 'Series 1',
                             data: " . $subtracted . ",
                         }],
-                        title: {
-                            text: 'Radar Chart - Multi Series'
-                        },
+
                         stroke: {
                             width: 0
                         },
