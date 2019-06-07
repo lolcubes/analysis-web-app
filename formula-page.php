@@ -71,8 +71,15 @@
                 outline: 0;
             }
         </style>
+        <div id="dashboard-header">
+            <br>
+            <br>
+            <br>
 
+            <h1 style="display: inline-block;vertical-align:middle">Comparison Analytics</h1> 
 
+            <br>
+        </div>
         <?php
             $files = $_POST['filesarray'];
             $exploded = explode(",", $files);
@@ -185,7 +192,7 @@
                 echo "
                 <div class='composer-panel'>
                     <h1 style='margin-top:26px'> $completeFileName</h1> 
-                    <p> This song is most correlated with <b>" . array_search(max($combined),$combined) . "</b> with a correlation value of <b>" . $max . "%</b> 
+                    <p> This song is most correlated with <i>" . array_search(max($combined),$combined) . "</i> with a correlation value of <b>" . $max . "%</b> 
                     <div class=meterBar>
                         <div class='bar " . $barArray[0] . "'></div>
                         <div class='bar " . $barArray[1] . "'></div>

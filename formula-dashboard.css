@@ -130,5 +130,15 @@ body {
     background-color: rgba(0,0,0,.2);
     cursor: pointer;
     font-size: 18px;
-    font-family: 'Avenir Light'
+    font-family: 'Avenir Light';
+    margin:10px;
+    margin-bottom:20px;
+}
+
+#dashboard-header {
+    background-color: var(--main-panel-color);
+    color: white;
+    box-shadow: 1px 0px 18px  rgba(0, 0, 0, 0.7);
+    border: 0px solid var(--main-panel-color);
+    transition: .2s;
 }
