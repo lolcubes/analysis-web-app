@@ -193,62 +193,36 @@
                     <div id=barChartSmall" . $removedFileName . "></div>
                     <br>
 
-                    <canvas id=barmap" . $value . "> </canvas>
-                <script>
-                    let myChart = document.getElementById('barmap" . $value . "').getContext('2d');
+                    <div id=barmap" . $value . "> </div>
 
-                    // Global Options
-                    Chart.defaults.global.defaultFontFamily = 'Avenir Light';
-                    Chart.defaults.global.defaultFontSize = 18;
-                    Chart.defaults.global.defaultFontColor = '#fff';
-                
-                    let massPopChart = new Chart(myChart, {
-                    type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-                    data:{
-                        labels: $sortedKeys,
-                        datasets:[{
-                        label:'Correlation Value',
-                        data: $sortedValues,
-                        backgroundColor:'rgb(53, 98, 194)',
-                        borderWidth:1,
-                        borderColor:'#777',
-                        hoverBorderWidth:3,
-                        hoverBorderColor:'#000'
-                        }]
-                    },
-                    options:{
-                        title:{
-                        display:true,
-                        text:'Correlation to Composers',
-                        fontSize:25
+                <script>
+                    var baroptions = {
+                        chart: {
+                            height: 350,
+                            type: 'bar',
                         },
-                        legend:{
-                        display:true,
-                        position:'right',
-                        labels:{
-                            fontColor:'#000'
-                        }
+
+                        dataLabels: {
+                            enabled: false
                         },
-                        layout:{
-                        padding:{
-                            left:50,
-                            right:0,
-                            bottom:0,
-                            top:0
-                        }
-                        },
-                        legend:{
-                            display:false
-                        },
-                        tooltips:{
-                        enabled:true
+                        series: [{
+                            data: $sortedValues
+                        }],
+                        xaxis: {
+                            categories: $sortedKeys,
                         }
                     }
-                    });
-                    </script>
-                    
-                </div>";
+            
+                var barchart = new ApexCharts(
+                        document.querySelector('#barmap" . $value . "'),
+                        baroptions
+                    );
+                
+                barchart.render();";
             }
+
+
+
             echo "<script></script>";
             echo "
             <div class=big-panel>
