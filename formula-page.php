@@ -102,7 +102,7 @@
                         $output = $value . "/comparison-outputs/averages/" . $file . ".txt";
 
 
-                        shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
+                        // shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
                         // shell_exec("./formula.sh $arg1 $data");
                     }
                 }
@@ -185,7 +185,7 @@
                 echo "
                 <div class='composer-panel'>
                     <h1 style='margin-top:26px'> $completeFileName</h1> 
-                    <p> This song is most correlated with " . array_search(max($combined),$combined) . " with a correlation value of <b>" . $max . "%</b> 
+                    <p> This song is most correlated with <b>" . array_search(max($combined),$combined) . "</b> with a correlation value of <b>" . $max . "%</b> 
                     <div class=meterBar>
                         <div class='bar " . $barArray[0] . "'></div>
                         <div class='bar " . $barArray[1] . "'></div>
