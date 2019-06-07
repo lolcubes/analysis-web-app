@@ -257,6 +257,9 @@
                                 blur: .2,
                                 left: 1,
                                 top: 1
+                            },
+                            toolbar: {
+                                show: false,
                             }
                         },
                         series: [{
@@ -296,6 +299,9 @@
                             height: 200,
                             type: 'bar',
                             forecolor: 'black',
+                            toolbar: {
+                                show: false,
+                            }
                         },
                         plotOptions: {
                             bar: {
