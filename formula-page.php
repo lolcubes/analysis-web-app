@@ -244,13 +244,13 @@
                         <div id=barmap" . $filename . "> </div>
                     </div>
                     <div class='content-section' style='display:inline-block;width:40%'>
-                        <h2 style='margin-top:4px'>Radar Chart: " . $completeFileName . "</h2>
+                        <h2 style='margin-top:4px'>Radar Chart:</h2>
 
                         <div id=radarChart" . $removedUnder . "></div>
                     <script>
                     var options = {
                         chart: {
-                            height: 350,
+                            height: 250,
                             type: 'radar',
                             dropShadow: {
                                 enabled: true,
