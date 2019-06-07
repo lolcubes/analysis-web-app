@@ -240,12 +240,12 @@
                             <div class='bar " . $barArray[9] . "'></div>
                         </div>
                     </div>
-                    <div class='content-section' style='margin-right:2%;display:inline-block;width:37%;height:300px;vertical-align:top'>
+                    <div class='content-section' style='margin-right:2%;display:inline-block;width:80%;height:300px;vertical-align:top'>
                         <br><br>
                         <h2 style='margin:4px'>Top Correlations:</h2>
                         <div id=barmap" . $filename . "> </div>
                     </div>
-                    <div class='content-section' style='display:inline-block;width:44%;height:300px;vertical-align:top'>
+                    <div class='content-section' style='display:inline-block;width:80%;height:300px;vertical-align:top'>
                         <h2 style='margin-top:4px'>Radar Chart:</h2>
 
                         <div id=radarChart" . $removedUnder . "></div>
