@@ -222,7 +222,7 @@ function addAudioPlayers(){
 
 
 
-        var appendtext = '<audio id="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ');showHidePlayContent();" controls="controls" src="' + dir + '/song.wav" type="audio/wav">'
+        var appendtext = '<audio class="audio-player-element" onplaying="addMusicalNotation(' + "'" + dir + "'" +  ", " + "'" + name + "'" + ');showHidePlayContent();" controls="controls" src="' + dir + '/song.wav" type="audio/wav">'
         $("#audioplayer").append('<div id="audioelement"><br><span id="audiotext">' + name + ':</span><br><br>' + appendtext + '</div><br>');
     }               
 
@@ -437,7 +437,15 @@ function addAudioPlayers(){
 
 function addMusicalNotation( directory, name ) {
     $('#musicalnotation').delay(800).show("slow");
-
+    
+    
+    var ctrls = document.getElementsByClassName('audio-player-element');
+    for (var i = 0; i < ctrls.length; i++) {
+        var control = ctrls[i];
+        control.controls = "controls";
+    }
+    
+    
     var file = directory + "/song.txt"
     var div = document.getElementById("musicalnotation");
 
