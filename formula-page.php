@@ -240,8 +240,8 @@
                             <div class='bar " . $barArray[9] . "'></div>
                         </div>
                     </div>
-                    <div class='content-section' style='margin-right:2%;display:inline-block;width:37%;height:300px;vertical-align:top'>
-                        <br><br>
+                    <div class='content-section' style='margin-right:2%;display:inline-block;width:37%;height:266px;vertical-align:top'>
+                        <br>
                         <h2 style='margin:4px'>Top Correlations:</h2>
                         <div id=barmap" . $filename . "> </div>
                     </div>
@@ -323,7 +323,7 @@
                             offsetY: 30,
                             style:{
                                 fontFamily:'Avenir Light',
-                                
+                                fontSize: '14px',
                             }
                         },
                         series: [{
