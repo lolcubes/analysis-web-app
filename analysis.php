@@ -1710,9 +1710,9 @@
             //   $( function() {
             //         $( ".analysis-panel" ).draggable();
             //     } );
-            $(window).bind('beforeunload', function(){
-                return 'Your changes will not be saved! Continue?';
-            });
+            // $(window).bind('beforeunload', function(){
+            //     return 'Your changes will not be saved! Continue?';
+            // });
         </script>
     </body>
 </html>
