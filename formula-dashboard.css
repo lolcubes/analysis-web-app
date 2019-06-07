@@ -27,7 +27,6 @@ body {
 .composer-panel {
     min-width: 400px;
     width: 40%;
-    height: 400px;
     background-color: var(--main-panel-color);
     display: inline-block;
     border-radius: 20px;
