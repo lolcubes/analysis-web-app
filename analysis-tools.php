@@ -460,6 +460,9 @@ function addMusicalNotation( directory, name ) {
     var scriptNEW = document.createElement('script');
     scriptNEW.id = "displaysong";
     scriptNEW.text = appendtext;
+
+    $("#musicalnotation").append('<h2>' + name + '</h2>');
+
     div.appendChild(scriptNEW);
 
 }
