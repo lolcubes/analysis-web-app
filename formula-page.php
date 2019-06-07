@@ -179,7 +179,7 @@
 
                 echo "
                 <div class='composer-panel'>
-                    <h1> $completeFileName</h1> 
+                    <h1 style='margin-top:16px'> $completeFileName</h1> 
                     <p> This song is most correlated with " . array_search(max($combined),$combined) . " with a correlation value of <b>" . $max . "%</b> 
                     <div class=meterBar>
                         <div class='bar " . $barArray[0] . "'></div>
