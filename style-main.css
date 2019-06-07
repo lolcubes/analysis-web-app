@@ -483,7 +483,7 @@ h4 {
     font-size:18px;
     background-color:rgb(44, 44, 44);
     padding: 8px;
-    width:40%;
+    width:90%;
     border-radius: 7px;
     box-shadow: 3px 3px 8px  rgb(161, 161, 161);
     color: white;
@@ -492,16 +492,30 @@ h4 {
 
 #leftSideInput {
   display:inline-block;
+  width:40%;
+  margin-right:6%;
 }
 
 #rightSideInput {
   display:inline-block;
+  width:40%;
+
+
+  font-family: 'Avenir Light'; 
+  font-size:18px;
+  background-color:rgb(44, 44, 44);
+  padding: 8px;
+  border-radius: 7px;
+  box-shadow: 3px 3px 8px  rgb(161, 161, 161);
+  color: white;
+  transition:.3s;
 }
 
 #addToBibMessage {
   width: 80%;
   height:200px;
 }
+
 #boi:hover,
 #TimePeriod:hover,
 #TimePeriod_Dropdown:hover  {
