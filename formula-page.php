@@ -169,6 +169,9 @@
                 $sortedKeys = array_slice($sortedKeys, 0, 3);
                 $sortedValues = array_slice($sortedValues, 0, 3);
 
+                $minimum = min($sortedValues);
+                $minimum = $minimum - 0.03;
+
                 $sortedKeys = json_encode($sortedKeys);
                 $sortedValues = json_encode($sortedValues);
 
@@ -198,7 +201,7 @@
                 <script>
                     var baroptions = {
                         chart: {
-                            height: 350,
+                            height: 200,
                             type: 'bar',
                         },
 
@@ -212,7 +215,7 @@
                             categories: $sortedKeys,
                         },
                         yaxis: {
-                            min:0.4
+                            min: $minimum
                         }
                     }
             
