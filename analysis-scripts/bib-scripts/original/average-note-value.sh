@@ -9,7 +9,6 @@ output="${removed}data/average-note-value/value.txt"
 movingOutput="${removed}data/average-note-value/moving-average.txt"
 
 rhythmList=$(cat $file | tr '\t' '\n' | grep -v '=' | grep -v '*' | grep -v '!' | grep -o '[[:digit:]]*' | grep .  )  # Turns the kern file into a list of numbers that indicate rhythm for each note
-rhythmListRecip=$( echo "$rhythmList" | sed 's/^/1\//')
 
 sumSym=$(echo "$rhythmList" | tr '\n' "+")  # Replaces the newline characters with addition signs
 
@@ -23,4 +22,4 @@ echo $lineCount / $summed | bc -l > $output          # Evaluates the division of
 
 lineCountHalf=$(echo "scale=0;$lineCount/2" | bc -l)
 
-bash /var/www/html/analysis-scripts/other/moving-average.sh "$rhythmListRecip" $lineCountHalf | tr '\n' ',' | rev | cut -c 2- | rev | tr -d '\n' > $movingOutput
+bash /var/www/html/analysis-scripts/other/moving-average.sh "$rhythmList" $lineCountHalf | tr '\n' ',' | rev | cut -c 2- | rev | tr -d '\n' > $movingOutput
