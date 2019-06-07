@@ -77,7 +77,8 @@
             <br>
 
             <h1 style="display: inline-block;vertical-align:middle">Comparison Analytics</h1> 
-
+            <br>
+            <br>
             <br>
         </div>
         <?php
@@ -109,7 +110,7 @@
                         $output = $value . "/comparison-outputs/averages/" . $file . ".txt";
 
 
-                        shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
+                        // shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
                         // shell_exec("./formula.sh $arg1 $data");
                     }
                 }
