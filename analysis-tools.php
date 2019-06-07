@@ -920,9 +920,6 @@ function changeDetailsMessage(){
     </script>
     <br>
     <br>
-
-    <div id="footer">
-    </div>
     </div id=file-info-accordions>
 
     <script>
