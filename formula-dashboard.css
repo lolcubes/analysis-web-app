@@ -120,13 +120,15 @@ body {
 } 
 
 .darkform {
-    padding-left: 12px;
-    padding-right:12px;
-    padding-top:5px;
-    padding-bottom:5px;
+    padding-left: 14px;
+    padding-right:14px;
+    padding-top:7px;
+    padding-bottom:7px;
     border-radius:5px;
     border:2px solid black;
     color:white;
-    background-color: rgba(0,0,0,.2)
-
+    background-color: rgba(0,0,0,.2);
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Avenir Light'
 }
