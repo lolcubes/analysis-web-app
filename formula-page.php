@@ -221,6 +221,9 @@
                           },
                         dataLabels: {
                             offsetY: 30,
+                            style:{
+                                fontFamily:'Avenir Light'
+                            }
                         },
                         series: [{
                             data: $sortedValues
