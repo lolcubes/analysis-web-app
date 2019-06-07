@@ -461,7 +461,7 @@ function addMusicalNotation( directory, name ) {
     scriptNEW.id = "displaysong";
     scriptNEW.text = appendtext;
 
-    $("#musicalnotation").append('<h2>' + name + '</h2>');
+    $("#notation-content").prepend('<h2>' + name + '</h2>');
 
     div.appendChild(scriptNEW);
 
