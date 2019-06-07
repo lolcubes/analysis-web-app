@@ -194,7 +194,7 @@
                 <div class='composer-panel'>
                     <h1 style='margin-top:26px'> $completeFileName</h1> 
                     <div class='content-section'>
-                    <p> This song is most correlated with <b>" . array_search(max($combined),$combined) . "</b> with a correlation value of <b>" . $max . "%</b> 
+                    <p style='margin:16px'> This song is most correlated with <b>" . array_search(max($combined),$combined) . "</b> with a correlation value of <b>" . $max . "%</b> 
                         <div class=meterBar>
                             <div class='bar " . $barArray[0] . "'></div>
                             <div class='bar " . $barArray[1] . "'></div>
