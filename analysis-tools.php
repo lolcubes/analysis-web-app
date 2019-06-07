@@ -521,7 +521,7 @@ function changeDetailsMessage(){
                                 <div id=rightSideInput>
                                     <textarea id=addToBibMessage placeholder=' Message'></textarea>
                                 </div>
-                                
+                                <br><br><br>
                                 <br>
                                 <input type="hidden" name='filesarrayinput' id="composer_input" value="test"/> 
                                 <input type="submit" class="buttonform" value="Confirm" >
