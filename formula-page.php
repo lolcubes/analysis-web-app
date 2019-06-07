@@ -212,7 +212,7 @@
                             categories: $sortedKeys,
                         },
                         yaxis: {
-                            min:0.4;
+                            min:0.4
                         }
                     }
             
