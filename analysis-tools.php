@@ -62,8 +62,8 @@
 <span id="orspan">or</span>
 &nbsp;&nbsp;&nbsp;
 <button class="buttonform" id="choosedatabasebutton">Choose From Database</button>
-<p id=demo ></p> -->
-
+ -->
+ <p id=demo ></p>
 <a id=testanchor></a>
 
 <div id="selected-files-div">
