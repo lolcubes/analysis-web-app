@@ -78,6 +78,7 @@
             display:block;
         }
         </style>
+    <div id="loading-bar"></div>
 
 
 
