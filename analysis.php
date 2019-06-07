@@ -778,6 +778,11 @@
                                               },
                                               scales: {
                                                 xAxes: [{
+                                                  display: false,
+                                                  scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Time'
+                                                  },
                                                   gridLines: {
                                                     display: false
                                                   }
@@ -846,6 +851,11 @@
                                               },
                                               scales: {
                                                 xAxes: [{
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Time'
+                                                },
+                                                display: false,
                                                   gridLines: {
                                                     display: false
                                                   }
