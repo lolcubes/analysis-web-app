@@ -406,6 +406,9 @@
                             type: 'heatmap',
                             foreColor: '#fff',
                             fontFamily: 'Avenir Light',
+                            toolbar: {
+                                show: false,
+                            }
                         },
                         dataLabels: {
                             enabled: false
