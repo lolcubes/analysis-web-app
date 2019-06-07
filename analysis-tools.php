@@ -419,6 +419,7 @@ function addAudioPlayers(){
                             </div>
                             <div id="musicalnotation">
                                 <div id="notation-content">
+                                        <h1 id=songNamePlayer></h1>
                                         <p id=notationInstruction style='line-height:20px;'>To view musical notation, play a song on left</p>
                                         <div id="svg-button">
                                             <button style='display:none' id=saveSvgButton class="buttonform" onclick="saveHumdrumSvg('song_svg')">Save as .svg</button>
@@ -461,7 +462,7 @@ function addMusicalNotation( directory, name ) {
     scriptNEW.id = "displaysong";
     scriptNEW.text = appendtext;
 
-    $("#notation-content").prepend('<h2>' + name + '</h2>');
+    document.getElementById('songNamePlayer').innerHTML = name;
 
     div.appendChild(scriptNEW);
 
