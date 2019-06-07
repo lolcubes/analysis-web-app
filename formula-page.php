@@ -253,6 +253,8 @@
 
                         </style>
                         <br>
+                        <br>
+                        <br>
                     <script>
                     var options = {
                         chart: {
