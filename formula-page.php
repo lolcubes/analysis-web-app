@@ -208,7 +208,7 @@
                             <div class='bar " . $barArray[9] . "'></div>
                         </div>
                     </div>
-                    <div class='content-section;display:inline-block;width:40%'>
+                    <div class='content-section' style='display:inline-block;width:40%'>
                         <div id=barChartSmall" . $removedFileName . "></div>
                         <br>
                         <br><br>
