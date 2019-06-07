@@ -195,7 +195,7 @@
                     </div>
                     <div id=barChartSmall" . $removedFileName . "></div>
                     <br>
-
+                    <br><br>
                     <div id=barmap" . $filename . "> </div>
 
                 <script>
