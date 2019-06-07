@@ -248,7 +248,7 @@
                     <div class='content-section' style='display:inline-block;width:90%;height:300px;vertical-align:top;margin-top:3px;'>
                         <h2 style='margin-top:6px;margin-bottom:10px;'>Radar Chart:</h2>
 
-                        <div id=radarChart" . $removedUnder . "></div>
+                        <div id=radarChart" . $removedUnder . " style='padding-bottom:10px;margin-bottom:20px'></div>
                         <style>
 
                         </style>
