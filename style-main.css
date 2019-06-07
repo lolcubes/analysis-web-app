@@ -483,8 +483,7 @@ h4 {
     font-size:18px;
     background-color:rgb(44, 44, 44);
     padding: 8px;
-    margin-left: 15%;
-    margin-right: 15%;
+    width:40%;
     border-radius: 7px;
     box-shadow: 3px 3px 8px  rgb(161, 161, 161);
     color: white;
