@@ -490,6 +490,18 @@ h4 {
     transition:.3s;
 }
 
+#leftSideInput {
+  display:inline-block;
+}
+
+#rightSideInput {
+  display:inline-block;
+}
+
+#addToBibMessage {
+  width: 80%;
+  height:200px;
+}
 #boi:hover,
 #TimePeriod:hover,
 #TimePeriod_Dropdown:hover  {

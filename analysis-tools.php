@@ -498,23 +498,30 @@ function changeDetailsMessage(){
                                 <span class="close">&times;</span>
                                 <p id="infoexplain">In order to add to our large collection of songs, please specify the following information about your files. Please note that provided information is assumed to apply to all songs.</p>
                                 <form onsubmit="successDetailsMessage();addHiddenValue()" method="post" action="details-upload.php" name="infoform" id="infoform" target="votar" onchange="changeDetailsMessage()">
-                                <div id="boi">Composer Name:&nbsp;&nbsp;
-                                <input id="composer_input" name="composer_input" type="text"/>
+                                <div id=leftSideInput>
+                                    <div id="boi">Composer Name:&nbsp;&nbsp;
+                                    <input id="composer_input" name="composer_input" type="text"/>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div id="TimePeriod_Dropdown" >
+                                        Time Period:&nbsp;&nbsp;&nbsp;
+                                        <select name="periodDropdown" id="periodDropdown">
+                                            <option value="None">None</option>
+                                            <option value="Renaissance">Renaissance</option>
+                                            <option value="Baroque">Baroque</option>
+                                            <option value="Classical">Classical</option>
+                                            <option value="Romantic">Romantic</option>
+                                            <option value="20th_Century">20th Century</option>
+                                            <br>
+                                        </select>
+                                    </div>
                                 </div>
-                                <br>
-                                <br>
-                                <div id="TimePeriod_Dropdown" >
-                                    Time Period:&nbsp;&nbsp;&nbsp;
-                                    <select name="periodDropdown" id="periodDropdown">
-                                        <option value="None">None</option>
-                                        <option value="Renaissance">Renaissance</option>
-                                        <option value="Baroque">Baroque</option>
-                                        <option value="Classical">Classical</option>
-                                        <option value="Romantic">Romantic</option>
-                                        <option value="20th_Century">20th Century</option>
-                                        <br>
-                                    </select>
+                                
+                                <div id=rightSideInput>
+                                    <textarea id=addToBibMessage placeholder='Message'></textarea
                                 </div>
+                                
                                 <br>
                                 <input type="hidden" name='filesarrayinput' id="composer_input" value="test"/> 
                                 <input type="submit" class="buttonform" value="Confirm" >
