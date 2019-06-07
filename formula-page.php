@@ -316,7 +316,6 @@
                               horizontal: false,
                               dataLabels: {
                                 position: 'top',
-                                fontSize
                               }
                             }
                           },
