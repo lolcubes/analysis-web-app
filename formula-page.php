@@ -222,8 +222,8 @@
 
                 echo "
                 <div class='composer-panel'>
-                    <div class='content-section'>
-                        <h1 style='margin-top:26px'> $completeFileName</h1> 
+                    <div class='content-section' style='padding-bottom:5px;padding-top:5px;'>
+                        <h1 style='margin:16px'> $completeFileName</h1> 
                     </div>
                         <div class='content-section' style='margin-bottom:15px;'>
                     <p style='margin:16px'> This song is most correlated with <b>" . array_search(max($combined),$combined) . "</b> with a correlation value of <b>" . $max . "%</b> 
