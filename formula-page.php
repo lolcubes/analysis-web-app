@@ -250,10 +250,7 @@
 
                         <div id=radarChart" . $removedUnder . "></div>
                         <style>
-                        #radarChart" . $removedUnder . " {
-                            overflow: hidden;
-                            margin:-39px;
-                        }
+
                         </style>
                     <script>
                     var options = {
