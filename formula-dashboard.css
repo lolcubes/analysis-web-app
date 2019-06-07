@@ -149,3 +149,14 @@ body {
     box-shadow: 1px 0px 22px  rgb(0, 0, 0);
     transition: .2s;
 }
+
+
+.content-section {
+    padding: 15px;
+    background-color: rgba(60, 167, 255, 0.2);
+    width: 95%;
+    border-radius: 5px;
+    box-shadow: 1px 4px 13px  rgba(0, 0, 0, .5);
+    transition: .2s;
+    vertical-align: middle;
+  }

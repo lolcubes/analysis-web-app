@@ -110,7 +110,7 @@
                         $output = $value . "/comparison-outputs/averages/" . $file . ".txt";
 
 
-                        shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
+                        // shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
                         // shell_exec("./formula.sh $arg1 $data");
                     }
                 }
@@ -193,18 +193,20 @@
                 echo "
                 <div class='composer-panel'>
                     <h1 style='margin-top:26px'> $completeFileName</h1> 
+                    <div class='content-section'>
                     <p> This song is most correlated with <b>" . array_search(max($combined),$combined) . "</b> with a correlation value of <b>" . $max . "%</b> 
-                    <div class=meterBar>
-                        <div class='bar " . $barArray[0] . "'></div>
-                        <div class='bar " . $barArray[1] . "'></div>
-                        <div class='bar " . $barArray[2] . "'></div>
-                        <div class='bar " . $barArray[3] . "'></div>
-                        <div class='bar " . $barArray[4] . "'></div>
-                        <div class='bar " . $barArray[5] . "'></div>
-                        <div class='bar " . $barArray[6] . "'></div>
-                        <div class='bar " . $barArray[7] . "'></div>
-                        <div class='bar " . $barArray[8] . "'></div>
-                        <div class='bar " . $barArray[9] . "'></div>
+                        <div class=meterBar>
+                            <div class='bar " . $barArray[0] . "'></div>
+                            <div class='bar " . $barArray[1] . "'></div>
+                            <div class='bar " . $barArray[2] . "'></div>
+                            <div class='bar " . $barArray[3] . "'></div>
+                            <div class='bar " . $barArray[4] . "'></div>
+                            <div class='bar " . $barArray[5] . "'></div>
+                            <div class='bar " . $barArray[6] . "'></div>
+                            <div class='bar " . $barArray[7] . "'></div>
+                            <div class='bar " . $barArray[8] . "'></div>
+                            <div class='bar " . $barArray[9] . "'></div>
+                        </div>
                     </div>
                     <div id=barChartSmall" . $removedFileName . "></div>
                     <br>
