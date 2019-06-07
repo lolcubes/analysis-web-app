@@ -247,6 +247,12 @@
                         <h2 style='margin-top:4px'>Radar Chart:</h2>
 
                         <div id=radarChart" . $removedUnder . "></div>
+                        <style>
+                        #radarChart" . $removedUnder . " {
+                            overflow: hidden;
+                            margin:-19px;
+                        }
+                        </style>
                     <script>
                     var options = {
                         chart: {
