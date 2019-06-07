@@ -189,6 +189,36 @@
                 $sortedValues = json_encode($sortedValues);
 
 
+                $filename = str_replace("Song_Database/", "", $value);
+                $removedFileName = strstr($filename, '_');
+                $removedUnder = str_replace("_", "", $removedFileName);
+
+
+                $outputdir = $value . "/comparison-outputs/averages";
+
+                    $composerNames = array();
+                    $comparisonValues = array();
+    
+                    $files = scandir($outputdir);
+                    foreach ($files as $file) {
+                        $dirCur = $outputdir . "/" . $file;
+                        if (is_file($dirCur)) {
+                            $composerNames[] = substr($file, 0, -4);
+                            $comparisonValues[] = file_get_contents($dirCur);
+                        }
+                    }
+
+                    $max = max($comparisonValues);
+                    $min = min($comparisonValues);
+                    $halfmin = $min/2;
+                    $subtracted = array();
+
+                    foreach ($comparisonValues as $num) {
+                        $subtracted[] = $num - $halfmin;
+                    }
+
+                    $subtracted = json_encode($subtracted);
+                    $comparisonValues = json_encode($comparisonValues);
 
                 echo "
                 <div class='composer-panel'>
@@ -208,11 +238,57 @@
                             <div class='bar " . $barArray[9] . "'></div>
                         </div>
                     </div>
-                    <div class='content-section' style='display:inline-block;width:40%'>
+                    <div class='content-section' style='display:inline-block;width:45%'>
                         <br><br>
                         <h2 style='margin:4px'>Top Three Correlations:</h2>
                         <div id=barmap" . $filename . "> </div>
                     </div>
+                    <div class='content-section' style='display:inline-block;width:40%'>
+                    <div class=composer-panel>
+                        <h1 style='margin-top:30px'>Radar Chart: " . $completeFileName . "</h1>
+
+                        <div id=radarChart" . $removedUnder . "></div>
+                    <script>
+                    var options = {
+                        chart: {
+                            height: 350,
+                            type: 'radar',
+                            dropShadow: {
+                                enabled: true,
+                                blur: .2,
+                                left: 1,
+                                top: 1
+                            }
+                        },
+                        series: [{
+                            name: 'Series 1',
+                            data: " . $subtracted . ",
+                        }],
+
+                        stroke: {
+                            width: 0
+                        },
+                        fill: {
+                            opacity: 0.4
+                        },
+                        markers: {
+                            size: 0
+                        },
+                        yaxis: {
+                            show: false
+                        },
+                        labels: ['African','Bach','Beethoven','Chinese','Chopin','Corelli','DuFay','Frescobaldi','Haydn','Hummel','Joplin','Josquin','Martini','Mozart','NativeAmerican','Rue','Scarlatti','Schubert'],
+                    }
+            
+                        var chart = new ApexCharts(
+                            document.querySelector('#radarChart" . $removedUnder . "'),
+                            options
+                        );
+                
+                        chart.render();
+                    </script>;
+                    </div>
+                    <br>
                     
 
                 <script>
@@ -392,91 +468,6 @@
             
                     chart.render();
                 </script>";
-
-                foreach ($exploded as $value) {
-                    $filename = str_replace("Song_Database/", "", $value);
-                    $removedFileName = strstr($filename, '_');
-                    $removedUnder = str_replace("_", "", $removedFileName);
-                    $completeFileName = str_replace("_", " ", substr($removedFileName, 1));
-
-
-                    $outputdir = $value . "/comparison-outputs/averages";
-
-                        $composerNames = array();
-                        $comparisonValues = array();
-        
-                        $files = scandir($outputdir);
-                        foreach ($files as $file) {
-                            $dirCur = $outputdir . "/" . $file;
-                            if (is_file($dirCur)) {
-                                $composerNames[] = substr($file, 0, -4);
-                                $comparisonValues[] = file_get_contents($dirCur);
-                            }
-                        }
-
-                        $max = max($comparisonValues);
-                        $min = min($comparisonValues);
-                        $halfmin = $min/2;
-                        $subtracted = array();
-
-                        foreach ($comparisonValues as $num) {
-                            $subtracted[] = $num - $halfmin;
-                        }
-
-                        $subtracted = json_encode($subtracted);
-
-                        echo "<script>console.log('Min:" . $min . "')</script>";
-                        echo "<script>console.log('Max:" . $max . "')</script>";
-
-                        $comparisonValues = json_encode($comparisonValues);
-
-                    echo "
-                        <div class=composer-panel>
-                            <h1 style='margin-top:30px'>Radar Chart: " . $completeFileName . "</h1>
-
-                            <div id=radarChart" . $removedUnder . "></div>";
-                    echo "</div>";
-                    echo "
-                    <script>
-                    var options = {
-                        chart: {
-                            height: 350,
-                            type: 'radar',
-                            dropShadow: {
-                                enabled: true,
-                                blur: .2,
-                                left: 1,
-                                top: 1
-                            }
-                        },
-                        series: [{
-                            name: 'Series 1',
-                            data: " . $subtracted . ",
-                        }],
-
-                        stroke: {
-                            width: 0
-                        },
-                        fill: {
-                            opacity: 0.4
-                        },
-                        markers: {
-                            size: 0
-                        },
-                        yaxis: {
-                            show: false
-                        },
-                        labels: ['African','Bach','Beethoven','Chinese','Chopin','Corelli','DuFay','Frescobaldi','Haydn','Hummel','Joplin','Josquin','Martini','Mozart','NativeAmerican','Rue','Scarlatti','Schubert'],
-                    }
-            
-                        var chart = new ApexCharts(
-                            document.querySelector('#radarChart" . $removedUnder . "'),
-                            options
-                        );
-                
-                        chart.render();
-                    </script>";
-                }
                 
         ?>
 
