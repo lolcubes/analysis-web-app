@@ -664,7 +664,7 @@ span.button {
 }
 
 #dropzone-content {
-  display: none;
+  /* display: none; */
   overflow: auto;
 
 }

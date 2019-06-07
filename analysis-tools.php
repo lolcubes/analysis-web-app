@@ -56,13 +56,13 @@
 <br>
 <br>
 
-<button class="buttonform" id="uploadfilesbutton">Upload File</button>
+<!-- <button class="buttonform" id="uploadfilesbutton">Upload File</button>
 &nbsp;&nbsp;&nbsp;
 
 <span id="orspan">or</span>
 &nbsp;&nbsp;&nbsp;
 <button class="buttonform" id="choosedatabasebutton">Choose From Database</button>
-<p id=demo ></p>
+<p id=demo ></p> -->
 
 <a id=testanchor></a>
 
@@ -347,10 +347,11 @@ function addAudioPlayers(){
         <p>This is a test!</p>
         <p>This is a test!</p>
     </div>
+
     <script>
         $('#uploadfilesbutton').click(function()
         {
-            $('#dropzone-content').show("slow");
+            // $('#dropzone-content').show("slow");
             $('#choosefromdatabase-content').hide("slow");
             $('#uploadfilesbutton').hide();
             $('#choosedatabasebutton').hide();
