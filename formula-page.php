@@ -285,7 +285,7 @@
                         );
                 
                         chart.render();
-                    </script>;
+                    </script>
                     </div>
                     <br>
                     
