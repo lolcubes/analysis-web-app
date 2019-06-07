@@ -512,9 +512,15 @@ h4 {
   transition:.3s;
 }
 
+#rightSideInput:hover {
+  background-color: rgb(224, 224, 224);
+  transition:.3s;
+  color: black;
+}
+
 #addToBibMessage {
   width: 90%;
-  height:145px;
+  height:135px;
   border-radius:10px;
   font-family: 'Avenir Light';
   font-size:16px;
