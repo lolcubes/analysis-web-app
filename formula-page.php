@@ -255,6 +255,7 @@
                 barchart.render();
                 </script>
                 <a href=$zipDir download><button class=darkform>Download Data</button></a>
+                <br>
                 </div>";
             }
 
