@@ -253,6 +253,7 @@
 
             echo "
             <div class=big-panel>
+                <h1>Heatmap</h1>
                 <div id=heatmap> </div>
             </div>";
             echo "
@@ -410,6 +411,8 @@
 
                     echo "
                         <div class=composer-panel>
+                            <h1>Radar Chart " . $completeFileName . "</h1>
+
                             <div id=radarChart" . $removedUnder . "></div>";
                     echo "</div>";
                     echo "
