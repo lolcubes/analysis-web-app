@@ -213,6 +213,9 @@
                               }
                             }
                           },
+                        dataLabels: {
+                            offsetY: 30;
+                        },
                         series: [{
                             data: $sortedValues
                         }],
