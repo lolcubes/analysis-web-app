@@ -303,6 +303,9 @@
                     $sortedKeys = array_keys($combined);
                     $sortedValues = array_values($combined);
 
+                    $sortedKeys = array_slice($sortedKeys, 0, 3);
+                    $sortedValues = array_slice($sortedValues, 0, 3);
+
                     $sortedKeys = json_encode($sortedKeys);
                     $sortedValues = json_encode($sortedValues);
 
