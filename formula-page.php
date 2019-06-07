@@ -205,7 +205,14 @@
                             type: 'bar',
                             forecolor: 'black',
                         },
-
+                        plotOptions: {
+                            bar: {
+                              horizontal: false,
+                              dataLabels: {
+                                position: 'bottom'
+                              }
+                            }
+                          },
                         dataLabels: {
                             enabled: false
                         },
