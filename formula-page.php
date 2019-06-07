@@ -209,7 +209,7 @@
                             bar: {
                               horizontal: false,
                               dataLabels: {
-                                position: 'middle'
+                                position: 'top'
                               }
                             }
                           },
