@@ -203,7 +203,7 @@
                         chart: {
                             height: 200,
                             type: 'bar',
-                            forecolor: '#fff',
+                            forecolor: 'black',
                         },
 
                         dataLabels: {
@@ -214,6 +214,14 @@
                         }],
                         xaxis: {
                             categories: $sortedKeys,
+                            labels: {
+                                style: {
+                                    colors: 'white',
+                                    fontSize: '16px',
+                                    fontFamily: 'Avenir Light',
+                            
+                                }
+                            }
                         },
                         yaxis: {
                             min: $minimum
