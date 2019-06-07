@@ -204,8 +204,7 @@
                         $dirCur = $outputdir . "/" . $file;
                         if (is_file($dirCur)) {
                             $composerNames[] = substr($file, 0, -4);
-                            $comparisonValue = file_get_contents($dirCur);
-                            $comparisonValues[] = substr($comparisonValue, 0, 4);
+                            $comparisonValues[] = file_get_contents($dirCur);
                         }
                     }
 
