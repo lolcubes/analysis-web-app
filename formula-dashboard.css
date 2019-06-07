@@ -66,13 +66,13 @@ body {
 .meterBar {
     height: 70px;
     background-color: rgba(0,0,0,0);
-    width: 94%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 3px;
 }
 .bar {
-    width: 7%;
+    width: 6%;
     background-color: white;
     margin-top: 8px;
     height: 65px;
