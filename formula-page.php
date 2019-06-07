@@ -208,9 +208,11 @@
                             <div class='bar " . $barArray[9] . "'></div>
                         </div>
                     </div>
-                    <div id=barChartSmall" . $removedFileName . "></div>
-                    <br>
-                    <br><br>
+                    <div class='content-section;display:inline-block;width:40%'>
+                        <div id=barChartSmall" . $removedFileName . "></div>
+                        <br>
+                        <br><br>
+                    </div>
                     <br>
                     <h2 style='margin:4px'>Top Three Correlations:</h2>
                     <div id=barmap" . $filename . "> </div>
