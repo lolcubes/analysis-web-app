@@ -519,7 +519,7 @@ function changeDetailsMessage(){
                                 </div>
                                 
                                 <div id=rightSideInput>
-                                    <textarea id=addToBibMessage placeholder='Message'></textarea
+                                    <textarea id=addToBibMessage placeholder='Message'></textarea>
                                 </div>
                                 
                                 <br>
