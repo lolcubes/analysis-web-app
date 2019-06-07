@@ -43,7 +43,7 @@ code {
 /*  HIDE OPTIONS ON LOAD/
 /* ======================*/
 #file-info-accordions {
-  /* display: none; */
+  display: none;
 }
 
 /*  REMOVE STYLING FROM H TAGS/
