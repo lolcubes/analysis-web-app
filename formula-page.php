@@ -304,7 +304,7 @@
                 <script>
                     var baroptions = {
                         chart: {
-                            height: 200,
+                            height: 130,
                             type: 'bar',
                             forecolor: 'black',
                             toolbar: {
@@ -322,7 +322,8 @@
                         dataLabels: {
                             offsetY: 30,
                             style:{
-                                fontFamily:'Avenir Light'
+                                fontFamily:'Avenir Light',
+                                
                             }
                         },
                         series: [{
