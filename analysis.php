@@ -778,7 +778,9 @@
                                               },
                                               scales: {
                                                 xAxes: [{
-                                                  display: false,
+                                                    ticks: {
+                                                        display: false //this will remove only the label
+                                                    },
                                                   scaleLabel: {
                                                     display: true,
                                                     labelString: 'Time'
@@ -855,7 +857,9 @@
                                                     display: true,
                                                     labelString: 'Time'
                                                 },
-                                                display: false,
+                                                ticks: {
+                                                    display: false //this will remove only the label
+                                                },
                                                   gridLines: {
                                                     display: false
                                                   }
