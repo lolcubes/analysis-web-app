@@ -243,14 +243,14 @@
                         <h2 style='margin:4px'>Top Correlations:</h2>
                         <div id=barmap" . $filename . "> </div>
                     </div>
-                    <div class='content-section' style='display:inline-block;width:44%'>
+                    <div class='content-section' style='display:inline-block;width:44%;height:333px;'>
                         <h2 style='margin-top:4px'>Radar Chart:</h2>
 
                         <div id=radarChart" . $removedUnder . "></div>
                         <style>
                         #radarChart" . $removedUnder . " {
                             overflow: hidden;
-                            margin:-19px;
+                            margin:-39px;
                         }
                         </style>
                     <script>
