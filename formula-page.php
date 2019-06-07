@@ -250,7 +250,7 @@
                     <script>
                     var options = {
                         chart: {
-                            height: 250,
+                            height: 200,
                             type: 'radar',
                             dropShadow: {
                                 enabled: true,
