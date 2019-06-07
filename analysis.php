@@ -57,15 +57,44 @@
                 outline: 0;
             }
         </style>
+
+        <style id="styleloaderbar">
+        #loading-bar{
+            display:none;
+            position:fixed;
+            z-index:1000000;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background-image: url('image-assets/animation.gif');
+            background-size: 600px 600px;
+            background-position: 50% 30%;
+            background-color: rgba(255,255,255,0.95);
+            background-repeat: no-repeat;
+        }
+
+        #loading-bar.loading{
+            display:block;
+        }
+        </style>
+
+
+
         <div id="dashboard-header">
         <br>
         <br>
         <br>
+        <script>
+            function startLoader() {
+                document.getElementById("loading-bar").className = "loading";
+            }
+        </script>
 
         <h1 style="display: inline-block;vertical-align:middle">Analysis Dashboard</h1> 
 
         <form action=formula-page.php method=post style="display: inline-block;vertical-align:middle">
-            <button type=submit class=darkform name='Comparison Analytics'>Comparison Analytics</button>
+            <button type=submit class=darkform name='Comparison Analytics' onclick='startLoader();'>Comparison Analytics</button>
             <input type="hidden" name='filesarray' id="files_array" value="<?php echo $_POST['userfilelocations'] ?>" /> 
         </form>
         <br>
