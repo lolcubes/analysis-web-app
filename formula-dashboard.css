@@ -26,11 +26,11 @@ body {
 
 .composer-panel {
     min-width: 400px;
-    width: 40%;
+    width: 41%;
     background-color: var(--main-panel-color);
     display: inline-block;
     border-radius: 20px;
-    margin: 1%;
+    margin: 3%;
     transition: .2s;
     box-shadow: 1px 3px 10px rgba(0,0,0,.5);
 }
