@@ -209,7 +209,6 @@
                         </div>
                     </div>
                     <div class='content-section' style='display:inline-block;width:40%'>
-                        <div id=barChartSmall" . $removedFileName . "></div>
                         <br><br>
                         <h2 style='margin:4px'>Top Three Correlations:</h2>
                         <div id=barmap" . $filename . "> </div>
