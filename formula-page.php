@@ -240,7 +240,7 @@
                             <div class='bar " . $barArray[9] . "'></div>
                         </div>
                     </div>
-                    <div class='content-section' style='margin-right:2%;display:inline-block;width:37%;height:266px;vertical-align:top'>
+                    <div class='content-section' style='margin-right:2%;display:inline-block;width:37%;height:220px;vertical-align:top'>
                         <br>
                         <h2 style='margin:4px'>Top Correlations:</h2>
                         <div id=barmap" . $filename . "> </div>
@@ -315,7 +315,8 @@
                             bar: {
                               horizontal: false,
                               dataLabels: {
-                                position: 'top'
+                                position: 'top',
+                                fontSize
                               }
                             }
                           },
@@ -323,7 +324,7 @@
                             offsetY: 30,
                             style:{
                                 fontFamily:'Avenir Light',
-                                fontSize: '14px',
+                                fontSize: '10px',
                             }
                         },
                         series: [{
@@ -334,7 +335,7 @@
                             labels: {
                                 style: {
                                     colors: 'white',
-                                    fontSize: '16px',
+                                    fontSize: '12px',
                                     fontFamily: 'Avenir Light',
                             
                                 }
