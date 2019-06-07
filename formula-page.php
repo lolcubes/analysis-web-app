@@ -110,7 +110,7 @@
                         $output = $value . "/comparison-outputs/averages/" . $file . ".txt";
 
 
-                        shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
+                        // shell_exec("octave -fq formula.m $arg1 $data | tr -d '\n' | tr -d ' ' > $output");
                         // shell_exec("./formula.sh $arg1 $data");
                     }
                 }
@@ -225,7 +225,7 @@
                     <div class='content-section' style='padding-bottom:5px;padding-top:5px;'>
                         <h1 style='margin:16px'> $completeFileName</h1> 
                     </div>
-                        <div class='content-section' style='margin-bottom:15px;width:45%;display:inline-block;vertical-align:top'>
+                        <div class='content-section' style='margin-bottom:15px;width:45%;display:inline-block;vertical-align:top;height:200px;'>
                     <p style='margin:16px'> This song is most correlated with <b>" . array_search(max($combined),$combined) . "</b> with a correlation value of <b>" . $max . "%</b> 
                         <div class=meterBar>
                             <div class='bar " . $barArray[0] . "'></div>
@@ -240,7 +240,7 @@
                             <div class='bar " . $barArray[9] . "'></div>
                         </div>
                     </div>
-                    <div class='content-section' style='margin-right:2%;display:inline-block;width:37%;height:220px;vertical-align:top'>
+                    <div class='content-section' style='margin-right:2%;display:inline-block;width:37%;height:200px;vertical-align:top'>
                         <br>
                         <h2 style='margin:4px'>Top Correlations:</h2>
                         <div id=barmap" . $filename . "> </div>
